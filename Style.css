@@ -97,14 +97,14 @@ input[type="text" i] {
 }
 
 .footer-container{
-    background-color: #212329;
+    background-color:  #0b1622;
     padding-bottom: 2rem 0 4rem 0;
 }
 
 .footer{
     width: 80%;
     height: 40vh;
-    background-color: #212329;
+    background-color:   #0b1622;
     color: #fff;
     display: flex;
     justify-content: center;
@@ -156,7 +156,7 @@ input[type="text" i] {
     width: 100px;
     height: 40px;
     border-radius: 4px;
-    background-color: #F9423D;
+    background-color: orange;
     outline: none;
     border: none;
     color: #fff;
