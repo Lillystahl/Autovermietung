@@ -54,8 +54,8 @@ header {
 input[type="text" i] {
     padding: 8px 20px;
     border-radius: 50px;
-    background-color: #123;
-    border-color: white;
+    background-color: #fff;
+    border: none;
     margin-right: 30px;
     border: 0;
 }
