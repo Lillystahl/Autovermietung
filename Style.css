@@ -62,7 +62,9 @@ input[type="text" i] {
 
 .book-button {
     padding: 10px 30px;
-    border-radius: 50px;
+    border-radius: 20px;
+    background-color: orange;
+    color: #fff; /* Christian: Fixed Color jetzt weiß. missing ;*/
 }
 
 .header a.logo {
