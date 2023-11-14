@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Website</title>
     <link rel="stylesheet" href="style.css">
+    <script src="Main.js"></script>
 </head>
 
 <body>
@@ -33,10 +34,48 @@
             <p>This is a place holder which is part of the header. This space can later be used to add tool for the user to navigate the website.</p>
         </div>
     </header>
+    <!--Slideshow container-->
+    <div class="slideshow-container"> 
+        
+            <!--Full-width images mit nummern und captions-->
+            <div class="mySlides fade" style="display: block">
+                <img src="Images/PorscheBild.jpg"
+            style="width:100%">
+                <div class="text"> Caption Text
+                </div>
+            </div>
 
-    <div class="main-image">
-        <img src="Images/PorscheBild.jpg" alt="Brumm Brumm">
+            <div class="mySlides fade">
+                <img src="Images/PorscheWhite.jpg"
+            style="width:100%">
+                <div class="text"> Caption Two
+                </div>
+            </div>
+
+            <div class="mySlides fade">
+                <img src="Images/LamborghiniHuracan.jpg"
+            style="width:100%">
+                <div class="text"> Caption Three
+                </div>
+            </div>
+
+         <!--Nächster und Vorheriger Button-->
+            <a class="prev"
+        onclick="plusSlides(-1)"><--</a>
+            <a class="next"
+        onclick="plusSlides(1)">--></a>
     </div>
+    <br>
+
+            <!--dots-->
+        <div style="text-align:center">
+            <span class ="dot"
+        onclick="currentSlide(1)"></span>
+        <span class ="dot"
+        onclick="currentSlide(2)"></span>
+        <span class ="dot"
+        onclick="currentSlide(3)"></span>
+</div>
 
     <div class="footer-container";>
         <div class="footer";>
