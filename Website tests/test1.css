@@ -1,0 +1,33 @@
+.form-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-basis: calc(25% - 10px); /* Adjust the width as needed */
+}
+
+.input-wrapper label {
+    margin-right: 5px;
+}
+
+input[type="search"],
+input[type="date"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%; /* Adjust input width as needed */
+}
+
+#Fahrezug-button {
+    padding: 8px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: orange;
+    color: white;
+    cursor: pointer;
+}
