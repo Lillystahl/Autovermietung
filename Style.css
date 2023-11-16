@@ -14,22 +14,34 @@ header {
    width: 250px; 
 }
 
-.main-heading {
+.navbar {
     text-align: center;
     margin: auto;
     color: white;
     background-color: #123;
     box-sizing: border-box;
-    padding: 20px;
+    padding: 10px;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
 }
 
-.main-heading h1 {
-    font-size: 50px;
+.navbar h1 {
+    font-size: 20px;
+    margin: 0;
+    padding: 10px;
 }
 
-.main-heading p {
-    font-size: 18px;
-    line-height: 26px;
+.navbar span {
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s ease-out;
+}
+
+.navbar span:hover {
+    color: orange;
+    cursor: pointer;
+    transition: all 0.4s ease-out;
 }
 
 .header img {
@@ -63,9 +75,10 @@ input[type="text" i] {
     border: none;
     margin-right: 30px;
     border: 0;
+    margin-top: 20px;
 }
 
-.book-button {
+.Buchung-button {
     padding: 10px 30px;
     border-radius: 20px;
     background-color: orange;
@@ -73,10 +86,35 @@ input[type="text" i] {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 0 auto;
+    margin-right: 30px;
+    margin-top: 20px;
+    height: 40px;
+    width: 250px; 
+    border: none;
 }
 
-.book-button:hover{
+.Buchung-button:hover{
+    cursor: pointer;
+    background-color: skyblue;
+    transition: all 0.4s ease-out;
+}
+
+.Login-button {
+    padding: 10px 30px;
+    border-radius: 20px;
+    background-color: orange;
+    color: #fff; /* Christian: Fixed Color jetzt weiß. missing ;*/
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-right: 30px;
+    margin-top: 20px;
+    height: 40px;
+    width: 150px; 
+    border: none;
+}
+
+.Login-button:hover{
     cursor: pointer;
     background-color: skyblue;
     transition: all 0.4s ease-out;
@@ -112,6 +150,12 @@ body{
     background: #123;
 }
 
+.main-image{
+margin-top: 0px;
+height: 900px; /* Ändere die Höhe nach Bedarf */
+overflow: hidden; /* Verhindert, dass nachfolgende Elemente in das Bild rutschen */
+}
+
 .main-image img{
     max-width: 100%;
     height: auto;
@@ -126,6 +170,7 @@ body{
 }
 
 .input-wrapper {
+    color: white;
     display: flex;
     align-items: center;
     margin-right: 10px;
