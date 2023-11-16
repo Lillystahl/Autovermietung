@@ -18,7 +18,7 @@ header {
     text-align: center;
     margin: auto;
     color: white;
-    background-color: #123;
+    background-color: darkgray;
     box-sizing: border-box;
     padding: 10px;
     display: flex;
@@ -166,7 +166,7 @@ overflow: hidden; /* Verhindert, dass nachfolgende Elemente in das Bild rutschen
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: #193047;
+    background-color: darkgray;
 }
 
 .input-wrapper {
@@ -180,6 +180,7 @@ overflow: hidden; /* Verhindert, dass nachfolgende Elemente in das Bild rutschen
 .input-wrapper label {
     margin-right: 5px;
     white-space: nowrap; /* Prevent label text from breaking */
+    font-size: 20px;
     }
     
 /* Adjust the width of the input fields */
@@ -212,7 +213,37 @@ input[type="date"] {
     transition: all 0.4s ease-out;
 }
 
+.box {
+    display: flex;
+    justify-content: center; /* Zentriert horizontal */
+    align-items: center; /* Zentriert vertikal */
+    border: 5px solid white; /* Grauer Rand */
+    background-color: #123; /* Hintergrundfarbe in einem anderen Grauton */
+    position: relative; /* Position für Overlay-Element */
+    z-index: -1; /* Christian: z-index weil dieses Element sonst den header verdeckt BUG: Dürfte eigentlich keinen z-index Benötigen da Sticky das überschreieben sollte */
+    padding: 20px; /* Beispiel für ein Padding von 20px oben/unten und 40px links/rechts */
+    padding-left: 70px;
+    color: white;
+}
 
+.box-content {
+    flex: 3; /* 3/5 Platz für den Text */
+    padding: 20px;
+}
+
+.box-image {
+    flex: 2; /* 2/5 Platz für das Bild */
+}
+
+.box-image img {
+    height: 180px; /* Ändere die Höhe nach Bedarf */
+    width: 600px;
+    overflow: hidden; /* Verhindert, dass nachfolgende Elemente in das Bild rutschen */
+}
+
+.box-content h2{
+    font-size: 20px;
+}
 
 /* Body Styles hier einfügen *
 
