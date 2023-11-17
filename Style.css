@@ -31,18 +31,19 @@ header {
     font-size: 20px;
     margin: 0;
     padding: 10px;
+    display: inline-block;
 }
 
 .navbar span {
     color: #fff;
     text-decoration: none;
-    transition: 0.3s ease-out;
 }
 
 .navbar span:hover {
     color: orange;
     cursor: pointer;
     transition: all 0.4s ease-out;
+    font-size: 28px; /* Größe beim Hovern */
 }
 
 .header img {
