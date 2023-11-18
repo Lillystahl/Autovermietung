@@ -1,0 +1,67 @@
+/* Dein CSS-Code in deiner_styles.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif; /* Wähle eine geeignete Schriftart */
+}
+
+.background-img {
+  position: relative;
+  text-align: center;
+  color: white;
+  margin-bottom: -4px;
+}
+
+.background-img img {
+  width: 100%;
+  height: auto;
+}
+
+.registration-container {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #112233; /* Hintergrundfarbe mit Transparenz */
+  opacity: 0.7;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Schatten für Tiefeneffekt */
+  width: 70%; /* Hier kannst du die Breite anpassen */
+  max-width: 600px; /* Optional: Setze eine maximale Breite, um den Container nicht zu breit werden zu lassen */
+  margin: auto; /
+}
+
+.registration-container h2 {
+  margin-bottom: 20px;
+  color: #fff; /* Textfarbe für den H2-Titel */
+}
+
+.registration-container label {
+  display: block;
+  margin-bottom: 8px;
+  color: #fff; /* Textfarbe für Labels */
+}
+
+.registration-container input,
+.registration-container textarea, #name, #postal_code{
+  width: 70%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 2px solid #fff; /* Randfarbe für Formularelemente */
+  border-radius: 5px;
+  background-color: transparent; /* Transparenter Hintergrund */
+  color: #fff; /* Textfarbe für Formularelemente */
+}
+
+.registration-container input[type="submit"] {
+  background-color: #fff; /* Hintergrundfarbe für den Absende-Button */
+  color: #000; /* Textfarbe für den Absende-Button */
+  cursor: pointer;
+}
+
+.registration-container input[type="submit"]:hover {
+  background-color:#112233 ; /* Hintergrundfarbe für den Absende-Button beim Hovern */
+  color: #fff; /* Textfarbe für den Absende-Button beim Hovern */
+}
