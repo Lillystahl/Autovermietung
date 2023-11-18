@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA_Compatible" content="ie=edge">
+        <!--Font awesome link anpassen dieser geht nicht mehr-->
+        <link 
+        />
+        <link rel="stylesheet" href="LoginStyle.css"/>
+        <title>Reactive Slider LogIn and signIn</title>
+    </head>
+    <body>
+
+        <header>
+            <div class="header">
+                <a href="#" class="logo"><img src="Images/logo-white.png"></a>
+                <div class="header-right">
+                    <div class="search-container">
+                            <input type="text" placeholder="Search..." name="search">
+                    </div>
+                    <button class="Buchung-button">Meine Buchungen</button>
+                    <div class="button-container">
+                        <button class="Login-button">LogIn</button>
+                        <span class="login-text">Create Account</span>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar">
+                <h1><span id="header1">Standorte</span></h1>
+                <h1><span id="header2">Fahrzeuge</span></h1>
+                <h1><span id="header3">Top-Deals</span></h1>
+                <h1><span id="header4">Geschäftskunden</span></h1>
+            </div>
+            <!-- Christian: maybe can man die navbar reactiv machen mit einem dropdown sodass die dann ausfährt von  oben-->          
+        </header>
+        
+        <div class="container" id="container">
+            <div class="form-container sign-up-container">
+                <form action="#">
+                    <h1>Create Account</h1>
+                    <div class="social-container">
+                        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <span>or use your email for registration</span>
+                    <input type="text" placeholder="Name" />
+                    <input type="email" placeholder="Email" />
+                    <input type="password" placeholder="Password" />
+                    <button>Sign Up</button>
+                </form>
+            </div>
+            <div class="form-container sign-in-container">
+                <form action="#">
+                    <h1>Sign in</h1>
+                    <!--Social Container maybe zu Image Container machen da man sich eh nicht über Social Media anmelden kann und SM Icons nur verwirren würden. Lieber kleine Autos oder so-->
+                    <div class="social-container">
+                        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <span>or use your account</span>
+                    <input type="email" placeholder="Email" />
+                    <input type="password" placeholder="Password" />
+                    <a href="#">Forgot your password?</a>
+                    <button>Sign In</button>
+                </form>
+            </div>
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <h1>Welcome Back!</h1>
+                        <p>To keep connected with us please login with your personal info</p>
+                        <button class="ghost" id="signIn">Sign In</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <h1>Hello, Friend!</h1>
+                        <p>Enter your personal details and start your journey with us</p>
+                        <button class="ghost" id="signUp">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <!-- Your footer content goes here -->
+            <div class="footer-container";>
+                <div class="footer";>
+                    <div class="footer-heading footer-1">
+                        <h2>About Us</h2>
+                        <a href="#">Blog</a>
+                        <a href="#">Demo</a>
+                        <a href="#">Customers</a>
+                        <a href="#">Investors</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Projects</a>
+                    </div>
+                    <div class="footer-heading footer-2">
+                        <h2>Contact Us</h2>
+                        <a href="#">Jobs</a>
+                        <a href="#">Contact</a>
+                        <a href="#">Sponsorships</a>
+                        <a href="#">Support</a>
+                    </div>
+                    <div class="footer-heading footer-3">
+                        <h2>Social Media</h2>
+                        <a href="#">Instagram</a>
+                        <a href="#">FaceBook</a>
+                        <a href="#">Twitter</a>
+                        <a href="#">LinkedIn</a>
+                    </div>
+                    <div class="footer-email-form">
+                        <h2>Join our Newsletter</h2>
+                        <input type="email" placeholer="Enter your E-Mail adress" id="footer-email">
+                        <input type="submit" value="Sign Up" id="footer-email-button">
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="main.js"></script>
+    </body>
+</html>
