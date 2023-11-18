@@ -7,16 +7,32 @@
         <meta http-equiv="X-UA_Compatible" content="ie=edge">
         <!--Font awesome link anpassen dieser geht nicht mehr-->
         <link 
-        rel="stylesheet"
-        href="https://use.fontawesome.com/realses/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhnd0JK28anvf"
-        crossorigin="anonymous"
         />
-        <link rel="stylesheet" href="Style.css"/>
+        <link rel="stylesheet" href="LoginStyle.css"/>
         <title>Reactive Slider LogIn and signIn</title>
     </head>
-
     <body>
+
+        <header>
+            <div class="header">
+                <a href="#" class="logo"><img src="Images/logo-white.png"></a>
+                <div class="header-right">
+                    <div class="search-container">
+                            <input type="text" placeholder="Search..." name="search">
+                    </div>
+                    <button class="Buchung-button">Meine Buchungen</button>
+                    <button class="Login-button">LogIn</button>
+                </div>
+            </div>
+            <!-- Christian: maybe can man die navbar reactiv machen mit einem dropdown sodass die dann ausfährt von  oben--> 
+            <div class="navbar">
+                <h1><span id="header1">Standorte</span></h1>
+                <h1><span id="header2">Fahrzeuge</span></h1>
+                <h1><span id="header3">Top-Deals</span></h1>
+                <h1><span id="header4">Geschäftskunden</span></h1>
+            </div>           
+        </header>
+
         <div class="container" id="container">
             <div class="form-container sign-up-container">
                 <form action="#">
@@ -64,6 +80,12 @@
                 </div>
             </div>
         </div>
+
+        <footer>
+            <!-- Your footer content goes here -->
+            <p>&copy; 2023 YourWebsiteName. All rights reserved.</p>
+        </footer>
+
         <script src="main.js"></script>
     </body>
 </html>

@@ -1,18 +1,167 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+/*Header Styles*/
+header {
+	width: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #123;
+    color: white;
+    height: 10vh;
+    padding: 0px;
+    position: sticky;
+    top: 0;
+}
+.search-container input[type=text]{
+   height: 40px;
+   width: 250px; 
+   border: 2px solid orange;
+}
+
+.navbar {
+    text-align: center;
+    margin: auto;
+    color: white;
+    background-color: rgba(169, 169, 169, 0.95);
+    box-sizing: border-box;
+    padding: 10px;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+}
+
+.navbar h1 {
+    font-size: 20px;
+    margin: 0;
+    padding: 10px;
+}
+
+.navbar span {
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s ease-out;
+}
+
+.navbar span:hover {
+    color: orange;
+    cursor: pointer;
+    transition: all 0.4s ease-out;
+}
+
+.header img {
+    width: 200px;
+    height: 80px;
+    z-index: 1;
+    position: relative;
+}
+
+.header {
+    overflow: hidden;
+    background-color: #0b1622;
+    padding: 10px 20px;
+}
+
+.header a {
+    float: left;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+}
+
+input[type="text" i] {
+    padding: 8px 20px;
+    border-radius: 50px;
+    background-color: #fff;
+    border: none;
+    margin-right: 30px;
+    border: 0;
+    margin-top: 20px;
+}
+
+.Buchung-button {
+    padding: 10px 30px;
+    border-radius: 20px;
+    background-color: orange;
+    color: #fff; /* Christian: Fixed Color jetzt weiß. missing ;*/
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-right: 30px;
+    margin-top: 20px;
+    height: 40px;
+    width: 250px; 
+    border: none;
+}
+
+.Buchung-button:hover{
+    cursor: pointer;
+    background-color: skyblue;
+    transition: all 0.4s ease-out;
+}
+
+.Login-button {
+    padding: 10px 30px;
+    border-radius: 20px;
+    background-color: orange;
+    color: #fff; /* Christian: Fixed Color jetzt weiß. missing ;*/
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-right: 30px;
+    margin-top: 20px;
+    height: 40px;
+    width: 150px; 
+    border: none;
+}
+
+.Login-button:hover{
+    cursor: pointer;
+    background-color: skyblue;
+    transition: all 0.4s ease-out;
+}
+
+.header a.logo {
+    font-size: 25px;
+    font-weight: bold;
+    padding: 0 !important;
+}
+
+.header-right {
+    float: right;
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 500px) {
+    .header a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+
+    .header-right {
+        float: none;
+    }
+}
+/* Header Styles */
+
 /* Body Styles */
 * {
 	box-sizing: border-box;
 }
 
 body {
-    background: #123;
+    background: #123;    
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 	font-family: 'Montserrat', sans-serif;
-	height: 100vh;
-	margin: -20px 0 50px;
+	margin: 0;
 }
 
 h1 {
@@ -97,7 +246,7 @@ input {
 	overflow: hidden;
 	width: 768px;
 	max-width: 100%;
-	min-height: 480px;
+	min-height: 480px;/* Passen Sie diesen Wert an, um den Abstand zum Header anzupassen */
 }
 
 .form-container {
