@@ -28,6 +28,7 @@ header {
     display: flex;
     justify-content:space-around;
     align-items: center;
+	position: relative; /* Beispielpositionierung */
 }
 
 .navbar h1 {
@@ -51,8 +52,9 @@ header {
 .header img {
     width: 200px;
     height: 80px;
-    z-index: 1;
+    z-index: 0;
     position: relative;
+	margin-bottom: 10px;
 }
 
 .header {
@@ -247,6 +249,7 @@ input {
 	width: 768px;
 	max-width: 100%;
 	min-height: 480px;/* Passen Sie diesen Wert an, um den Abstand zum Header anzupassen */
+	margin-top: 300px;/* DAS HIER IST 1000000% NICHT BEST PRACTICE UND SOLLTE GEFIXT WERDNE */
 }
 
 .form-container {
