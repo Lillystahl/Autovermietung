@@ -52,20 +52,9 @@ header {
 	box-sizing: border-box;
 }
 
-.main-image{
-    margin-top: 0px;
-    height: 900px; /* Ändere die Höhe nach Bedarf */
-    overflow: hidden; /* Verhindert, dass nachfolgende Elemente in das Bild rutschen */
-    }
-    
-.main-image img{
-    max-width: 100%;
-    height: auto;
-    padding-bottom: 0px;
-}
-
 body {
-    background: #123;    
+    background: url('Images/Registrierung.jpg') ;
+	background-size: cover;  
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -157,8 +146,8 @@ input {
 	width: 768px;
 	max-width: 100%;
 	min-height: 480px;
-	margin-top: 100px;/* DAS HIER IST 1000000% NICHT BEST PRACTICE UND SOLLTE GEFIXT WERDNE */
-	margin-bottom: 100px;/* DAS HIER IST 1000000% NICHT BEST PRACTICE UND SOLLTE GEFIXT WERDNE */
+	margin-top: 110px;/* DAS HIER IST 1000000% NICHT BEST PRACTICE UND SOLLTE GEFIXT WERDNE */
+	margin-bottom: 110px;/* DAS HIER IST 1000000% NICHT BEST PRACTICE UND SOLLTE GEFIXT WERDNE */
 }
 
 .form-container {
