@@ -6,48 +6,9 @@ header {
     font-family: Arial, Helvetica, sans-serif;
     background: #123;
     color: white;
-    height: 10vh;
     padding: 0px;
-    position: sticky;
     top: 0;
 	width: 100%;
-}
-.search-container input[type=text]{
-   height: 40px;
-   width: 250px; 
-   border: 2px solid orange;
-}
-
-.navbar {
-    text-align: center;
-    margin: auto;
-    color: white;
-    background-color: rgba(169, 169, 169, 0.95);
-    box-sizing: border-box;
-    padding: 10px;
-    display: flex;
-    justify-content:space-around;
-    align-items: center;
-	width: 100%;
-}
-
-.navbar h1 {
-    font-size: 20px;
-    margin: 0;
-    padding: 10px;
-    display: inline-block;
-}
-
-.navbar span {
-    color: #fff;
-    text-decoration: none;
-}
-
-.navbar span:hover {
-    color: orange;
-    cursor: pointer;
-    transition: all 0.4s ease-out;
-    font-size: 28px; /* Größe beim Hovern */
 }
 
 .header img {
@@ -61,105 +22,16 @@ header {
     overflow: hidden;
     background-color: #0b1622;
     padding: 10px 20px;
-}
-
-.header a {
-    float: left;
-    color: rgb(255, 255, 255);
-    text-align: center;
-    padding: 12px;
-    text-decoration: none;
-    font-size: 18px;
-    line-height: 25px;
-    border-radius: 4px;
-}
-
-input[type="text" i] {
-    padding: 8px 20px;
-    border-radius: 50px;
-    background-color: #fff;
-    border: none;
-    margin-right: 30px;
-    border: 0;
-    margin-top: 15px;
-}
-
-.Buchung-button {
-    padding: 10px 30px;
-    border-radius: 20px;
-    background-color: orange;
-    color: #fff; /* Christian: Fixed Color jetzt weiß. missing ;*/
-    display: flex;
+    overflow: hidden;
     justify-content: center;
-    flex-wrap: wrap;
-    margin-right: 30px;
-    margin-top: 15px;
-    height: 40px;
-    width: 250px; 
-    border: none;
-}
-
-.Buchung-button:hover{
-    cursor: pointer;
-    background-color: skyblue;
-    transition: all 0.4s ease-out;
-}
-
-.Login-button {
-    padding: 10px 30px;
-    border-radius: 20px;
-    background-color: orange;
-    color: #fff; /* Christian: Fixed Color jetzt weiß. missing ;*/
+    align-items: center;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-right: 30px;
-    margin-top: 20px;
-    height: 40px;
-    width: 150px; 
-    border: none;
-}
-
-.Login-button:hover{
-    cursor: pointer;
-    background-color: skyblue;
-    transition: all 0.4s ease-out;
-}
-
-.button-container {
-    text-align: center; /* Zentriert den Inhalt horizontal */
-    margin-right: 30px;
-    margin-top: 15px; 
-}
-
-.login-text {
-    display: block; /* Ändert das Verhalten des Elements zu block */
-    font-size: 12px; /* Kleinere Schriftgröße, ändere sie nach Bedarf */
-    font-weight: bold;
-    color: white; /* Farbe nach Wunsch */
-    margin-right: 30px;
-    margin-top: 2px;
-    text-decoration: underline;
-    border-radius: 20px;
-    padding: 2px;
-}
-
-.login-text:hover{
-    cursor: pointer;
-    background-color: skyblue;
-    transition: all 0.4s ease-out; 
 }
 
 .header a.logo {
     font-size: 25px;
     font-weight: bold;
     padding: 0 !important;
-}
-
-.header-right {
-    float: right;
-    display: flex;
-    align-items: center;
 }
 
 @media screen and (max-width: 500px) {
@@ -272,9 +144,9 @@ input {
 	overflow: hidden;
 	width: 768px;
 	max-width: 100%;
-	min-height: 480px;/* Passen Sie diesen Wert an, um den Abstand zum Header anzupassen */
-	margin-top: 200px;/* DAS HIER IST 1000000% NICHT BEST PRACTICE UND SOLLTE GEFIXT WERDNE */
-	margin-bottom: 200px;/* DAS HIER IST 1000000% NICHT BEST PRACTICE UND SOLLTE GEFIXT WERDNE */
+	min-height: 480px;
+	margin-top: 100px;/* DAS HIER IST 1000000% NICHT BEST PRACTICE UND SOLLTE GEFIXT WERDNE */
+	margin-bottom: 100px;/* DAS HIER IST 1000000% NICHT BEST PRACTICE UND SOLLTE GEFIXT WERDNE */
 }
 
 .form-container {
@@ -452,44 +324,6 @@ footer{
     color: orange;
     transition: 0.3s ease-out;
 }
-
-.footer-email-form h2{
-    padding-top: 15px;
-    margin-bottom: 2rem;
-}
-
-#footer-email{
-    width: 250px;
-    height: 40px;
-    border-radius: 20px;
-    outline: none;
-    border: none;
-    padding-left: 0.5rem;
-    font-size: 1rem;
-    margin-bottom: 1rem;
-}
-
-#footer-email::placeholder{
-    color: #b1b1b1;
-}
-
-#footer-email-button{
-    width: 100px;
-    height: 40px;
-    border-radius: 20px;
-    background-color: orange;
-    outline: none;
-    border: none;
-    color: #fff;
-    font-size: 1rem;
-}
-
-#footer-email-button:hover{
-    cursor: pointer;
-    background-color: skyblue;
-    transition: all 0.4s ease-out;
-}
-
 /* Christian: ich weiß nicht ob das hier nötig ist aber mache das erstmal rein
 mit dem zeug hier kann man beim Verändern der Fenstergröße den footer anpassen
 whatever */
