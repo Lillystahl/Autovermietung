@@ -52,6 +52,18 @@ header {
 	box-sizing: border-box;
 }
 
+.main-image{
+    margin-top: 0px;
+    height: 900px; /* Ändere die Höhe nach Bedarf */
+    overflow: hidden; /* Verhindert, dass nachfolgende Elemente in das Bild rutschen */
+    }
+    
+.main-image img{
+    max-width: 100%;
+    height: auto;
+    padding-bottom: 0px;
+}
+
 body {
     background: #123;    
 	display: flex;
