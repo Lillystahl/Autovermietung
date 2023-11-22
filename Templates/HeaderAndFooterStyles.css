@@ -1,4 +1,5 @@
 /* Header Styles hier einfügen */
+
 header {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
@@ -9,10 +10,11 @@ header {
     position: sticky;
     top: 0;
 }
-.search-container input[type=text]{
-   height: 40px;
-   width: 250px; 
-   border: 2px solid orange;
+
+.search-container input[type="text"] {
+    height: 40px;
+    width: 250px;
+    border: 2px solid orange;
 }
 
 .navbar {
@@ -23,7 +25,7 @@ header {
     box-sizing: border-box;
     padding: 10px;
     display: flex;
-    justify-content:space-around;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -43,7 +45,8 @@ header {
     color: orange;
     cursor: pointer;
     transition: all 0.4s ease-out;
-    font-size: 28px; /* Größe beim Hovern */
+    font-size: 28px;
+    /* Größe beim Hovern */
 }
 
 .header img {
@@ -84,18 +87,19 @@ input[type="text" i] {
     padding: 10px 30px;
     border-radius: 20px;
     background-color: orange;
-    color: #fff; /* Christian: Fixed Color jetzt weiß. missing ;*/
+    color: #fff;
+    /* Christian: Fixed Color jetzt weiß. missing ;*/
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     margin-right: 30px;
     margin-top: 15px;
     height: 40px;
-    width: 250px; 
+    width: 250px;
     border: none;
 }
 
-.Buchung-button:hover{
+.Buchung-button:hover {
     cursor: pointer;
     background-color: skyblue;
     transition: all 0.4s ease-out;
@@ -105,34 +109,39 @@ input[type="text" i] {
     padding: 10px 30px;
     border-radius: 20px;
     background-color: orange;
-    color: #fff; /* Christian: Fixed Color jetzt weiß. missing ;*/
+    color: #fff;
+    /* Christian: Fixed Color jetzt weiß. missing ;*/
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     margin-right: 30px;
     margin-top: 20px;
     height: 40px;
-    width: 150px; 
+    width: 150px;
     border: none;
 }
 
-.Login-button:hover{
+.Login-button:hover {
     cursor: pointer;
     background-color: skyblue;
     transition: all 0.4s ease-out;
 }
 
 .button-container {
-    text-align: center; /* Zentriert den Inhalt horizontal */
+    text-align: center;
+    /* Zentriert den Inhalt horizontal */
     margin-right: 30px;
-    margin-top: 15px; 
+    margin-top: 15px;
 }
 
 .login-text {
-    display: block; /* Ändert das Verhalten des Elements zu block */
-    font-size: 12px; /* Kleinere Schriftgröße, ändere sie nach Bedarf */
+    display: block;
+    /* Ändert das Verhalten des Elements zu block */
+    font-size: 12px;
+    /* Kleinere Schriftgröße, ändere sie nach Bedarf */
     font-weight: bold;
-    color: white; /* Farbe nach Wunsch */
+    color: white;
+    /* Farbe nach Wunsch */
     margin-right: 30px;
     margin-top: 2px;
     text-decoration: underline;
@@ -140,10 +149,10 @@ input[type="text" i] {
     padding: 2px;
 }
 
-.login-text:hover{
+.login-text:hover {
     cursor: pointer;
     background-color: skyblue;
-    transition: all 0.4s ease-out; 
+    transition: all 0.4s ease-out;
 }
 
 .header a.logo {
@@ -164,30 +173,33 @@ input[type="text" i] {
         display: block;
         text-align: left;
     }
-
     .header-right {
         float: none;
     }
 }
+
+
 /* Header Styles hier einfügen */
 
+
 /* Footer Styles hier einfügen */
-*{
+
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.footer-container{
-    background-color:  #0b1622;
+.footer-container {
+    background-color: #0b1622;
     padding-bottom: 2rem 0 4rem 0;
 }
 
-.footer{
+.footer {
     width: 80%;
     height: 40vh;
-    background-color:   #0b1622;
+    background-color: #0b1622;
     color: #fff;
     display: flex;
     justify-content: center;
@@ -195,34 +207,34 @@ input[type="text" i] {
     margin: 0 auto;
 }
 
-.footer-heading{
+.footer-heading {
     padding-top: 15px;
     display: flex;
     flex-direction: column;
     margin-right: 4rem;
 }
 
-.footer-heading h2{
+.footer-heading h2 {
     margin-bottom: 2rem;
 }
 
-.footer-heading a{
+.footer-heading a {
     color: #fff;
     text-decoration: none;
     margin-bottom: 0.5rem;
 }
 
-.footer-heading a:hover{
+.footer-heading a:hover {
     color: orange;
     transition: 0.3s ease-out;
 }
 
-.footer-email-form h2{
+.footer-email-form h2 {
     padding-top: 15px;
     margin-bottom: 2rem;
 }
 
-#footer-email{
+#footer-email {
     width: 250px;
     height: 40px;
     border-radius: 20px;
@@ -233,11 +245,11 @@ input[type="text" i] {
     margin-bottom: 1rem;
 }
 
-#footer-email::placeholder{
+#footer-email::placeholder {
     color: #b1b1b1;
 }
 
-#footer-email-button{
+#footer-email-button {
     width: 100px;
     height: 40px;
     border-radius: 20px;
@@ -248,39 +260,40 @@ input[type="text" i] {
     font-size: 1rem;
 }
 
-#footer-email-button:hover{
+#footer-email-button:hover {
     cursor: pointer;
     background-color: skyblue;
     transition: all 0.4s ease-out;
 }
 
+
 /* Christian: ich weiß nicht ob das hier nötig ist aber mache das erstmal rein
 mit dem zeug hier kann man beim Verändern der Fenstergröße den footer anpassen
 whatever */
 
-@media screen and(max-width: 1150px){
-    .footer{
+@media screen and(max-width: 1150px) {
+    .footer {
         padding-top: 50vh;
     }
-
-    .footer-email-form{
+    .footer-email-form {
         margin-top: 4rem;
     }
 }
 
-@media screen and(max-width: 820px){
-    .footer{
+@media screen and(max-width: 820px) {
+    .footer {
         padding-top: 2rem;
     }
 }
 
-@media screen and(max-width: 820px){
-    .footer{
+@media screen and(max-width: 820px) {
+    .footer {
         padding-top: none;
     }
-
-    .footer-email-form{
+    .footer-email-form {
         margin-top: 2rem;
     }
 }
+
+
 /* Footer Styles hier einfügen */
