@@ -3,7 +3,7 @@
 /* Header Styles*/
 header {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Montserrat', sans-serif;
     background: #123;
     color: white;
     padding: 0px;
@@ -11,11 +11,18 @@ header {
 	width: 100%;
 }
 
+.separator {
+	content: '';
+	border-left: 3px solid white;
+	height: 50px; /* Adjust the height of the line */
+	margin: 10px; /* Adjust the distance between the line and the logo */
+}
+
 .header img {
     width: 200px;
     height: 80px;
     z-index: 1;
-    position: relative;
+	margin-right: 10px;
 }
 
 .header {
@@ -32,6 +39,13 @@ header {
     font-size: 25px;
     font-weight: bold;
     padding: 0 !important;
+	margin-right: 10px;
+}
+
+.header p {
+	font-size: 24px; /* Change the font size to your preference */
+	margin-left: 10px;
+	font-weight: bold;
 }
 
 @media screen and (max-width: 500px) {
@@ -281,7 +295,7 @@ input {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Montserrat', sans-serif;
 }
 
 footer{
@@ -291,7 +305,7 @@ footer{
 .footer-container{
     background-color:  #0b1622;
     padding-bottom: 2rem 0 4rem 0;
-	
+	text-align: center;
 }
 
 .footer{
@@ -309,6 +323,7 @@ footer{
     padding-top: 15px;
     display: flex;
     flex-direction: column;
+	align-items: center;
     margin-right: 4rem;
 }
 
@@ -319,7 +334,9 @@ footer{
 .footer-heading a{
     color: #fff;
     text-decoration: none;
-    margin-bottom: 0.5rem;
+	margin: 8px;
+	font-size: 14px;
+
 }
 
 .footer-heading a:hover{
@@ -328,48 +345,27 @@ footer{
 }
 /* SM Logos */
 .sm {
-    display: flex;
     justify-content: space-between;
 }
 
-.group1,
-.group2 {
-    display: flex;
-}
-
-.group1 a,
-.group2 a {
-    display: inline-flex;
+.sm a {
+	display: flex;
     text-decoration: none;
     font-size: 36px;
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
     color: #f0f0f0;
     justify-content: center;
     align-items: center;
     position: relative;
-    margin: 0 7px;
+    margin:7px;
 }
 
-.sm a{
-	padding-top: 15px;
-    display: flex;
-	flex-direction: column;
-	text-decoration: none;
-	font-size: 36px;
-	width: 50px;
-	height: 50px;
-	color: #f0f0f0;
-	justify-content: center;
-	align-items: center;
-	position: relative;
-	margin: 0 7px;
-}
 .sm a::before{
 	content: '';
 	position: absolute;
-	width: 50px;
-	height: 50px;
+	width: 45px;
+	height: 45px;
 	border-radius: 25%;
 	z-index: 1;
 	transition: transform .3s ease-in;
