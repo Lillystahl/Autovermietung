@@ -38,11 +38,29 @@ header {
     margin: 0;
     padding: 10px;
     display: inline-block;
+    position: relative; /* Ensure relative positioning for pseudo-element */
 }
 
 .navbar span {
+    position: relative;
     color: #fff;
     text-decoration: none;
+    transition: color 0.4s ease-out;
+}
+
+.navbar span::before {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.4s ease-out;
+}
+
+.navbar span:hover::before {
+    width: 100%;
 }
 
 .navbar span:hover {
