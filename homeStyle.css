@@ -175,6 +175,7 @@ body{
     flex-wrap: wrap;
     justify-content: center;
     background-color:rgba(22, 72, 99, 0.95);
+    align-items: center;
 }
 
 .input-wrapper {
@@ -227,13 +228,13 @@ input[type="date"] {
     display: flex;
     justify-content: center;
     align-items: center; /* Center vertically */
-    margin-top: 100px;
+    margin-top: 130px;
     margin-bottom: 50px;
 }
 .container{
     position: relative;
     top: 300px;
-    left: 28%;
+    left: 38%;
     transform: translate(-50%, -50%);
     width: 1200px;
     height: 600px;
