@@ -373,27 +373,29 @@ input[type="date"] {
     }
 }
 
-.button{
-    width: 100%;
-    text-align: center;
+.button {
     position: absolute;
-    bottom: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
-.button button{
-    width: 40px;
-    height: 35px;
-    border-radius: 8px;
+.prev,
+.next {
+    background: #ccc;
+    padding: 10px 15px;
     border: none;
     cursor: pointer;
-    margin: 0 5px;
-    border: 1px solid #000;
-    transition: 0.3s;
+    transition: background 0.3s ease;
 }
 
-.button button:hover{
-    background: #ababab;
-    color: #fff;
+.prev:hover,
+.next:hover {
+    background: #aaa;
 }
 
 /* Slider Styles */
