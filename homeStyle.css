@@ -300,18 +300,22 @@ input[type="date"] {
 
 
 .slide .item:nth-child(3){
-    left: 50%;
+    top: 65%;
+    left: 62%;
 }
 .slide .item:nth-child(4){
-    left: calc(50% + 220px);
+    top: 65%;
+    left: calc(62% + 220px);
 }
 .slide .item:nth-child(5){
-    left: calc(50% + 440px);
+    top: 65%;
+    left: calc(62% + 440px);
 }
 
 /* here n = 0, 1, 2, 3,... */
 .slide .item:nth-child(n + 6){
-    left: calc(50% + 660px);
+    top: 65%;
+    left: calc(60% + 660px);
     opacity: 0;
 }
 
