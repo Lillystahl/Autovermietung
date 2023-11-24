@@ -51,12 +51,14 @@ header {
 .navbar span::before {
     content: '';
     position: absolute;
-    bottom: -3px;
+    bottom: 0px;
     left: 0;
     width: 0;
     height: 2px;
     background-color: #fff;
     transition: width 0.4s ease-out;
+    cursor: pointer;
+    margin-bottom: -3px;
 }
 
 .navbar span:hover::before {
@@ -66,8 +68,6 @@ header {
 .navbar span:hover {
     color: #a5668b;
     cursor: pointer;
-    transition: all 0.4s ease-out;
-    font-size: 28px; /* Größe beim Hovern */
 }
 
 .header img {
@@ -409,26 +409,33 @@ input[type="date"] {
 /* Footer Styles hier einfügen */
 /* SM Logos */
 .sm {
-    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.sm a{
+.sm-group {
+    display: flex;
+    justify-content: center;
+}
+
+.sm-group a{
 	display: flex;
     text-decoration: none;
-    font-size: 36px;
-    width: 45px;
-    height: 45px;
+    font-size: 30px;
+    width: 40px;
+    height: 40px;
     color: #f0f0f0;
     justify-content: center;
     align-items: center;
     position: relative;
     margin:7px;
 }
-.sm a::before{
+.sm-group a::before{
 	content: '';
 	position: absolute;
-	width: 50px;
-	height: 50px;
+	width:40px;
+	height: 40px;
 	border-radius: 25%;
 	z-index: 1;
 	transition: transform .3s ease-in;
@@ -438,31 +445,27 @@ input[type="date"] {
     color: transparent;
 }
 
-.sm a:nth-child(1)::before{
-	background: #38529a;
+.sm-group:nth-child(1) a:nth-child(1)::before {
+    background: #38529a;
 }
 
-.sm a:nth-child(2)::before{
-	background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+.sm-group:nth-child(1) a:nth-child(2)::before {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
 }
 
-.sm a:nth-child(3)::before{
-	background: #1c96e9;
+.sm-group:nth-child(2) a:nth-child(1)::before {
+    background: #1c96e9;
 }
 
-.sm a:nth-child(4)::before{
-	background: #f70000;
+.sm-group:nth-child(2) a:nth-child(2)::before {
+    background: #f70000;
 }
 
-.sm a:nth-child(5)::before{
-	background: #046596;
+.sm-group:nth-child(2) a:nth-child(3)::before {
+    background: #046596;
 }
 
-.sm a:hover::before{
-	transform: scale(0);
-}
-
-.sm a i{
+.sm-group a i{
 	transition: transform .3s ease-in;
 	position: relative;
 	z-index: 2;
@@ -486,7 +489,7 @@ input[type="date"] {
 	transform: scale(1.5);
 }
 
-.sm a:nth-child(3):hover i{
+.sm a:nth-child(1):hover i{
 	background: #1c96e9;
 	-webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -495,7 +498,7 @@ input[type="date"] {
 	transform: scale(1.5);
 }
 
-.sm a:nth-child(4):hover i{
+.sm a:nth-child(2):hover i{
 	background: #f70000;
 	-webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -504,7 +507,7 @@ input[type="date"] {
 	transform: scale(1.5);
 }
 
-.sm a:nth-child(5):hover i{
+.sm a:nth-child(3):hover i{
 	background: #046596;
 	-webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -513,17 +516,63 @@ input[type="date"] {
 	transform: scale(1.5);
 }
 
+.sm-group:nth-child(1) a:nth-child(1):hover::before {
+    background: #38529a;
+	-webkit-background-clip: text;/* Christian: ich glaube das macht man anders und macht das als globale eigenschaft aber weiß nicht wie und das geht erstmal so */
+    -webkit-text-fill-color: transparent;/* Christian: ich glaube das macht man anders und macht das als globale eigenschaft aber weiß nicht wie und das geht erstmal so */
+	background-clip: text;/* Christian: ich glaube das macht man anders und macht das als globale eigenschaft aber weiß nicht wie und das geht erstmal so */
+    color: transparent;/* Christian: ich glaube das macht man anders und macht das als globale eigenschaft aber weiß nicht wie und das geht erstmal so */
+	transform: scale(1.5);
+}
+
+.sm-group:nth-child(1) a:nth-child(2):hover::before {
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+	-webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+	background-clip: text;
+    color: transparent;
+	transform: scale(1.5);
+}
+
+.sm-group:nth-child(2) a:nth-child(1):hover::before {
+    background: #1c96e9;
+	-webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+	background-clip: text;
+    color: transparent;
+	transform: scale(1.5);
+}
+
+.sm-group:nth-child(2) a:nth-child(2):hover::before {
+    background: #f70000;
+	-webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+	background-clip: text;
+    color: transparent;
+	transform: scale(1.5);
+}
+
+.sm-group:nth-child(2) a:nth-child(3):hover::before {
+    background: #046596;
+	-webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+	background-clip: text;
+    color: transparent;
+	transform: scale(1.5);
+}
+
+
 *{
     font-family: 'Montserrat', sans-serif;
 }
 
 .footer-container{
-    background-color:  #0b1622;
+    background-color:  white;
     padding-bottom: 2rem 0 4rem 0;
 }
 
 .footer{
-    width: 80%;
+    width: 85%;
     height: 40vh;
     background-color:   #0b1622;
     color: #fff;
