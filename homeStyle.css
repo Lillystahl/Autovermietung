@@ -179,9 +179,10 @@ input[type="text" i] {
 }
 
 .header-right {
-    float: right;
     display: flex;
     align-items: center;
+    float: right; /* Align to the right */
+    margin-right: 10px; /* Adjust the margin as needed */
 }
 
 @media screen and (max-width: 500px) {
