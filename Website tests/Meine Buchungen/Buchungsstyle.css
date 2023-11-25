@@ -47,4 +47,7 @@ th {
   color: white;
 }
 
+tr:hover {
+  background-color: rgba(15, 163, 177, 0.1); /* Ändere die Hintergrundfarbe nach Bedarf */
+}
 /* Buchungstabelle Styles hier einfügen */
