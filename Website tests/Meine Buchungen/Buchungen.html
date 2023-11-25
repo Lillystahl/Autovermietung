@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <link rel="stylesheet" href="/Applications/XAMPP/xamppfiles/htdocs/Autovermietung/Website tests/Meine Buchungen/Buchungsstyle.css">
+    <link rel="stylesheet" href="/Applications/XAMPP/xamppfiles/htdocs/Autovermietung/homeStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<header>
+  <div class="header">
+      <a href="#" class="logo"><img src="/Applications/XAMPP/xamppfiles/htdocs/Autovermietung/Images/ImageRE.png"></a>
+      <div class="header-right">
+          <div class="search-container">
+                  <input type="text" placeholder="Search..." name="search">
+          </div>
+
+          <div class="button-container">
+              <button class="Login-button">LogIn</button>
+              <span class="login-text">Create Account</span>
+          </div>
+      </div>
+  </div>
+  <!-- Die Class "main Heading" nutzen um ein Menü für den User zu erstellen mit bspw. buttons Ein Auto Mieten, Einen Transporter mieten, Firmenkunden, Standorte, Aktionen,...." -->
+  <!-- Christian: maybe can man die navbar reactiv machen mit einem dropdown sodass die dann ausfährt von  oben-->
+      <div class="navbar">
+          <h1><span id="header1">Standorte</span></h1>
+          <h1><span id="header2">Fahrzeuge</span></h1>
+          <h1><span id="header3">Top-Deals</span></h1>
+          <h1><span id="header4">Geschäftskunden</span></h1>
+      </div>
+</header>
+<body>
+    <div class="content" style="background-image: url(/Applications/XAMPP/xamppfiles/htdocs/Autovermietung/Images/PHOTO-2023-11-22-16-05-30.jpg);">
+      <div class="booking-container">
+        <h1>Meine Buchungen</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>Buchungsnummer</th>
+              <th>Startdatum</th>
+              <th>Enddatum</th>
+              <th>Gebuchtes Auto</th>
+              <th>Standort</th>
+              <th>Datum der Buchung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>123456</td>
+              <td>2024-02-15</td>
+              <td>2024-02-20</td>
+              <td>BMW X3</td>
+              <td>Milan City Center</td>
+              <td>2024-01-25</td>
+            </tr>
+            <tr>
+              <td>123456</td>
+              <td>2024-02-15</td>
+              <td>2024-02-20</td>
+              <td>BMW X3</td>
+              <td>Milan City Center</td>
+              <td>2024-01-25</td>
+            </tr>
+            <tr>
+              <td>123456</td>
+              <td>2024-02-15</td>
+              <td>2024-02-20</td>
+              <td>BMW X3</td>
+              <td>Milan City Center</td>
+              <td>2024-01-25</td>
+            </tr>
+
+            <!-- Weitere Buchungen können hier hinzugefügt werden -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+      <div class="footer-container";>
+        <div class="footer";>
+            <div class="footer-heading footer-1">
+                <h2>About Us</h2>
+                <a href="#">Blog</a>
+                <a href="#">Demo</a>
+                <a href="#">Customers</a>
+                <a href="#">Investors</a>
+                <a href="#">AGB</a>
+                <a href="#">Projects</a>
+            </div>
+            <div class="footer-heading footer-2">
+                <h2>Contact Us</h2>
+                <a href="#">Jobs</a>
+                <a href="#">Contact</a>
+                <a href="#">Sponsorships</a>
+                <a href="#">Support</a>
+            </div>
+            <div class="footer-heading footer-3">
+                <h2>Social Media</h2>
+                <div class="sm">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-email-form">
+                <h2>Join our Newsletter</h2>
+                <input type="email" placeholer="Enter your E-Mail adress" id="footer-email">
+                <input type="submit" value="Sign Up" id="footer-email-button">
+            </div>
+        </div>
+        <script src="home.js"></script>
+    </div>
+</body>
+</html>
+
+</body>
+</html>
