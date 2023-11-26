@@ -67,7 +67,8 @@ header {
 }
 
 body {
-    background: url('Images/Registrierung.jpg') ;
+    background: url('Images/greenamgatnight.jpg');
+	background-position: 80% 80%; /* Horizontal: 50%, Vertical: 20% */
 	background-size: cover;
 	display: flex;
 	justify-content: center;
@@ -75,7 +76,7 @@ body {
 	flex-direction: column;
 	font-family: 'Montserrat', sans-serif;
 	margin: 0;
-  background-color: #585b5e;
+  	background-color: #585b5e;
 }
 
 h1 {
