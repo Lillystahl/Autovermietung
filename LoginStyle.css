@@ -108,9 +108,9 @@ a {
 
 button {
 	border-radius: 20px;
-	border: 1px solid #FF4B2B;
-	background-color: #FF4B2B;
-	color: #FFFFFF;
+	border: 1px solid #c3cfe2;;
+    background-color: #c3cfe2; /* Greyish-blue */
+    color: #1f3a57; /* Dark blue text */
 	font-size: 12px;
 	font-weight: bold;
 	padding: 12px 45px;
@@ -144,7 +144,8 @@ form {
 }
 
 input {
-	background-color: #eee;
+	background-color: #c3cfe2; /* Greyish-blue */
+    color: #1f3a57; /* Dark blue text */
 	border: none;
 	padding: 12px 15px;
 	margin: 8px 0;
@@ -152,7 +153,7 @@ input {
 }
 
 .container {
-	background-color: #fff;
+	background-color: #f4f6f9; /* Light grey background */
 	border-radius: 10px;
   	box-shadow: 0 14px 28px rgba(0,0,0,0.25),
 			0 10px 10px rgba(0,0,0,0.22);
@@ -224,9 +225,9 @@ input {
 }
 
 .overlay {
-	background: #FF416C;
-	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	background:#c3cfe2;
+	background: -webkit-linear-gradient(to right, #c3cfe2,#768da3);
+	background: linear-gradient(to right,  #c3cfe2,#768da3);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;
@@ -346,27 +347,33 @@ footer{
 }
 /* SM Logos */
 .sm {
-    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.sm a {
+.sm-group {
+    display: flex;
+    justify-content: center;
+}
+
+.sm-group a{
 	display: flex;
     text-decoration: none;
-    font-size: 36px;
-    width: 45px;
-    height: 45px;
+    font-size: 30px;
+    width: 40px;
+    height: 40px;
     color: #f0f0f0;
     justify-content: center;
     align-items: center;
     position: relative;
     margin:7px;
 }
-
-.sm a::before{
+.sm-group a::before{
 	content: '';
 	position: absolute;
-	width: 45px;
-	height: 45px;
+	width:40px;
+	height: 40px;
 	border-radius: 25%;
 	z-index: 1;
 	transition: transform .3s ease-in;
@@ -376,31 +383,27 @@ footer{
     color: transparent;
 }
 
-.sm a:nth-child(1)::before{
-	background: #38529a;
+.sm-group:nth-child(1) a:nth-child(1)::before {
+    background: #38529a;
 }
 
-.sm a:nth-child(2)::before{
-	background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+.sm-group:nth-child(1) a:nth-child(2)::before {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
 }
 
-.sm a:nth-child(3)::before{
-	background: #1c96e9;
+.sm-group:nth-child(2) a:nth-child(1)::before {
+    background: #1c96e9;
 }
 
-.sm a:nth-child(4)::before{
-	background: #f70000;
+.sm-group:nth-child(2) a:nth-child(2)::before {
+    background: #f70000;
 }
 
-.sm a:nth-child(5)::before{
-	background: #046596;
+.sm-group:nth-child(2) a:nth-child(3)::before {
+    background: #046596;
 }
 
-.sm a:hover::before{
-	transform: scale(0);
-}
-
-.sm a i{
+.sm-group a i{
 	transition: transform .3s ease-in;
 	position: relative;
 	z-index: 2;
@@ -424,7 +427,7 @@ footer{
 	transform: scale(1.5);
 }
 
-.sm a:nth-child(3):hover i{
+.sm a:nth-child(1):hover i{
 	background: #1c96e9;
 	-webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -433,7 +436,7 @@ footer{
 	transform: scale(1.5);
 }
 
-.sm a:nth-child(4):hover i{
+.sm a:nth-child(2):hover i{
 	background: #f70000;
 	-webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -442,7 +445,7 @@ footer{
 	transform: scale(1.5);
 }
 
-.sm a:nth-child(5):hover i{
+.sm a:nth-child(3):hover i{
 	background: #046596;
 	-webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -450,6 +453,52 @@ footer{
     color: transparent;
 	transform: scale(1.5);
 }
+
+.sm-group:nth-child(1) a:nth-child(1):hover::before {
+    background: #38529a;
+	-webkit-background-clip: text;/* Christian: ich glaube das macht man anders und macht das als globale eigenschaft aber weiß nicht wie und das geht erstmal so */
+    -webkit-text-fill-color: transparent;/* Christian: ich glaube das macht man anders und macht das als globale eigenschaft aber weiß nicht wie und das geht erstmal so */
+	background-clip: text;/* Christian: ich glaube das macht man anders und macht das als globale eigenschaft aber weiß nicht wie und das geht erstmal so */
+    color: transparent;/* Christian: ich glaube das macht man anders und macht das als globale eigenschaft aber weiß nicht wie und das geht erstmal so */
+	transform: scale(1.5);
+}
+
+.sm-group:nth-child(1) a:nth-child(2):hover::before {
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+	-webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+	background-clip: text;
+    color: transparent;
+	transform: scale(1.5);
+}
+
+.sm-group:nth-child(2) a:nth-child(1):hover::before {
+    background: #1c96e9;
+	-webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+	background-clip: text;
+    color: transparent;
+	transform: scale(1.5);
+}
+
+.sm-group:nth-child(2) a:nth-child(2):hover::before {
+    background: #f70000;
+	-webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+	background-clip: text;
+    color: transparent;
+	transform: scale(1.5);
+}
+
+.sm-group:nth-child(2) a:nth-child(3):hover::before {
+    background: #046596;
+	-webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+	background-clip: text;
+    color: transparent;
+	transform: scale(1.5);
+}
+
 
 /* Christian: ich weiß nicht ob das hier nötig ist aber mache das erstmal rein
 mit dem zeug hier kann man beim Verändern der Fenstergröße den footer anpassen
