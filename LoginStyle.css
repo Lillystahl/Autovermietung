@@ -2,12 +2,9 @@
 
 /* Header Styles*/
 header {
-    margin: 0;
 	font-family: 'Montserrat', sans-serif;
     background: #222223;
     color: white;
-    padding: 0px;
-    top: 0;
 	width: 100%;
 }
 
