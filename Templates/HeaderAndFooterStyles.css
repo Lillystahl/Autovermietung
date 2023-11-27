@@ -140,10 +140,74 @@ input[type="text" i] {
     }
 }
 /* Header Styles hier einfügen */
+body{
+    margin: 0px;
+}
 
+.navcontainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: 10;
+    position: absolute;
+    align-items: center;
+    width: 100%;
+}
+.navbar {
+    /* Your existing navbar styles */
+    text-align: center;
+    margin: auto;
+    color: white;
+    background-color: rgba(73, 74, 76, 1);
+    box-sizing: border-box;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    z-index: 1; /* Ensure it's above other content */
+    width: 85%;
+    margin: 0 auto; /* Center the container horizontally */
+    border-radius: 15px;
+}
+
+.navbar h1 {
+    font-size: 20px;
+    margin: 0;
+    padding: 10px;
+    display: inline-block;
+    position: relative; /* Ensure relative positioning for pseudo-element */
+}
+
+.navbar span {
+    position: relative;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.4s ease-out;
+}
+
+.navbar span::before {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.4s ease-out;
+    cursor: pointer;
+    margin-bottom: -3px;
+}
+
+.navbar span:hover::before {
+    width: 100%;
+}
+
+.navbar span:hover {
+    color: #0fa3b1;
+    cursor: pointer;
+}
 /* Footer Styles hier einfügen */
-/* Footer Styles hier einfügen */
-/* SM Logos */
 .sm {
     display: flex;
     flex-direction: column;
