@@ -13,7 +13,7 @@
 <body>
     <header>
         <div class="header">
-            <a href="#" class="logo"><img src="Images/logo-white.png"></a>
+            <a href="#" class="logo"><img src="Images/ImageRE.png"></a>
             <div class="header-right">
                 <div class="search-container">
                     <input type="text" placeholder="Search..." name="search">
@@ -26,13 +26,16 @@
             </div>
         </div>
         <!-- Navbar placed within the header -->
+    </header>
+
+    <div class="navcontainer">
         <div class="navbar">
             <h1><span id="header1">Standorte</span></h1>
             <h1><span id="header2">Fahrzeuge</span></h1>
             <h1><span id="header3">Top-Deals</span></h1>
             <h1><span id="header4">Geschäftskunden</span></h1>
         </div>
-    </header>
+    </div>
 
     <!-- Hier müsste noch das video rein @Leon -->
     <div class="container">
@@ -79,25 +82,26 @@
         </div>
     </div>
 
-
-    <div class="form-container">
-        <div class="input-wrapper">
-            <label for="search1">Standort:</label>
-            <input type="search" id="search1" placeholder=".....">
+    <div class="barcontainer">
+        <div class="form-container">
+            <div class="input-wrapper">
+                <label for="search1">Standort:</label>
+                <input type="search" id="search1" placeholder=".....">
+            </div>
+            <div class="input-wrapper">
+                <label for="search2">Fahrzeugart:</label>
+                <input type="search" id="search2" placeholder=".....">
+            </div>
+            <div class="input-wrapper">
+                <label for="search3">Start-Datum:</label>
+                <input type="date" id="search3">
+            </div>
+            <div class="input-wrapper">
+                <label for="search4">End-Datum:</label>
+                <input type="date" id="search4">
+            </div>
+            <button class="Fahrzeug-button">Verfügbare Fahrzeuge</button>
         </div>
-        <div class="input-wrapper">
-            <label for="search2">Fahrzeugart:</label>
-            <input type="search" id="search2" placeholder=".....">
-        </div>
-        <div class="input-wrapper">
-            <label for="search3">Start-Datum:</label>
-            <input type="date" id="search3">
-        </div>
-        <div class="input-wrapper">
-            <label for="search4">End-Datum:</label>
-            <input type="date" id="search4">
-        </div>
-        <button class="Fahrzeug-button">Verfügbare Fahrzeuge</button>
     </div>
 
   <div class="card-container">
