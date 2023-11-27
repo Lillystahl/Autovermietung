@@ -3,12 +3,21 @@
 header {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
-    background:#222223;
+    background-color: #585b5e;
     color: white;
     width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.search-container{
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
 }
 .search-container input[type=text]{
-   height: 40px;
+   height: 35px;
    width: 250px;
    border: 2px solid #0fa3b1;
 }
@@ -18,7 +27,6 @@ header {
     height: 80px;
     z-index: 1;
     position: relative;
-    left: 73%;
 }
 
 .header {
@@ -32,6 +40,8 @@ header {
     display: flex;
     justify-content: space-between; /* Align children */
     align-items: center; /* Vertically center */
+    width: 85%;
+    border-radius: 15px;
 }
 
 .header a {
@@ -46,28 +56,12 @@ header {
 }
 
 input[type="text" i] {
-    padding: 8px 20px;
     border-radius: 50px;
     background-color: #fff;
     border: none;
-    margin-right: 30px;
     border: 0;
-    margin-top: 15px;
-}
-
-.Buchung-button {
-    padding: 10px 30px;
-    border-radius: 20px;
-    background-color: #0fa3b1;
-    color: #fff; /* Christian: Fixed Color jetzt weiß. missing ;*/
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-right: 30px;
-    margin-top: 15px;
-    height: 40px;
-    width: 250px;
-    border: none;
+    padding-right: 10px;
+    margin-right: 10px;
 }
 
 .Login-button {
@@ -78,8 +72,7 @@ input[type="text" i] {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin-right: 30px;
-    margin-top: 20px;
+    margin-right: 10px;
     height: 40px;
     width: 150px;
     border: none;
@@ -93,8 +86,6 @@ input[type="text" i] {
 
 .button-container {
     text-align: center; /* Zentriert den Inhalt horizontal */
-    margin-right: 30px;
-    
 }
 
 .login-text {
@@ -127,7 +118,6 @@ input[type="text" i] {
     display: flex;
     align-items: center;
     float: right; /* Align to the right */
-    margin-right: 10px; /* Adjust the margin as needed */
 }
 
 @media screen and (max-width: 500px) {
