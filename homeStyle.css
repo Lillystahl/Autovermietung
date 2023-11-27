@@ -636,6 +636,7 @@ input[type="date"] {
 .footer-container{
     background-color: #222223;
     padding-bottom: 2rem 0 4rem 0;
+    text-align: center;
 }
 
 .footer{
@@ -654,6 +655,7 @@ input[type="date"] {
     display: flex;
     flex-direction: column;
     margin-right: 4rem;
+    align-items: center;
 }
 
 .footer-heading h2{
