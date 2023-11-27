@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <link rel="stylesheet" href="MyBookingsStyle.css">
+    <link rel="stylesheet" href="Productsstyle.css"> <!-- Füge die neue CSS-Datei hier ein -->
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <a href="#" class="logo"><img src="Images/logo-white.png"></a>
+            <div class="header-right">
+                <div class="search-container">
+                    <form action="/action_page.php">
+                        <input type="text" placeholder="Search..." name="search">
+                    </form>
+                </div>
+                <button class="Buchung-button">Meine Buchungen</button>
+                <button class="Login-button">LogIn</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="filter">
+        <h3>Filter</h3>
+        <!-- Hier könntest du Filteroptionen hinzufügen -->
+        <label for="category">Kategorie:</label>
+        <select name="category" id="category">
+            <option value="all">Alle</option>
+            <option value="category1">Kategorie 1</option>
+            <option value="category2">Kategorie 2</option>
+            <!-- Weitere Optionen... -->
+        </select>
+        <br>
+        <label for="price">Preis:</label>
+        <input type="range" id="price" name="price" min="0" max="1000">
+    </div>
+    
+    <main>
+        <!-- Beispiel für einzelne Produkt-Container -->
+        <div class="product">
+            <h2>Produkt 1</h2>
+            <p>Beschreibung des Produkts...</p>
+        </div>
+        <div class="product">
+            <h2>Produkt 2</h2>
+            <p>Beschreibung des Produkts...</p>
+        </div>
+        <!-- Weitere Produkte... -->
+    </main>
+
+    <div class="footer-container">
+        <div class="footer">
+            <div class="footer-heading footer-1">
+                <h2>About Us</h2>
+                <a href="#">Blog</a>
+                <a href="#">Demo</a>
+                <a href="#">Customers</a>
+                <a href="#">Investors</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Projects</a>
+            </div>
+            <div class="footer-heading footer-2">
+                <h2>Contact Us</h2>
+                <a href="#">Jobs</a>
+                <a href="#">Contact</a>
+                <a href="#">Sponsorships</a>
+                <a href="#">Support</a>
+            </div>
+            <div class="footer-heading footer-3">
+                <h2>Social Media</h2>
+                <a href="#">Instagram</a>
+                <a href="#">FaceBook</a>
+                <a href="#">Twitter</a>
+                <a href="#">LinkedIn</a>
+            </div>
+            <div class="footer-email-form">
+                <h2>Join our Newsletter</h2>
+                <input type="email" placeholder="Enter your E-Mail address" id="footer-email">
+                <input type="submit" value="Sign Up" id="footer-email-button">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
