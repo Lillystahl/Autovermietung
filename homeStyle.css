@@ -20,7 +20,7 @@ header {
     text-align: center;
     margin: auto;
     color: white;
-    background-color: rgba(73, 74, 76, 0.90);
+    background-color: rgba(73, 74, 76, 1);
     box-sizing: border-box;
     padding: 10px;
     display: flex;
@@ -31,6 +31,7 @@ header {
     width: 85%;
     margin: 0 auto; /* Center the container horizontally */
     border-radius: 15px;
+    margin-top: 7px;
 }
 
 .navbar h1 {
@@ -150,7 +151,7 @@ input[type="text" i] {
 .button-container {
     text-align: center; /* Zentriert den Inhalt horizontal */
     margin-right: 30px;
-    margin-top: 15px;
+    
 }
 
 .login-text {
@@ -272,7 +273,7 @@ input[type="date"] {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    margin-top: 64.5px;
+    margin-top: 0px;
 }
 
 .container .slide .item{
