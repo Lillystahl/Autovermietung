@@ -74,7 +74,7 @@ input[type="text" i] {
     flex-wrap: wrap;
     margin-right: 10px;
     height: 40px;
-    width: 150px;
+    width: 200px;
     border: none;
 }
 
@@ -86,26 +86,6 @@ input[type="text" i] {
 
 .button-container {
     text-align: center; /* Zentriert den Inhalt horizontal */
-}
-
-.login-text {
-    display: block; /* Ändert das Verhalten des Elements zu block */
-    font-size: 12px; /* Kleinere Schriftgröße, ändere sie nach Bedarf */
-    font-weight: bold;
-    color: white; /* Farbe nach Wunsch */
-    margin-right: 30px;
-    margin-top: 2px;
-    text-decoration: underline;
-    border-radius: 15px;
-    padding: 2px;
-    margin-bottom: 5px;
-}
-
-.login-text:hover{
-    cursor: pointer;
-    background-color: #0fa3b1;
-    transition: all 0.4s ease-out;
-    border-radius: 15px;
 }
 
 .header a.logo {
