@@ -6,7 +6,7 @@ header {
     color: white;
     align-items: center;
     display: flex;
-    padding: 10px;
+    padding: 5px;
 }
 
 .header img {
@@ -21,7 +21,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 5px;
     background-color: #222223;
     color: white;
     width: 100%;
@@ -144,6 +144,13 @@ body{
     margin: 0px;
 }
 
+.headline {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 10px; /* Adjust the distance from the top */
+
+}
+
 .barcontainer{
     display: flex;
     flex-wrap: wrap;
@@ -152,61 +159,56 @@ body{
     z-index: 1; /* Ensure it appears above slider images */
     position: absolute;
     bottom: 10px; /* Adjust the distance from the bottom */
-}
-
-.form-container {
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    background-color: #323436;
-    align-items: center;
-    margin: 0 auto; /* Center the container horizontally */
-    border-radius: 5px;
-    margin-top: 10px;
-    width: 85%;
 }
 
-
-.input-wrapper {
+.search-bar {
+    font-size: 20px;;
+    background-color: #222223;
+    box-sizing: border-box;
     color: white;
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-    margin: 5px 0; /* Oben und unten 5px Abstand */
+    padding: 20px;
+    width: 85%;
+    border-radius: 15px;
 }
 
-.input-wrapper label {
-    margin-right: 5px;
-    white-space: nowrap; /* Prevent label text from breaking */
+.search-bar h2 {
+    margin: 0;
     font-size: 20px;
-    }
-
-/* Adjust the width of the input fields */
-input[type="search"],
-input[type="date"] {
-    padding: 8px;
-    border: 2px solid #0fa3b1;
-    border-radius: 15px;
-    width: 250px; /* Adjust the width as needed */
-    height: 40px;
-    margin-right: 30px;
+    margin-bottom: 10px;
 }
 
-.Fahrzeug-button {
-    padding: 10px 30px;
-    border-radius: 15px;
-    background-color: #0fa3b1;
-    color: #fff; /* Christian: Fixed Color jetzt weiß. missing ;*/
+.search-bar form {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 5px 0;
-    width: 250px;
-    height: 40px;
-    border: none;
+    flex-direction: column;
 }
 
-.Fahrzeug-button:hover{
+.search-bar .searchbar-inner {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding-bottom: 10px;
+}
+.search-bar input[type="text"],
+.search-bar input[type="date"],
+.search-bar button {
+    flex: 1; /* Distribute available space equally among fields */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensure padding doesn't increase element width */
+    margin-right: 10px; /* Adjust spacing between fields */
+    padding-bottom: 12px;
+}
+
+.search-bar button {
+    background-color: #0fa3b1;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.search-bar button:hover{
     cursor: pointer;
     background-color: #9BBEC8;
     transition: all 0.4s ease-out;
@@ -347,37 +349,38 @@ input[type="date"] {
 
 .card-container {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #585b5e;
+    background-color:;
+    gap: 20px; /* Add gap between card products */
+    padding: 10px; /* Add padding for spacing */
+    width: 85%; /* 85% of the site's width */
+    margin: 0 auto; /* Center the container horizontally */
+}
   
-  }
-  
-  .card-product {
+.card-product {
     overflow: hidden;
-    height: 300px;
     background: rgb(233, 230, 230);
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    display: flex;
-    align-items: center;
-    width: 85%;
-    margin-top: 10px;
+    box-shadow: 50px 50px 50px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
     margin-bottom: 10px;
-  }
+    display: flex;
+    flex-direction: column; /* Arrange content in columns */
+    align-items: center;
+    overflow: hidden;
+    width: calc(25% - 20px);
+}
   
   .card-product:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Hinzufügen eines leichten Schattens beim Hover */
+    box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.2); /* Hinzufügen eines leichten Schattens beim Hover */
     transform: scale(1.05); /* Vergrößern der Karte beim Hover */
     transition: box-shadow 0.3s, transform 0.3s; /* Sanfte Übergänge für Box-Schatten und Transformationen */
   }
   
   .card-product img {
-    height: 100%;
-    width: 500px;
-    object-fit: cover;
-  }
+    height: auto; /* Adjust height to fit */
+    width: 100%; /* Take full width of the container */
+}
   
   .card-product h2 {
     font-size: 16px;
@@ -393,9 +396,10 @@ input[type="date"] {
     margin-top: 8px;
   }
   
-  .card-product .card-product-infos {
+  .card-product-infos {
     padding: 16px;
-  }
+    text-align: center; /* Align text in the center */
+}
 /* Body Styles hier einfügen *
 
 /* Footer Styles hier einfügen */
@@ -572,6 +576,7 @@ input[type="date"] {
     justify-content: center;
     flex-wrap: wrap;
     margin: 0 auto;
+    padding-bottom: 50px;
 }
 
 .footer-heading{
