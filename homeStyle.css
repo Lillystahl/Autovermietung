@@ -1,25 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 /* Header Styles hier einfügen */
 header {
-    margin: 0;
     font-family: 'Montserrat', sans-serif;
-    background-color: #585b5e;
+    background-color: #222223;
     color: white;
-    width: 100%;
-    justify-content: center;
     align-items: center;
     display: flex;
-}
-
-.search-container{
-    margin-right: 20px;
-    display: flex;
-    align-items: center;
-}
-.search-container input[type=text]{
-   height: 35px;
-   width: 250px;
-   border: 2px solid #0fa3b1;
+    padding: 10px;
 }
 
 .header img {
@@ -27,36 +14,87 @@ header {
     height: 80px;
     z-index: 1;
     position: relative;
+    padding-right: 10px;
 }
 
 .header {
-    overflow: hidden;
-    background-color: #222223;
-    padding: 10px 20px;
-    position: relative; /* Ensure the positioning context */
-    background: #222223;
-    color: white;
-    padding: 0;
     display: flex;
-    justify-content: space-between; /* Align children */
-    align-items: center; /* Vertically center */
-    width: 85%;
-    border-radius: 15px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #222223;
+    color: white;
+    width: 100%;
 }
 
-.header a {
-    float: left;
-    color: rgb(255, 255, 255);
-    text-align: center;
-    padding: 12px;
+/* Styles for the left side of the header */
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-left h1 {
+    margin: 10px;
+    padding: 0 10px;
+    white-space: nowrap;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.search-container{
+    display: flex;
+    align-items: center;
+}
+.search-container input[type=text]{
+   height: 35px;
+   width: 250px;
+   border: 2px solid #0fa3b1;
+   padding: 0 10px;
+   border-radius: 5px;
+}
+
+.header h1 {
+    font-size: 20px;
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    position: relative;
+}
+
+.header span {
+    position: relative;
+    color: #fff;
     text-decoration: none;
-    font-size: 18px;
-    line-height: 25px;
-    border-radius: 4px;
+    transition: color 0.4s ease-out;
+}
+
+.header span::before {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.4s ease-out;
+    cursor: pointer;
+    margin-bottom: -3px;
+}
+
+.header span:hover::before {
+    width: 100%;
+}
+
+.header span:hover {
+    color: #0fa3b1;
+    cursor: pointer;
 }
 
 input[type="text" i] {
-    border-radius: 50px;
+    border-radius: 5px;
     background-color: #fff;
     border: none;
     border: 0;
@@ -66,13 +104,11 @@ input[type="text" i] {
 
 .Login-button {
     padding: 10px 30px;
-    border-radius: 15px;
+    border-radius: 5px;
     background-color: #0fa3b1;
     color: #fff; /* Christian: Fixed Color jetzt weiß. missing ;*/
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    margin-right: 10px;
     height: 40px;
     width: 200px;
     border: none;
@@ -84,20 +120,10 @@ input[type="text" i] {
     transition: all 0.4s ease-out;
 }
 
-.button-container {
-    text-align: center; /* Zentriert den Inhalt horizontal */
-}
-
 .header a.logo {
     font-size: 25px;
     font-weight: bold;
     padding: 0 !important;
-}
-
-.header-right {
-    display: flex;
-    align-items: center;
-    float: right; /* Align to the right */
 }
 
 @media screen and (max-width: 500px) {
@@ -118,78 +144,14 @@ body{
     margin: 0px;
 }
 
-.navcontainer{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    z-index: 10;
-    position: absolute;
-    align-items: center;
-    width: 100%;
-}
-.navbar {
-    /* Your existing navbar styles */
-    text-align: center;
-    margin: auto;
-    color: white;
-    background-color: rgba(73, 74, 76, 1);
-    box-sizing: border-box;
-    padding: 10px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    position: relative;
-    z-index: 1; /* Ensure it's above other content */
-    width: 85%;
-    margin: 0 auto; /* Center the container horizontally */
-    border-radius: 15px;
-}
-
-.navbar h1 {
-    font-size: 20px;
-    margin: 0;
-    padding: 10px;
-    display: inline-block;
-    position: relative; /* Ensure relative positioning for pseudo-element */
-}
-
-.navbar span {
-    position: relative;
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.4s ease-out;
-}
-
-.navbar span::before {
-    content: '';
-    position: absolute;
-    bottom: 0px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: #fff;
-    transition: width 0.4s ease-out;
-    cursor: pointer;
-    margin-bottom: -3px;
-}
-
-.navbar span:hover::before {
-    width: 100%;
-}
-
-.navbar span:hover {
-    color: #0fa3b1;
-    cursor: pointer;
-}
-
-
 .barcontainer{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: #585b5e;
+    z-index: 1; /* Ensure it appears above slider images */
+    position: absolute;
+    bottom: 10px; /* Adjust the distance from the bottom */
 }
 
 .form-container {
@@ -198,11 +160,12 @@ body{
     justify-content: center;
     background-color: #323436;
     align-items: center;
-    width: 85%;
     margin: 0 auto; /* Center the container horizontally */
-    border-radius: 15px;
+    border-radius: 5px;
     margin-top: 10px;
+    width: 85%;
 }
+
 
 .input-wrapper {
     color: white;
@@ -252,7 +215,7 @@ input[type="date"] {
 /* Slider Styles */
 .container {
     width: 100%;
-    height: 700px;
+    height: 750px;
     background: #f5f5f5;
     box-shadow: 0 0px 0px #dbdbdb;
     /* Additional adjustments for centering */
@@ -263,12 +226,12 @@ input[type="date"] {
 }
 
 .container .slide .item{
-    width: 200px;
-    height: 300px;
+    width: 100px;
+    height: 200px;
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
-    border-radius: 20px;
+    border-radius: 5px;
     box-shadow: 0 0px 0px #505050;
     background-position: 50% 50%;
     background-size: cover;
@@ -288,26 +251,17 @@ input[type="date"] {
 
 
 .slide .item:nth-child(3){
-    top: 65%;
-    left: 62%;
+    top: 50%;
+    left: 79%;
 }
 .slide .item:nth-child(4){
-    top: 65%;
-    left: calc(62% + 220px);
+    top: 50%;
+    left: calc(79% + 110px);
 }
 .slide .item:nth-child(5){
-    top: 65%;
-    left: calc(62% + 440px);
+    top: 50%;
+    left: calc(79% + 220px);
 }
-
-/* here n = 0, 1, 2, 3,... */
-.slide .item:nth-child(n + 6){
-    top: 65%;
-    left: calc(60% + 660px);
-    opacity: 0;
-}
-
-
 
 .item .content{
     position: absolute;
@@ -409,7 +363,7 @@ input[type="date"] {
     align-items: center;
     width: 85%;
     margin-top: 10px;
-    border-radius: 15px;
+    border-radius: 5px;
     margin-bottom: 10px;
   }
   
@@ -651,7 +605,7 @@ input[type="date"] {
 #footer-email{
     width: 250px;
     height: 40px;
-    border-radius: 15px;
+    border-radius: 5px;
     outline: none;
     border: none;
     padding-left: 0.5rem;
@@ -666,7 +620,7 @@ input[type="date"] {
 #footer-email-button{
     width: 100px;
     height: 40px;
-    border-radius: 15px;
+    border-radius: 5px;
     background-color: #0fa3b1;
     outline: none;
     border: none;
