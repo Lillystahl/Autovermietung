@@ -11,19 +11,9 @@ prev.addEventListener('click', function(){
     let items = document.querySelectorAll('.item');
     document.querySelector('.slide').prepend(items[items.length - 1]);
 });
+// JavaScript to toggle the login/signup container
 
-// JavaScript to toggle the modal and blur effect
-var loginButton = document.getElementById('loginButton');
-var modalContainer = document.getElementById('modalContainer');
-var blurBackground = document.querySelector('.background');
-var form = document.getElementById('container1')
-
-loginButton.addEventListener('click', function() {
-    modalContainer.classList.toggle('active');
-    blurBackground.classList.toggle('blur');
-    form.classList.toggle('container1');
-});
-
+// Handle switching between Signup and Login panels
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
 const container = document.getElementById('container1');
@@ -34,4 +24,16 @@ signUpButton.addEventListener('click', () => {
 
 signInButton.addEventListener('click', () => {
     container.classList.remove("right-panel-active");
+});
+
+// Get the login button element
+var loginButton = document.getElementById('loginButton');
+
+// Get the container element that you want to toggle visibility
+var container1 = document.querySelector('.container1');
+
+// Add a click event listener to the login button
+loginButton.addEventListener('click', function() {
+    // Toggle the visibility of container1 by adding/removing the 'active' class
+    container1.classList.toggle('active');
 });
