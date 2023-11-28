@@ -6,41 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Website</title>
     <link rel="stylesheet" href="/Autovermietung/Website tests/Meine Buchungen/Buchungsstyle.css">
-    <link rel="stylesheet" href="/Autovermietung/homeStyle.css">
+    <link rel="stylesheet" href="/Autovermietung/Templates/HeaderAndFooterStyles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<header>
-    <div class="header">
-        <a href="#" class="logo"><img src="/Autovermietung/Images/ImageRE.png"></a>
-        <div class="header-right">
-            <div class="search-container">
-                <input type="text" placeholder="Search..." name="search">
-            </div>
+<body>
 
-            <div class="button-container">
-                <button class="Login-button">LogIn</button>
-                <span class="login-text">Create Account</span>
-            </div>
-        </div>
-    </div>
-    <!-- Die Class "main Heading" nutzen um ein Menü für den User zu erstellen mit bspw. buttons Ein Auto Mieten, Einen Transporter mieten, Firmenkunden, Standorte, Aktionen,...." -->
-    <!-- Christian: maybe can man die navbar reactiv machen mit einem dropdown sodass die dann ausfährt von oben-->
-    <div class="navbar">
-        <h1><span id="header1">Standorte</span></h1>
-        <h1><span id="header2">Fahrzeuge</span></h1>
-        <h1><span id="header3">Top-Deals</span></h1>
-        <h1><span id="header4">Geschäftskunden</span></h1>
-    </div>
+<header>
+  <div class="header">
+      <a href="#" class="logo"><img src="Images/ImageRE.png"></a>
+      <div class="header-right">
+          <div class="search-container">
+              <input type="text" placeholder="Search..." name="search">
+          </div>
+
+          <div class="button-container">
+              <button class="Login-button">LogIn</button>
+              <span class="login-text">Create Account</span>
+          </div>
+      </div>
+  </div>
+  <!-- Navbar placed within the header -->
 </header>
 
-<body>
+<div class="navcontainer">
+  <div class="navbar">
+      <h1><span id="header1">Standorte</span></h1>
+      <h1><span id="header2">Fahrzeuge</span></h1>
+      <h1><span id="header3">Top-Deals</span></h1>
+      <h1><span id="header4">Geschäftskunden</span></h1>
+  </div>
+</div>
+
   <div class="content">
-    <div class="img-container">
-        <img src="/Autovermietung/Images/drei_BMW.jpg" alt="BMWs">
-
-    </div>
-
         <div class="booking-container">
             <h1>Meine Buchungen</h1>
             <table>
