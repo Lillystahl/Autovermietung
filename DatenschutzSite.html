@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
     <meta charset="UTF-8" />
@@ -11,25 +11,29 @@
 <body>
     <header>
         <div class="header">
-            <a href="#" class="logo"><img src="Images/logo-white.png" /></a>
+            <a href="#" class="logo"><img src="Images/ImageRE.png" /></a>
             <div class="header-right">
                 <div class="search-container">
-                    <form action="/action_page.php">
-                        <input type="text" placeholder="Search..." name="search" />
-                    </form>
+                    <input type="text" placeholder="Search..." name="search" />
                 </div>
-                <button class="Booking-button">My Bookings</button>
-                <button class="Login-button">Log In</button>
+
+                <div class="button-container">
+                    <button class="Login-button">LogIn</button>
+                    <span class="login-text">Create Account</span>
+                </div>
             </div>
         </div>
-        <div class="navbar">
-            <h1><span id="header1">Locations</span></h1>
-            <h1><span id="header2">Vehicles</span></h1>
-            <h1><span id="header3">Top Deals</span></h1>
-            <h1><span id="header4">Business Customers</span></h1>
-        </div>
+        <!-- Navbar placed within the header -->
     </header>
 
+    <div class="navcontainer">
+        <div class="navbar">
+            <h1><span id="header1">Standorte</span></h1>
+            <h1><span id="header2">Fahrzeuge</span></h1>
+            <h1><span id="header3">Top-Deals</span></h1>
+            <h1><span id="header4">Geschäftskunden</span></h1>
+        </div>
+    </div>
     <div class="BodyContent">
         <h1>Privacy Policy</h1>
         <p>As of: [22.11.2023]</p>
@@ -113,6 +117,7 @@
         <p>[Phone Number]</p>
         <br />
     </div>
+
     <div class="footer-container" ;>
         <div class="footer" ;>
             <div class="footer-heading footer-1">
@@ -121,7 +126,7 @@
                 <a href="#">Demo</a>
                 <a href="#">Customers</a>
                 <a href="#">Investors</a>
-                <a href="#">Terms of Service</a>
+                <a href="#">AGB</a>
                 <a href="#">Projects</a>
             </div>
             <div class="footer-heading footer-2">
@@ -133,17 +138,25 @@
             </div>
             <div class="footer-heading footer-3">
                 <h2>Social Media</h2>
-                <a href="#">Instagram</a>
-                <a href="#">Facebook</a>
-                <a href="#">Twitter</a>
-                <a href="#">LinkedIn</a>
+                <div class="sm">
+                    <div class="sm-group">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div class="sm-group">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
             </div>
             <div class="footer-email-form">
                 <h2>Join our Newsletter</h2>
-                <input type="email" placeholder="Enter your E-Mail address" id="footer-email" />
+                <input type="email" placeholer="Enter your E-Mail adress" id="footer-email" />
                 <input type="submit" value="Sign Up" id="footer-email-button" />
             </div>
         </div>
+        <script src="home.js"></script>
     </div>
 </body>
 
