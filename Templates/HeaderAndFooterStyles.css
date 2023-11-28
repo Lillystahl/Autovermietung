@@ -2,51 +2,25 @@
 
 header {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #123;
+    font-family: "Montserrat", sans-serif;
+    background-color: #585b5e;
     color: white;
-    height: 10vh;
-    padding: 0px;
-    position: sticky;
-    top: 0;
-}
-
-.search-container input[type="text"] {
-    height: 40px;
-    width: 250px;
-    border: 2px solid orange;
-}
-
-.navbar {
-    text-align: center;
-    margin: auto;
-    color: white;
-    background-color: rgba(169, 169, 169, 0.95);
-    box-sizing: border-box;
-    padding: 10px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
     display: flex;
-    justify-content: space-around;
+}
+
+.search-container {
+    margin-right: 20px;
+    display: flex;
     align-items: center;
 }
 
-.navbar h1 {
-    font-size: 20px;
-    margin: 0;
-    padding: 10px;
-    display: inline-block;
-}
-
-.navbar span {
-    color: #fff;
-    text-decoration: none;
-}
-
-.navbar span:hover {
-    color: orange;
-    cursor: pointer;
-    transition: all 0.4s ease-out;
-    font-size: 28px;
-    /* Größe beim Hovern */
+.search-container input[type="text"] {
+    height: 35px;
+    width: 250px;
+    border: 2px solid #0fa3b1;
 }
 
 .header img {
@@ -58,8 +32,20 @@ header {
 
 .header {
     overflow: hidden;
-    background-color: #0b1622;
+    background-color: #222223;
     padding: 10px 20px;
+    position: relative;
+    /* Ensure the positioning context */
+    background: #222223;
+    color: white;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    /* Align children */
+    align-items: center;
+    /* Vertically center */
+    width: 85%;
+    border-radius: 15px;
 }
 
 .header a {
@@ -74,85 +60,38 @@ header {
 }
 
 input[type="text" i] {
-    padding: 8px 20px;
     border-radius: 50px;
     background-color: #fff;
     border: none;
-    margin-right: 30px;
     border: 0;
-    margin-top: 15px;
-}
-
-.Buchung-button {
-    padding: 10px 30px;
-    border-radius: 20px;
-    background-color: orange;
-    color: #fff;
-    /* Christian: Fixed Color jetzt weiß. missing ;*/
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-right: 30px;
-    margin-top: 15px;
-    height: 40px;
-    width: 250px;
-    border: none;
-}
-
-.Buchung-button:hover {
-    cursor: pointer;
-    background-color: skyblue;
-    transition: all 0.4s ease-out;
+    padding-right: 10px;
+    margin-right: 10px;
 }
 
 .Login-button {
     padding: 10px 30px;
-    border-radius: 20px;
-    background-color: orange;
+    border-radius: 15px;
+    background-color: #0fa3b1;
     color: #fff;
     /* Christian: Fixed Color jetzt weiß. missing ;*/
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin-right: 30px;
-    margin-top: 20px;
+    margin-right: 10px;
     height: 40px;
-    width: 150px;
+    width: 200px;
     border: none;
 }
 
 .Login-button:hover {
     cursor: pointer;
-    background-color: skyblue;
+    background-color: #9bbec8;
     transition: all 0.4s ease-out;
 }
 
 .button-container {
     text-align: center;
     /* Zentriert den Inhalt horizontal */
-    margin-right: 30px;
-    margin-top: 15px;
-}
-
-.login-text {
-    display: block;
-    /* Ändert das Verhalten des Elements zu block */
-    font-size: 12px;
-    /* Kleinere Schriftgröße, ändere sie nach Bedarf */
-    font-weight: bold;
-    color: white;
-    /* Farbe nach Wunsch */
-    margin-right: 30px;
-    margin-top: 2px;
-    text-decoration: underline;
-    border-radius: 20px;
-    padding: 2px;
-}
-
-.login-text:hover {
-    cursor: pointer;
-    background-color: skyblue;
-    transition: all 0.4s ease-out;
 }
 
 .header a.logo {
@@ -162,9 +101,10 @@ input[type="text" i] {
 }
 
 .header-right {
-    float: right;
     display: flex;
     align-items: center;
+    float: right;
+    /* Align to the right */
 }
 
 @media screen and (max-width: 500px) {
@@ -181,25 +121,257 @@ input[type="text" i] {
 
 /* Header Styles hier einfügen */
 
+body {
+    margin: 0px;
+}
+
+.navcontainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: 10;
+    position: absolute;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar {
+    /* Your existing navbar styles */
+    text-align: center;
+    margin: auto;
+    color: white;
+    background-color: rgba(73, 74, 76, 1);
+    box-sizing: border-box;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    /* Ensure it's above other content */
+    width: 85%;
+    margin: 0 auto;
+    /* Center the container horizontally */
+    border-radius: 15px;
+}
+
+.navbar h1 {
+    font-size: 20px;
+    margin: 0;
+    padding: 10px;
+    display: inline-block;
+    position: relative;
+    /* Ensure relative positioning for pseudo-element */
+}
+
+.navbar span {
+    position: relative;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.4s ease-out;
+}
+
+.navbar span::before {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.4s ease-out;
+    cursor: pointer;
+    margin-bottom: -3px;
+}
+
+.navbar span:hover::before {
+    width: 100%;
+}
+
+.navbar span:hover {
+    color: #0fa3b1;
+    cursor: pointer;
+}
+
 
 /* Footer Styles hier einfügen */
 
+.sm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sm-group {
+    display: flex;
+    justify-content: center;
+}
+
+.sm-group a {
+    display: flex;
+    text-decoration: none;
+    font-size: 30px;
+    width: 40px;
+    height: 40px;
+    color: #f0f0f0;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 7px;
+}
+
+.sm-group a::before {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 25%;
+    z-index: 1;
+    transition: transform 0.3s ease-in;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.sm-group:nth-child(1) a:nth-child(1)::before {
+    background: #38529a;
+}
+
+.sm-group:nth-child(1) a:nth-child(2)::before {
+    background: linear-gradient( 45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.sm-group:nth-child(2) a:nth-child(1)::before {
+    background: #1c96e9;
+}
+
+.sm-group:nth-child(2) a:nth-child(2)::before {
+    background: #f70000;
+}
+
+.sm-group:nth-child(2) a:nth-child(3)::before {
+    background: #046596;
+}
+
+.sm-group a i {
+    transition: transform 0.3s ease-in;
+    position: relative;
+    z-index: 2;
+}
+
+.sm a:nth-child(1):hover i {
+    background: #38529a;
+    -webkit-background-clip: text;
+    /* Christian: ich glaube das macht man anders und macht das als globale eigenschaft aber weiß nicht wie und das geht erstmal so */
+    -webkit-text-fill-color: transparent;
+    /* Christian: ich glaube das macht man anders und macht das als globale eigenschaft aber weiß nicht wie und das geht erstmal so */
+    background-clip: text;
+    /* Christian: ich glaube das macht man anders und macht das als globale eigenschaft aber weiß nicht wie und das geht erstmal so */
+    color: transparent;
+    /* Christian: ich glaube das macht man anders und macht das als globale eigenschaft aber weiß nicht wie und das geht erstmal so */
+    transform: scale(1.5);
+}
+
+.sm a:nth-child(2):hover i {
+    background: linear-gradient( 45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    transform: scale(1.5);
+}
+
+.sm a:nth-child(1):hover i {
+    background: #1c96e9;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    transform: scale(1.5);
+}
+
+.sm a:nth-child(2):hover i {
+    background: #f70000;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    transform: scale(1.5);
+}
+
+.sm a:nth-child(3):hover i {
+    background: #046596;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    transform: scale(1.5);
+}
+
+.sm-group:nth-child(1) a:nth-child(1):hover::before {
+    background: #38529a;
+    -webkit-background-clip: text;
+    /* Christian: ich glaube das macht man anders und macht das als globale eigenschaft aber weiß nicht wie und das geht erstmal so */
+    -webkit-text-fill-color: transparent;
+    /* Christian: ich glaube das macht man anders und macht das als globale eigenschaft aber weiß nicht wie und das geht erstmal so */
+    background-clip: text;
+    /* Christian: ich glaube das macht man anders und macht das als globale eigenschaft aber weiß nicht wie und das geht erstmal so */
+    color: transparent;
+    /* Christian: ich glaube das macht man anders und macht das als globale eigenschaft aber weiß nicht wie und das geht erstmal so */
+    transform: scale(1.5);
+}
+
+.sm-group:nth-child(1) a:nth-child(2):hover::before {
+    background: linear-gradient( 45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    transform: scale(1.5);
+}
+
+.sm-group:nth-child(2) a:nth-child(1):hover::before {
+    background: #1c96e9;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    transform: scale(1.5);
+}
+
+.sm-group:nth-child(2) a:nth-child(2):hover::before {
+    background: #f70000;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    transform: scale(1.5);
+}
+
+.sm-group:nth-child(2) a:nth-child(3):hover::before {
+    background: #046596;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    transform: scale(1.5);
+}
+
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 .footer-container {
-    background-color: #0b1622;
+    background-color: #222223;
     padding-bottom: 2rem 0 4rem 0;
+    text-align: center;
 }
 
 .footer {
-    width: 80%;
+    width: 85%;
     height: 40vh;
-    background-color: #0b1622;
+    background-color: #222223;
     color: #fff;
     display: flex;
     justify-content: center;
@@ -212,6 +384,7 @@ input[type="text" i] {
     display: flex;
     flex-direction: column;
     margin-right: 4rem;
+    align-items: center;
 }
 
 .footer-heading h2 {
@@ -225,7 +398,7 @@ input[type="text" i] {
 }
 
 .footer-heading a:hover {
-    color: orange;
+    color: #0fa3b1;
     transition: 0.3s ease-out;
 }
 
@@ -237,7 +410,7 @@ input[type="text" i] {
 #footer-email {
     width: 250px;
     height: 40px;
-    border-radius: 20px;
+    border-radius: 15px;
     outline: none;
     border: none;
     padding-left: 0.5rem;
@@ -252,8 +425,8 @@ input[type="text" i] {
 #footer-email-button {
     width: 100px;
     height: 40px;
-    border-radius: 20px;
-    background-color: orange;
+    border-radius: 15px;
+    background-color: #0fa3b1;
     outline: none;
     border: none;
     color: #fff;
@@ -262,7 +435,7 @@ input[type="text" i] {
 
 #footer-email-button:hover {
     cursor: pointer;
-    background-color: skyblue;
+    background-color: #9bbec8;
     transition: all 0.4s ease-out;
 }
 
