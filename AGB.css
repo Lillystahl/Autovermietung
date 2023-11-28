@@ -136,6 +136,34 @@ input[type="text" i] {
     }
 }
 
+body{
+    margin: 0px;
+}
+
+h1, h2 {
+    margin-top: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+ol {
+    list-style-type: decimal;
+    margin-left: 20px;
+}
+
+.TextContainer{
+    padding-left: 20px;
+}
+
 /* Footer Styles hier einfügen */
 /* SM Logos */
 .sm {
