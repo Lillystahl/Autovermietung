@@ -79,7 +79,7 @@ header {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: #fff;
+    background-color: #e9e8e6;
     transition: width 0.4s ease-out;
     cursor: pointer;
     margin-bottom: -3px;
@@ -90,7 +90,7 @@ header {
 }
 
 .header span:hover {
-    color: #0fa3b1;
+    color:#9BBEC8;
     cursor: pointer;
 }
 
@@ -143,6 +143,7 @@ input[type="text" i] {
 /* Sign Up Styles */
 .container1 * {
     box-sizing: border-box;
+    background-color:#e9e8e6 ;
 }
 
 .container1 button {
@@ -338,6 +339,9 @@ input[type="text" i] {
 /*SignUp Styles*/
 
 /* Body Styles hier einfügen */
+button{
+    border-radius: 5px;
+}
 .background {
     /* Your existing background styles */
     /* Ensure it covers the entire viewport */
@@ -544,6 +548,7 @@ body{
     justify-content: space-between;
     padding: 0 20px;
     box-sizing: border-box;
+    border-radius: 5px;
 }
 
 .prev,
@@ -553,6 +558,7 @@ body{
     border: none;
     cursor: pointer;
     transition: background 0.3s ease;
+    border-radius: 5px;
 }
 
 .prev:hover,
@@ -691,6 +697,7 @@ body{
     display: flex;
     justify-content: center;
     width: 85%;
+    border-radius: 5px;
 }
 
 #map {
