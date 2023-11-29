@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="homeStyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 </head>
 
 <body>
@@ -123,7 +125,9 @@
             </div>
         </div>
 
-        <h1 class="headline">Hier können Sie uns finden:</h1>
+        <h1 class="headline">Unsere Standorte:</h1>
+
+        add germany map (hammburg, Berlin, Köln, München)
 
         <div class="customer-reviews">
             <h2 class="section-title">Kundenrezensionen</h2>
@@ -192,6 +196,48 @@
         
         
         
+
+        <h1 class="headline">Unser Unternehmen:</h1>
+        <div class="aboutUs-container">
+            <div class="aboutUs">
+                <div id="map" style="width: 40%; height: 580px;"></div>
+                <script>
+            // Creating map options
+                var mapOptions = {
+                center: [53.547425386544006, 9.987030559633626],
+                zoom: 17
+                }
+            
+            // Creating a map object
+                var map = new L.map('map', mapOptions);
+            
+            // Creating a Layer object
+                var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+            // Create a custom icon with a larger size
+                var customIcon = L.icon({
+                    iconUrl: 'Images/663342.png', // Replace with your icon image URL
+                    iconSize: [80, 80],  // Adjust the size here, [width, height]
+                    iconAnchor: [50,70],  // The anchor point of the icon (usually half of the size)
+                });
+
+            // Create a marker using the custom icon and add it to the map
+            var marker = L.marker([53.547425386544006, 9.987030559633626], { icon: customIcon }).addTo(map);
+            
+            // Adding layer to the map
+                map.addLayer(layer);
+                </script>
+
+                <div class="content-box">
+                    <div class="text-content">
+                        <h2>Title</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero et mi accumsan luctus.</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="Images/Mercedes.jpg" alt="Image" class="box-image">
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="footer-container">
             <div class="footer">

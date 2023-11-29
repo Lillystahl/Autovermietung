@@ -25,6 +25,7 @@ signUpButton.addEventListener('click', () => {
 signInButton.addEventListener('click', () => {
     container.classList.remove("right-panel-active");
 });
+
 /*
 // Get the login button element
 var loginButton = document.getElementById('loginButton');
