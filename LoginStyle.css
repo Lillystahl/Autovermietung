@@ -73,7 +73,7 @@ body {
 	flex-direction: column;
 	font-family: 'Montserrat', sans-serif;
 	margin: 0;
-  	background-color: #585b5e;
+  	background-color: #e9e8e6;
 }
 
 h1 {
@@ -106,9 +106,8 @@ a {
 
 button {
 	border-radius: 20px;
-	border: 1px solid #c3cfe2;;
-    background-color: #c3cfe2; /* Greyish-blue */
-    color: #1f3a57; /* Dark blue text */
+	border: 1px solid  #e9e8e6;
+    background-color:  #e9e8e6;
 	font-size: 12px;
 	font-weight: bold;
 	padding: 12px 45px;
@@ -142,9 +141,9 @@ form {
 }
 
 input {
-	background-color: #c3cfe2; /* Greyish-blue */
+    background-color:#e9e8e6 ;
     color: #1f3a57; /* Dark blue text */
-	border: none;
+    border: #222223 ;
 	padding: 12px 15px;
 	margin: 8px 0;
 	width: 100%;
@@ -224,8 +223,8 @@ input {
 
 .overlay {
 	background:#c3cfe2;
-	background: -webkit-linear-gradient(to right, #c3cfe2,#768da3);
-	background: linear-gradient(to right,  #c3cfe2,#768da3);
+	background: -webkit-linear-gradient(to right, #e9e8e6,#222223);
+	background: linear-gradient(to right,  #e9e8e6, #222223);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;
@@ -290,88 +289,23 @@ input {
 }
 /*SignUp Styles*/
 
-/* Footer Styles hier einfügen */
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-	font-family: 'Montserrat', sans-serif;
-}
-
-footer{
-	width: 100%;
-}
-
-.footer-container{
-    background-color: #222223;
-    padding-bottom: 2rem 0 4rem 0;
-	text-align: center;
-}
-
-.footer{
-    width: 80%;
-    height: 40vh;
-    background-color: #222223;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 0 auto;
-}
-
-.footer-heading{
-    padding-top: 15px;
-    display: flex;
-    flex-direction: column;
-	align-items: center;
-    margin-right: 4rem;
-}
-
-.footer-heading h2{
-    margin-bottom: 2rem;
-}
-
-.footer-heading a{
-    color: #fff;
-    text-decoration: none;
-	margin: 8px;
-	font-size: 14px;
-
-}
-
-.footer-heading a:hover{
-    color: #0fa3b1;
-    transition: 0.3s ease-out;
-}
-/* SM Logos */
-.sm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.sm-group {
-    display: flex;
-    justify-content: center;
-}
-
-.sm-group a{
+.sm a{
 	display: flex;
     text-decoration: none;
-    font-size: 30px;
-    width: 40px;
-    height: 40px;
+    font-size: 25px;
+    width: 30px;
+    height: 30px;
     color: #f0f0f0;
     justify-content: center;
     align-items: center;
     position: relative;
     margin:7px;
 }
-.sm-group a::before{
+.sm a::before{
 	content: '';
 	position: absolute;
-	width:40px;
-	height: 40px;
+	width:30px;
+	height: 30px;
 	border-radius: 25%;
 	z-index: 1;
 	transition: transform .3s ease-in;
@@ -381,27 +315,31 @@ footer{
     color: transparent;
 }
 
-.sm-group:nth-child(1) a:nth-child(1)::before {
-    background: #38529a;
+.sm a:nth-child(1)::before{
+	background: #38529a;
 }
 
-.sm-group:nth-child(1) a:nth-child(2)::before {
-    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+.sm a:nth-child(2)::before{
+	background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
 }
 
-.sm-group:nth-child(2) a:nth-child(1)::before {
-    background: #1c96e9;
+.sm a:nth-child(3)::before{
+	background: #1c96e9;
 }
 
-.sm-group:nth-child(2) a:nth-child(2)::before {
-    background: #f70000;
+.sm a:nth-child(4)::before{
+	background: #f70000;
 }
 
-.sm-group:nth-child(2) a:nth-child(3)::before {
-    background: #046596;
+.sm a:nth-child(5)::before{
+	background: #046596;
 }
 
-.sm-group a i{
+.sm a:hover::before{
+	transform: scale(0);
+}
+
+.sm a i{
 	transition: transform .3s ease-in;
 	position: relative;
 	z-index: 2;
@@ -425,7 +363,7 @@ footer{
 	transform: scale(1.5);
 }
 
-.sm a:nth-child(1):hover i{
+.sm a:nth-child(3):hover i{
 	background: #1c96e9;
 	-webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -434,7 +372,7 @@ footer{
 	transform: scale(1.5);
 }
 
-.sm a:nth-child(2):hover i{
+.sm a:nth-child(4):hover i{
 	background: #f70000;
 	-webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -443,7 +381,7 @@ footer{
 	transform: scale(1.5);
 }
 
-.sm a:nth-child(3):hover i{
+.sm a:nth-child(5):hover i{
 	background: #046596;
 	-webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -452,52 +390,93 @@ footer{
 	transform: scale(1.5);
 }
 
-.sm-group:nth-child(1) a:nth-child(1):hover::before {
-    background: #38529a;
-	-webkit-background-clip: text;/* Christian: ich glaube das macht man anders und macht das als globale eigenschaft aber weiß nicht wie und das geht erstmal so */
-    -webkit-text-fill-color: transparent;/* Christian: ich glaube das macht man anders und macht das als globale eigenschaft aber weiß nicht wie und das geht erstmal so */
-	background-clip: text;/* Christian: ich glaube das macht man anders und macht das als globale eigenschaft aber weiß nicht wie und das geht erstmal so */
-    color: transparent;/* Christian: ich glaube das macht man anders und macht das als globale eigenschaft aber weiß nicht wie und das geht erstmal so */
-	transform: scale(1.5);
+
+*{
+    font-family: 'Montserrat', sans-serif;
 }
 
-.sm-group:nth-child(1) a:nth-child(2):hover::before {
-    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
-	-webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-	background-clip: text;
-    color: transparent;
-	transform: scale(1.5);
+.footer-container{
+    background-color: #222223;
+    padding-bottom: 2rem 0 4rem 0;
+    text-align: center;
+	width: 100%;
 }
 
-.sm-group:nth-child(2) a:nth-child(1):hover::before {
-    background: #1c96e9;
-	-webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-	background-clip: text;
-    color: transparent;
-	transform: scale(1.5);
+.footer{
+    width: 85%;
+    background-color: #222223;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding-bottom: 50px;
 }
 
-.sm-group:nth-child(2) a:nth-child(2):hover::before {
-    background: #f70000;
-	-webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-	background-clip: text;
-    color: transparent;
-	transform: scale(1.5);
+.footer-heading{
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 4rem;
+    align-items: center;
+    flex: 1;
 }
 
-.sm-group:nth-child(2) a:nth-child(3):hover::before {
-    background: #046596;
-	-webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-	background-clip: text;
-    color: transparent;
-	transform: scale(1.5);
+.footer-heading h2{
+    margin-bottom: 2rem;
 }
 
+.footer-heading a{
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+}
 
+.footer-heading a:hover{
+    color: #0fa3b1;
+    transition: 0.3s ease-out;
+}
+
+.footer-email-form h2{
+    margin-bottom: 2rem;
+    color: white;
+}
+
+.footer-email-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.input-container {
+    display: flex;
+}
+
+#footer-email {
+    width: 250px;
+    height: 40px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    padding: 0;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+#footer-email::placeholder {
+    color: #b1b1b1;
+}
+
+#footer-email-button {
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #0fa3b1;
+    outline: none;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+}
 /* Christian: ich weiß nicht ob das hier nötig ist aber mache das erstmal rein
 mit dem zeug hier kann man beim Verändern der Fenstergröße den footer anpassen
 whatever */
@@ -527,4 +506,3 @@ whatever */
         margin-top: 2rem;
     }
 }
-/* Footer Styles hier einfügen */
