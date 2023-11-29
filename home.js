@@ -25,7 +25,7 @@ signUpButton.addEventListener('click', () => {
 signInButton.addEventListener('click', () => {
     container.classList.remove("right-panel-active");
 });
-
+/*
 // Get the login button element
 var loginButton = document.getElementById('loginButton');
 const background = document.querySelector('.background');
@@ -42,4 +42,4 @@ loginButton.addEventListener('click', function() {
     background.classList.toggle('active');
     // Toggle the visibility of container1 by adding/removing the 'active' class
     container1.classList.toggle('active');
-});
+});*/
