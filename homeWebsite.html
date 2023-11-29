@@ -18,7 +18,7 @@
             <div class="header">
                 <div class="header-left">
                     <a href="#" class="logo"><img src="Images/ImageRE.png"></a>
-                    <h1><span id="header1">Mieten</span></h1>
+                    <h1><span id="header1">Unser Fahrzeuge</span></h1>
                     <h1><span id="header2">Top-Deals</span></h1>
                     <h1><span id="header3">Geschäftskunden</span></h1>
                 </div>
@@ -93,7 +93,7 @@
             </div>
         </div>
 
-        <h1 class="headline">Finde deinen Favoriten:</h1>
+        <h1 class="headline">Finde deinen Favoriten</h1>
         <div class="card-container">
             <div class="card-product">
                 <img src="Images/Ferarri Roma.jpg" alt="Auto">
@@ -125,9 +125,51 @@
             </div>
         </div>
 
-        <h1 class="headline">Unsere Standorte:</h1>
+        <h1 class="headline">Unsere Standorte</h1>
 
         add germany map (hammburg, Berlin, Köln, München)
+
+        <h1 class="headline">Unser Unternehmen</h1>
+        <div class="aboutUs-container">
+            <div class="aboutUs">
+                <div id="map" style="width: 40%; height: 580px; border-radius: 5px;"></div>
+                <script>
+            // Creating map options
+                var mapOptions = {
+                center: [53.547425386544006, 9.987030559633626],
+                zoom: 17
+                }
+            
+            // Creating a map object
+                var map = new L.map('map', mapOptions);
+            
+            // Creating a Layer object
+                var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+            // Create a custom icon with a larger size
+                var customIcon = L.icon({
+                    iconUrl: 'Images/663342.png', // Replace with your icon image URL
+                    iconSize: [80, 80],  // Adjust the size here, [width, height]
+                    iconAnchor: [50,70],  // The anchor point of the icon (usually half of the size)
+                });
+
+            // Create a marker using the custom icon and add it to the map
+            var marker = L.marker([53.547425386544006, 9.987030559633626], { icon: customIcon }).addTo(map);
+            
+            // Adding layer to the map
+                map.addLayer(layer);
+                </script>
+
+                <div class="content-box">
+                    <div class="text-content">
+                        <h2>Title</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero et mi accumsan luctus.</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="Images/Mercedes.jpg" alt="Image" class="box-image">
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="customer-reviews">
             <h2 class="section-title">Kundenrezensionen</h2>
@@ -190,52 +232,6 @@
                     </div>
                 </div>
                 
-            </div>
-        </div>
-        
-        
-        
-        
-
-        <h1 class="headline">Unser Unternehmen:</h1>
-        <div class="aboutUs-container">
-            <div class="aboutUs">
-                <div id="map" style="width: 40%; height: 580px; border-radius: 5px; padding: 10px;"></div>
-                <script>
-            // Creating map options
-                var mapOptions = {
-                center: [53.547425386544006, 9.987030559633626],
-                zoom: 17
-                }
-            
-            // Creating a map object
-                var map = new L.map('map', mapOptions);
-            
-            // Creating a Layer object
-                var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
-            // Create a custom icon with a larger size
-                var customIcon = L.icon({
-                    iconUrl: 'Images/663342.png', // Replace with your icon image URL
-                    iconSize: [80, 80],  // Adjust the size here, [width, height]
-                    iconAnchor: [50,70],  // The anchor point of the icon (usually half of the size)
-                });
-
-            // Create a marker using the custom icon and add it to the map
-            var marker = L.marker([53.547425386544006, 9.987030559633626], { icon: customIcon }).addTo(map);
-            
-            // Adding layer to the map
-                map.addLayer(layer);
-                </script>
-
-                <div class="content-box">
-                    <div class="text-content">
-                        <h2>Title</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero et mi accumsan luctus.</p>
-                    </div>
-                    <div class="image-container">
-                        <img src="Images/Mercedes.jpg" alt="Image" class="box-image">
-                    </div>
-                </div>
             </div>
         </div>
 
