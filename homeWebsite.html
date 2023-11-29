@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Website</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="homeStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
@@ -125,55 +124,8 @@
             </div>
         </div>
 
-            <!-- SignUp or Login Form-->
-            <div class="container1" id="container1">
-                <div class="form-container sign-up-container">
-                    <form action="#">
-                        <h1>Create Account</h1>
-                        <!-- Anpassen and die Anforderung aus dem Arbeitsauftrage. Neue felder dafür hinzufügen-->
-                        <!-- Last name, Firstname, Adress(split? Straße, HN, Plz, Ort?), Date of Birth, Email, Password-->
-                        <input type="text" placeholder="First Name" />
-                        <input type="text" placeholder="Last Name" />
-                        <input type="text" placeholder="Adress" />
-                        <input type="date" placeholder="dd.mm.yyyy" />
-                        <input type="email" placeholder="Email" />
-                        <input type="password" placeholder="Password" />
-                        <button>Sign Up</button>
-                    </form>
-                </div>
-                <div class="form-container sign-in-container">
-                    <form action="#">
-                        <h1>Sign in</h1>
-                        <!--Social Container maybe zu Image Container machen da man sich eh nicht über Social Media anmelden kann und SM Icons nur verwirren würden. Lieber kleine Autos oder so-->
-                        <div class="social-container">
-                            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-
-                        </div>
-                        <input type="email" placeholder="Email" />
-                        <input type="password" placeholder="Password" />
-                        <button>Sign In</button>
-                    </form>
-                </div>
-                <div class="overlay-container">
-                    <div class="overlay">
-                        <div class="overlay-panel overlay-left">
-                            <h1>Welcome Back!</h1>
-                            <p>To keep connected with us please login with your personal info</p>
-                            <button class="ghost" id="signIn">Sign In</button>
-                        </div>
-                        <div class="overlay-panel overlay-right">
-                            <h1>Hello, Friend!</h1>
-                            <p>Enter your personal details and start your journey with us</p>
-                            <button class="ghost" id="signUp">Sign Up</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-        <div class="footer-container";>
-            <div class="footer";>
+        <div class="footer-container">
+            <div class="footer">
                 <div class="footer-heading footer-1">
                     <h2>About Us</h2>
                     <a href="#">Blog</a>
@@ -183,6 +135,7 @@
                     <a href="#">AGB</a>
                     <a href="#">Projects</a>
                 </div>
+        
                 <div class="footer-heading footer-2">
                     <h2>Contact Us</h2>
                     <a href="#">Jobs</a>
@@ -190,28 +143,78 @@
                     <a href="#">Sponsorships</a>
                     <a href="#">Support</a>
                 </div>
+        
                 <div class="footer-heading footer-3">
                     <h2>Social Media</h2>
                     <div class="sm">
-                        <div class="sm-group">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                        <div class="sm-group">
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-youtube"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
-                <div class="footer-email-form">
-                    <h2>Join our Newsletter</h2>
-                    <input type="email" placeholer="Enter your E-Mail adress" id="footer-email">
-                    <input type="submit" value="Sign Up" id="footer-email-button">
+        
+                <div class="footer-heading footer-4">
+                    <div class="footer-email-form">
+                        <h2>Join our Newsletter</h2>
+                        <form>
+                            <div class="input-container">
+                                <input type="email" placeholder="Enter your E-Mail address" id="footer-email">
+                                <input type="submit" value="Sign Up" id="footer-email-button">
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <script src="home.js"></script>
         </div>
+    </div>
+    <!-- SignUp or Login Form-->
+    <div class="container1" id="container1">
+        <div class="form-container sign-up-container">
+            <form action="#">
+                <h1>Create Account</h1>
+                <!-- Anpassen and die Anforderung aus dem Arbeitsauftrage. Neue felder dafür hinzufügen-->
+                <!-- Last name, Firstname, Adress(split? Straße, HN, Plz, Ort?), Date of Birth, Email, Password-->
+                <input type="text" placeholder="First Name" />
+                <input type="text" placeholder="Last Name" />
+                <input type="text" placeholder="Adress" />
+                <input type="date" placeholder="dd.mm.yyyy" />
+                <input type="email" placeholder="Email" />
+                <input type="password" placeholder="Password" />
+                <button>Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form action="#">
+                <h1>Sign in</h1>
+                <!--Social Container maybe zu Image Container machen da man sich eh nicht über Social Media anmelden kann und SM Icons nur verwirren würden. Lieber kleine Autos oder so-->
+                <!--
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div> -->
+                <input type="email" placeholder="Email" />
+                <input type="password" placeholder="Password" />
+                <button>Sign In</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start your journey with us</p>
+                    <button class="ghost" id="signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+        <script src="home.js"></script>
     </div>
 </body>
 </html>

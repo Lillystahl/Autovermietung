@@ -32,8 +32,14 @@ var loginButton = document.getElementById('loginButton');
 // Get the container element that you want to toggle visibility
 var container1 = document.querySelector('.container1');
 
+// Get the blurred overlay element
+var blurBackground = document.querySelector('.background');
+
 // Add a click event listener to the login button
 loginButton.addEventListener('click', function() {
     // Toggle the visibility of container1 by adding/removing the 'active' class
     container1.classList.toggle('active');
+
+    // Toggle the blur effect by adding/removing 'active' class to the blurred overlay
+    blurBackground.classList.toggle('active');
 });
