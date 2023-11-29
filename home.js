@@ -44,3 +44,13 @@ loginButton.addEventListener('click', function() {
     // Toggle the visibility of container1 by adding/removing the 'active' class
     container1.classList.toggle('active');
 });*/
+// JavaScript, um die Sterne entsprechend der Bewertung auszufüllen
+document.addEventListener("DOMContentLoaded", function() {
+    const stars = document.querySelectorAll(".stars");
+
+    stars.forEach(starElement => {
+        const rating = parseInt(starElement.getAttribute("data-rating"));
+        const starHTML = "&#9733;".repeat(rating) + "&#9734;".repeat(5 - rating);
+        starElement.innerHTML = starHTML;
+    });
+});
