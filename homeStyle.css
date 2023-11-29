@@ -52,7 +52,7 @@ header {
 .search-container input[type=text]{
    height: 35px;
    width: 250px;
-   border: 2px solid #0fa3b1;
+   border: 2px solid #e9e8e6;
    padding: 0 10px;
    border-radius: 5px;
 }
@@ -96,7 +96,7 @@ header {
 
 input[type="text" i] {
     border-radius: 5px;
-    background-color: #fff;
+    background-color: #e9e8e6;
     border: none;
     border: 0;
     padding-right: 10px;
@@ -106,8 +106,8 @@ input[type="text" i] {
 .Login-button {
     padding: 10px 30px;
     border-radius: 5px;
-    background-color: #0fa3b1;
-    color: #fff; /* Christian: Fixed Color jetzt weiß. missing ;*/
+    background-color:  #e9e8e6;
+    color: black; /* Christian: Fixed Color jetzt weiß. missing ;*/
     display: flex;
     justify-content: center;
     height: 40px;
@@ -338,6 +338,21 @@ input[type="text" i] {
 /*SignUp Styles*/
 
 /* Body Styles hier einfügen */
+.background {
+    /* Your existing background styles */
+    /* Ensure it covers the entire viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 50; /* Ensure it's above other content */
+}
+
+.background.active {
+    backdrop-filter: blur(10px); /* Adjust the blur effect */
+}
+
+
 body{
     margin: 0px;
 }
@@ -356,13 +371,13 @@ body{
     width: 100%;
     z-index: 1; /* Ensure it appears above slider images */
     position: absolute;
-    bottom: 10px; /* Adjust the distance from the bottom */
+    bottom: 20px; /* Adjust the distance from the bottom */
     justify-content: center;
 }
 
 .search-bar {
     font-size: 20px;;
-    background-color: #222223;
+    background-color: rgba(34, 34, 35, 0.9);
     box-sizing: border-box;
     color: white;
     padding: 20px;
@@ -397,11 +412,12 @@ body{
     box-sizing: border-box; /* Ensure padding doesn't increase element width */
     margin-right: 10px; /* Adjust spacing between fields */
     padding-bottom: 12px;
+    background-color:  #e9e8e6;
 }
 
 .search-bar button {
-    background-color: #0fa3b1;
-    color: white;
+    background-color:  #e9e8e6;
+    color: black;
     border: none;
     cursor: pointer;
 }
