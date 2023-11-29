@@ -360,7 +360,7 @@ body{
 .headline {
     text-align: center;
     margin-top: 50px;
-    margin-bottom: 10px; /* Adjust the distance from the top */
+    margin-bottom: 25px; /* Adjust the distance from the top */
 
 }
 
@@ -680,6 +680,63 @@ body{
         width: 100%; /* Full width for smaller screens */
     }
 }
+
+.aboutUs-container {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.aboutUs {
+    display: flex;
+    justify-content: center;
+    width: 85%;
+}
+
+#map {
+    width: 40%;
+    height: 580px;
+}
+
+.content-box {
+    width: 60%;
+    height: 580px; /* Adjust height to match the map */
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background: rgb(180, 180, 180);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.content-box h2 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.content-box p {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.image-container {
+    height: 40%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Hides any overflow from the image */
+}
+
+.box-image {
+    width: 100%; /* Fill the width of the container */
+    height: 100%; /* Fill the height of the container */
+    object-fit: cover; /* Fills the container while maintaining aspect ratio */
+}
 /* Body Styles hier einfügen *
 
 /* Footer Styles hier einfügen */
@@ -794,6 +851,7 @@ body{
     background-color: #222223;
     padding-bottom: 2rem 0 4rem 0;
     text-align: center;
+    margin-top: 50px;
 }
 
 .footer{
