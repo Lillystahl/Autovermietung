@@ -163,26 +163,13 @@
                     };
 
                     // Creating a map object
-                    var map = new L.map("map", mapOptions);
+                    var map = L.map("map", mapOptions);
 
                     // Creating a Layer object
                     var layer = new L.TileLayer(
-                        "http://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png"
+                        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     );
-                    // Create a custom icon with a larger size
-                    var customIcon = L.icon({
-                        iconUrl: "Images/663342.png", // Replace with your icon image URL
-                        iconSize: [80, 80], // Adjust the size here, [width, height]
-                        iconAnchor: [50, 70], // The anchor point of the icon (usually half of the size)
-                    });
 
-                    // Creating a map object
-                    var map = new L.map("map", mapOptions);
-
-                    // Creating a Layer object
-                    var layer = new L.TileLayer(
-                        "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    );
                     // Create a custom icon with a larger size
                     var customIcon = L.icon({
                         iconUrl: "Images/663342.png", // Replace with your icon image URL
