@@ -4,47 +4,59 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Deutschlandkarte</title>
-    <style>
-        #map {
-            position: relative;
-        }
-        
-        .city {
-            position: absolute;
-            display: none;
-            width: 10px;
-            height: 10px;
-            background-color: red;
-            border-radius: 50%;
-        }
-    </style>
+    <title>Your Website</title>
+    <link rel="stylesheet" href="homeStyle.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 </head>
 
 <body>
-    <div id="map">
-        <div class="city" id="berlin" style="left: 100px; top: 150px"></div>
-        <div class="city" id="hamburg" style="left: 250px; top: 100px"></div>
-        <!-- Füge weitere Städte hinzu -->
+    <!-- ... (Ihr vorhandener HTML-Code) ... -->
 
-        <!-- Füge weitere Städte hinzu -->
-    </div>
+    <h1 class="headline">Unsere Standorte</h1>
+    <div id="map" style="width: 100%; height: 500px"></div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const cities = document.querySelectorAll(".city");
+        var cities = [{
+            name: "Hamburg",
+            location: [53.547425386544006, 9.987030559633626],
+        }, {
+            name: "Frankfurt",
+            location: [50.110924, 8.682127],
+        }, {
+            name: "Wiesbaden",
+            location: [50.078218, 8.239761],
+        }, ];
 
-            cities.forEach((city) => {
-                city.addEventListener("mouseover", function() {
-                    this.style.backgroundColor = "blue"; // Ändere die Farbe beim Hovern
-                });
+        var map = L.map("map").setView([51.1657, 10.4515], 6);
 
-                city.addEventListener("mouseout", function() {
-                    this.style.backgroundColor = "red"; // Setze die ursprüngliche Farbe zurück
-                });
+        L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution: "© OpenStreetMap contributors",
+        }).addTo(map);
+
+        cities.forEach((city) => {
+            var marker = L.marker(city.location).addTo(map);
+            marker.bindPopup(`<b>${city.name}</b>`).openPopup();
+
+            marker.on("mouseover", function() {
+                marker.openPopup();
+            });
+
+            marker.on("mouseout", function() {
+                marker.closePopup();
+            });
+
+            marker.on("click", function() {
+                // Hier können Sie die Verlinkung implementieren, z.B. window.location.href = 'Link zur Stadtseite';
+                alert(`Sie haben ${city.name} ausgewählt!`);
             });
         });
     </script>
+
+    <!-- ... (Ihr weiterer HTML-Code) ... -->
 </body>
 
 </html>

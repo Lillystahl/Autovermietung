@@ -796,6 +796,49 @@ body {
 }
 
 
+/*Styles für  die Standortliste und die dazu gehörige Karte*/
+
+#map2 {
+    width: 100%;
+    height: 500px;
+    margin-top: 20px;
+}
+
+.location-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.location-list li {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #ddd;
+    border-radius: 5px;
+}
+
+.location-list li:hover {
+    background-color: #aaa;
+}
+
+
+/*Styles für  die Standortliste und die dazu gehörige Karte*/
+
+.location-list li {
+    margin-bottom: 5px;
+    padding: 8px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.location-list li:hover {
+    background-color: #f0f0f0;
+}
+
+
 /* Body Styles hier einfügen *
 
 /* Footer Styles hier einfügen */
