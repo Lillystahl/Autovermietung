@@ -364,8 +364,8 @@ body{
 
 .headline {
     text-align: center;
-    margin-top: 50px;
-    margin-bottom: 25px; /* Adjust the distance from the top */
+    margin-top: 60px;
+    margin-bottom: 35px; /* Adjust the distance from the top */
     font-size: 40px;
 
 }
@@ -591,11 +591,21 @@ body{
 }
 
 .map-text {
-    width: 50%; /* Each div takes 50% width */
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    background: radial-gradient(circle at center, rgb(180, 180, 180), transparent); /* Radial gradient */
+    border-radius: 5px;
 }
 
 .map-text h2 {
     font-size: 30px; /* Adjust the font size as needed */
+    margin: 20px;
+    position: absolute;
+    margin-bottom: 540px;
 }
 
 .map-notext img {
@@ -773,9 +783,17 @@ body{
     margin-top: -550px /* Adjust the top position for Bremen */;
 }
 
+.map-marker {
+    /* Other styles */
+    border: 3px solid transparent; /* Set initial border */
+}
+
 .marker-hover {
     transition: transform 0.3s;
-    transform: scale(1.2);
+    transform: scale(2);
+    border-color: #9BBEC8;; /* Change the border color */
+    box-sizing: border-box; /* Include border in the element's dimensions */
+    border-radius: 50%; /* Maintain the circular shape */
 }
 
 .card-container {
