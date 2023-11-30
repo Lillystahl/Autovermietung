@@ -54,3 +54,19 @@ document.addEventListener("DOMContentLoaded", function() {
         starElement.innerHTML = starHTML;
     });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const cities = document.querySelectorAll('.city');
+    const marker = document.querySelector('.map-marker');
+
+    cities.forEach(city => {
+        city.addEventListener('mouseover', function () {
+            const markerType = this.dataset.marker;
+            if (markerType === 'berlin') {
+                marker.classList.add('marker-hover');
+            } else {
+                marker.classList.remove('marker-hover');
+            }
+        });
+    });
+});

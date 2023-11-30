@@ -366,6 +366,7 @@ body{
     text-align: center;
     margin-top: 50px;
     margin-bottom: 25px; /* Adjust the distance from the top */
+    font-size: 40px;
 
 }
 
@@ -592,10 +593,50 @@ body{
     width: 50%; /* Each div takes 50% width */
 }
 
+.map-text h2 {
+    font-size: 30px; /* Adjust the font size as needed */
+}
+
 .map-notext img {
     max-width: 100%;
-    height: 800px;
+    height: 700px;
 }
+
+.city {
+    cursor: pointer;
+    transition: transform 0.3s, font-size 0.3s;
+}
+
+.map-text .city {
+    cursor: pointer;
+    transition: transform 0.3s, font-size 0.3s;
+    font-size: 24px; /* Adjust the font size as needed */
+    width: 150px; /* Set a fixed width for each city */
+    margin-bottom: 5px; /* Adjust spacing between cities */
+}
+
+.map-text .city:hover {
+    transform: scale(1.1);
+    font-size:28px; /* Increase font size on hover */
+}
+
+.map-marker {
+    position: absolute;
+    z-index: 1000; /* Adjust the z-index value as needed */
+    width: 20px; /* Set the width of the marker */
+    height: 20px; /* Set the height of the marker */
+    background-color: red; /* Adjust the color of the marker */
+    border-radius: 50%; /* Make a circular marker */
+    /* Adjust the position of the marker */
+    margin-left: 320px; /* Adjust the left margin */
+    margin-top: -250px; /* Adjust the top margin */
+}
+
+.marker-hover {
+    transition: transform 0.3s;
+    transform: scale(1.2);
+}
+
 .card-container {
     display: flex;
     justify-content: center;
@@ -735,12 +776,12 @@ body{
 
 #map {
     width: 40%;
-    height: 500px;
+    height: 460px;
 }
 
 .content-box {
     width: 60%;
-    height: 500px; /* Adjust height to match the map */
+    height: 460px; /* Adjust height to match the map */
     border: 1px solid #ccc;
     box-sizing: border-box;
     border-radius: 5px;
