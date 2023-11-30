@@ -25,13 +25,11 @@ var cities = [{
     },
 ];
 
-var map = L.map("map2").setView([51.1657, 10.4515], 6);
+var map = L.map("map").setView([51.1657, 10.4515], 6);
 
 L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: "© OpenStreetMap contributors",
 }).addTo(map);
-
-var markers = {};
 
 cities.forEach((city) => {
     var marker = L.marker(city.location).addTo(map);
@@ -46,14 +44,7 @@ cities.forEach((city) => {
     });
 
     marker.on("click", function() {
-        // Hier können Sie die Verlinkung implementieren, z.B. window.location.href = 'Link zur Stadtseite';
+        // Hier kann man die Verlinkung implementieren, z.B. window.location.href = 'Link zur Stadtseite';
         alert(`Sie haben ${city.name} ausgewählt!`);
     });
-
-    markers[city.name] = marker;
 });
-
-function highlightCity(city) {
-    markers[city].openPopup();
-    markers[city].setStyle({ fillColor: "yellow", color: "yellow" });
-}

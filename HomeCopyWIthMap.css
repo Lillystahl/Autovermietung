@@ -798,7 +798,7 @@ body {
 
 /*Styles für  die Standortliste und die dazu gehörige Karte*/
 
-#map2 {
+#StandortMap {
     width: 100%;
     height: 500px;
     margin-top: 20px;
@@ -825,18 +825,6 @@ body {
 
 
 /*Styles für  die Standortliste und die dazu gehörige Karte*/
-
-.location-list li {
-    margin-bottom: 5px;
-    padding: 8px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.location-list li:hover {
-    background-color: #f0f0f0;
-}
 
 
 /* Body Styles hier einfügen *

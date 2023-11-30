@@ -137,11 +137,19 @@
                 </div>
             </div>
         </div>
-
+        >
         <h1 class="headline">Unsere Standorte</h1>
+        <div id="StandortMap" style="width: 100%; height: 500px"></div>
 
-        add germany map (hammburg, Berlin, Köln, München)
-
+        <ul class="location-list">
+            <li onmouseover="highlightCity('Hamburg', 'StandortMap')">Hamburg</li>
+            <li onmouseover="highlightCity('Berlin', 'StandortMap')">Berlin</li>
+            <li onmouseover="highlightCity('Hessen', 'StandortMap')">Hessen</li>
+            <li onmouseover="highlightCity('Hanover', 'StandortMap')">Hanover</li>
+            <li onmouseover="highlightCity('Frankfurt', 'StandortMap')">
+                Frankfurt
+            </li>
+        </ul>
         <h1 class="headline">Unser Unternehmen</h1>
         <div class="aboutUs-container">
             <div class="aboutUs">
@@ -283,17 +291,6 @@
           </div>
         </div>
       </div>
-      <h1 class="headline">Unsere Standorte</h1>
-
-      <div id="map2" style="width: 100%; height: 500px"></div>
-
-      <ul class="location-list">
-        <li onmouseover="highlightCity('Hamburg')">Hamburg</li>
-        <li onmouseover="highlightCity('Berlin')">Berlin</li>
-        <li onmouseover="highlightCity('Hessen')">Hessen</li>
-        <li onmouseover="highlightCity('Hanover')">Hanover</li>
-        <li onmouseover="highlightCity('Frankfurt')">Frankfurt</li>
-      </ul>
 
       <div class="footer-container">
         <div class="footer">
