@@ -849,9 +849,16 @@ body{
     text-align: center; /* Align text in the center */
 }
 
+.revparent{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
+
 .customer-reviews {
     text-align: center;
     margin-bottom: 40px;
+    width: 85%;
 }
 
 .section-title {
@@ -868,10 +875,10 @@ body{
 
 .review-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr); /* Update to three columns */
+    gap: 50px;
     margin: 0 auto;
-    max-width: 900px; /* Erhöht die maximale Breite des Containers */
+    max-width: 85%; /* Increase the maximum width of the container */
 }
 
 .review-card {
@@ -934,7 +941,7 @@ body{
 }
 
 #map {
-    width: 40%;
+    width: 30%;
     height: 400px;
 }
 
@@ -948,6 +955,7 @@ body{
     display: flex;
     flex-direction: column;
     position: relative;
+    overflow: hidden; /* Ensure any overflow is hidden */
 }
 
 .content-box h2 {
@@ -962,20 +970,24 @@ body{
 }
 
 .image-container {
-    height: 40%;
+    height: 50%;
     width: 100%;
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* Hides any overflow from the image */
+    position: relative; /* Use relative positioning */
 }
 
 .box-image {
     width: 100%; /* Fill the width of the container */
     height: 100%; /* Fill the height of the container */
     object-fit: cover; /* Fills the container while maintaining aspect ratio */
+}
+
+.text-content {
+    flex: 1; /* Take up remaining space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Add some padding for spacing */
 }
 /* Body Styles hier einfügen *
 
