@@ -126,25 +126,36 @@
         </div>
 
         <h1 class="headline">Unsere Standorte</h1>
-
-        add germany map (hammburg, Berlin, Köln, München)
+        <div class="map-container">
+            <div class="map-inside">
+                <div class="map-notext">
+                    <div class="map">
+                    <img src="Images/blank-map.png" alt="map">
+                    </div>
+                </div>
+                <div class="map-text">
+                    
+                </div>
+            </div>
+        </div>
 
         <h1 class="headline">Unser Unternehmen</h1>
         <div class="aboutUs-container">
             <div class="aboutUs">
-                <div id="map" style="width: 40%; height: 580px; border-radius: 5px;"></div>
+                <div id="map" style="width: 40%; height: 500px; border-radius: 5px;"></div>
                 <script>
             // Creating map options
                 var mapOptions = {
                 center: [53.547425386544006, 9.987030559633626],
-                zoom: 17
+                zoom: 17,
+                scrollWheelZoom: false
                 }
             
             // Creating a map object
                 var map = new L.map('map', mapOptions);
             
             // Creating a Layer object
-                var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+                var layer = new L.TileLayer('http://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png');
             // Create a custom icon with a larger size
                 var customIcon = L.icon({
                     iconUrl: 'Images/663342.png', // Replace with your icon image URL
