@@ -138,15 +138,46 @@
             </div>
         </div>
 
+        <h1 class="headline">Standorte</h1>
+        <div class="map-container">
+            <div class="map-inside">
+                <div class="map-notext">
+                    <div class="map-marker hover-effect"></div>
+                    <div class="map">
+                        <img src="Images/blank-map.png" alt="map" />
+                    </div>
+                </div>
+                <div class="map-text">
+                    <h2>Unsere Standorte</h2>
+                    <ul>
+                        <li class="city" data-marker="berlin">Berlin</li>
+                        <li class="city" data-city="City1">Bochum</li>
+                        <li class="city" data-city="City2">Bremen</li>
+                        <li class="city" data-city="City1">Dortmund</li>
+                        <li class="city" data-city="City2">Dresden</li>
+                        <li class="city" data-city="City1">Freiburg</li>
+                        <li class="city" data-city="City2">Hamburg</li>
+                        <li class="city" data-city="City1">Köln</li>
+                        <li class="city" data-city="City2">Leipzig</li>
+                        <li class="city" data-city="City1">München</li>
+                        <li class="city" data-city="City2">Nürnberg</li>
+                        <li class="city" data-city="City1">Paderborn</li>
+                        <li class="city" data-city="City2">Rostock</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <h1 class="headline">Unser Unternehmen</h1>
         <div class="aboutUs-container">
             <div class="aboutUs">
-                <div id="map" style="width: 40%; height: 580px; border-radius: 5px"></div>
+                <div id="map" style="width: 40%; height: 460px; border-radius: 5px"></div>
                 <script>
                     // Creating map options
                     var mapOptions = {
                         center: [53.547425386544006, 9.987030559633626],
                         zoom: 17,
+                        scrollWheelZoom: false,
                     };
 
                     // Creating a map object
@@ -154,7 +185,7 @@
 
                     // Creating a Layer object
                     var layer = new L.TileLayer(
-                        "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        "http://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png"
                     );
                     // Create a custom icon with a larger size
                     var customIcon = L.icon({
