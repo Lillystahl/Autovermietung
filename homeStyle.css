@@ -406,7 +406,8 @@ body{
     display: flex;
     gap: 10px;
     align-items: center;
-    padding-bottom: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 .search-bar input[type="text"],
 .search-bar input[type="date"],
@@ -620,16 +621,155 @@ body{
     font-size:28px; /* Increase font size on hover */
 }
 
-.map-marker {
+.map-marker.berlin-marker {
     position: absolute;
     z-index: 1000; /* Adjust the z-index value as needed */
-    width: 20px; /* Set the width of the marker */
-    height: 20px; /* Set the height of the marker */
-    background-color: red; /* Adjust the color of the marker */
+    width: 15px;
+    height: 15px;
+    background-color: #222223; /* Adjust the color of the marker */
     border-radius: 50%; /* Make a circular marker */
     /* Adjust the position of the marker */
     margin-left: 320px; /* Adjust the left margin */
     margin-top: -250px; /* Adjust the top margin */
+}
+
+/* Bochum marker */
+.map-marker.bochum-marker {
+    position: absolute;
+    z-index: 1000;
+    width: 15px;
+    height: 15px;
+    background-color: #222223; /* Change color as needed */
+    border-radius: 50%;
+    /* Adjust the position of the Bochum marker */
+    margin-left: 100px /* Adjust the left position for Bochum */;
+    margin-top: 100px/* Adjust the top position for Bochum */;
+}
+
+/* Bremen marker */
+.map-marker.bremen-marker {
+    position: absolute;
+    z-index: 1000;
+    width: 15px;
+    height: 15px;
+    background-color: #222223; /* Change color as needed */
+    border-radius: 50%;
+    /* Adjust the position of the Bremen marker */
+    margin-left:-180px /* Adjust the left position for Bremen */;
+    margin-top: -345px /* Adjust the top position for Bremen */;
+}
+
+.map-marker.Dortmund-marker {
+    position: absolute;
+    z-index: 1000;
+    width: 15px;
+    height: 15px;
+    background-color: #222223; /* Change color as needed */
+    border-radius: 50%;
+    /* Adjust the position of the Bremen marker */
+    margin-left:200px /* Adjust the left position for Bremen */;
+    margin-top: 200px /* Adjust the top position for Bremen */;
+}
+.map-marker.Dresden-marker {
+    position: absolute;
+    z-index: 1000;
+    width: 15px;
+    height: 15px;
+    background-color: #222223; /* Change color as needed */
+    border-radius: 50%;
+    /* Adjust the position of the Bremen marker */
+    margin-left:200px /* Adjust the left position for Bremen */;
+    margin-top: 200px /* Adjust the top position for Bremen */;
+}
+.map-marker.Freiburg-marker {
+    position: absolute;
+    z-index: 1000;
+    width: 15px;
+    height: 15px;
+    background-color: #222223; /* Change color as needed */
+    border-radius: 50%;
+    /* Adjust the position of the Bremen marker */
+    margin-left:200px /* Adjust the left position for Bremen */;
+    margin-top: 200px /* Adjust the top position for Bremen */;
+}
+.map-marker.Hamburg-marker {
+    position: absolute;
+    z-index: 1000;
+    width: 15px;
+    height: 15px;
+    background-color: #222223; /* Change color as needed */
+    border-radius: 50%;
+    /* Adjust the position of the Bremen marker */
+    margin-left:-50px /* Adjust the left position for Bremen */;
+    margin-top: -430px /* Adjust the top position for Bremen */;
+}
+.map-marker.Köln-marker {
+    position: absolute;
+    z-index: 1000;
+    width: 15px;
+    height: 15px;
+    background-color: #222223; /* Change color as needed */
+    border-radius: 50%;
+    /* Adjust the position of the Bremen marker */
+    margin-left:200px /* Adjust the left position for Bremen */;
+    margin-top: 200px /* Adjust the top position for Bremen */;
+}
+.map-marker.Leipzig-marker {
+    position: absolute;
+    z-index: 1000;
+    width: 15px;
+    height: 15px;
+    background-color: #222223; /* Change color as needed */
+    border-radius: 50%;
+    /* Adjust the position of the Bremen marker */
+    margin-left:200px /* Adjust the left position for Bremen */;
+    margin-top: 200px /* Adjust the top position for Bremen */;
+}
+.map-marker.München-marker {
+    position: absolute;
+    z-index: 1000;
+    width: 15px;
+    height: 15px;
+    background-color: #222223; /* Change color as needed */
+    border-radius: 50%;
+    /* Adjust the position of the Bremen marker */
+    margin-left:200px /* Adjust the left position for Bremen */;
+    margin-top: 200px /* Adjust the top position for Bremen */;
+}
+.map-marker.Nürnberg-marker {
+    position: absolute;
+    z-index: 1000;
+    width: 15px;
+    height: 15px;
+    background-color: #222223; /* Change color as needed */
+    border-radius: 50%;
+    /* Adjust the position of the Bremen marker */
+    margin-left:200px /* Adjust the left position for Bremen */;
+    margin-top: 200px /* Adjust the top position for Bremen */;
+}
+
+.map-marker.Paderborn-marker {
+    position: absolute;
+    z-index: 1000;
+    width: 15px;
+    height: 15px;
+    background-color: #222223; /* Change color as needed */
+    border-radius: 50%;
+    /* Adjust the position of the Bremen marker */
+    margin-left:200px /* Adjust the left position for Bremen */;
+    margin-top: 200px /* Adjust the top position for Bremen */;
+}
+
+.map-marker.Rostock-marker {
+    position: absolute;
+    z-index: 1000;
+    width: 15px;
+    height: 15px;
+    background-color: #222223; /* Change color as needed */
+    border-radius: 50%;
+    /* Adjust the position of the Bremen marker */
+    margin-left:200px /* Adjust the left position for Bremen */;
+    margin-top: 200px /* Adjust the top position for Bremen */;
 }
 
 .marker-hover {
@@ -776,12 +916,12 @@ body{
 
 #map {
     width: 40%;
-    height: 460px;
+    height: 400px;
 }
 
 .content-box {
     width: 60%;
-    height: 460px; /* Adjust height to match the map */
+    height: 400px; /* Adjust height to match the map */
     border: 1px solid #ccc;
     box-sizing: border-box;
     border-radius: 5px;
