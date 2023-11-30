@@ -6,34 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Website</title>
     <link rel="stylesheet" href="DatenschutzStyle.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 </head>
 
 <body>
     <header>
         <div class="header">
-            <a href="#" class="logo"><img src="Images/ImageRE.png" /></a>
+            <div class="header-left">
+                <a href="#" class="logo"><img src="Images/ImageRE.png" /></a>
+                <h1><span id="header1">Unser Fahrzeuge</span></h1>
+                <h1><span id="header2">Top-Deals</span></h1>
+                <h1><span id="header3">Geschäftskunden</span></h1>
+            </div>
             <div class="header-right">
                 <div class="search-container">
                     <input type="text" placeholder="Search..." name="search" />
                 </div>
-
                 <div class="button-container">
-                    <button class="Login-button">LogIn</button>
-                    <span class="login-text">Create Account</span>
+                    <button id="loginButton" class="Login-button">
+              LogIn / SignUp
+            </button>
                 </div>
             </div>
         </div>
-        <!-- Navbar placed within the header -->
     </header>
 
-    <div class="navcontainer">
-        <div class="navbar">
-            <h1><span id="header1">Standorte</span></h1>
-            <h1><span id="header2">Fahrzeuge</span></h1>
-            <h1><span id="header3">Top-Deals</span></h1>
-            <h1><span id="header4">Geschäftskunden</span></h1>
-        </div>
-    </div>
     <div class="BodyContent">
         <h1>Privacy Policy</h1>
         <p>As of: [22.11.2023]</p>
