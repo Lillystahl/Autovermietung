@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <link rel="stylesheet" href="bookingstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+</head>
+
+<body>
+    <div class="background">
+        <header>
+            <div class="header">
+                <div class="header-left">
+                    <a href="#" class="logo"><img src="Images/ImageRE.png"></a>
+                    <h1><span id="header1">Unser Fahrzeuge</span></h1>
+                    <h1><span id="header2">Top-Deals</span></h1>
+                    <h1><span id="header3">Geschäftskunden</span></h1>
+                </div>
+                <div class="header-right">
+                    <div class="search-container">
+                        <input type="text" placeholder="Search..." name="search">
+                    </div>
+                    <div class="button-container">
+                        <button id="loginButton" class="Login-button">LogIn / SignUp</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="booking-form">
+            <h1>Booking</h1>
+            <form action="confirmation.php" method="POST">
+                <div class="form-group">
+                    <label for="date">Datum:</label>
+                    <input type="date" id="date" name="date" required>
+                    <label for="time-from">Von:</label>
+                    <input type="time" id="time-from" name="time-from" required>
+                    <label for="time-to">Bis:</label>
+                    <input type="time" id="time-to" name="time-to" required>
+                </div>
+                <div class="form-group">
+                    <label for="special-requests">Sonderwünsche:</label>
+                    <textarea id="special-requests" name="special-requests" rows="4"></textarea>
+                </div>
+                <div class="summary">
+                    <!-- Hier wird die Zusammenfassung der ausgewählten Optionen dargestellt -->
+                    <p>Zusammenfassung der Optionen...</p>
+                </div>
+                <div class="form-group">
+                    <label for="account-data">Account Daten:</label>
+                    <!-- Hier sollten die Account-Daten dargestellt werden (PHP) -->
+                    <p>Account Daten...</p>
+                </div>
+                <div class="form-group">
+                    <label for="payment-method">Zahlungsmethode:</label>
+                    <!-- Hier die Auswahl der Zahlungsmethode -->
+                    <select id="payment-method" name="payment-method">
+                        <option value="paypal">PayPal</option>
+                        <option value="credit-card">Kreditkarte</option>
+                        <!-- Weitere Zahlungsmethoden hier ergänzen -->
+                    </select>
+                </div>
+                <button type="submit">Jetzt buchen</button>
+            </form>
+            <div class="confirmation">
+                <!-- Hier wird die Bestätigungsnachricht nach Abschluss der Buchung dargestellt -->
+                <p>Bestätigungsnachricht...</p>
+            </div>
+        </div>
+
+        <div class="footer-container">
+            <div class="footer">
+                <div class="footer-heading footer-1">
+                    <h2>About Us</h2>
+                    <a href="#">Blog</a>
+                    <a href="#">Demo</a>
+                    <a href="#">Customers</a>
+                    <a href="#">Investors</a>
+                    <a href="#">AGB</a>
+                    <a href="#">Projects</a>
+                </div>
+        
+                <div class="footer-heading footer-2">
+                    <h2>Contact Us</h2>
+                    <a href="#">Jobs</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Sponsorships</a>
+                    <a href="#">Support</a>
+                </div>
+        
+                <div class="footer-heading footer-3">
+                    <h2>Social Media</h2>
+                    <div class="sm">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+        
+                <div class="footer-heading footer-4">
+                    <div class="footer-email-form">
+                        <h2>Join our Newsletter</h2>
+                        <form>
+                            <div class="input-container">
+                                <input type="email" placeholder="Enter your E-Mail address" id="footer-email">
+                                <input type="submit" value="Sign Up" id="footer-email-button">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
