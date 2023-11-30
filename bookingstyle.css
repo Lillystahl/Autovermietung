@@ -139,7 +139,24 @@ input[type="text" i] {
 }
 /* Header Styles hier einfügen */
 
+/* Body Styles hier einfügen */
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
 /* Booking-Seiten-Stile hier einfügen */
+
+.booking-container {
+    width: 70%;
+    margin: 50px auto;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: #ffffff;
+}
+
 .booking-form {
     width: 85%;
     margin: 0 auto;
@@ -187,6 +204,7 @@ button[type="submit"] {
 }
 /* Booking-Seiten-Stile hier einfügen */
 
+/* Body Styles hier einfügen */
 
 /* Footer Styles hier einfügen */
 /* SM Logos */
