@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deutschlandkarte</title>
+    <style>
+        #map {
+            position: relative;
+        }
+        
+        .city {
+            position: absolute;
+            display: none;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map">
+        <div class="city" id="berlin" style="left: 100px; top: 150px"></div>
+        <div class="city" id="hamburg" style="left: 250px; top: 100px"></div>
+        <!-- Füge weitere Städte hinzu -->
+
+        <!-- Füge weitere Städte hinzu -->
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const cities = document.querySelectorAll(".city");
+
+            cities.forEach((city) => {
+                city.addEventListener("mouseover", function() {
+                    this.style.backgroundColor = "blue"; // Ändere die Farbe beim Hovern
+                });
+
+                city.addEventListener("mouseout", function() {
+                    this.style.backgroundColor = "red"; // Setze die ursprüngliche Farbe zurück
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
