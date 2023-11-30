@@ -4,60 +4,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Bookings</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="MyBookingsStyle.css">
+    <title>Your Website</title>
+    <link rel="stylesheet" href="/Autovermietung/Website tests/Meine Buchungen/Buchungsstyle.css">
+    <link rel="stylesheet" href="/Autovermietung/Templates/HeaderAndFooterStyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-    <header>
-        <div class="header">
-            <a href="#" class="logo"><img src="Images/ImageRE.png"></a>
-            <div class="header-right">
-                <div class="search-container">
-                    <input type="text" placeholder="Search..." name="search">
-                </div>
-    
-                <div class="button-container">
-                    <button class="Login-button">LogIn / SignUp</button>
-                </div>
-            </div>
-        </div>
-        <!-- Navbar placed within the header -->
-    </header>
-    <button class="btn btn1">Hover Me</button>
-    <div class="booking-container">
-       
-        <div class="booking">
+
+<header>
+  <div class="header">
+      <a href="#" class="logo"><img src="/Autovermietung/Images/ImageRE.png"></a>
+      <div class="header-right">
+          <div class="search-container">
+              <input type="text" placeholder="Search..." name="search">
+          </div>
+
+          <div class="button-container">
+              <button class="Login-button">LogIn</button>
+              <span class="login-text">Create Account</span>
+          </div>
+      </div>
+  </div>
+  <!-- Navbar placed within the header -->
+</header>
+
+<div class="navcontainer">
+  <div class="navbar">
+      <h1><span id="header1">Standorte</span></h1>
+      <h1><span id="header2">Fahrzeuge</span></h1>
+      <h1><span id="header3">Top-Deals</span></h1>
+      <h1><span id="header4">Geschäftskunden</span></h1>
+  </div>
+</div>
+
+  <div class="content">
+    <div class="user-info-container">
+      <div class="user-info">
+          <img src="path/to/profile-image.jpg" alt="Profile Picture" width="50" height="50">
+
+
+    <div class="user-info-text">
+                  <p>Name: Max Mustermann</p>
+                  <p>Benutzernummer: 123456</p>
+                  <p>Adresse: Musterstraße 123, 12345 Musterstadt</p>
+              </div>
+          </div>
+      </div>
+        <div class="booking-container">
             <h1>My Bookings</h1>
-            <div class="booking-entry">
-                <img src="Images\PHOTO-2023-11-22-16-05-45.jpg" alt="Car Image" class="car-image"> <!-- Placeholder-Bild -->
-                <div class="booking-details">
-                    <h2>Buchung 1</h2>
-                    <p>FromDate - ToDate</p>
-                    <p>Brand Model</p>
-                    <p>Place</p>
-                </div>
-                <div>
-                    <button class="btn btn1">Hover Me</button>
-                </div>
-            </div>
-            
-            <div class="booking-entry">
-                <img src="Images\PHOTO-2023-11-22-16-05-45.jpg" alt="Car Image" class="car-image"> <!-- Placeholder-Bild -->
-                <div class="booking-details">
-                    <h2>Buchung 2</h2>
-                    <p>FromDate - ToDate</p>
-                    <p>Brand Model</p>
-                    <p>Place</p>
-                </div>
-            </div>
-            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Buchungsnummer</th>
+                        <th>Startdatum</th>
+                        <th>Enddatum</th>
+                        <th>Gebuchtes Auto</th>
+                        <th>Standort</th>
+                        <th>Datum der Buchung</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>123456</td>
+                        <td>2024-02-15</td>
+                        <td>2024-02-20</td>
+                        <td>BMW X3</td>
+                        <td>Milan City Center</td>
+                        <td>2024-01-25</td>
+                    </tr>
+                    <tr>
+                        <td>123456</td>
+                        <td>2024-02-15</td>
+                        <td>2024-02-20</td>
+                        <td>BMW X3</td>
+                        <td>Milan City Center</td>
+                        <td>2024-01-25</td>
+                    </tr>
+                    <tr>
+                        <td>123456</td>
+                        <td>2024-02-15</td>
+                        <td>2024-02-20</td>
+                        <td>BMW X3</td>
+                        <td>Milan City Center</td>
+                        <td>2024-01-25</td>
+                    </tr>
+
+                    <!-- Weitere Buchungen können hier hinzugefügt werden -->
+                </tbody>
+            </table>
         </div>
     </div>
 
-    <div class="footer-container";>
-        <div class="footer";>
+   <div class="footer-container">
+        <div class="footer">
             <div class="footer-heading footer-1">
                 <h2>About Us</h2>
                 <a href="#">Blog</a>
@@ -77,15 +117,11 @@
             <div class="footer-heading footer-3">
                 <h2>Social Media</h2>
                 <div class="sm">
-                    <div class="sm-group">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                    <div class="sm-group">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             <div class="footer-email-form">
@@ -97,4 +133,5 @@
         <script src="home.js"></script>
     </div>
 </body>
+
 </html>
