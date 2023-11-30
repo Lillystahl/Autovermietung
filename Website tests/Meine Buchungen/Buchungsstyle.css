@@ -9,26 +9,24 @@ body {
   background-image: url('/Autovermietung/Images/drei_BMW.jpg'); /* Passe den Pfad entsprechend an */
   background-size: cover;
   background-position: center;
-  padding: 120px 100px;
+  padding: 180px 150px;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
 
 }
 
 
 .booking-container {
-  background: #c3cfe2;
-  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
   padding: 20px;
   margin: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.8));
-  color: black;
+  background: linear-gradient(45deg, blue, red);
 }
 
 .img-container img {
@@ -41,7 +39,7 @@ body {
 
 h1 {
   text-align: center;
-  color: black;
+  color: #333;
 }
 
 
@@ -64,37 +62,5 @@ th {
 
 tr:hover {
   background-color: rgba(15, 163, 177, 0.1); /* Ändere die Hintergrundfarbe nach Bedarf */
-
-}
-
-.user-info-container {
-  background-color: #f5f5f5;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-}
-
-.user-info {
-  display: flex;
-  align-items: center;
-}
-
-.user-info img {
-  border-radius: 50%;
-  margin-right: 20px;
-}
-
-.user-info-text {
-  font-size: 18px;
-  display: flex;
-  justify-content: space-between;
-  gap: 50px;
-  align-items: center;
-  flex-direction: row;
-  padding: 0px 50px;
 }
 /* Buchungstabelle Styles hier einfügen */
