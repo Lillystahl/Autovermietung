@@ -32,19 +32,18 @@ L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 cities.forEach((city) => {
-    var marker = L.marker(city.location).addTo(map);
-    marker.bindPopup(`<b>${city.name}</b>`).openPopup();
+            var marker = L.marker(city.location).addTo(map);
+            marker.bindPopup(`<b>${city.name}</b>`).openPopup();
 
-    marker.on("mouseover", function() {
-        marker.openPopup();
-    });
+            marker.on("mouseover", function() {
+                marker.openPopup();
+            });
 
-    marker.on("mouseout", function() {
-        marker.closePopup();
-    });
+            marker.on("mouseout", function() {
+                marker.closePopup();
+            });
 
-    marker.on("click", function() {
-        // Hier kann man die Verlinkung implementieren, z.B. window.location.href = 'Link zur Stadtseite';
-        alert(`Sie haben ${city.name} ausgewählt!`);
-    });
-});
+            marker.on("click", function() {
+                // Hier kann man die Verlinkung implementieren, z.B. window.location.href = 'Link zur Stadtseite';
+                alert(`Sie haben ${city.name} ausgewählt!`);
+            });
