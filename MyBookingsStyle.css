@@ -146,22 +146,19 @@ body {
     padding: 0;
     background-color: #f4f4f4;
 }
-  
+
   .content {
-    background-image: url('/Autovermietung/Images/drei_BMW.jpg'); /* Passe den Pfad entsprechend an */
-    background-size: cover;
-    background-position: center;
-    padding: 120px 100px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-  
+
 }
-  
-  
+
+
   .booking-container {
-    background: #c3cfe2;
+    background-color: rgb(245, 245, 245);
+    width: 60%;
     border-radius: 5px;
     padding: 20px;
     margin: 20px;
@@ -169,67 +166,70 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.8));
     color: black;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
 }
-  
-  .img-container img {
-    width: 100%;
-    object-position: center;
-    top: 0;
-    left: 0;
-    z-index: -1px;
-}
-  
+
+ #header_first_row {
+  height: 50px;
+ }
+
   h1 {
     text-align: center;
     color: black;
 }
-  
-  
+
+
   table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
-  
+
   th, td {
     padding: 15px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
-  
+
   th {
     background-color: #0fa3b1;
     color: white;
 }
-  
+
   tr:hover {
-    background-color: rgba(15, 163, 177, 0.1); /* Ändere die Hintergrundfarbe nach Bedarf */
-  
+    background-color: rgba(155, 190, 200, 0.15);
+    cursor: pointer;
 }
-  
+
+  tr {
+    height: 80px;
+  }
+
   .user-info-container {
-    background-color: #f5f5f5;
+    background-color: rgb(245, 245, 245);
     padding: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    margin-top: 100px;
+    width: 60%;
 }
-  
+
   .user-info {
     display: flex;
     align-items: center;
 }
-  
+
   .user-info img {
     border-radius: 50%;
     margin-right: 20px;
 }
-  
+
   .user-info-text {
     font-size: 18px;
     display: flex;
@@ -239,6 +239,38 @@ body {
     flex-direction: row;
     padding: 0px 50px;
 }
+
+  .hidden_row {
+  background: rgba(255, 255, 255, 0.5);
+  height: 60px;
+  display: none;
+  cursor: auto;
+}
+
+
+ /* Fügen Sie diese Regel zu Ihrer CSS-Datei (zum Beispiel MyBookingsStyle.css) hinzu */
+
+
+  .paket {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+
+  .further_Infos {
+  display: flex;
+  flex-direction: row;
+}
+
+  .more_Info {
+    background-color: rgba(15, 163, 177, 0.1);
+    border-radius: 5px;
+    padding: 7px;
+  }
+
+  .details {
+    padding: 7px 10px;
+  }
   /* Buchungstabelle Styles hier einfügen */
 /* Footer Styles hier einfügen */
 /* SM Logos */
