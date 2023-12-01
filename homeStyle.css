@@ -791,20 +791,35 @@ body{
     border-radius: 50%; /* Maintain the circular shape */
 }
 
-.card-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px; /* Add gap between card products */
-    padding: 10px; /* Add padding for spacing */
-    width: 85%; /* 85% of the site's width */
-    margin: 0 auto; /* Center the container horizontally */
-}
+.swiper-container {
+    width: 85%;
+    margin: 0 auto;
+    border: 3px solid #ccc;
+    border-radius: 10px;
+    height: auto; /* Change height to auto */
+   overflow: hidden;
+  }
   
+  .swiper-wrapper {
+    padding: 20px;
+    overflow: visible; /* Change overflow to visible */
+  }
+  
+  .swiper-scrollbar {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  
+  .swiper-scrollbar-drag {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+  }
 .card-product {
     overflow: hidden;
     background:  rgb(180, 180, 180);
-    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.3);
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
     margin-bottom: 10px;
     display: flex;
@@ -813,16 +828,10 @@ body{
     overflow: hidden;
     width: calc(25% - 20px);
 }
-  
-  .card-product:hover {
-    box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.2); /* Hinzufügen eines leichten Schattens beim Hover */
-    transform: scale(1.05); /* Vergrößern der Karte beim Hover */
-    transition: box-shadow 0.3s, transform 0.3s; /* Sanfte Übergänge für Box-Schatten und Transformationen */
-  }
-  
+    
   .card-product img {
-    height: auto; /* Adjust height to fit */
-    width: 100%; /* Take full width of the container */
+    height: 230px; /* Set a fixed height for the images */
+    width: auto; /* Allow the width to adjust proportionally */
 }
   
   .card-product h2 {

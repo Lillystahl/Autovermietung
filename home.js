@@ -78,3 +78,21 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+var swiper = new Swiper('.swiper-container', {
+    slidesPerView: 4, // Number of slides per view
+    spaceBetween: 30, // Space between slides
+    scrollbar: {
+      el: '.swiper-scrollbar',
+      draggable: true, // Enable scrollbar dragging
+      hide: false, // Show scrollbar
+      snapOnRelease: true, // Snap scrollbar to the slides when released
+      dragSize: 'auto', // Set drag size automatically
+      dragClass: 'swiper-scrollbar-drag', // Class for the scrollbar draggable element
+      scrollbarHide: false, // Hide scrollbar after mouse leave
+      scrollbarClass: 'swiper-scrollbar-custom', // Custom class for scrollbar
+    },
+    initialSlide: 2, // Initially visible slide index
+    centeredSlides: true, // Center active slide
+    loop: true, // Enable loop mode
+  });
