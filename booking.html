@@ -35,10 +35,13 @@
 
         <div class="booking-container">
             <div class="element" id="datum">
-                <!-- Element für Datum und Zeitpunkt -->
-                <h3>Datum und Zeitpunkt</h3>
-                <input type="date">
-                <!-- Weitere Eingabefelder für Zeitpunkt, wenn benötigt -->
+                <h3>Datum</h3>
+                <div class="date-inputs">
+                    <label for="from-date">Von:</label>
+                    <input type="date" id="from-date" name="from-date">
+                    <label for="to-date">Bis:</label>
+                    <input type="date" id="to-date" name="to-date">
+                </div>
             </div>
             <div class="element" id="modell">
                 <!-- Element für Modell und Sonderwunsch -->
@@ -55,15 +58,27 @@
             </div>
             <div class="element" id="zahlungsmethode">
                 <!-- Element für Zahlungsmethode -->
-                <h3>Zahlungsmethode</h3>
-                <select>
-                    <option value="visa">Visa</option>
-                    <option value="mastercard">Mastercard</option>
-                    <option value="paypal">PayPal</option>
-                    <!-- Weitere Optionen für Zahlungsmethoden -->
-                </select>
+                <h3>Zahlungsmethode wählen:</h3>
+                <div class="payment-option">
+                    <input type="radio" id="paypal" name="payment" value="paypal">
+                    <label for="paypal">PayPal</label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" id="credit-card" name="payment" value="credit-card">
+                    <label for="credit-card">Kreditkarte</label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" id="klarna" name="payment" value="klarna">
+                    <label for="klarna">Klarna</label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" id="lastschrift" name="payment" value="lastschrift">
+                    <label for="lastschrift">SEPA-Lastschrift</label>
+                </div>
             </div>
-            <button class="buchungs-button">Jetzt buchen</button>
+            <div class="button-container">
+                <button class="buchungs-button">Jetzt buchen</button>
+            </div>
         </div>
 
         <div class="footer-container">

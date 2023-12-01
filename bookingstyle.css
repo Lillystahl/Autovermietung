@@ -164,6 +164,7 @@ body {
 .element {
     width: 45%; /* Reduzierte Breite für die Elemente */
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .element h3 {
@@ -178,9 +179,16 @@ body {
 
 textarea {
     width: calc(100% - 10px); /* Breite des Textbereichs abzüglich des Padding */
-    height: 80px;
+    height: 50px;
     border: 1px solid #ddd; /* Rahmen um den Textbereich */
     padding: 5px;
+}
+
+.button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Für Abstand nach oben */
 }
 
 .buchungs-button {
@@ -199,6 +207,33 @@ textarea {
     background-color: #2eb8cd;
 }
 
+.date-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.date-inputs label {
+    font-weight: bold;
+}
+
+.date-inputs input[type="date"] {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.payment-option {
+    margin-bottom: 10px;
+}
+
+.payment-option input[type="radio"] {
+    margin-right: 5px;
+}
+
+.payment-option label {
+    font-size: 16px;
+}
 
 /* Booking-Seiten-Stile hier einfügen */
 
