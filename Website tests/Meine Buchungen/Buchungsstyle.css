@@ -1,0 +1,66 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.content {
+  background-image: url('/Autovermietung/Images/drei_BMW.jpg'); /* Passe den Pfad entsprechend an */
+  background-size: cover;
+  background-position: center;
+  padding: 180px 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+.booking-container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(45deg, blue, red);
+}
+
+.img-container img {
+  width: 100%;
+  object-position: center;
+  top: 0;
+  left: 0;
+  z-index: -1px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #0fa3b1;
+  color: white;
+}
+
+tr:hover {
+  background-color: rgba(15, 163, 177, 0.1); /* Ändere die Hintergrundfarbe nach Bedarf */
+}
+/* Buchungstabelle Styles hier einfügen */
