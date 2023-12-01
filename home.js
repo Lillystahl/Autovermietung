@@ -11,39 +11,7 @@ prev.addEventListener('click', function(){
     let items = document.querySelectorAll('.item');
     document.querySelector('.slide').prepend(items[items.length - 1]);
 });
-// JavaScript to toggle the login/signup container
 
-// Handle switching between Signup and Login panels
-const signUpButton = document.getElementById('signUp');
-const signInButton = document.getElementById('signIn');
-const container = document.getElementById('container1');
-
-signUpButton.addEventListener('click', () => {
-    container.classList.add("right-panel-active");
-});
-
-signInButton.addEventListener('click', () => {
-    container.classList.remove("right-panel-active");
-});
-
-/*
-// Get the login button element
-var loginButton = document.getElementById('loginButton');
-const background = document.querySelector('.background');
-
-
-// Get the container element that you want to toggle visibility
-var container1 = document.querySelector('.container1');
-
-// Get the blurred overlay element
-var blurBackground = document.querySelector('.background');
-
-// Add a click event listener to the login button
-loginButton.addEventListener('click', function() {
-    background.classList.toggle('active');
-    // Toggle the visibility of container1 by adding/removing the 'active' class
-    container1.classList.toggle('active');
-});*/
 // JavaScript, um die Sterne entsprechend der Bewertung auszufüllen
 document.addEventListener("DOMContentLoaded", function() {
     const stars = document.querySelectorAll(".stars");
@@ -79,20 +47,3 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-var swiper = new Swiper('.swiper-container', {
-    slidesPerView: 4, // Number of slides per view
-    spaceBetween: 30, // Space between slides
-    scrollbar: {
-      el: '.swiper-scrollbar',
-      draggable: true, // Enable scrollbar dragging
-      hide: false, // Show scrollbar
-      snapOnRelease: true, // Snap scrollbar to the slides when released
-      dragSize: 'auto', // Set drag size automatically
-      dragClass: 'swiper-scrollbar-drag', // Class for the scrollbar draggable element
-      scrollbarHide: false, // Hide scrollbar after mouse leave
-      scrollbarClass: 'swiper-scrollbar-custom', // Custom class for scrollbar
-    },
-    initialSlide: 2, // Initially visible slide index
-    centeredSlides: true, // Center active slide
-    loop: true, // Enable loop mode
-  });
