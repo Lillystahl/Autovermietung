@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 /* Header Styles hier einfügen */
 header {
     font-family: 'Montserrat', sans-serif;
@@ -161,17 +162,30 @@ body {
 }
 
 .element {
-    width: 45%;
+    width: 45%; /* Reduzierte Breite für die Elemente */
     margin-bottom: 20px;
 }
 
+.element h3 {
+    margin-top: 0;
+    border-bottom: 1px solid #ddd; /* Trennlinie unter der Überschrift */
+    padding-bottom: 5px; /* Abstand zwischen Überschrift und Inhalt */
+}
+
+.element p {
+    margin-top: 10px;
+}
+
 textarea {
-    width: 100%;
+    width: calc(100% - 10px); /* Breite des Textbereichs abzüglich des Padding */
     height: 80px;
+    border: 1px solid #ddd; /* Rahmen um den Textbereich */
+    padding: 5px;
 }
 
 .buchungs-button {
-    width: 100%;
+    width: 200px; /* Festgelegte Breite für den Button */
+    margin-top: 20px; /* Abstand vom vorherigen Element */
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -184,6 +198,8 @@ textarea {
 .buchungs-button:hover {
     background-color: #2eb8cd;
 }
+
+
 /* Booking-Seiten-Stile hier einfügen */
 
 /* Body Styles hier einfügen */
