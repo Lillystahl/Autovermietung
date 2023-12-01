@@ -597,7 +597,7 @@ body{
     align-items: center;
     flex-direction: column;
     text-align: center;
-    background: radial-gradient(circle at center, rgb(180, 180, 180), transparent); /* Radial gradient */
+    background: radial-gradient(circle at center, rgb(180, 180, 180) 10%, rgba(255, 255, 255, 0.7) 70%, transparent 100%);
     border-radius: 5px;
 }
 
@@ -613,21 +613,16 @@ body{
     height: 700px;
 }
 
-.city {
-    cursor: pointer;
-    transition: transform 0.3s, font-size 0.3s;
-}
-
 .map-text .city {
     cursor: pointer;
-    transition: transform 0.3s, font-size 0.3s;
+    transition: transform 0.4s, font-size 0.4s;
     font-size: 24px; /* Adjust the font size as needed */
     width: 150px; /* Set a fixed width for each city */
     margin-bottom: 5px; /* Adjust spacing between cities */
 }
 
 .map-text .city:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
     font-size:28px; /* Increase font size on hover */
 }
 
@@ -789,7 +784,7 @@ body{
 }
 
 .marker-hover {
-    transition: transform 0.3s;
+    transition: transform 0.4s;
     transform: scale(2);
     border-color: #9BBEC8;; /* Change the border color */
     box-sizing: border-box; /* Include border in the element's dimensions */
