@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Website</title>
     <link rel="stylesheet" href="homeStyle.css">
-    <link rel="stylesheet" href="Produktübersicht.css">
+    <link rel="stylesheet" href="ProduktübersichtStyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -48,10 +48,26 @@
             <h2>Filter</h2>
         <form>
             <div class="filter-bar-inner">
-                <input type="text" placeholder="Location" name="location">
-                <input type="text" placeholder="Fahrzeugart" name="vehicle-type">
-                <input type="date" placeholder="Start-Datum" name="start-date">
-                <input type="date" placeholder="End-Datum" name="end-date">
+                <span id="filter-art">Hersteller:</span>
+                <input type="text" name="Hersteller">
+                <span id="filter-art">Sitze:</span>
+                <input type="text" name="Sitze">
+                <span id="filter-art">Türen:</span>
+                <input type="text" name="Türen">
+                <span id="filter-art">Getriebe</span>
+                <input type="text" name="Getriebe">
+                <span id="filter-art">Klima:</span>
+                <input type="checkbox" name="Klima">
+                <span id="filter-art">GPS:</span>
+                <input type="checkbox" name="GPS">
+                <span id="filter-art">Alter</span>
+                <input type="text" name="Alter">
+                <span id="filter-art">Antrieb:</span>
+                <input type="text" name="Antrieb">
+                <span id="filter-art">Preis bis:</span>
+                <input type="text" name="Preis-bis">
+                <span id="filter-art">Sortierung:</span>
+                <input type="text" name="Sortierung">
                 <button type="submit">Filter Andwenden</button>
                 <button type="submit">Filter Zurücksetzen</button>
             </div>

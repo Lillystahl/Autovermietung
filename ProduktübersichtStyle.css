@@ -15,7 +15,7 @@
     background-color: rgba(34, 34, 35, 0.9);
     box-sizing: border-box;
     color: white;
-    padding: 20px;
+    padding: 20px 20px 0px 20px;
     width: 85%;
     border-radius: 5px 5px 0px 0px;
 }
@@ -48,7 +48,7 @@
     box-sizing: border-box; /* Ensure padding doesn't increase element width */
     margin-right: 10px; /* Adjust spacing between fields */
     padding-bottom: 12px;
-    background-color:  #e9e8e6;
+    background-color:  white;
 }
 
 .advanced-search-bar-top button {
@@ -69,9 +69,27 @@
     background-color: rgba(34, 34, 35, 0.9);
     box-sizing: border-box;
     color: white;
-    padding: 20px;
+    padding: 0px 20px 20px 20px;
     width: 85%;
     border-radius: 0px 0px 5px 5px;
+}
+
+.filter-bar h2{
+    margin-top: 0px;
+}
+
+.filter-bar-inner {
+    display: flex;
+    flex-wrap: wrap; /* Allow elements to wrap into a new line */
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+
+.filter-bar-inner span{
+    margin-left: 5px;
+    font-size: 16px;
 }
 
 .filter-bar-inner h2 {
@@ -85,7 +103,7 @@
     flex-direction: column;
 }
 
-.filter-bar-inner .searchbar-inner {
+.filter-bar .filter-bar-inner {
     display: flex;
     gap: 10px;
     align-items: center;
@@ -93,7 +111,6 @@
     margin-top: 20px;
 }
 .filter-bar-inner input[type="text"],
-.filter-bar-inner input[type="date"],
 .filter-bar-inner button {
     flex: 1; /* Distribute available space equally among fields */
     padding: 8px;
@@ -102,7 +119,7 @@
     box-sizing: border-box; /* Ensure padding doesn't increase element width */
     margin-right: 10px; /* Adjust spacing between fields */
     padding-bottom: 12px;
-    background-color:  #e9e8e6;
+    background-color:  white;
 }
 
 .filter-bar-inner button {
@@ -116,4 +133,9 @@
     cursor: pointer;
     background-color: #9BBEC8;
     transition: all 0.4s ease-out;
+}
+
+.filter-bar-inner input[type="checkbox"] {
+    height:30px;
+    width:30px;
 }

@@ -97,7 +97,7 @@ header {
 
 input[type="text" i] {
     border-radius: 5px;
-    background-color: #e9e8e6;
+    background-color: white;
     border: none;
     border: 0;
     padding-right: 10px;
@@ -222,7 +222,7 @@ body{
     box-sizing: border-box; /* Ensure padding doesn't increase element width */
     margin-right: 10px; /* Adjust spacing between fields */
     padding-bottom: 12px;
-    background-color:  #e9e8e6;
+    background-color:  white;
 }
 
 .search-bar button {
@@ -763,7 +763,7 @@ body{
     height: 400px; /* Adjust height to match the map */
     border: 1px solid #ccc;
     box-sizing: border-box;
-    border-radius: 5px;
+    border-radius: 0px 5px 5px 0px;
     background: rgb(180, 180, 180);
     display: flex;
     flex-direction: column;
@@ -970,7 +970,7 @@ body{
 }
 
 .foot-email-input{
-    background-color:  #e9e8e6;
+    background-color:  white;
 }
 .input-container {
     display: flex;
@@ -1009,7 +1009,7 @@ body{
 
 #footer-email,
 #footer-email-input {
-    background-color:  #e9e8e6; 
+    background-color:  white; 
     margin-right: 10px;/* Set your desired background color here */
     /* Other styles remain the same */
 }
