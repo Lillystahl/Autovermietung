@@ -191,7 +191,7 @@ body{
     color: white;
     padding: 20px;
     width: 85%;
-    border-radius: 15px;
+    border-radius: 5px;
 }
 
 .search-bar h2 {
@@ -920,6 +920,7 @@ body{
     padding-bottom: 2rem 0 4rem 0;
     text-align: center;
     margin-top: 50px;
+    width: 100%;
 }
 
 .footer{
