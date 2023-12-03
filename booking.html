@@ -6,10 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Website</title>
     <link rel="stylesheet" href="bookingstyle.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 </head>
 
 <body>
@@ -35,51 +31,59 @@
 
         <div class="booking-container">
             <div class="element" id="datum">
-                <h3>Datum</h3>
+                <h3>Datum<span class="indicator" id="from-indicator"></span></h3>
                 <div class="date-inputs">
                     <label for="from-date">Von:</label>
-                    <input type="date" id="from-date" name="from-date">
+                    <div class="input-container">
+                        <input type="date" id="from-date" name="from-date">
+                    </div>
                     <label for="to-date">Bis:</label>
-                    <input type="date" id="to-date" name="to-date">
+                    <div class="input-container">
+                        <input type="date" id="to-date" name="to-date">
+                    </div>
                 </div>
-            </div>
+            </div>                     
+                   
             <div class="element" id="modell">
                 <!-- Element für Modell und Sonderwunsch -->
-                <h3>Auswahl bestätigen</h3>
+                <h3>Auswahl bestätigen<span class="indicator" id="confirm-indicator"></span></h3>
                 <p>Ausgewähltes Modell: [Hier Modell anzeigen]</p>
-                <textarea placeholder="Sonderwunsch"></textarea>
+                <textarea class="additional-request" placeholder="Sonderwunsch"></textarea>
+                <button class="confirm-button" id="confirm-button">Bestätigen</button>
             </div>
+
             <div class="element" id="login-daten">
                 <!-- Element für Login-Daten -->
-                <h3>Login-Daten verwenden</h3>
-                <label>
-                    <input type="checkbox"> Verwende aktuelle Login-Daten
-                </label>
+                <div class="login-data">
+                    <h3>Rechnungsadresse<span class="indicator" id="rechnungsadresse-indicator"></span></h3>
+                    <p>Max Mustermann</p>
+                    <p>Adresse blabla 56789 Hamburg</p>
+                    <p>mustermax@gmail.com</p>
+                    <button class="confirm-button" onclick="toggleIndicator()">Login-Daten verwenden</button>
+                    <!-- Andere Inhalte -->
+                </div>
             </div>
+
             <div class="element" id="zahlungsmethode">
                 <!-- Element für Zahlungsmethode -->
-                <h3>Zahlungsmethode wählen:</h3>
-                <div class="payment-option">
-                    <input type="radio" id="paypal" name="payment" value="paypal">
-                    <label for="paypal">PayPal</label>
-                </div>
-                <div class="payment-option">
-                    <input type="radio" id="credit-card" name="payment" value="credit-card">
-                    <label for="credit-card">Kreditkarte</label>
-                </div>
-                <div class="payment-option">
-                    <input type="radio" id="klarna" name="payment" value="klarna">
-                    <label for="klarna">Klarna</label>
-                </div>
-                <div class="payment-option">
-                    <input type="radio" id="lastschrift" name="payment" value="lastschrift">
-                    <label for="lastschrift">SEPA-Lastschrift</label>
+                <h3>Zahlungsmethode wählen<span class="indicator" id="zahlungsmethode-indicator"></span></h3>
+                <div class="payment-options">
+                    <input type="radio" id="paypal" name="payment" value="paypal" onclick="togglePaymentIndicator()">
+                    <label for="paypal">PayPal</label><br>
+                    <input type="radio" id="kreditkarte" name="payment" value="kreditkarte" onclick="togglePaymentIndicator()">
+                    <label for="kreditkarte">Kreditkarte</label><br>
+                    <input type="radio" id="klarna" name="payment" value="klarna" onclick="togglePaymentIndicator()">
+                    <label for="klarna">Klarna</label><br>
+                    <input type="radio" id="sepa" name="payment" value="sepa" onclick="togglePaymentIndicator()">
+                    <label for="sepa">SEPA-Lastschrift</label><br>
                 </div>
             </div>
             <div class="button-container">
                 <button class="buchungs-button">Jetzt buchen</button>
             </div>
+
         </div>
+        <script src="booking.js"></script>
 
         <div class="footer-container">
             <div class="footer">

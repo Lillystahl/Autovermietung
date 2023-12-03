@@ -171,6 +171,7 @@ body {
     margin-top: 0;
     border-bottom: 1px solid #ddd; /* Trennlinie unter der Überschrift */
     padding-bottom: 5px; /* Abstand zwischen Überschrift und Inhalt */
+    position: relative;
 }
 
 .element p {
@@ -218,21 +219,178 @@ textarea {
 }
 
 .date-inputs input[type="date"] {
-    padding: 5px;
+    padding: 5px 5px 5px 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    width: 140px; /* Breite des Eingabefelds anpassen */
+    box-sizing: border-box;
+    position: relative;
 }
 
-.payment-option {
+.date-inputs input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 50%;
+    right: 5px; /* Positionierung am rechten Rand */
+    transform: translateY(-50%);
+}
+
+.payment-options {
     margin-bottom: 10px;
 }
 
-.payment-option input[type="radio"] {
+.payment-options input[type="radio"] {
     margin-right: 5px;
+    margin-bottom: 10px;
 }
 
-.payment-option label {
-    font-size: 16px;
+.payment-options label {
+    margin-top: 10px; /* Anpassung des Abstands zwischen den Optionen */
+}
+
+
+.confirm-button {
+    align-content: center;
+    padding: 8px 8px;
+    border: none;
+    border-radius: 4px;
+    background-color: #e0e0e0;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.confirm-button:hover {
+    background-color: #ccc;
+}
+
+.input-container {
+    position: relative;
+}
+
+#additional-request {
+    width: 200px; /* Breite des Textfelds */
+    height: 100px; /* Höhe des Textfelds */
+}
+
+.additional-request {
+    resize: none;
+    margin-bottom: 10px;
+}
+
+.additional-request:focus {
+    outline: none; /* Entfernt die Standard-Outlinie */
+    border: 1px solid #0fa3b1;
+}
+
+#confirm-button {
+    width: 100px; /* Breite des Buttons */
+    height: 30px; /* Höhe des Buttons */
+    /* Weitere gewünschte Stileigenschaften */
+}
+
+.indicator {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    margin-right: 10px; /* Abstand zum Text */
+}
+
+.indicator::before {
+    content: '✖'; /* Kreuz-Symbol */
+    font-size: 12px;
+    color: red; /* Rote Farbe für das Kreuz */
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    background-color: transparent; /* Transparent hinter dem Kreuz */
+    border: none; /* Kein Rahmen */
+}
+
+.complete::before {
+    content: '✓'; /* Haken-Symbol */
+    font-size: 12px;
+    color: green; /* Grüne Farbe für den Haken */
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    background-color: transparent; /* Transparent hinter dem Haken */
+    border: none; /* Kein Rahmen */
+}
+
+#confirm-indicator {
+    content: '✖'; /* Kreuz-Symbol */
+    font-size: 12px;
+    color: red; /* Rote Farbe für das Kreuz */
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    background-color: transparent; /* Transparent hinter dem Kreuz */
+    border: none; /* Kein Rahmen */
+}
+  
+  #confirm-indicator.complete {
+    content: '✓'; /* Haken-Symbol */
+    font-size: 12px;
+    color: green; /* Grüne Farbe für den Haken */
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    background-color: transparent; /* Transparent hinter dem Haken */
+    border: none; /* Kein Rahmen */
+}
+
+  #rechnungsadresse-indicator {
+    content: '✖'; /* Kreuz-Symbol */
+    font-size: 12px;
+    color: red; /* Rote Farbe für das Kreuz */
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    background-color: transparent; /* Transparent hinter dem Kreuz */
+    border: none; /* Kein Rahmen */
+}
+
+#rechnungsadresse-indicator.complete {
+    content: '✓'; /* Haken-Symbol */
+    font-size: 12px;
+    color: green; /* Grüne Farbe für den Haken */
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    background-color: transparent; /* Transparent hinter dem Haken */
+    border: none; /* Kein Rahmen */
+}
+
+#zahlungsmethode-indicator {
+    content: '✖'; /* Kreuz-Symbol */
+    font-size: 12px;
+    color: red; /* Rote Farbe für das Kreuz */
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    background-color: transparent; /* Transparent hinter dem Kreuz */
+    border: none; /* Kein Rahmen */
+}
+
+#zahlungsmethode-indicator.complete {
+    content: '✓'; /* Haken-Symbol */
+    font-size: 12px;
+    color: green; /* Grüne Farbe für den Haken */
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    background-color: transparent; /* Transparent hinter dem Haken */
+    border: none; /* Kein Rahmen */
 }
 
 /* Booking-Seiten-Stile hier einfügen */
