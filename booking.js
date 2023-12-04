@@ -1,19 +1,19 @@
 const fromDate = document.getElementById('from-date');
 const toDate = document.getElementById('to-date');
-const fromIndicator = document.getElementById('from-indicator');
-const toIndicator = document.getElementById('to-indicator');
+const indicator = document.getElementById('indicator');
 
 function checkDates() {
     if (fromDate.value && toDate.value) {
         const fromDateValue = new Date(fromDate.value);
         const toDateValue = new Date(toDate.value);
+        
         if (toDateValue >= fromDateValue) {
-            document.getElementById('datum').classList.add('complete');
+            indicator.classList.add('complete');
         } else {
-            document.getElementById('datum').classList.remove('complete');
+            indicator.classList.remove('complete');
         }
     } else {
-        document.getElementById('datum').classList.remove('complete');
+        indicator.classList.remove('complete');
     }
 }
 
