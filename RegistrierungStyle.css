@@ -77,16 +77,16 @@ body {
   	background-color: #e9e8e6;
 }
 
-h1 {
+.container h1 {
 	font-weight: bold;
 	margin: 0;
 }
 
-h2 {
+.container h2 {
 	text-align: center;
 }
 
-p {
+.container p {
 	font-size: 14px;
 	font-weight: 100;
 	line-height: 20px;
@@ -94,18 +94,18 @@ p {
 	margin: 20px 0 30px;
 }
 
-span {
+.container span {
 	font-size: 12px;
 }
 
-a {
+.container a {
 	color: #333;
 	font-size: 14px;
 	text-decoration: none;
 	margin: 15px 0;
 }
 
-button {
+.container button {
 	border-radius: 20px;
 	border: 1px solid  #e9e8e6;
     background-color:  #e9e8e6;
@@ -117,20 +117,20 @@ button {
 	transition: transform 80ms ease-in;
 }
 
-button:active {
+.container button:active {
 	transform: scale(0.95);
 }
 
-button:focus {
+.container button:focus {
 	outline: none;
 }
 
-button.ghost {
+.container button.ghost {
 	background-color: transparent;
 	border-color: #FFFFFF;
 }
 
-form {
+.container form {
 	background-color: #FFFFFF;
 	display: flex;
 	align-items: center;
@@ -141,7 +141,7 @@ form {
 	text-align: center;
 }
 
-input {
+.container input {
     background-color:#e9e8e6 ;
     color: #1f3a57; /* Dark blue text */
     border: #222223 ;
@@ -289,24 +289,27 @@ input {
 	width: 40px;
 }
 /*SignUp Styles*/
+.sm {
+    display: flex; /* Make the container a flex container */
+}
 
 .sm a{
 	display: flex;
     text-decoration: none;
     font-size: 25px;
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     color: #f0f0f0;
     justify-content: center;
     align-items: center;
     position: relative;
-    margin:7px;
+    margin:3px;
 }
 .sm a::before{
 	content: '';
 	position: absolute;
-	width:30px;
-	height: 30px;
+	width:35px;
+	height: 35px;
 	border-radius: 25%;
 	z-index: 1;
 	transition: transform .3s ease-in;
@@ -314,26 +317,6 @@ input {
     -webkit-text-fill-color: transparent;
 	background-clip: text;
     color: transparent;
-}
-
-.sm a:nth-child(1)::before{
-	background: #38529a;
-}
-
-.sm a:nth-child(2)::before{
-	background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
-}
-
-.sm a:nth-child(3)::before{
-	background: #1c96e9;
-}
-
-.sm a:nth-child(4)::before{
-	background: #f70000;
-}
-
-.sm a:nth-child(5)::before{
-	background: #046596;
 }
 
 .sm a:hover::before{
@@ -400,7 +383,8 @@ input {
     background-color: #222223;
     padding-bottom: 2rem 0 4rem 0;
     text-align: center;
-	width: 100%;
+    margin-top: 50px;
+    width: 100%;
 }
 
 .footer{
@@ -408,19 +392,16 @@ input {
     background-color: #222223;
     color: #fff;
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    justify-content: center;
     margin: 0 auto;
-    padding-bottom: 50px;
+    padding-bottom: 70px;
 }
 
 .footer-heading{
     padding-top: 15px;
     display: flex;
     flex-direction: column;
-    margin-right: 4rem;
-    align-items: center;
-    flex: 1;
+    margin-right: 5rem;
 }
 
 .footer-heading h2{
@@ -450,7 +431,7 @@ input {
 }
 
 .foot-email-input{
-    background-color:  #e9e8e6;
+    background-color:  white;
 }
 .input-container {
     display: flex;
@@ -489,10 +470,11 @@ input {
 
 #footer-email,
 #footer-email-input {
-    background-color:  #e9e8e6; 
+    background-color:  white; 
     margin-right: 10px;/* Set your desired background color here */
     /* Other styles remain the same */
 }
+
 /* Christian: ich weiß nicht ob das hier nötig ist aber mache das erstmal rein
 mit dem zeug hier kann man beim Verändern der Fenstergröße den footer anpassen
 whatever */
@@ -521,4 +503,62 @@ whatever */
     .footer-email-form{
         margin-top: 2rem;
     }
+}
+/* Footer Styles hier einfügen */
+.footer{
+    width: 85%;
+    background-color: #222223;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    padding-bottom: 70px;
+}
+.sub-holder{
+    padding-top: 30px;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    padding-bottom: 30px;
+}
+
+.Copyright-container{
+    margin-right: 60px;
+    margin-left: 60px;
+}
+
+.app-container{
+    justify-content: center;
+}
+.app-icons {
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px; /* Adjust margin as needed */
+}
+
+.sub-container {
+    display: flex;
+    justify-content: center; /* Adjust spacing between texts */
+    width: 85%; /* Take up 85% of the site's width */
+}
+
+.sub-container span {/* Align text in the center */   
+    color: white; 
+}
+
+.payment-container{
+    justify-content: center;
+}
+.payment-icons{
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px; /* Adjust margin as needed */
+}
+
+.app-icons i,
+.payment-icons i {
+    font-size: 20px; /* Change the icon size */
+    color:  #e9e8e6; /* Change the icon color */
+    margin-left: 0;
+    margin-right: 0;
 }

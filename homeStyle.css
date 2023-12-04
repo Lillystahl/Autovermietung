@@ -1025,6 +1025,15 @@ whatever */
     }
 }
 /* Footer Styles hier einfügen */
+.footer{
+    width: 85%;
+    background-color: #222223;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    padding-bottom: 70px;
+}
 .sub-holder{
     padding-top: 30px;
     width: 100%;
