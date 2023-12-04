@@ -809,23 +809,27 @@ body{
 
 /* Footer Styles hier einfügen */
 /* SM Logos */
+.sm {
+    display: flex; /* Make the container a flex container */
+}
+
 .sm a{
 	display: flex;
     text-decoration: none;
     font-size: 25px;
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     color: #f0f0f0;
     justify-content: center;
     align-items: center;
     position: relative;
-    margin:7px;
+    margin:3px;
 }
 .sm a::before{
 	content: '';
 	position: absolute;
-	width:30px;
-	height: 30px;
+	width:35px;
+	height: 35px;
 	border-radius: 25%;
 	z-index: 1;
 	transition: transform .3s ease-in;
@@ -833,26 +837,6 @@ body{
     -webkit-text-fill-color: transparent;
 	background-clip: text;
     color: transparent;
-}
-
-.sm a:nth-child(1)::before{
-	background: #38529a;
-}
-
-.sm a:nth-child(2)::before{
-	background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
-}
-
-.sm a:nth-child(3)::before{
-	background: #1c96e9;
-}
-
-.sm a:nth-child(4)::before{
-	background: #f70000;
-}
-
-.sm a:nth-child(5)::before{
-	background: #046596;
 }
 
 .sm a:hover::before{
@@ -928,19 +912,16 @@ body{
     background-color: #222223;
     color: #fff;
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    justify-content: center;
     margin: 0 auto;
-    padding-bottom: 50px;
+    padding-bottom: 70px;
 }
 
 .footer-heading{
     padding-top: 15px;
     display: flex;
     flex-direction: column;
-    margin-right: 4rem;
-    align-items: center;
-    flex: 1;
+    margin-right: 5rem;
 }
 
 .footer-heading h2{
@@ -1013,6 +994,7 @@ body{
     margin-right: 10px;/* Set your desired background color here */
     /* Other styles remain the same */
 }
+
 /* Christian: ich weiß nicht ob das hier nötig ist aber mache das erstmal rein
 mit dem zeug hier kann man beim Verändern der Fenstergröße den footer anpassen
 whatever */
@@ -1043,3 +1025,51 @@ whatever */
     }
 }
 /* Footer Styles hier einfügen */
+.sub-holder{
+    padding-top: 30px;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    padding-bottom: 30px;
+}
+
+.Copyright-container{
+    margin-right: 60px;
+    margin-left: 60px;
+}
+
+.app-container{
+    justify-content: center;
+}
+.app-icons {
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px; /* Adjust margin as needed */
+}
+
+.sub-container {
+    display: flex;
+    justify-content: center; /* Adjust spacing between texts */
+    width: 85%; /* Take up 85% of the site's width */
+}
+
+.sub-container span {/* Align text in the center */   
+    color: white; 
+}
+
+.payment-container{
+    justify-content: center;
+}
+.payment-icons{
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px; /* Adjust margin as needed */
+}
+
+.app-icons i,
+.payment-icons i {
+    font-size: 20px; /* Change the icon size */
+    color:  #e9e8e6; /* Change the icon color */
+    margin-left: 0;
+    margin-right: 0;
+}
