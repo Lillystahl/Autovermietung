@@ -806,6 +806,11 @@ body{
     padding-right: 10px;/* Add some padding for spacing */
     padding-bottom: 10px;
 }
+
+body a {
+    color:inherit;
+    text-decoration: none;
+}
 /* Body Styles hier einfügen *
 
 /* Footer Styles hier einfügen */
