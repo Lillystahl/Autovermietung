@@ -5,7 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Website</title>
-    <link rel="stylesheet" href="DatenschutzStyle.css" />
+    <link rel="stylesheet" href="homeStyle.css"/>
+    <link rel="stylesheet" href="infoStyle.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
@@ -14,31 +15,25 @@
 </head>
 
 <body>
-    <header>
+<header>
         <div class="header">
-            <a href="#" class="logo"><img src="Images/ImageRE.png" /></a>
+            <div class="header-left">
+                <a href="#" class="logo"><img src="Images/ImageRE.png"></a>
+                <h1><span id="header1">Unser Fahrzeuge</span></h1>
+                <h1><span id="header2">Top-Deals</span></h1>
+                <h1><span id="header3">Geschäftskunden</span></h1>
+            </div>
             <div class="header-right">
                 <div class="search-container">
-                    <input type="text" placeholder="Search..." name="search" />
+                    <input type="text" placeholder="Search..." name="search">
                 </div>
-
                 <div class="button-container">
-                    <button class="Login-button">LogIn</button>
-                    <span class="login-text">Create Account</span>
+                    <button id="loginButton" class="Login-button">LogIn / SignUp</button>
                 </div>
             </div>
         </div>
-        <!-- Navbar placed within the header -->
     </header>
 
-    <div class="navcontainer">
-        <div class="navbar">
-            <h1><span id="header1">Standorte</span></h1>
-            <h1><span id="header2">Fahrzeuge</span></h1>
-            <h1><span id="header3">Top-Deals</span></h1>
-            <h1><span id="header4">Geschäftskunden</span></h1>
-        </div>
-    </div>
     <div class="aTextContainer">
         <div class="TextContainer">
             <h1>Impressum</h1>
@@ -76,46 +71,80 @@
         </div>
     </div>
 
-    <div class="footer-container" ;>
-        <div class="footer" ;>
-            <div class="footer-heading footer-1">
-                <h2>About Us</h2>
-                <a href="#">Blog</a>
-                <a href="#">Demo</a>
-                <a href="#">Customers</a>
-                <a href="#">Investors</a>
-                <a href="#">AGB</a>
-                <a href="#">Projects</a>
-            </div>
-            <div class="footer-heading footer-2">
-                <h2>Contact Us</h2>
-                <a href="#">Jobs</a>
-                <a href="#">Contact</a>
-                <a href="#">Sponsorships</a>
-                <a href="#">Support</a>
-            </div>
-            <div class="footer-heading footer-3">
-                <h2>Social Media</h2>
-                <div class="sm">
-                    <div class="sm-group">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                    <div class="sm-group">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-email-form">
-                <h2>Join our Newsletter</h2>
-                <input type="email" placeholer="Enter your E-Mail adress" id="footer-email" />
-                <input type="submit" value="Sign Up" id="footer-email-button" />
+    <div class="footer-container">
+        <div class="footer">
+        <div class="footer-heading footer-1">
+            <h2>About Us</h2>
+            <a href="#">Blog</a>
+            <a href="#">Kunden</a>
+            <a href="Datenschutz.html">Datenschutz</a>
+            <a href="AGB.html">AGB</a>
+            <a href="Impressum.html">Impressum</a>
+        </div>
+
+        <div class="footer-heading footer-2">
+            <h2>Contact Us</h2>
+            <a href="#">Jobs</a>
+            <a href="#">Contact</a>
+            <a href="#">Sponsorships</a>
+            <a href="#">Support</a>
+        </div>
+
+        <div class="footer-heading footer-3">
+            <h2>Social Media</h2>
+            <div class="sm">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
-        <script src="home.js"></script>
+
+        <div class="footer-heading footer-4">
+            <div class="footer-email-form">
+            <h2>Join our Newsletter</h2>
+            <form>
+                <div class="input-container">
+                <input
+                    type="email"
+                    placeholder="Enter your E-Mail address"
+                    id="footer-email"
+                />
+                <input type="submit" value="Sign Up" id="footer-email-button" />
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-small">
+        <div class="sub-holder">
+            <div class="sub-container">
+                <div class="app-container">
+                    <span>Get the App</span>
+                        <div class="app-icons">
+                            <i class="fa-brands fa-app-store-ios"></i>
+                            <i class="fa-brands fa-google-play"></i>
+                        </div>
+                    </div>
+                    <div class="Copyright-container">
+                        <span>ReantEase 2023 All rights reserved</span>
+                    </div>
+                    <div class="Payment-container">
+                        <span>Payment Options</span>
+                        <div class="payment-icons">
+                            <i class="fa-brands fa-google-pay"></i>
+                            <i class="fa-brands fa-apple-pay"></i>
+                            <i class="fa-brands fa-paypal"></i>
+                            <i class="fa-brands fa-cc-mastercard"></i>
+                            <i class="fa-brands fa-cc-amex"></i>
+                            <i class="fa-brands fa-cc-visa"></i>
+                        </div>
+                    </div>
+                </div>
+            <script src="home.js"></script>
+        </div>
     </div>
 </body>
-
 </html>

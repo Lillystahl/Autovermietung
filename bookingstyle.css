@@ -185,7 +185,7 @@ textarea {
     padding: 5px;
 }
 
-.button-container {
+.b-button-container {
     width: 100%;
     text-align: center; /* Zentriert den Text und den Button */
     position: relative; /* Positionierung für das Fehlermeldungs-Element */
@@ -426,23 +426,27 @@ content{
 
 /* Footer Styles hier einfügen */
 /* SM Logos */
+.sm {
+    display: flex; /* Make the container a flex container */
+}
+
 .sm a{
 	display: flex;
     text-decoration: none;
     font-size: 25px;
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     color: #f0f0f0;
     justify-content: center;
     align-items: center;
     position: relative;
-    margin:7px;
+    margin:3px;
 }
 .sm a::before{
 	content: '';
 	position: absolute;
-	width:30px;
-	height: 30px;
+	width:35px;
+	height: 35px;
 	border-radius: 25%;
 	z-index: 1;
 	transition: transform .3s ease-in;
@@ -450,26 +454,6 @@ content{
     -webkit-text-fill-color: transparent;
 	background-clip: text;
     color: transparent;
-}
-
-.sm a:nth-child(1)::before{
-	background: #38529a;
-}
-
-.sm a:nth-child(2)::before{
-	background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
-}
-
-.sm a:nth-child(3)::before{
-	background: #1c96e9;
-}
-
-.sm a:nth-child(4)::before{
-	background: #f70000;
-}
-
-.sm a:nth-child(5)::before{
-	background: #046596;
 }
 
 .sm a:hover::before{
@@ -537,9 +521,10 @@ content{
     padding-bottom: 2rem 0 4rem 0;
     text-align: center;
     margin-top: 50px;
+    width: 100%;
 }
 
-.footer{
+.footer {
     width: 85%;
     background-color: #222223;
     color: #fff;
@@ -550,7 +535,8 @@ content{
     padding-bottom: 50px;
 }
 
-.footer-heading{
+
+.footer-heading {
     padding-top: 15px;
     display: flex;
     flex-direction: column;
@@ -558,7 +544,6 @@ content{
     align-items: center;
     flex: 1;
 }
-
 .footer-heading h2{
     margin-bottom: 2rem;
 }
@@ -583,8 +568,12 @@ content{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: center;
 }
 
+.foot-email-input{
+    background-color:  white;
+}
 .input-container {
     display: flex;
 }
@@ -600,20 +589,33 @@ content{
     margin-bottom: 1rem;
 }
 
-#footer-email::placeholder {
-    color: #b1b1b1;
+#footer-email-input{
+    background-color:  #e9e8e6;
 }
 
 #footer-email-button {
     width: 100px;
     height: 40px;
     border-radius: 5px;
-    background-color: #0fa3b1;
+    background-color:  #e9e8e6;
     outline: none;
     border: none;
-    color: #fff;
     font-size: 1rem;
 }
+
+#footer-email-button:hover {
+    cursor: pointer;
+    background-color: #9BBEC8;
+    transition: all 0.4s ease-out;
+}
+
+#footer-email,
+#footer-email-input {
+    background-color:  white; 
+    margin-right: 10px;/* Set your desired background color here */
+    /* Other styles remain the same */
+}
+
 /* Christian: ich weiß nicht ob das hier nötig ist aber mache das erstmal rein
 mit dem zeug hier kann man beim Verändern der Fenstergröße den footer anpassen
 whatever */
@@ -644,3 +646,58 @@ whatever */
     }
 }
 /* Footer Styles hier einfügen */
+.footer-small{
+    width: 85%;
+    background-color: #222223;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+.sub-holder{
+    padding-top: 30px;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    padding-bottom: 5px;
+}
+
+.app-container, .Payment-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.Copyright-container{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.app-icons, .payment-icons {
+    display: flex;
+    align-items: center;
+    gap: 5px; 
+    margin-left: 10px;
+}
+
+.sub-container {
+    display: flex;
+    justify-content: center; /* Adjust spacing between texts */
+    width: 85%; /* Take up 85% of the site's width */
+}
+
+.sub-container span {/* Align text in the center */   
+    color: white; 
+}
+
+.app-icons i,
+.payment-icons i {
+    font-size: 20px; /* Change the icon size */
+    color:  #e9e8e6; /* Change the icon color */
+    margin-left: 0;
+    margin-right: 0;
+}

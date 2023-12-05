@@ -59,65 +59,69 @@
             </div>
         </div>
     </div>
+    
     <div class="footer-container">
         <div class="footer">
-            <div class="footer-heading footer-1">
-                <h2>About Us</h2>
-                <a href="#">Blog</a>
-                <a href="#">Kunden</a>
-                <a href="#">Datenschutz</a>
-                <a href="#">AGB</a>
-                <a href="#">Impressum</a>
-            </div>
-    
-            <div class="footer-heading footer-2">
-                <h2>Contact Us</h2>
-                <a href="#">Jobs</a>
-                <a href="#">Contact</a>
-                <a href="#">Sponsorships</a>
-                <a href="#">Support</a>
-            </div>
-    
-            <div class="footer-heading footer-3">
-                <h2>Social Media</h2>
-                <div class="sm">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-    
-            <div class="footer-heading footer-4">
-                <div class="footer-email-form">
-                    <h2>Join our Newsletter</h2>
-                    <form>
-                        <div class="input-container">
-                            <input type="email" placeholder="Enter your E-Mail address" id="footer-email">
-                            <input type="submit" value="Sign Up" id="footer-email-button">
-                        </div>
-                    </form>
-                </div>
+        <div class="footer-heading footer-1">
+            <h2>About Us</h2>
+            <a href="#">Blog</a>
+            <a href="#">Kunden</a>
+            <a href="Datenschutz.html">Datenschutz</a>
+            <a href="AGB.html">AGB</a>
+            <a href="Impressum.html">Impressum</a>
+        </div>
+
+        <div class="footer-heading footer-2">
+            <h2>Contact Us</h2>
+            <a href="#">Jobs</a>
+            <a href="#">Contact</a>
+            <a href="#">Sponsorships</a>
+            <a href="#">Support</a>
+        </div>
+
+        <div class="footer-heading footer-3">
+            <h2>Social Media</h2>
+            <div class="sm">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
 
-    
-        <div class="footer">
-            <div class="sub-holder">
-                <div class="sub-container">
-                    <div class="app-container">
-                        <span>Get the App</span>
+        <div class="footer-heading footer-4">
+            <div class="footer-email-form">
+            <h2>Join our Newsletter</h2>
+            <form>
+                <div class="input-container">
+                <input
+                    type="email"
+                    placeholder="Enter your E-Mail address"
+                    id="footer-email"
+                />
+                <input type="submit" value="Sign Up" id="footer-email-button" />
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-small">
+        <div class="sub-holder">
+            <div class="sub-container">
+                <div class="app-container">
+                    <span>Get the App</span>
                         <div class="app-icons">
                             <i class="fa-brands fa-app-store-ios"></i>
                             <i class="fa-brands fa-google-play"></i>
                         </div>
                     </div>
                     <div class="Copyright-container">
-                    <span>ReantEase 2023 All rights reserved</span>
+                        <span>ReantEase 2023 All rights reserved</span>
                     </div>
                     <div class="Payment-container">
-                    <span>Payment Options</span>
+                        <span>Payment Options</span>
                         <div class="payment-icons">
                             <i class="fa-brands fa-google-pay"></i>
                             <i class="fa-brands fa-apple-pay"></i>
@@ -128,9 +132,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            <script src="home.js"></script>
         </div>
-        <script src="Registrierung.js"></script>
     </div>
 </body>
 </html>
