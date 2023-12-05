@@ -916,23 +916,26 @@ body a {
     width: 100%;
 }
 
-.footer{
+.footer {
     width: 85%;
     background-color: #222223;
     color: #fff;
     display: flex;
-    justify-content: center;
-    padding-bottom: 70px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding-bottom: 50px;
 }
 
-.footer-heading{
+
+.footer-heading {
     padding-top: 15px;
     display: flex;
     flex-direction: column;
-    margin-right:20px;
-    margin-left: 20px;
+    margin-right: 4rem;
+    align-items: center;
+    flex: 1;
 }
-
 .footer-heading h2{
     margin-bottom: 2rem;
 }
@@ -1035,35 +1038,42 @@ whatever */
     }
 }
 /* Footer Styles hier einfügen */
-.footer{
+.footer-small{
     width: 85%;
     background-color: #222223;
     color: #fff;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     margin: 0 auto;
-    padding-bottom: 70px;
 }
 .sub-holder{
     padding-top: 30px;
     width: 100%;
     justify-content: center;
     display: flex;
-    padding-bottom: 30px;
+    padding-bottom: 5px;
+}
+
+.app-container, .Payment-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
 }
 
 .Copyright-container{
-    margin-right: 60px;
-    margin-left: 60px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
-.app-container{
-    justify-content: center;
-}
-.app-icons {
+.app-icons, .payment-icons {
+    display: flex;
     align-items: center;
-    gap: 10px;
-    margin-top: 10px; /* Adjust margin as needed */
+    gap: 5px; 
+    margin-left: 10px;
 }
 
 .sub-container {
@@ -1074,15 +1084,6 @@ whatever */
 
 .sub-container span {/* Align text in the center */   
     color: white; 
-}
-
-.payment-container{
-    justify-content: center;
-}
-.payment-icons{
-    align-items: center;
-    gap: 10px;
-    margin-top: 10px; /* Adjust margin as needed */
 }
 
 .app-icons i,
