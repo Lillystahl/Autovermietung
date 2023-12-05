@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autovermietung</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly; /* Gleichmäßiger Abstand zwischen den Karten */
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .card-wrapper {
+    width: 85%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Änderung auf vier Spalten */
+    gap: 10px; /* Geringerer Abstand zwischen den Karten */
+    height: auto; /* Höhe an den Inhalt anpassen */
+}
+
+.card-product {
+    overflow: hidden;
+    background: rgb(180, 180, 180);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Änderung auf 100% Breite für responsives Design */
+}
+
+.card-product img {
+    height: 200px;
+    width: 100%; /* Änderung auf 100% Breite für responsives Design */
+    object-fit: cover;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+/* Rest des vorhandenen Codes bleibt unverändert */
+
+/* Footer Styles hier einfügen */
+/* SM Logos */
+/* ... (Dein vorhandener Footer-Code) */
+/* Footer Styles hier einfügen */
+
+
+    .car-card {
+      overflow: hidden;
+      width: 300px; /* Breiter */
+      height: 350px; /* Höher */
+      background: #fff;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      border-radius: 5px;
+      transition: transform 0.3s ease-in-out;
+      margin: 10px; /* Geringerer Abstand */
+      cursor: pointer;
+    }
+
+    .car-card:hover {
+      transform: scale(1.05);
+    }
+
+    .car-image {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+
+    .car-details {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+
+    .car-name {
+      font-size: 20px; /* Größere Schrift für den Namen */
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .key-facts {
+      font-size: 16px; /* Größere Schrift für die Schlüsselfakten */
+      line-height: 1.4;
+      opacity: .7;
+      margin-bottom: 0;
+    }
+
+    .rent-button {
+      align-self: flex-end;
+      padding: 10px;
+      background-color: #3498db;
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .rent-button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="car-card">
+    <img class="car-image" src="https://example.com/car1.jpg" alt="Car Image">
+    <div class="car-details">
+      <div class="car-name">Mercedes C-Class</div>
+      <div class="key-facts">Year: 2023</div>
+      <div class="key-facts">Mileage: 10,000 miles</div>
+      <div class="key-facts">Fuel: Gasoline</div>
+      <button class="rent-button">Rent Now</button>
+    </div>
+  </div>
+
+  <div class="car-card">
+    <img class="car-image" src="https://example.com/car2.jpg" alt="Car Image">
+    <div class="car-details">
+      <div class="car-name">BMW 3 Series</div>
+      <div class="key-facts">Year: 2023</div>
+      <div class="key-facts">Mileage: 8,000 miles</div>
+      <div class="key-facts">Fuel: Diesel</div>
+      <button class="rent-button">Rent Now</button>
+    </div>
+  </div>
+
+  <div class="car-card">
+    <img class="car-image" src="https://example.com/car2.jpg" alt="Car Image">
+    <div class="car-details">
+      <div class="car-name">BMW 3 Series</div>
+      <div class="key-facts">Year: 2023</div>
+      <div class="key-facts">Mileage: 8,000 miles</div>
+      <div class="key-facts">Fuel: Diesel</div>
+      <button class="rent-button">Rent Now</button>
+    </div>
+  </div>
+
+  <div class="car-card">
+    <img class="car-image" src="https://example.com/car2.jpg" alt="Car Image">
+    <div class="car-details">
+      <div class="car-name">BMW 3 Series</div>
+      <div class="key-facts">Year: 2023</div>
+      <div class="key-facts">Mileage: 8,000 miles</div>
+      <div class="key-facts">Fuel: Diesel</div>
+      <button class="rent-button">Rent Now</button>
+    </div>
+  </div>
+  <!-- Add more car cards as needed -->
+
+</body>
+</html>
