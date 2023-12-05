@@ -46,37 +46,117 @@
         </div>
         <div class="filter-bar">
             <h2>Filter</h2>
-        <form>
-            <div class="filter-bar-inner">
-                <span id="filter-art">Hersteller:</span>
-                <input type="text" name="Hersteller">
-                <span id="filter-art">Sitze:</span>
-                <input type="text" name="Sitze">
-                <span id="filter-art">Türen:</span>
-                <input type="text" name="Türen">
-                <span id="filter-art">Getriebe</span>
-                <input type="text" name="Getriebe">
-                <span id="filter-art">Klima:</span>
-                <input type="checkbox" name="Klima">
-                <span id="filter-art">GPS:</span>
-                <input type="checkbox" name="GPS">
-                <span id="filter-art">Alter</span>
-                <input type="text" name="Alter">
-                <span id="filter-art">Antrieb:</span>
-                <input type="text" name="Antrieb">
-                <span id="filter-art">Preis bis:</span>
-                <input type="text" name="Preis-bis">
-                <span id="filter-art">Sortierung:</span>
-                <input type="text" name="Sortierung">
-                <button type="submit">Filter Andwenden</button>
-                <button type="submit">Filter Zurücksetzen</button>
-            </div>
-        </form>
+            <form>
+                <div class="filter-bar-inner">
+                    <div class="top">
+                        <span class="filter-label">Hersteller:</span>
+                        <input type="text" name="Hersteller" class="input-long">
+                        
+                        <span class="filter-label">Sitze:</span>
+                        <input type="text" name="Sitze" class="input-short">
+
+                        <span class="filter-label">Türen:</span>
+                        <input type="text" name="Türen" class="input-short">
+
+                        <span class="filter-label">Getriebe:</span>
+                        <input type="text" name="Getriebe" class="input-long">
+
+                        <span class="filter-label">Alter:</span>
+                        <input type="text" name="Alter" class="input-short">
+
+                        <span class="filter-label">Antrieb:</span>
+                        <input type="text" name="Antrieb" class="input-long">
+
+                        <span class="filter-label">Klima:</span>
+                        <input type="checkbox" name="Klima" class="filter-checkbox">
+
+                        <span class="filter-label">GPS:</span>
+                        <input type="checkbox" name="GPS" class="filter-checkbox">
+                    </div>
+                    <div class="bottom">
+                        <span class="filter-label">Preis bis:</span>
+                        <input type="text" placeholder="Euro/Tag" name="GPS" class="input-preis">
+
+                        <span class="filter-label">Sortierung:</span>
+                        <input type="text" name="Sitze" class="input-long">
+                    </div>
+
+                    <button type="submit" class="filter-apply">Filter Anwenden</button>
+                    <button type="submit" class="filter-reset">Filter Zurücksetzen</button>
+                </div>
+            </form>
         </div>
     </div>
 
-
-
+    <div class="overview-parent">
+        <div class="overview-container">
+            <div class="overview-card">
+                <img src="Images/Ferarri Roma.jpg" alt="Product Image">
+                <div class="info-text">
+                    <span>Category: xxx</span>
+                    <span>Price: $XXXXX</span>
+                    <span>Range: XXX miles</span>
+                </div>
+                <div class="rent-button-container">
+                    <button>Rent Now
+                        <i class="fa-solid fa-car-side"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="overview-card">
+                <img src="Images/Ferarri Roma.jpg" alt="Product Image">
+                <div class="info-text">
+                    <span>Category: xxx</span>
+                    <span>Price: $XXXXX</span>
+                    <span>Range: XXX miles</span>
+                </div>
+                <div class="rent-button-container">
+                    <button>Rent Now
+                        <i class="fa-solid fa-car-side"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="overview-card">
+                <img src="Images/Ferarri Roma.jpg" alt="Product Image">
+                <div class="info-text">
+                    <span>Category: xxx</span>
+                    <span>Price: $XXXXX</span>
+                    <span>Range: XXX miles</span>
+                </div>
+                <div class="rent-button-container">
+                    <button>Rent Now
+                        <i class="fa-solid fa-car-side"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="overview-card">
+                <img src="Images/Ferarri Roma.jpg" alt="Product Image">
+                <div class="info-text">
+                    <span>Category: xxx</span>
+                    <span>Price: $XXXXX</span>
+                    <span>Range: XXX miles</span>
+                </div>
+                <div class="rent-button-container">
+                    <button>Rent Now
+                        <i class="fa-solid fa-car-side"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="overview-card">
+                <img src="Images/Ferarri Roma.jpg" alt="Product Image">
+                <div class="info-text">
+                    <span>Category: xxx</span>
+                    <span>Price: $XXXXX</span>
+                    <span>Range: XXX miles</span>
+                </div>
+                <div class="rent-button-container">
+                    <button>Rent Now
+                        <i class="fa-solid fa-car-side"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="footer-container">
         <div class="footer">
@@ -84,7 +164,7 @@
                 <h2>About Us</h2>
                 <a href="#">Blog</a>
                 <a href="#">Kunden</a>
-                <a href="#">Datenschutzbestimmung</a>
+                <a href="#">Datenschutz</a>
                 <a href="#">AGB</a>
                 <a href="#">Impressum</a>
             </div>
@@ -147,7 +227,6 @@
                         </div>
                     </div>
                 </div>
-                <script src="home.js"></script>
             </div>
         </div>
     </div>   
