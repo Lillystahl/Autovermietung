@@ -28,7 +28,11 @@
                 <!-- Last name, Firstname, Adress(split? Straße, HN, Plz, Ort?), Date of Birth, Email, Password-->
                 <input type="text" placeholder="First Name" />
                 <input type="text" placeholder="Last Name" />
-                <input type="text" placeholder="Adress" />
+                <input type="text" placeholder="Straße" />
+                <div style="display: flex; justify-content: space-between;">
+                    <input type="text" placeholder="Postleitzahl" style="width: 52%;" /> <!-- Added field for Postleitzahl -->
+                    <input type="text" placeholder="Hausnummer" style="width: 44%;" /> <!-- Added field for Hausnummer -->
+                </div>
                 <input type="date" placeholder="dd.mm.yyyy" />
                 <input type="email" placeholder="Email" />
                 <input type="password" placeholder="Password" />
