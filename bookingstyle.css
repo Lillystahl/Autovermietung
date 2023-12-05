@@ -187,9 +187,15 @@ textarea {
 
 .button-container {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-top: 20px; /* Für Abstand nach oben */
+    text-align: center; /* Zentriert den Text und den Button */
+    position: relative; /* Positionierung für das Fehlermeldungs-Element */
+    margin-top: 20px; /* Platzieren Sie den Abstand zwischen dem Text und dem Button */
+}
+
+.error-message {
+    position: absolute;
+    top: -30px; /* Anpassen Sie diesen Wert, um die vertikale Position des Texts zu ändern */
+    width: 100%;
 }
 
 .buchungs-button {
@@ -394,6 +400,27 @@ textarea {
 }
 
 /* Booking-Seiten-Stile hier einfügen */
+
+/* Confirmation-Seiten-Stile hier einfügen */
+
+content{
+    margin-top: 20px;
+    width: 100%;
+    align-items: center;
+    padding: 5px;
+    justify-content: center;
+    display: flex;
+}
+
+.confirmation-content{
+    width: 85%;
+}
+
+.my-bookings-link {
+    color: blue; /* Farbe des Links */
+}
+
+/* Confirmation-Seiten-Stile hier einfügen */
 
 /* Body Styles hier einfügen */
 

@@ -48,3 +48,26 @@ function togglePaymentIndicator() {
 
     indicator.classList.remove('complete');
 }
+
+const buchungsButton = document.querySelector('.buchungs-button');
+const errorMessageBox = document.querySelector('.error-message');
+
+buchungsButton.addEventListener('click', function() {
+    const fromDate = document.getElementById('from-date');
+    const toDate = document.getElementById('to-date');
+    const indicator = document.getElementById('indicator');
+    const confirmIndicator = document.getElementById('confirm-indicator');
+    const rechnungsadresseIndicator = document.getElementById('rechnungsadresse-indicator');
+    const zahlungsmethodeIndicator = document.getElementById('zahlungsmethode-indicator');
+
+    if (
+        indicator.classList.contains('complete') &&
+        confirmIndicator.classList.contains('complete') &&
+        rechnungsadresseIndicator.classList.contains('complete') &&
+        zahlungsmethodeIndicator.classList.contains('complete')
+    ) {
+        window.location.href = 'confirmation.html'; // Weiterleitung zur Bestätigungsseite
+    } else {
+        errorMessageBox.style.display = 'block'; // Fehlermeldung anzeigen
+    }
+});
