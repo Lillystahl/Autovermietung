@@ -914,7 +914,6 @@ body{
     color: #fff;
     display: flex;
     justify-content: center;
-    margin: 0 auto;
     padding-bottom: 70px;
 }
 
@@ -922,7 +921,8 @@ body{
     padding-top: 15px;
     display: flex;
     flex-direction: column;
-    margin-right: 5rem;
+    margin-right:20px;
+    margin-left: 20px;
 }
 
 .footer-heading h2{
@@ -949,6 +949,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: center;
 }
 
 .foot-email-input{
