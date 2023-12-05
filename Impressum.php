@@ -8,27 +8,30 @@
     <link rel="stylesheet" href="homeStyle.css"/>
     <link rel="stylesheet" href="infoStyle.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 </head>
 
 <body>
-<header>
+    <header>
         <div class="header">
             <div class="header-left">
-                <a href="#" class="logo"><img src="Images/ImageRE.png"></a>
-                <h1><span id="header1">Unser Fahrzeuge</span></h1>
-                <h1><span id="header2">Top-Deals</span></h1>
-                <h1><span id="header3">Geschäftskunden</span></h1>
+                <a href="home.php" class="logo"><img src="Images/ImageRE.png" alt="Company Logo" /></a>
+                <h1>
+                    <a href="Produktübersicht.php" id="header1">Unsere Fahrzeuge</a>
+                </h1>
+                <h1><a href="Top-deals.php" id="header2">Top-Deals</a></h1>
+                <h1>
+                    <a href="Geschaeftskunden.php" id="header3">Geschäftskunden</a>
+                </h1>
             </div>
             <div class="header-right">
                 <div class="search-container">
-                    <input type="text" placeholder="Search..." name="search">
+                    <input type="text" placeholder="Search..." name="search" />
                 </div>
                 <div class="button-container">
-                    <button id="loginButton" class="Login-button">LogIn / SignUp</button>
+                <a href="Registrierung.php" class="Login-button">LogIn / SignUp</a>
                 </div>
             </div>
         </div>

@@ -12,20 +12,24 @@
 </head>
 
 <body>
-    <header>
+<header>
         <div class="header">
             <div class="header-left">
-                <a href="#" class="logo"><img src="Images/ImageRE.png"></a>
-                <h1><span id="header1">Unsere Fahrzeuge</span></h1>
-                <h1><span id="header2">Top-Deals</span></h1>
-                <h1><span id="header3">Geschäftskunden</span></h1>
+                <a href="home.php" class="logo"><img src="Images/ImageRE.png" alt="Company Logo" /></a>
+                <h1>
+                    <a href="Produktübersicht.php" id="header1">Unsere Fahrzeuge</a>
+                </h1>
+                <h1><a href="Top-deals.php" id="header2">Top-Deals</a></h1>
+                <h1>
+                    <a href="Geschaeftskunden.php" id="header3">Geschäftskunden</a>
+                </h1>
             </div>
             <div class="header-right">
                 <div class="search-container">
-                    <input type="text" placeholder="Search..." name="search">
+                    <input type="text" placeholder="Search..." name="search" />
                 </div>
                 <div class="button-container">
-                    <button id="loginButton" class="Login-button">LogIn / SignUp</button>
+                <a href="Registrierung.php" class="Login-button">LogIn / SignUp</a>
                 </div>
             </div>
         </div>

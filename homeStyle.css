@@ -143,25 +143,6 @@ input[type="text" i] {
 /* Header Styles hier einfügen */
 
 /* Body Styles hier einfügen */
-button{
-    border-radius: 5px;
-    background-color: #e9e8e6;
-}
-.background {
-    /* Your existing background styles */
-    /* Ensure it covers the entire viewport */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 50; /* Ensure it's above other content */
-}
-
-.background.active {
-    backdrop-filter: blur(10px); /* Adjust the blur effect */
-}
-
-
 body{
     margin: 0px;
 }

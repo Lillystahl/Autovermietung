@@ -16,7 +16,7 @@
     <header>
         <div class="header">
             <div class="header-left">
-                <a href="#" class="logo"><img src="Images/ImageRE.png" /></a>
+                <a href="home.php" class="logo"><img src="Images/ImageRE.png" alt="Company Logo" /></a>
                 <h1>
                     <a href="Produktübersicht.php" id="header1">Unsere Fahrzeuge</a>
                 </h1>
