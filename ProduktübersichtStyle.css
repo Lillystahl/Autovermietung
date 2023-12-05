@@ -255,3 +255,89 @@ body {
     background-color: #9BBEC8;
     transition: all 0.4s ease-out;
 }
+
+
+
+
+
+.card-fullwidth {
+    width: 65%;
+    margin: 20px auto;
+    display: flex;
+    background: rgb(255, 255, 255);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    position: relative;
+  }
+  
+  .card-image {
+    width: 33%;
+    overflow: hidden;
+  }
+  
+  .card-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px 0 0 5px;
+  }
+  
+  .card-details {
+    width: 33%;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+  
+  .card-details h2 {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .card-details ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .card-details li {
+    font-size: 18px;
+    line-height: 1.4;
+    opacity: 0.7;
+    margin-bottom: 8px;
+  }
+  
+  .card-price {
+    width: 33%;
+    padding: 15px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  
+  .card-price p {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .card-booking {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  .card-booking button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .card-booking button:hover {
+    background-color: #45a049;
+  }
+  
