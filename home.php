@@ -26,7 +26,7 @@
                     <input type="text" placeholder="Search..." name="search">
                 </div>
                 <div class="button-container">
-                    <button id="loginButton" class="Login-button">LogIn / SignUp</button>
+                <a href="Registrierung.php" class="Login-button">LogIn / SignUp</a>
                 </div>
             </div>
         </div>

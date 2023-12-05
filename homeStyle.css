@@ -99,8 +99,13 @@ input[type="text" i] {
     margin-right: 10px;
 }
 
+.button-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .Login-button {
-    padding: 10px 30px;
     border-radius: 5px;
     background-color:  #e9e8e6;
     color: black; /* Christian: Fixed Color jetzt weiß. missing ;*/
@@ -109,6 +114,7 @@ input[type="text" i] {
     height: 40px;
     width: 200px;
     border: none;
+    align-items: center;
 }
 
 .Login-button:hover{
