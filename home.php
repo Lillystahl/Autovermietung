@@ -355,9 +355,9 @@
           <h2>About Us</h2>
           <a href="#">Blog</a>
           <a href="#">Kunden</a>
-          <a href="http://127.0.0.1:5500/Datenschutz.html">Datenschutz</a>
-          <a href="http://127.0.0.1:5500/AGB.html">AGB</a>
-          <a href="http://127.0.0.1:5500/Impressum.html">Impressum</a>
+          <a href="Datenschutz.html">Datenschutz</a>
+          <a href="AGB.html">AGB</a>
+          <a href="Impressum.html">Impressum</a>
         </div>
 
         <div class="footer-heading footer-2">
