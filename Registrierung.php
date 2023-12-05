@@ -132,7 +132,8 @@
                         </div>
                     </div>
                 </div>
-            <script src="home.js"></script>
+            </div>
+        <script src="Registrierung.js"></script>
         </div>
     </div>
 </body>
