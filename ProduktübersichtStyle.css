@@ -189,7 +189,7 @@ body {
     margin-bottom: 2px; /* Optional: Add some space below the checkboxes */
 }
 
-  .overview-parent {
+.overview-parent {
     display: flex;
     width: 100%;
     align-items: center;
@@ -200,144 +200,68 @@ body {
 .overview-container {
     display: flex;
     width: 85%;
-    overflow: hidden;
-    gap: 50px; /* Add gap between cards */
+    justify-content: space-between; /* Distribute space between cards */
 }
 
-.overview-card {
-    flex: 1;
-    max-width: 20%; /* Adjust the width to fit five cards within the container */
-    height: 340px;
+.car-card {
+    width: calc((85%) / 5); /* Calculate card width based on container width and gap */
+    height: 350px;
     background-color: rgb(180, 180, 180);
-    border-radius: 5px;
-    border: 2px solid black;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.overview-card img {
-    width: 280px;
-    height: 250px; /* Adjust as needed */ /* Increase or decrease margin as desired */
     border-radius: 5px;
-    margin-top: 10px;
-}
-
-.info-text {
-    margin-top: 25px; /* Add margin between image and text */
-}
-
-.info-text span {
-    display: block;
-    margin-bottom: 10px; /* Adjust vertical spacing */
-}
-
-.rent-button-container {
-    margin-top: 20px; /* Adjust margin as needed */
-    text-align: center; /* Center the button horizontally */
-    width: 100%;
-}
-
-.rent-button-container button {
-    padding: 10px 20px;
-    background-color: black;
-    color: white;
-    border: none;
-    border-radius: 5px 5px 0px 0px;
+    transition: transform 0.3s ease-in-out;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
 }
 
-.rent-button-container button:hover {
-    cursor: pointer;
-    background-color: #9BBEC8;
-    transition: all 0.4s ease-out;
+.car-card:hover {
+    transform: scale(1.05);
 }
 
-
-
-
-
-.card-fullwidth {
-    width: 65%;
-    margin: 20px auto;
-    display: flex;
-    background: rgb(255, 255, 255);
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
-    position: relative;
-  }
-  
-  .card-image {
-    width: 33%;
-    overflow: hidden;
-  }
-  
-  .card-image img {
+  .car-image {
     width: 100%;
-    height: auto;
+    height: 150px;
     object-fit: cover;
-    border-radius: 5px 0 0 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
   }
-  
-  .card-details {
-    width: 33%;
-    padding: 15px;
-    box-sizing: border-box;
+
+  .car-details {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
   }
-  
-  .card-details h2 {
-    font-size: 25px;
+
+  .car-name {
+    font-size: 20px; /* Größere Schrift für den Namen */
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
-  
-  .card-details ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .card-details li {
-    font-size: 18px;
+
+  .key-facts {
+    font-size: 16px; /* Größere Schrift für die Schlüsselfakten */
     line-height: 1.4;
-    opacity: 0.7;
-    margin-bottom: 8px;
+    opacity: .7;
+    margin-bottom: 0;
   }
-  
-  .card-price {
-    width: 33%;
-    padding: 15px;
-    box-sizing: border-box;
+
+  .rent-button {
+    align-self: flex-end;
+    padding: 10px;
+    background-color:  #e9e8e6;
+    color: black;
     text-align: center;
-  }
-  
-  .card-price p {
-    font-size: 30px;
-    font-weight: bold;
-    margin: 0;
-  }
-  
-  .card-booking {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-  }
-  
-  .card-booking button {
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    background-color: #4CAF50;
-    color: white;
+    text-decoration: none;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s;
   }
-  
-  .card-booking button:hover {
-    background-color: #45a049;
+
+  .rent-button:hover {
+    background-color: #9BBEC8;
   }
   

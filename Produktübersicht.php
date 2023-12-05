@@ -94,85 +94,58 @@
 
     <div class="overview-parent">
         <div class="overview-container">
-            <div class="overview-card">
-                <img src="Images/Ferarri Roma.jpg" alt="Product Image">
-                <div class="info-text">
-                    <span>Category: xxx</span>
-                    <span>Price: $XXXXX</span>
-                    <span>Range: XXX miles</span>
-                </div>
-                <div class="rent-button-container">
-                    <button>Rent Now
-                        <i class="fa-solid fa-car-side"></i>
-                    </button>
+            <div class="car-card">
+                <img class="car-image" src="https://example.com/car1.jpg" alt="Car Image">
+                <div class="car-details">
+                    <div class="car-name">Mercedes C-Class</div>
+                    <div class="key-facts">Year: 2023</div>
+                    <div class="key-facts">Mileage: 10,000 miles</div>
+                    <div class="key-facts">Fuel: Gasoline</div>
+                    <button class="rent-button">Rent Now</button>
                 </div>
             </div>
-            <div class="overview-card">
-                <img src="Images/Ferarri Roma.jpg" alt="Product Image">
-                <div class="info-text">
-                    <span>Category: xxx</span>
-                    <span>Price: $XXXXX</span>
-                    <span>Range: XXX miles</span>
-                </div>
-                <div class="rent-button-container">
-                    <button>Rent Now
-                        <i class="fa-solid fa-car-side"></i>
-                    </button>
+            <div class="car-card">
+                <img class="car-image" src="https://example.com/car1.jpg" alt="Car Image">
+                <div class="car-details">
+                    <div class="car-name">Mercedes C-Class</div>
+                    <div class="key-facts">Year: 2023</div>
+                    <div class="key-facts">Mileage: 10,000 miles</div>
+                    <div class="key-facts">Fuel: Gasoline</div>
+                    <button class="rent-button">Rent Now</button>
                 </div>
             </div>
-            <div class="overview-card">
-                <img src="Images/Ferarri Roma.jpg" alt="Product Image">
-                <div class="info-text">
-                    <span>Category: xxx</span>
-                    <span>Price: $XXXXX</span>
-                    <span>Range: XXX miles</span>
-                </div>
-                <div class="rent-button-container">
-                    <button>Rent Now
-                        <i class="fa-solid fa-car-side"></i>
-                    </button>
+            <div class="car-card">
+                <img class="car-image" src="https://example.com/car1.jpg" alt="Car Image">
+                <div class="car-details">
+                    <div class="car-name">Mercedes C-Class</div>
+                    <div class="key-facts">Year: 2023</div>
+                    <div class="key-facts">Mileage: 10,000 miles</div>
+                    <div class="key-facts">Fuel: Gasoline</div>
+                    <button class="rent-button">Rent Now</button>
                 </div>
             </div>
-            <div class="overview-card">
-                <img src="Images/Ferarri Roma.jpg" alt="Product Image">
-                <div class="info-text">
-                    <span>Category: xxx</span>
-                    <span>Price: $XXXXX</span>
-                    <span>Range: XXX miles</span>
-                </div>
-                <div class="rent-button-container">
-                    <button>Rent Now
-                        <i class="fa-solid fa-car-side"></i>
-                    </button>
+            <div class="car-card">
+                <img class="car-image" src="https://example.com/car1.jpg" alt="Car Image">
+                <div class="car-details">
+                    <div class="car-name">Mercedes C-Class</div>
+                    <div class="key-facts">Year: 2023</div>
+                    <div class="key-facts">Mileage: 10,000 miles</div>
+                    <div class="key-facts">Fuel: Gasoline</div>
+                    <button class="rent-button">Rent Now</button>
                 </div>
             </div>
-            <div class="overview-card">
-                <img src="Images/Ferarri Roma.jpg" alt="Product Image">
-                <div class="info-text">
-                    <span>Category: xxx</span>
-                    <span>Price: $XXXXX</span>
-                    <span>Range: XXX miles</span>
-                </div>
-                <div class="rent-button-container">
-                    <button>Rent Now
-                        <i class="fa-solid fa-car-side"></i>
-                    </button>
+            <div class="car-card">
+                <img class="car-image" src="https://example.com/car1.jpg" alt="Car Image">
+                <div class="car-details">
+                    <div class="car-name">Mercedes C-Class</div>
+                    <div class="key-facts">Year: 2023</div>
+                    <div class="key-facts">Mileage: 10,000 miles</div>
+                    <div class="key-facts">Fuel: Gasoline</div>
+                    <button class="rent-button">Rent Now</button>
                 </div>
             </div>
         </div>
     </div>
-
-    
-  <div class="car-card">
-    <img class="car-image" src="https://example.com/car1.jpg" alt="Car Image">
-    <div class="car-details">
-      <div class="car-name">Mercedes C-Class</div>
-      <div class="key-facts">Year: 2023</div>
-      <div class="key-facts">Mileage: 10,000 miles</div>
-      <div class="key-facts">Fuel: Gasoline</div>
-      <button class="rent-button">Rent Now</button>
-    </div>
-  </div>
 
     <div class="footer-container">
         <div class="footer">
@@ -246,7 +219,6 @@
                         </div>
                     </div>
                 </div>
-            <script src="home.js"></script>
         </div>
     </div>
 </body>
