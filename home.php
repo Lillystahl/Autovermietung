@@ -1,3 +1,13 @@
+
+<?php
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    require_once('db_connect.php');
+    require_once('process_form.php');
+
+    processSearchForm($conn); // Make sure this function call is before any HTML content is output
+?>
+
 <!DOCTYPE html>
 <html lang="de">
 
@@ -93,13 +103,13 @@
         <div class="barcontainer">
             <div class="search-bar">
                 <h2>Fahrzeug mieten</h2>
-                <form>
+                <form action="" method="POST"> <!-- Sends data to 'process_form.php' via POST method -->
                     <div class="searchbar-inner">
-                        <input type="text" placeholder="Location" name="location" />
+                        <input type="text" placeholder="Location" name="standort-location" />
                         <input type="text" placeholder="Fahrzeugart" name="vehicle-type" />
                         <input type="date" placeholder="Start-Datum" name="start-date" />
                         <input type="date" placeholder="End-Datum" name="end-date" />
-                        <button type="submit">Suchen</button>
+                        <button type="submit" name="filterbar-submit">Suchen</button>
                     </div>
                 </form>
             </div>
