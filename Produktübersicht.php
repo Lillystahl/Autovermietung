@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="ProduktübersichtStyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="Produktübersicht.js" defer></script>
 </head>
 
 <body>
@@ -146,6 +147,23 @@
             </div>
         </div>
     </div>
+
+    <div class="car-details-overlay" id="carDetailsOverlay">
+    <div class="car-details-popup" id="carDetailsPopup">
+        <span class="close-button"onclick="closeCarDetails()">&times;</span>
+        <div class="popup-content">
+            <!-- Hier könnten die zusätzlichen Produktinformationen und Bilder sein -->
+            <img class="car-image-popup" src="https://example.com/car1.jpg" alt="Car Image">
+            <div class="car-details-popup-content">
+                <div class="car-name-popup">Mercedes C-Class</div>
+                <div class="key-facts-popup">Year: 2023</div>
+                <div class="key-facts-popup">Mileage: 10,000 miles</div>
+                <!-- Weitere Details hier einfügen -->
+                <button class="rent-button-popup">Rent Now</button>
+            </div>
+        </div>
+    </div>
+</div>
 
     <div class="footer-container">
         <div class="footer">

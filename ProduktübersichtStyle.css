@@ -265,3 +265,61 @@ body {
     background-color: #9BBEC8;
   }
   
+  /* Product-Details Styles*/
+  .car-details-overlay {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow: auto;
+}
+
+.car-details-popup {
+    background-color: #f5f5f5; /* Graue Farbe der Karten übernehmen */
+    margin: 5% auto; /* Zentrierung und Abstand von oben erhöhen */
+    padding: 50px; /* Mehr Innenabstand */
+    border-radius: 10px; /* Runde Ecken */
+    width: 90%; /* Breite anpassen */
+    max-width: 1200px; /* Maximalbreite anpassen */
+    min-height: 50vh; /* Mindesthöhe in Relation zur Bildschirmhöhe */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Schatten wie bei den Karten */
+    position: fixed;
+    top: 50px; /* Anpassen der oberen Position des Popups */
+    left: 50%; /* Zentrieren des Popups horizontal */
+    transform: translateX(-50%);
+}
+
+/* Stile für den Inhalt der vergrößerten Ansicht */
+.popup-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.car-image-popup {
+    width: 45%; /* Breite des Bildes anpassen */
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.car-details-popup-content {
+    width: 50%;
+    padding-left: 20px;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px; /* Abstand vom oberen Rand innerhalb des Popups */
+    right: 10px; /* Abstand vom rechten Rand innerhalb des Popups */
+    cursor: pointer;
+    font-size: 24px;
+    color: #888;
+    z-index: 99999; /* Stellen sicher, dass das Symbol über allem liegt */
+}
+
+/* Product-Details Styles*/
