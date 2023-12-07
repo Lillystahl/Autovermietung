@@ -18,14 +18,17 @@ function processSearchForm($conn) {
             
             // debug für geht, keine daten für input oder Invalid input (Number, Special Char)
             if ($result) {
-                echo "<script>";
-                echo "console.log('Data fetched successfully: ', " . json_encode($result) . ");";
-                echo "</script>";
+                // Extract the location value
+                $location = $loc;
+
+                // Redirect to a new page with the location as a GET parameter
+                header("Location: Produktübersicht.php?location=" . urlencode($location));
+                exit();
             } else {
                 echo "<script>";
                 echo "console.log('No data found for location: $loc');";
                 echo "</script>";
-            }
+            } 
         } else {
             echo "<script>";
             echo "console.log('Invalid input for location.');";

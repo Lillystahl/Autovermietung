@@ -210,7 +210,7 @@
                 </div>
             </div>
             <div class="map-text">
-                <h2>Unsere Standorte</h2>
+                <h1 class="headline">Unsere Standorte</h1>
                 <ul>
                     <li class="city" data-marker="berlin">Berlin</li>
                     <li class="city" data-marker="bochum">Bochum</li>

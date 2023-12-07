@@ -94,56 +94,23 @@
 
     <div class="overview-parent">
         <div class="overview-container">
-            <div class="car-card">
-                <img class="car-image" src="https://example.com/car1.jpg" alt="Car Image">
-                <div class="car-details">
-                    <div class="car-name">Mercedes C-Class</div>
-                    <div class="key-facts">Year: 2023</div>
-                    <div class="key-facts">Mileage: 10,000 miles</div>
-                    <div class="key-facts">Fuel: Gasoline</div>
-                    <button class="rent-button">Rent Now</button>
-                </div>
-            </div>
-            <div class="car-card">
-                <img class="car-image" src="https://example.com/car1.jpg" alt="Car Image">
-                <div class="car-details">
-                    <div class="car-name">Mercedes C-Class</div>
-                    <div class="key-facts">Year: 2023</div>
-                    <div class="key-facts">Mileage: 10,000 miles</div>
-                    <div class="key-facts">Fuel: Gasoline</div>
-                    <button class="rent-button">Rent Now</button>
-                </div>
-            </div>
-            <div class="car-card">
-                <img class="car-image" src="https://example.com/car1.jpg" alt="Car Image">
-                <div class="car-details">
-                    <div class="car-name">Mercedes C-Class</div>
-                    <div class="key-facts">Year: 2023</div>
-                    <div class="key-facts">Mileage: 10,000 miles</div>
-                    <div class="key-facts">Fuel: Gasoline</div>
-                    <button class="rent-button">Rent Now</button>
-                </div>
-            </div>
-            <div class="car-card">
-                <img class="car-image" src="https://example.com/car1.jpg" alt="Car Image">
-                <div class="car-details">
-                    <div class="car-name">Mercedes C-Class</div>
-                    <div class="key-facts">Year: 2023</div>
-                    <div class="key-facts">Mileage: 10,000 miles</div>
-                    <div class="key-facts">Fuel: Gasoline</div>
-                    <button class="rent-button">Rent Now</button>
-                </div>
-            </div>
-            <div class="car-card">
-                <img class="car-image" src="https://example.com/car1.jpg" alt="Car Image">
-                <div class="car-details">
-                    <div class="car-name">Mercedes C-Class</div>
-                    <div class="key-facts">Year: 2023</div>
-                    <div class="key-facts">Mileage: 10,000 miles</div>
-                    <div class="key-facts">Fuel: Gasoline</div>
-                    <button class="rent-button">Rent Now</button>
-                </div>
-            </div>
+        <?php
+        // Place the PHP code that handles the fetched location here
+        if (isset($_GET['location'])) {
+            $location = urldecode($_GET['location']);
+
+            echo '<div class="car-card">';
+            echo '<img class="car-image" src="https://example.com/car1.jpg" alt="Car Image">';
+            echo '<div class="car-details">';
+            echo '<div class="car-name">Mercedes C-Class</div>';
+            echo '<div class="Location">Location: ' . $location . '</div>'; // Display fetched location here
+            echo '<div class="key-facts">Year: 2023</div>';
+            echo '<div class="key-facts">Mileage: 10,000 miles</div>';
+            echo '<div class="key-facts">Fuel: Gasoline</div>';
+            echo '<button class="rent-button">Rent Now</button>';
+            echo '</div></div>';
+        }
+        ?>
         </div>
     </div>
 
