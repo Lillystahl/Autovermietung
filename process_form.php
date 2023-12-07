@@ -37,3 +37,13 @@ function processSearchForm($conn) {
     }
 }
 
+
+function getCarsByCategory($conn, $category) {
+    // SQL query to retrieve cars based on the category
+    $stmt = $conn->prepare("SELECT * FROM categories WHERE type = :category");
+    $stmt->bindParam(':category', $category);
+    $stmt->execute();
+
+    // Fetch the car details
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}

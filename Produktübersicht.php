@@ -1,3 +1,10 @@
+<?php
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    require_once('db_connect.php');
+    require_once('process_form.php');
+?>
+
 <!DOCTYPE html>
 <html lang="de">
 
@@ -110,6 +117,33 @@
             echo '<div class="key-facts">Fuel: Gasoline</div>';
             echo '<button class="rent-button">Rent Now</button>';
             echo '</div></div>';
+        }
+        ?>
+
+        <?php
+        // Place the PHP code that handles the fetched cars here
+        if (isset($_GET['category'])) {
+            // Include your database connection and the getCarsByCategory function here
+        
+            // Get the category from the URL
+            $category = $_GET['category'];
+        
+            // Get cars by category using the function
+            $cars = getCarsByCategory($conn, $category);
+        
+            // Display the fetched cars
+            foreach ($cars as $car) {
+                echo '<div class="car-card">';
+                echo '<img class="car-image" src="' . (isset($car['image']) ? $car['image'] : '') . '" alt="' . (isset($car['name']) ? $car['name'] : '') . '">';
+                echo '<div class="car-details">';
+                echo '<div class="car-name">' . (isset($car['name']) ? $car['name'] : '') . '</div>';
+                // Display other car details as needed
+                echo '<div class="key-facts">Year: ' . (isset($car['year']) ? $car['year'] : '') . '</div>';
+                echo '<div class="key-facts">Mileage: ' . (isset($car['mileage']) ? $car['mileage'] : '') . '</div>';
+                echo '<div class="key-facts">Fuel: ' . (isset($car['fuel']) ? $car['fuel'] : '') . '</div>';
+                echo '<button class="rent-button">Rent Now</button>';
+                echo '</div></div>';
+            }
         }
         ?>
         </div>

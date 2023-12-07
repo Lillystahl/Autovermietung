@@ -5,7 +5,11 @@
     require_once('db_connect.php');
     require_once('process_form.php');
 
-    processSearchForm($conn); // Make sure this function call is before any HTML content is output
+    // Check if $_GET['category'] is set, otherwise initialize $category as empty
+    $category = isset($_GET['category']) ? $_GET['category'] : '';
+
+    processSearchForm($conn);// Make sure this function call is before any HTML content is output
+    getCarsByCategory($conn, $category)// Make sure this function call is before any HTML content is output
 ?>
 
 <!DOCTYPE html>
@@ -120,10 +124,10 @@
     <div class="card-container">
         <div class="card-wrapper">
             <div class="card-product">
-                <a href="Produktübersicht.php">
+                <a href="Produktübersicht.php?category=Cabrio">
                     <img src="Images/Ferarri Roma.jpg" alt="Auto" />
                     <div class="card-product-infos">
-                        <h2>Kleinwagen</h2>
+                        <h2>Cabrio</h2>
                         <p>
                             Product description with <strong>relevant info</strong> only.
                         </p>
@@ -131,10 +135,10 @@
                 </a>
             </div>
             <div class="card-product">
-                <a href="Produktübersicht.php">
+                <a href="Produktübersicht.php?category=SUV">
                     <img src="Images/Ferarri Roma.jpg" alt="Auto" />
                     <div class="card-product-infos">
-                        <h2>Limousinen</h2>
+                        <h2>SUV</h2>
                         <p>
                             Product description with <strong>relevant info</strong> only.
                         </p>
@@ -142,10 +146,10 @@
                 </a>
             </div>
             <div class="card-product">
-                <a href="Produktübersicht.php">
+                <a href="Produktübersicht.php?category=Combi">
                     <img src="Images/Ferarri Roma.jpg" alt="Auto" />
                     <div class="card-product-infos">
-                        <h2>Transporter</h2>
+                        <h2>Combi</h2>
                         <p>
                             Product description with <strong>relevant info</strong> only.
                         </p>
@@ -153,10 +157,10 @@
                 </a>
             </div>
             <div class="card-product">
-                <a href="Produktübersicht.php">
+                <a href="Produktübersicht.php?category=Mehrsitzer">
                     <img src="Images/Ferarri Roma.jpg" alt="Auto" />
                     <div class="card-product-infos">
-                        <h2>Cabrios</h2>
+                        <h2>Mehrsitzer</h2>
                         <p>
                             Product description with <strong>relevant info</strong> only.
                         </p>
@@ -164,10 +168,10 @@
                 </a>
             </div>
             <div class="card-product">
-                <a href="Produktübersicht.php">
+                <a href="Produktübersicht.php?category=Coupe">
                     <img src="Images/Ferarri Roma.jpg" alt="Auto" />
                     <div class="card-product-infos">
-                        <h2>Sportwagen</h2>
+                        <h2>Coupe</h2>
                         <p>
                             Product description with <strong>relevant info</strong> only.
                         </p>
@@ -175,10 +179,10 @@
                 </a>
             </div>
             <div class="card-product">
-                <a href="Produktübersicht.php">
+                <a href="Produktübersicht.php?category=Limousine">
                     <img src="Images/Ferarri Roma.jpg" alt="Auto" />
                     <div class="card-product-infos">
-                        <h2>E-Fahrzeuge</h2>
+                        <h2>Limousine</h2>
                         <p>
                             Product description with <strong>relevant info</strong> only.
                         </p>
