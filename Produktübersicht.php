@@ -3,6 +3,7 @@
     ini_set('display_errors', 1);
     require_once('db_connect.php');
     require_once('process_form.php');
+    fetchCarsFromURLParams($conn)
 ?>
 
 <!DOCTYPE html>
@@ -102,50 +103,17 @@
 
     <div class="overview-parent">
         <div class="overview-container">
-        <?php
-        // Place the PHP code that handles the fetched location here
-        if (isset($_GET['location'])) {
-            $location = urldecode($_GET['location']);
-
-            echo '<div class="car-card">';
-            echo '<img class="car-image" src="https://example.com/car1.jpg" alt="Car Image">';
-            echo '<div class="car-details">';
-            echo '<div class="car-name">Mercedes C-Class</div>';
-            echo '<div class="Location">Location: ' . $location . '</div>'; // Display fetched location here
-            echo '<div class="key-facts">Year: 2023</div>';
-            echo '<div class="key-facts">Mileage: 10,000 miles</div>';
-            echo '<div class="key-facts">Fuel: Gasoline</div>';
-            echo '<button class="rent-button">Rent Now</button>';
-            echo '</div></div>';
-        }
-        ?>
-
-        <?php
-        // Place the PHP code that handles the fetched cars here
-        if (isset($_GET['category'])) {
-            // Include your database connection and the getCarsByCategory function here
-        
-            // Get the category from the URL
-            $category = $_GET['category'];
-        
-            // Get cars by category using the function
-            $cars = getCarsByCategory($conn, $category);
-        
-            // Display the fetched cars
-            foreach ($cars as $car) {
-                echo '<div class="car-card">';
-                echo '<img class="car-image" src="' . (isset($car['image']) ? $car['image'] : '') . '" alt="' . (isset($car['name']) ? $car['name'] : '') . '">';
-                echo '<div class="car-details">';
-                echo '<div class="car-name">' . (isset($car['name']) ? $car['name'] : '') . '</div>';
-                // Display other car details as needed
-                echo '<div class="key-facts">Year: ' . (isset($car['year']) ? $car['year'] : '') . '</div>';
-                echo '<div class="key-facts">Mileage: ' . (isset($car['mileage']) ? $car['mileage'] : '') . '</div>';
-                echo '<div class="key-facts">Fuel: ' . (isset($car['fuel']) ? $car['fuel'] : '') . '</div>';
-                echo '<button class="rent-button">Rent Now</button>';
-                echo '</div></div>';
-            }
-        }
-        ?>
+            <div class="car-card">
+                <img class="car-image" src="https://example.com/car1.jpg" alt="Car Image">
+                <div class="car-details">
+                    <div class="Car Modell">Mercedes C-Class</div>
+                    <div class="Location">Location: xyz</div>
+                    <div class="key-facts">Year: 2023</div>
+                    <div class="key-facts">Mileage: 10,000 miles</div>
+                    <div class="key-facts">Fuel: Gasoline</div>
+                    <button class="rent-button">Rent Now</button>
+                </div>
+            </div>
         </div>
     </div>
 

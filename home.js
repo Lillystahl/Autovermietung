@@ -1,9 +1,10 @@
-// JavaScript code for next and previous buttons (slider functionality)
 // Check if the page is the homepage and reset the form fields
 if (window.location.href.indexOf("home.php") > -1) {
     document.addEventListener("DOMContentLoaded", function() {
         let form = document.querySelector('.searchbar-inner form');
-        form.reset();
+        if (form) {
+            form.reset();
+        }
     });
 }
 

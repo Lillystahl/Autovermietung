@@ -1,49 +1,61 @@
 <?php
-// function to read user inputs from the homepage filter bar and process it to the database
-// Die function akzeptiert den parameter conn
-function processSearchForm($conn) {
-    if(isset($_POST['filterbar-submit'])) {
+// process_form.php
 
-        //Validiert den User input (kann nicht leer sein, muss alphabetische Zeichen haben)
+function processSearchForm() {
+    if (isset($_POST['filterbar-submit'])) {
         $loc = filter_input(INPUT_POST, 'standort-location', FILTER_SANITIZE_SPECIAL_CHARS);
-        if (!empty($loc) && ctype_alpha($loc)) {
-            // Process and sanitize the data as needed before using in SQL query
-            $stmt = $conn->prepare("SELECT * FROM location WHERE loc_name = :loc");
-            $stmt->bindParam(':loc', $loc);
-            
-            $stmt->execute();
+        $vehicleType = filter_input(INPUT_POST, 'vehicle-type', FILTER_SANITIZE_SPECIAL_CHARS);
+        $startDate = filter_input(INPUT_POST, 'start-date', FILTER_SANITIZE_SPECIAL_CHARS);
+        $endDate = filter_input(INPUT_POST, 'end-date', FILTER_SANITIZE_SPECIAL_CHARS);
 
-            //Packt die Outputs in einen arry
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            
-            // debug für geht, keine daten für input oder Invalid input (Number, Special Char)
-            if ($result) {
-                // Extract the location value
-                $location = $loc;
+        // Check if at least one of location or vehicle type is provided and valid
+        if ((!empty($loc) && ctype_alpha($loc)) || (!empty($vehicleType) && ctype_alpha($vehicleType))) {
+            // Build the query string with the search parameters
+            $queryString = http_build_query([
+                'location' => $loc,
+                'vehicle-type' => $vehicleType,
+                'start-date' => $startDate,
+                'end-date' => $endDate
+                // Add other parameters...
+            ]);
 
-                // Redirect to a new page with the location as a GET parameter
-                header("Location: Produktübersicht.php?location=" . urlencode($location));
-                exit();
-            } else {
-                echo "<script>";
-                echo "console.log('No data found for location: $loc');";
-                echo "</script>";
-            } 
+            // Redirect to Produktübersicht.php with the assembled query string
+            header("Location: Produktübersicht.php?" . $queryString);
+            exit();
         } else {
-            echo "<script>";
-            echo "console.log('Invalid input for location.');";
-            echo "</script>";
+            // Invalid input for location or vehicle type
+            echo "<script>alert('Invalid input for location or vehicle type.');</script>";
         }
     }
 }
 
+function fetchCarsFromURLParams($conn) {
+    if(isset($_GET['location']) && isset($_GET['vehicle-type'])) {
+        $location = $_GET['location'];
+        $vehicleType = $_GET['vehicle-type'];
 
-function getCarsByCategory($conn, $category) {
-    // SQL query to retrieve cars based on the category
-    $stmt = $conn->prepare("SELECT * FROM categories WHERE type = :category");
-    $stmt->bindParam(':category', $category);
-    $stmt->execute();
+        // Prepare the SQL statement with necessary joins
+        $sql = "SELECT vehicles.*, types.*, location.*
+                FROM vehicles
+                JOIN types ON vehicles.type_id = types.type_id
+                JOIN location ON vehicles.location_id = location.location_id
+                JOIN categories ON types.category_id = categories.category_id
+                WHERE categories.type = :vehicleType
+                AND location.loc_name = :location";
 
-    // Fetch the car details
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':location', $location, PDO::PARAM_STR);
+        $stmt->bindParam(':vehicleType', $vehicleType, PDO::PARAM_STR);
+        $stmt->execute();
+
+        // Fetch the result
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Print the retrieved parameters and the result to the console
+        echo "<script>";
+        echo "console.log('Location:', '" . $location . "');";
+        echo "console.log('Vehicle Type:', '" . $vehicleType . "');";
+        echo "console.log('Cars:', " . json_encode($result) . ");";
+        echo "</script>";
+    }
 }

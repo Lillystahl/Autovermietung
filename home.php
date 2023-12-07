@@ -1,20 +1,14 @@
-
 <?php
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
     require_once('db_connect.php');
     require_once('process_form.php');
 
-    // Check if $_GET['category'] is set, otherwise initialize $category as empty
-    $category = isset($_GET['category']) ? $_GET['category'] : '';
-
-    processSearchForm($conn);// Make sure this function call is before any HTML content is output
-    getCarsByCategory($conn, $category)// Make sure this function call is before any HTML content is output
+    processSearchForm();
 ?>
 
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
