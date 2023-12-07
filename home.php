@@ -245,65 +245,70 @@
                             <img src="Images/customer1.jpg" alt="Profilbild" class="profile-pic" />
                             <h3 class="customer-name">Max Mustermann</h3>
                             <div class="rating">
-                                <span class="stars" data-rating="5">&#9733;&#9733;&#9733;&#9733;&#9733;</span
-                  >
+                                <span class="stars" data-rating="5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                            </div>
+                        </div>
+                        <p class="review-text">
+                            "Tolle Auswahl an Fahrzeugen und exzellenter Service! Ich bin
+                            sehr zufrieden."
+                        </p>
+                    </div>
                 </div>
-              </div>
-              <p class="review-text">
-                "Tolle Auswahl an Fahrzeugen und exzellenter Service! Ich bin
-                sehr zufrieden."
-              </p>
             </div>
-          </div>
-        </div>
-        <div class="review-card">
-          <div class="review-info">
-            <div class="review-details">
-              <div class="name-rating">
-                <img
-                  src="Images/customer1.jpg"
-                  alt="Profilbild"
-                  class="profile-pic"
-                />
-                <h3 class="customer-name">Max Mustermann</h3>
-                <div class="rating">
-                  <span class="stars" data-rating="5"
-                    >&#9733;&#9733;&#9733;&#9733;&#9733;</span
-                  >
+            <div class="review-card">
+                <div class="review-info">
+                    <div class="review-details">
+                        <div class="name-rating">
+                            <img src="Images/customer1.jpg" alt="Profilbild" class="profile-pic" />
+                            <h3 class="customer-name">Max Mustermann</h3>
+                            <div class="rating">
+                                <span class="stars" data-rating="5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                            </div>
+                        </div>
+                        <p class="review-text">
+                            "Tolle Auswahl an Fahrzeugen und exzellenter Service! Ich bin
+                            sehr zufrieden."
+                        </p>
+                    </div>
                 </div>
-              </div>
-              <p class="review-text">
-                "Tolle Auswahl an Fahrzeugen und exzellenter Service! Ich bin
-                sehr zufrieden."
-              </p>
             </div>
-          </div>
-        </div>
-        <div class="review-card">
-          <div class="review-info">
-            <div class="review-details">
-              <div class="name-rating">
-                <img
-                  src="Images/customer1.jpg"
-                  alt="Profilbild"
-                  class="profile-pic"
-                />
-                <h3 class="customer-name">Max Mustermann</h3>
-                <div class="rating">
-                  <span class="stars" data-rating="5"
-                    >&#9733;&#9733;&#9733;&#9733;&#9733;</span
-                  >
+            <div class="review-card">
+                <div class="review-info">
+                    <div class="review-details">
+                        <div class="name-rating">
+                            <img src="Images/customer1.jpg" alt="Profilbild" class="profile-pic" />
+                            <h3 class="customer-name">Max Mustermann</h3>
+                            <div class="rating">
+                                <span class="stars" data-rating="5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                            </div>
+                        </div>
+                        <p class="review-text">
+                            "Tolle Auswahl an Fahrzeugen und exzellenter Service! Ich bin
+                            sehr zufrieden."
+                        </p>
+                    </div>
                 </div>
-              </div>
-              <p class="review-text">
-                "Tolle Auswahl an Fahrzeugen und exzellenter Service! Ich bin
-                sehr zufrieden."
-              </p>
             </div>
-          </div>
+            <div class="review-card">
+                <div class="review-info">
+                    <div class="review-details">
+                        <div class="name-rating">
+                            <img src="Images/customer1.jpg" alt="Profilbild" class="profile-pic" />
+                            <h3 class="customer-name">Max Mustermann</h3>
+                            <div class="rating">
+                                <span class="stars" data-rating="5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                            </div>
+                        </div>
+                        <p class="review-text">
+                            "Tolle Auswahl an Fahrzeugen und exzellenter Service! Ich bin
+                            sehr zufrieden."
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
+
 
     <h1 class="headline">Unser Unternehmen</h1>
     <div class="aboutUs-container">
