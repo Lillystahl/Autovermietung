@@ -324,7 +324,7 @@
 
           // Creating a Layer object
           var layer = new L.TileLayer(
-            "http://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png"
+            "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           );
           // Create a custom icon with a larger size
           var customIcon = L.icon({
