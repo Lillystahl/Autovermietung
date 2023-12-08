@@ -3,7 +3,7 @@
     ini_set('display_errors', 1);
     require_once('db_connect.php');
     require_once('process_form.php');
-    fetchCarsFromURLParams($conn)
+    fetchCarsFromURLParams($conn);
 ?>
 
 <!DOCTYPE html>
@@ -102,19 +102,18 @@
     </div>
 
     <div class="overview-parent">
-        <div class="overview-container">
-            <div class="car-card">
-                <img class="car-image" src="https://example.com/car1.jpg" alt="Car Image">
-                <div class="car-details">
-                    <div class="Car Modell">Mercedes C-Class</div>
-                    <div class="Location">Location: xyz</div>
-                    <div class="key-facts">Year: 2023</div>
-                    <div class="key-facts">Mileage: 10,000 miles</div>
-                    <div class="key-facts">Fuel: Gasoline</div>
-                    <button class="rent-button">Rent Now</button>
-                </div>
-            </div>
-        </div>
+            <?php
+            if (isset($_GET['location']) && isset($_GET['vehicle-type'])) {
+                $result = fetchCarsFromURLParams($conn);
+            
+                if ($result && is_array($result) && count($result) > 0) {
+                    displayProductCards($result);
+                } else {
+                    // Handle no cars found
+                    echo "No cars found.";
+                }
+            }
+            ?>
     </div>
 
     <div class="car-details-overlay" id="carDetailsOverlay">

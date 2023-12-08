@@ -57,5 +57,29 @@ function fetchCarsFromURLParams($conn) {
         echo "console.log('Vehicle Type:', '" . $vehicleType . "');";
         echo "console.log('Cars:', " . json_encode($result) . ");";
         echo "</script>";
+
+        return $result;
+    }
+}
+
+function displayProductCards($result) {
+    $numCars = count($result);
+    $numRows = ceil($numCars / 5);
+
+    for ($i = 0; $i < $numRows; $i++) {
+        echo '<div class="overview-row">';
+        for ($j = $i * 5; $j < min(($i + 1) * 5, $numCars); $j++) {
+            echo '<div class="car-card">';
+            echo '<img class="car-image" src="' . $result[$j]['img_file_name'] . '" alt="Car Image">';
+            echo '<div class="car-details">';
+            echo '<div class="Car Name">Modell: ' . $result[$j]['name'] . '</div>';
+            echo '<div class="Location">Standort: ' . $result[$j]['loc_name'] . '</div>';
+            echo '<div class="Preis">Preis: ' . $result[$j]['price'] . '</div>';
+            echo '<div class="Sitze-">Sitze: ' . $result[$j]['seats'] . '</div>';
+            echo '<div class="key-facts">Antrieb: ' . $result[$j]['drive'] . '</div>';
+            echo '<button class="rent-button">Rent Now</button>';
+            echo '</div></div>';
+        }
+        echo '</div>';
     }
 }
