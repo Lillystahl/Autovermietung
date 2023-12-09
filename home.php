@@ -21,6 +21,10 @@
 </head>
 
 <body>
+    
+    <!-- im header php function if block, der die session checkt und header anpasst
+    block 1: header if session
+    blokc 2: default header -->
     <header>
         <div class="header">
             <div class="header-left">

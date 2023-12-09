@@ -1,6 +1,7 @@
 <?php
- require_once('signup_view.inc.php');
- require_once('config_session.inc.php');
+require_once('config_session.inc.php');
+require_once('signup_view.inc.php');
+require_once('login_view.inc.php');
 ?>
 
 <!DOCTYPE html>
@@ -53,13 +54,13 @@
         <div class="form-container sign-in-container">
             <form action="login.inc.php" method="post">
                 <h1>Sign in</h1>
-                <input type="email" placeholder="Email" name="Email" />
+                <input type="text" placeholder="Username" name="Username" />
                 <input type="password" placeholder="Password" name="Password" />
                 <a href="#">Forgot your password?</a>
                 <button>Sign In</button>
             </form>
             <?php
-            check_singup_errors();
+            check_login_errors();
             ?>
         </div>
         <div class="overlay-container">

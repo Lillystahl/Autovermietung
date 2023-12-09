@@ -123,6 +123,43 @@ input[type="text" i] {
     transition: all 0.4s ease-out;
 }
 
+.Logout-button {
+    border-radius: 5px;
+    background-color:  #e9e8e6;
+    color: black; /* Christian: Fixed Color jetzt weiß. missing ;*/
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    width: 200px;
+    border: none;
+    align-items: center;
+}
+
+.Logout-button:hover{
+    cursor: pointer;
+    background-color: #9BBEC8;
+    transition: all 0.4s ease-out;
+}
+
+.Buchungs-button {
+    border-radius: 5px;
+    background-color:  #e9e8e6;
+    color: black; /* Christian: Fixed Color jetzt weiß. missing ;*/
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    width: 170px;
+    border: none;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.Buchungs-button:hover{
+    cursor: pointer;
+    background-color: #9BBEC8;
+    transition: all 0.4s ease-out;
+}
+
 .header a.logo {
     font-size: 25px;
     font-weight: bold;

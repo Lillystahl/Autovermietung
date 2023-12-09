@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         create_user($conn, $username, $firstName, $lastName, $straße, $postleitzahl, $hausnummer, $date, $email, $pwd);
 
-        header("Location: home.php?signup=success");
+        header("Location: Registrierung.php?signup=success");
         die();
         
         $conn = null;
@@ -59,6 +59,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "Trace: " . $e->getTraceAsString(); // The trace of the error
     }
 }else{
-    header("Registrierung.php");
+    header("Location: Registrierung.php");
     die();
 }
