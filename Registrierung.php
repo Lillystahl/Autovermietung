@@ -1,3 +1,8 @@
+<?php
+ require_once('signup_view.inc.php');
+ require_once('config_session.inc.php');
+?>
+
 <!DOCTYPE html>
 <html lang="de">
 
@@ -14,7 +19,7 @@
 <body>
     <header>
         <div class="header">
-            <a href="#" class="logo"><img src="Images/ImageRE.png"></a>
+            <a href="home.php" class="logo"><img src="Images/ImageRE.png" alt="Company Logo" /></a>
             <div class="separator"></div>
             <p>Welcome to RentEase!</p>
         </div>
@@ -22,31 +27,40 @@
 
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-            <form action="#">
+            <form action="signup.inc.php" method="post">
                 <h1>Create Account</h1>
                 <!-- Anpassen and die Anforderung aus dem Arbeitsauftrage. Neue felder dafür hinzufügen-->
                 <!-- Last name, Firstname, Adress(split? Straße, HN, Plz, Ort?), Date of Birth, Email, Password-->
-                <input type="text" placeholder="First Name" />
-                <input type="text" placeholder="Last Name" />
-                <input type="text" placeholder="Straße" />
                 <div style="display: flex; justify-content: space-between;">
-                    <input type="text" placeholder="Postleitzahl" style="width: 52%;" /> <!-- Added field for Postleitzahl -->
-                    <input type="text" placeholder="Hausnummer" style="width: 44%;" /> <!-- Added field for Hausnummer -->
+                    <input type="text" placeholder="First Name" style="width: 48%;" name="First Name"/> <!-- Added field for Postleitzahl -->
+                    <input type="text" placeholder="Last Name" style="width: 48%;" name="Last Name"/> <!-- Added field for Hausnummer -->
                 </div>
-                <input type="date" placeholder="dd.mm.yyyy" />
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
+                <input type="text" placeholder="Username" name="Username"/>
+                <input type="text" placeholder="Straße" name="Straße"/>
+                <div style="display: flex; justify-content: space-between;">
+                    <input type="text" placeholder="Postleitzahl" name="Postleitzahl" style="width: 52%;"/> <!-- Added field for Postleitzahl -->
+                    <input type="text" placeholder="Hausnummer" name="Hausnummer" style="width: 44%;"/> <!-- Added field for Hausnummer -->
+                </div>
+                <input type="date" placeholder="dd.mm.yyyy" name="Date"/>
+                <input type="email" placeholder="Email" name="Email"/>
+                <input type="password" placeholder="Password" name="Password"/>
                 <button>Sign Up</button>
+                <?php
+                check_singup_errors();
+                ?>
             </form>
         </div>
         <div class="form-container sign-in-container">
-            <form action="#">
+            <form action="login.inc.php" method="post">
                 <h1>Sign in</h1>
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
+                <input type="email" placeholder="Email" name="Email" />
+                <input type="password" placeholder="Password" name="Password" />
                 <a href="#">Forgot your password?</a>
                 <button>Sign In</button>
             </form>
+            <?php
+            check_singup_errors();
+            ?>
         </div>
         <div class="overlay-container">
             <div class="overlay">
@@ -63,7 +77,8 @@
             </div>
         </div>
     </div>
-    
+
+
     <div class="footer-container">
         <div class="footer">
         <div class="footer-heading footer-1">
