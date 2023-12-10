@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Error handling 
         $errors = [];
 
-        if(is_input_empty($username, $firstName, $lastName,  $straße, $postleitzahl, $hausnummer, $date, $email, $pwd)){
+        if(is_input_empty($username, $firstName, $lastName, $straße, $postleitzahl, $hausnummer, $date, $email, $pwd)){
             $errors["empty_input"] = "Fill in all fields";
         }
         

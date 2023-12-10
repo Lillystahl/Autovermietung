@@ -49,9 +49,11 @@
                 <input type="email" placeholder="Email" name="Email"/>
                 <input type="password" placeholder="Password" name="Password"/>
                 <button>Sign Up</button>
+                <div class="singup-errors">
                 <?php
                 check_singup_errors();
                 ?>
+                </div>
             </form>
         </div>
         <div class="form-container sign-in-container">
@@ -62,6 +64,11 @@
                 <a href="#">Forgot your password?</a>
                 <button>Sign In</button>
             </form>
+            <div class="login-errors">
+                <?php
+                        check_login_errors();
+                ?>
+            </div>
         </div>
         <div class="overlay-container">
             <div class="overlay">
@@ -82,8 +89,8 @@
 
     <div class="footer-container">
     <?php
-    check_login_errors();
-    output_username();
+        //andy fragen ob das okay ist
+        //output_username();
     ?>
         <div class="footer">
         <div class="footer-heading footer-1">

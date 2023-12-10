@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-function is_input_empty(string $username,string $firstName,string $lastName,string $straße,int $postleitzahl, int $hausnummer, string $date, string $email,string $pwd){
+function is_input_empty(string $username,string $firstName,string $lastName,string $straße,?int $postleitzahl,?int $hausnummer, string $date, string $email, string $pwd){
     if(empty($username) || empty($firstName) || empty($lastName) || empty($straße) || empty($postleitzahl) || empty($hausnummer) || empty($date) || empty($email)  || empty($pwd)) {
         return true;
     } else{
