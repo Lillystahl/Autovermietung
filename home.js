@@ -63,7 +63,3 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
-
-
-
-

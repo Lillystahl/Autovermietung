@@ -196,6 +196,7 @@ body {
     justify-content: center;
     margin-top: 50px;
     flex-direction: column; /* Display rows in a column */
+    min-height: 100vh;
 }
 
 .overview-row {

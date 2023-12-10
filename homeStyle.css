@@ -78,8 +78,9 @@ header {
     align-items: center;
     color: white;
     font-size: 18px;
-    margin-right: 20px; /* Adjust margin as needed */
     flex-grow: 1; /* Allow this section to grow */
+    padding-bottom: 10px;
+    margin-top: 5px;
 }
 
 .button-container {
@@ -184,8 +185,13 @@ input[type="text" i] {
     margin-right: 20px; /* Adjust margin as needed */
 }
 
-.user-section .fa-regular.fa-user {
-    margin-right: 5px;
+.user-section .fa-user {
+    font-size: 24px; /* Ändere die Größe des Icons */
+    margin-right: 5px; /* Füge etwas Abstand zum Benutzernamen hinzu */
+}
+
+.user-section .user-name {
+    font-size: 18px; /* Ändere die Schriftgröße des Benutzernamens */
 }
 
 .header-right form{
@@ -211,6 +217,46 @@ input[type="text" i] {
         float: none;
     }
 }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 5px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-radius: 5px;
+    -webkit-transition: all .25s ease;
+	-moz-transition: all .25s ease;
+	-ms-transition: all .25s ease;
+	-o-transition: all .25s ease;
+	transition: all .25s ease;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f9f9f9;
+}
+
 /* Header Styles hier einfügen */
 
 /* Body Styles hier einfügen */
