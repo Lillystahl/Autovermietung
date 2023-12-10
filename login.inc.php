@@ -27,12 +27,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Note: We do not tell user which of the parameters were incorrect for security reasons!
         // for example if we give clue for if the password or user is incorrect brute forcing gets easier!
         if(is_username_wrong($result)){
-            $errors["login_incorrect"] = "Incorrect login info!";
+            $errors["login_incorrect"] = "Incorrect login data";
         }
         //checks if the username is correct but the password is wrong 
         // we turn around the userfunction wiht ! is not and then check for the password
         if(!is_username_wrong($result) &&  is_password_wrong($pwd, $result["password"])){
-            $errors["login_incorrect"] = "Incorrect login info!";
+            $errors["login_incorrect"] = "Incorrect login data";
         }
         // access session config 
         require_once ('config_session.inc.php');
@@ -57,8 +57,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION["user_username"] = htmlspecialchars($result["username"]); //prevent crosssitescripting
         $_SESSION["last_regeneration"] = time();
      
-        // redirect to start page we want the user to land at after login
-       header("Location: Registrierung.php?login=success");
+        // redirect to page we want the user to land at after login (homepage)
+        //send info to url which indicates a successfull login
+       header("Location: home.php?login=success");
         
        // empty conn and stmt for good measures (this is done by the programm but good practice to do it here)
         $conn = null;

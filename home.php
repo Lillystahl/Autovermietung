@@ -396,9 +396,9 @@
             <h2>About Us</h2>
             <a href="#">Blog</a>
             <a href="#">Kunden</a>
-            <a href="Datenschutz.html">Datenschutz</a>
-            <a href="AGB.html">AGB</a>
-            <a href="Impressum.html">Impressum</a>
+            <a href="Datenschutz.php">Datenschutz</a>
+            <a href="AGB.php">AGB</a>
+            <a href="Impressum.php">Impressum</a>
         </div>
 
         <div class="footer-heading footer-2">

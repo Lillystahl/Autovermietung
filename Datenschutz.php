@@ -1,3 +1,9 @@
+<?php
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    require_once('db_connect.php');
+    require_once('config_session.inc.php');
+?>
 <!DOCTYPE html>
 <html lang="de">
 
@@ -15,27 +21,52 @@
 </head>
 
 <body>
-    <header>
-        <div class="header">
-            <div class="header-left">
-                <a href="home.php" class="logo"><img src="Images/ImageRE.png" alt="Company Logo" /></a>
-                <h1>
-                    <a href="Produktübersicht.php" id="header1">Unsere Fahrzeuge</a>
-                </h1>
-                <h1><a href="Top-deals.php" id="header2">Top-Deals</a></h1>
-                <h1>
-                    <a href="Geschaeftskunden.php" id="header3">Geschäftskunden</a>
-                </h1>
+<header>
+    <?php
+    if(isset($_SESSION["user_id"])){
+        echo '<div class="header">
+                    <div class="header-left">
+                        <a href="home.php" class="logo"><img src="Images/ImageRE.png" alt="Company Logo" /></a>
+                        <h1><a href="Produktübersicht.php" id="header1">Unsere Fahrzeuge</a></h1>
+                        <h1><a href="Top-deals.php" id="header2">Top-Deals</a></h1>
+                        <h1><a href="Geschaeftskunden.php" id="header3">Geschäftskunden</a></h1>
+                    </div>
+                    <div class="header-right">
+                        <div class="dropdown">
+                            <a class="user-section" href="#">
+                                <i class="fa-regular fa-user"></i>
+                                <span class="user-name">' . $_SESSION["user_username"] . '</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="link_zu_meine_buchungen.php">Meine Buchungen</a></li>
+                                <li><a href="logout.inc.php">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>';
+    }else{
+        echo'<div class="header">
+        <div class="header-left">
+            <a href="home.php" class="logo"><img src="Images/ImageRE.png" alt="Company Logo" /></a>
+            <h1>
+                <a href="Produktübersicht.php" id="header1">Unsere Fahrzeuge</a>
+            </h1>
+            <h1><a href="Top-deals.php" id="header2">Top-Deals</a></h1>
+            <h1>
+                <a href="Geschaeftskunden.php" id="header3">Geschäftskunden</a>
+            </h1>
+        </div>
+        <div class="header-right">
+            <div class="search-container">
+                <input type="text" placeholder="Search..." name="search" />
             </div>
-            <div class="header-right">
-                <div class="search-container">
-                    <input type="text" placeholder="Search..." name="search" />
-                </div>
-                <div class="button-container">
-                <a href="Registrierung.php" class="Login-button">LogIn / SignUp</a>
-                </div>
+            <div class="button-container">
+            <a href="Registrierung.php" class="Login-button">LogIn / SignUp</a>
             </div>
         </div>
+        </div>';
+    }
+    ?>
     </header>
     <div class="aTextContainer">
         <div class="TextContainer">

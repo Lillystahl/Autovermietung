@@ -310,25 +310,27 @@ body {
 	font-weight: 100;
 	line-height: 5px;
 	margin: 10px;
+	color: red;
 }
 
 .singup-errors {
     position: absolute;
-    top: 85%; /* Move the element down by 50% of its parent's height */
+    top: 90%; /* Move the element down by 50% of its parent's height */
     left: 50%; /* Move the element right by 50% of its parent's width */
     transform: translate(-50%, -50%); /* Center the element precisely */
-    color: black;
+    color: red;
     padding: 0px;
     border-radius: 5px;
 	justify-content: center;
 	align-items: center;
 }
 
-.login-errors p {
+.singup-errors p {
 	font-size: 14px;
 	font-weight: 100;
 	line-height: 5px;
 	margin: 10px;
+	color: red;
 }
 /*Si
 /*SignUp Styles*/

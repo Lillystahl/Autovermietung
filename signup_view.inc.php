@@ -9,9 +9,9 @@ function check_singup_errors()
 
         echo "<br>";
 
-        foreach ($errors as $error)
-        echo '<p class="form-error">' . $error . '</p>';       
-
+        foreach ($errors as $error){
+        echo '<p class="error">' . $error . '</p>';       
+        }
         unset($_SESSION["errors_singup"]);
     }else if(isset($_GET["singup"]) && $_GET["signup"] === "success" ){
 

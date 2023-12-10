@@ -49,12 +49,12 @@
                 <input type="email" placeholder="Email" name="Email"/>
                 <input type="password" placeholder="Password" name="Password"/>
                 <button>Sign Up</button>
-                <div class="singup-errors">
-                <?php
-                check_singup_errors();
-                ?>
-                </div>
             </form>
+            <div class="singup-errors">
+                <?php
+                    check_singup_errors();
+                ?>
+            </div>
         </div>
         <div class="form-container sign-in-container">
             <form action="login.inc.php" method="post">
