@@ -28,32 +28,28 @@
     <header>
     <?php
     if(isset($_SESSION["user_id"])){
-    echo ' <div class="header">
-                <div class="header-left">
-                    <a href="home.php" class="logo"><img src="Images/ImageRE.png" alt="Company Logo" /></a>
-                    <h1><a href="Produktübersicht.php" id="header1">Unsere Fahrzeuge</a></h1>
-                    <h1><a href="Top-deals.php" id="header2">Top-Deals</a></h1>
-                    <h1><a href="Geschaeftskunden.php" id="header3">Geschäftskunden</a></h1>
-                </div>
-                <div class="header-right">
-                    <div class="search-container">
-                        <input type="text" placeholder="Search..." name="search" />
+        echo '<div class="header">
+                    <div class="header-left">
+                        <a href="home.php" class="logo"><img src="Images/ImageRE.png" alt="Company Logo" /></a>
+                        <h1><a href="Produktübersicht.php" id="header1">Unsere Fahrzeuge</a></h1>
+                        <h1><a href="Top-deals.php" id="header2">Top-Deals</a></h1>
+                        <h1><a href="Geschaeftskunden.php" id="header3">Geschäftskunden</a></h1>
                     </div>
-                    <div class="user-section">
-                    <i class="fa-regular fa-user"></i>
-                    <span class="user-name">Username</span>
+                    <div class="header-right">
+                        <div class="button-container">
+                            <form action="another_action.php" method="post">
+                                <button type="submit" class="Buchungs-button">Meine Buchungen</button>
+                            </form>
+                            <form action="logout.inc.php" method="post">
+                                <button type="submit" class="Logout-button">Logout</button>
+                            </form>
+                        </div>
+                        <div class="user-section">
+                            <i class="fa-regular fa-user"></i>
+                            <span class="user-name">' . $_SESSION["user_username"] . '</span>
+                        </div>
                     </div>
-                    <div class="button-container">
-                        <form action="logout.inc.php" method="post">
-                            <button type="submit" class="Logout-button">Logout</button>
-                        </form>
-                        <form action="another_action.php" method="post">
-                            <button type="submit" class="Buchungs-button">Meine Buchungen</button>
-                        </form>
-                    </div>
-                </div>
-            </div>';
-        
+                </div>';
     }else{
         echo'<div class="header">
         <div class="header-left">
@@ -75,7 +71,6 @@
             </div>
         </div>
         </div>';
-
     }
     ?>
     </header>
