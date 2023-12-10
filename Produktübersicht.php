@@ -149,7 +149,7 @@
         <span class="close-button"onclick="closeCarDetails()">&times;</span>
         <div class="popup-content">
             <!-- Hier könnten die zusätzlichen Produktinformationen und Bilder sein -->
-            <img class="car-image-popup" src="https://example.com/car1.jpg" alt="Car Image">
+            <img class="car-image-popup" id="carDetailsImage" src="https://example.com/car1.jpg" alt="Car Image">
             <div class="car-details-popup-content">
                 <div class="car-name-popup">Mercedes C-Class</div>
                 <div class="key-facts-popup">Year: 2023</div>

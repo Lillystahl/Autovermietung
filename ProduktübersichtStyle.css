@@ -273,8 +273,9 @@ body {
 }
 
 .car-image {
-    height: auto;
-    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
 }
 
 .car-details-container {

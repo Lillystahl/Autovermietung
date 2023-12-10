@@ -14,6 +14,9 @@ var carCards = document.getElementsByClassName("car-card");
 for (var i = 0; i < carCards.length; i++) {
     carCards[i].addEventListener('click', function() {
         openCarDetails();
+        // Setze die Werte der vergrößerten Ansicht auf die Werte der Car Card, die geklickt wurde
+        var carDetailsImage = document.getElementById("carDetailsImage");
+        carDetailsImage.src = this.getElementsByTagName("img")[0].src;
     });
 }
 

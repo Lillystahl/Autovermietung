@@ -35,7 +35,7 @@ function fetchCarsFromURLParams($conn) {
         $vehicleType = $_GET['vehicle-type'];
 
         // Prepare the SQL statement with necessary joins
-        $sql = "SELECT vehicles.*, types.*, location.*
+        $sql = "SELECT vehicles.*, types.*, location.*, categories.drive
                 FROM vehicles
                 JOIN types ON vehicles.type_id = types.type_id
                 JOIN location ON vehicles.location_id = location.location_id
@@ -71,7 +71,7 @@ function displayProductCards($result) {
         for ($j = $i * 5; $j < min(($i + 1) * 5, $numCars); $j++) {
             echo '<div class="car-card">';
             echo '<div class="car-image-container">';
-            echo '<img class="car-image" src="' . $result[$j]['img_file_name'] . '" alt="Car Image">';
+            echo '<img class="car-image" src="Images/Product_Img/vorne-' . $result[$j]['img_file_name'] . '" alt="Car Image">';
             echo '</div>';
             echo '<div class="car-details-container">';
             echo '<div class="car-details">';
