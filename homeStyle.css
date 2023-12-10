@@ -221,6 +221,11 @@ input[type="text" i] {
 .dropdown {
     position: relative;
     display: inline-block;
+    cursor: pointer;
+}
+
+.dropdown:hover {
+    cursor: pointer;
 }
 
 .dropdown-menu {
@@ -237,6 +242,10 @@ input[type="text" i] {
 }
 
 .dropdown:hover .dropdown-menu {
+    display: none;
+}
+
+.dropdown.clicked .dropdown-menu {
     display: block;
 }
 
@@ -255,6 +264,15 @@ input[type="text" i] {
 
 .dropdown-menu li a:hover {
     background-color: #f9f9f9;
+}
+
+.dropdown-menu li:nth-child(2) a:hover {
+    background-color: #9BBEC8; /* Hier die gewünschte Hintergrundfarbe einfügen */
+}
+
+/* Für den Hover-Zustand des Meine-Buchungen-Buttons */
+.dropdown-menu li:nth-child(1) a:hover {
+    background-color: #e6e6e6; /* Hier die gewünschte Hintergrundfarbe einfügen */
 }
 
 /* Header Styles hier einfügen */

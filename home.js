@@ -40,26 +40,18 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function () {                            
-    const cities = document.querySelectorAll('.city');
+document.addEventListener('DOMContentLoaded', function() {
+    var dropdown = document.querySelector('.dropdown');
+    var dropdownMenu = dropdown.querySelector('.dropdown-menu');
 
-    cities.forEach(city => {
-        city.addEventListener('mouseover', function () {
-            const markerType = this.dataset.marker;
-            const marker = document.querySelector(`.map-marker.${markerType}-marker`);
+    dropdown.addEventListener('click', function(event) {
+        event.stopPropagation(); // Verhindert, dass das Klicken im Dropdown-Element das Dropdown schließt
+        dropdownMenu.style.display = (dropdownMenu.style.display === 'block') ? 'none' : 'block';
+    });
 
-            if (marker) {
-                marker.classList.add('marker-hover');
-            }
-        });
-
-        city.addEventListener('mouseout', function () {
-            const markerType = this.dataset.marker;
-            const marker = document.querySelector(`.map-marker.${markerType}-marker`);
-
-            if (marker) {
-                marker.classList.remove('marker-hover');
-            }
-        });
+    document.addEventListener('click', function(event) {
+        if (!dropdown.contains(event.target)) {
+            dropdownMenu.style.display = 'none';
+        }
     });
 });
