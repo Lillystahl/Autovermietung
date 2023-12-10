@@ -47,11 +47,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         create_user($conn, $username, $firstName, $lastName, $straße, $postleitzahl, $hausnummer, $date, $email, $pwd);
 
         header("Location: Registrierung.php?signup=success");
-        die();
-        
         $conn = null;
         $stmt = null;
-
+        die();
+        
     } catch (PDOException $e) {
         // Outputting error information for debugging purposes
         echo "Query failed: " . $e->getMessage(); // The error message itself

@@ -37,10 +37,18 @@
                 <div class="search-container">
                     <input type="text" placeholder="Search..." name="search" />
                 </div>
+                <div class="user-section">
+                <i class="fa-regular fa-user"></i>
+                <span class="user-name">Username</span>
+                </div>
                 <div class="button-container">
-                    <a href="#" class="Buchungs-button">Meine Buchungen</a>
-                    <a href="Registrierung.php" class="Login-button">Logout</a>
+                    <form action="logout.inc.php" method="post">
+                        <button type="submit" class="Logout-button">Logout</button>
+                    </form>
+                    <form action="another_action.php" method="post">
+                        <button type="submit" class="Buchungs-button">Meine Buchungen</button>
+                    </form>
                 </div>
             </div>
-    </div>
+        </div>
     </header>

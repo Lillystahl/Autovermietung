@@ -1,7 +1,10 @@
 <?php
-require_once('config_session.inc.php');
-require_once('signup_view.inc.php');
-require_once('login_view.inc.php');
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    require_once('db_connect.php');
+    require_once('config_session.inc.php');
+    require_once('signup_view.inc.php');
+    require_once('login_view.inc.php');
 ?>
 
 <!DOCTYPE html>
@@ -54,14 +57,11 @@ require_once('login_view.inc.php');
         <div class="form-container sign-in-container">
             <form action="login.inc.php" method="post">
                 <h1>Sign in</h1>
-                <input type="text" placeholder="Username" name="Username" />
+                <input type="text" placeholder="Username" name="User" />
                 <input type="password" placeholder="Password" name="Password" />
                 <a href="#">Forgot your password?</a>
                 <button>Sign In</button>
             </form>
-            <?php
-            check_login_errors();
-            ?>
         </div>
         <div class="overlay-container">
             <div class="overlay">
@@ -81,6 +81,10 @@ require_once('login_view.inc.php');
 
 
     <div class="footer-container">
+    <?php
+    check_login_errors();
+    output_username();
+    ?>
         <div class="footer">
         <div class="footer-heading footer-1">
             <h2>About Us</h2>

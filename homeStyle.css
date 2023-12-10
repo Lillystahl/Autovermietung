@@ -70,6 +70,21 @@ header {
 .header-right {
     display: flex;
     align-items: center;
+    flex-wrap: wrap; /* Allow flex items to wrap */
+}
+
+.user-section {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+    margin-right: 20px; /* Adjust margin as needed */
+    flex-grow: 1; /* Allow this section to grow */
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
 }
 
 .search-container{
@@ -99,10 +114,10 @@ input[type="text" i] {
     margin-right: 10px;
 }
 
-.button-container{
+.button-container {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end; /* Align buttons to the right */
 }
 
 .Login-button {
@@ -130,9 +145,10 @@ input[type="text" i] {
     display: flex;
     justify-content: center;
     height: 40px;
-    width: 200px;
+    width: 100px;
     border: none;
     align-items: center;
+    margin-right: 10px;
 }
 
 .Logout-button:hover{
@@ -158,6 +174,24 @@ input[type="text" i] {
     cursor: pointer;
     background-color: #9BBEC8;
     transition: all 0.4s ease-out;
+}
+
+.user-section {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+    margin-right: 20px; /* Adjust margin as needed */
+}
+
+.user-section .fa-regular.fa-user {
+    margin-right: 5px;
+}
+
+.header-right form{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0px;
 }
 
 .header a.logo {
