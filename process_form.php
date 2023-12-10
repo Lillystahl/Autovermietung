@@ -70,13 +70,17 @@ function displayProductCards($result) {
         echo '<div class="overview-row">';
         for ($j = $i * 5; $j < min(($i + 1) * 5, $numCars); $j++) {
             echo '<div class="car-card">';
+            echo '<div class="car-image-container">';
             echo '<img class="car-image" src="' . $result[$j]['img_file_name'] . '" alt="Car Image">';
+            echo '</div>';
+            echo '<div class="car-details-container">';
             echo '<div class="car-details">';
             echo '<div class="Car Name">Modell: ' . $result[$j]['name'] . '</div>';
             echo '<div class="Location">Standort: ' . $result[$j]['loc_name'] . '</div>';
             echo '<div class="Preis">Preis: ' . $result[$j]['price'] . '</div>';
             echo '<div class="Sitze-">Sitze: ' . $result[$j]['seats'] . '</div>';
             echo '<div class="key-facts">Antrieb: ' . $result[$j]['drive'] . '</div>';
+            echo '</div>';
             echo '<button class="rent-button">Rent Now</button>';
             echo '</div></div>';
         }
