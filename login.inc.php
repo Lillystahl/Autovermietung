@@ -20,16 +20,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $result = get_user($conn, $username);
 
 
-        // Output the content of $result
-        echo "<pre>";
-        var_dump($result); // or print_r($result);
-        echo "</pre>";
-
         if(is_username_wrong($result)){
             $errors["login_incorrect"] = "Login info is incorrect!";
         }
-
-        if(is_username_wrong($result) &&  is_password_wrong($pwd, $result["password"]))
+        if(!is_username_wrong($result) &&  is_password_wrong($pwd, $result["password"])){
+            $errors["login_incorrect"] = "Incorrect login info!";
+        }
 
         require_once ('config_session.inc.php');
 
