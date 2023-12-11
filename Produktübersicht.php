@@ -129,36 +129,66 @@
     </div>
 
     <div class="overview-parent">
-            <?php
-            if (isset($_GET['location']) && isset($_GET['vehicle-type'])) {
-                $result = fetchCarsFromURLParams($conn);
-            
-                if ($result && is_array($result) && count($result) > 0) {
-                    displayProductCards($result);
-                } else {
-                    // Handle no cars found
-                    echo "No cars found.";
-                }
-            }
-            ?>
-    </div>
+    <?php
+    function fetchAllCars($conn, $page, $perPage) {
+        $start = ($page - 1) * $perPage;
+    
+        $sql = "SELECT vehicles.*, types.*, location.*, categories.drive, vendors.vendor_name
+                FROM vehicles
+                JOIN types ON vehicles.type_id = types.type_id
+                JOIN location ON vehicles.location_id = location.location_id
+                JOIN categories ON types.category_id = categories.category_id
+                JOIN vendors ON types.vendor_id = vendors.vendor_id
+                LIMIT :start, :perPage";
+    
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':start', $start, PDO::PARAM_INT);
+        $stmt->bindParam(':perPage', $perPage, PDO::PARAM_INT);
+        $stmt->execute();
+    
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+    
+    // Check, ob ein Filter angewendet wurde
+    if(isset($_GET['location']) && isset($_GET['vehicle-type'])) {
+        $result = fetchCarsFromURLParams($conn);
+        displayProductCards($result);
+    } else {
+        $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $carsPerPage = 20;
+        $result = fetchAllCars($conn, $currentPage, $carsPerPage);
+        displayProductCards($result);
+
+        // Pagination Links
+        $totalCars = countAllCars($conn); // Funktion, um die Gesamtanzahl an Autos zu erhalten
+        $totalPages = ceil($totalCars / $carsPerPage);
+
+        echo '<div class="pagination">';
+        for ($i = 1; $i <= $totalPages; $i++) {
+            echo '<a href="Produktübersicht.php?page=' . $i . '">' . $i . '</a>';
+        }
+        echo '</div>';
+    }
+    ?>
+</div>
 
     <div class="car-details-overlay" id="carDetailsOverlay">
-    <div class="car-details-popup" id="carDetailsPopup">
-        <span class="close-button"onclick="closeCarDetails()">&times;</span>
-        <div class="popup-content">
-            <!-- Hier könnten die zusätzlichen Produktinformationen und Bilder sein -->
-            <img class="car-image-popup" id="carDetailsImage" src="https://example.com/car1.jpg" alt="Car Image">
-            <div class="car-details-popup-content">
-                <div class="car-name-popup">Mercedes C-Class</div>
-                <div class="key-facts-popup">Year: 2023</div>
-                <div class="key-facts-popup">Mileage: 10,000 miles</div>
-                <!-- Weitere Details hier einfügen -->
-                <button class="rent-button-popup">Rent Now</button>
+        <div class="car-details-popup" id="carDetailsPopup">
+            <span class="close-button"onclick="closeCarDetails()">&times;</span>
+            <div class="popup-content">
+                <!-- Hier könnten die zusätzlichen Produktinformationen und Bilder sein -->
+                <img class="car-image-popup" id="carDetailsImage" src="https://example.com/car1.jpg" alt="Car Image">
+                <div class="car-details-popup-content">
+                    <div class="car-name-popup">Mercedes C-Class</div>
+                    <div class="key-facts-popup">Year: 2023</div>
+                    <div class="key-facts-popup">Mileage: 10,000 miles</div>
+                    <!-- Weitere Details hier einfügen -->
+                    <button class="rent-button-popup">Rent Now</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     <div class="footer-container">
         <div class="footer">

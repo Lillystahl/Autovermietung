@@ -88,3 +88,11 @@ function displayProductCards($result) {
         echo '</div>';
     }
 }
+
+function countAllCars($conn) {
+    $sql = "SELECT COUNT(*) as total FROM vehicles";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result['total'];
+}
