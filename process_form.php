@@ -35,18 +35,19 @@ function fetchCarsFromURLParams($conn) {
         $vehicleType = $_GET['vehicle-type'];
 
         // Prepare the SQL statement with necessary joins
-        $sql = "SELECT vehicles.*, types.*, location.*, categories.drive, vendors.vendor_name
-            FROM vehicles
-            JOIN types ON vehicles.type_id = types.type_id
-            JOIN location ON vehicles.location_id = location.location_id
-            JOIN categories ON types.category_id = categories.category_id
-            JOIN vendors ON types.vendor_id = vendors.vendor_id
-            WHERE categories.type = :vehicleType
-            AND location.loc_name = :location";
+        $sql = "SELECT vehicles.*, types.*, location.*, categories.type AS vehicle_type, categories.drive, vendors.vendor_name
+                FROM vehicles
+                JOIN types ON vehicles.type_id = types.type_id
+                JOIN location ON vehicles.location_id = location.location_id
+                JOIN categories ON types.category_id = categories.category_id
+                JOIN vendors ON types.vendor_id = vendors.vendor_id
+                WHERE categories.category_id = :vehicleType
+                AND location.loc_name = :location";
+
 
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':location', $location, PDO::PARAM_STR);
-        $stmt->bindParam(':vehicleType', $vehicleType, PDO::PARAM_STR);
+        $stmt->bindParam(':vehicleType', $vehicleType, PDO::PARAM_INT); // Der Parameter ist ein Integer
         $stmt->execute();
 
         // Fetch the result
@@ -76,12 +77,29 @@ function displayProductCards($result) {
             echo '</div>';
             echo '<div class="car-details-container">';
             echo '<div class="car-details">';
-            echo '<div class="Car Name">' . $result[$j]['vendor_name'] . ' ' . $result[$j]['name'] . '</div>';
+            echo '<div class="car-name">' . $result[$j]['vendor_name'] . ' ' . $result[$j]['name'] . '</div>';
+            echo '<div class="car-cat">Kategorie: hier steht die kategorie</div>';
+            $transmission = '';
+            if ($result[$j]['gear'] == 'automatic') {
+                $transmission = 'Automatik';
+            } elseif ($result[$j]['gear'] == 'manually') {
+                $transmission = 'Handschalter';
+            }
+            echo '<div class="car-transmission">Getriebe: ' . $transmission . '</div>';
             echo '<div class="Location">Standort: ' . $result[$j]['loc_name'] . '</div>';
-            echo '<div class="Preis">Preis: ' . $result[$j]['price'] . '</div>';
-            echo '<div class="Sitze-">Sitze: ' . $result[$j]['seats'] . '</div>';
-            echo '<div class="key-facts">Antrieb: ' . $result[$j]['drive'] . '</div>';
+            $features = [];
+            if ($result[$j]['gps'] == 1) {
+                $features[] = '<img src="path/to/gps-icon.svg" alt="GPS">';
+            }
+            if ($result[$j]['trunk'] > 0) {
+                $features[] = '<img src="path/to/trunk-icon.svg" alt="Trunk">';
+            }
+            if ($result[$j]['air_conditioning'] == 1) {
+                $features[] = '<img src="path/to/ac-icon.svg" alt="AC">';
+            }
+            echo '<div class="car-features">Features: ' . implode(" ", $features) . '</div>';
             echo '</div>';
+            echo '<div class="car-prize">Preis: ' . $result[$j]['price'] . '</div>';
             echo '<button class="rent-button">Rent Now</button>';
             echo '</div></div>';
         }
@@ -95,4 +113,24 @@ function countAllCars($conn) {
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     return $result['total'];
+}
+
+function fetchAllCars($conn, $page, $perPage) {
+    $start = ($page - 1) * $perPage;
+
+    $sql = "SELECT vehicles.*, types.*, location.*, categories.drive, vendors.vendor_name
+            FROM vehicles
+            JOIN types ON vehicles.type_id = types.type_id
+            JOIN location ON vehicles.location_id = location.location_id
+            JOIN categories ON types.category_id = categories.category_id
+            JOIN vendors ON types.vendor_id = vendors.vendor_id
+            LIMIT :start, :perPage";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':start', $start, PDO::PARAM_INT);
+    $stmt->bindParam(':perPage', $perPage, PDO::PARAM_INT);
+    $stmt->execute();
+
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
 }

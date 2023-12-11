@@ -216,6 +216,7 @@ body {
     margin-bottom: 35px;
     margin-left: 20px; /* Abstand zwischen den Karten */
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 
@@ -266,7 +267,7 @@ body {
 }
 
 .car-image-container {
-    height: 33%; /* Nur das obere Drittel für das Bild reservieren */
+    height: 45%; /* Nur das obere Drittel für das Bild reservieren */
     overflow: hidden;
     align-items: center;
 }
@@ -278,15 +279,15 @@ body {
 }
 
 .car-details-container {
-    padding: 10px;
-    height: 67%; /* Restlichen Platz für die Details */
+    margin-left: 10%;
+    height: 55%; /* Restlichen Platz für die Details */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
 .car-details {
-    padding: 10px;
+    margin-bottom: 20px;
     height: 67%; /* Restlichen Platz für die Details */
     display: flex;
     flex-direction: column;
@@ -297,6 +298,12 @@ body {
     font-size: 20px; /* Größere Schrift für den Namen */
     font-weight: bold;
     margin-bottom: 5px;
+  }
+
+  .car-prize{
+    font-weight: bold;
+    align-self: flex-start;
+    margin-bottom: 28px;
   }
 
   .key-facts {
