@@ -33,17 +33,16 @@
                         <h1><a href="Geschaeftskunden.php" id="header3">Geschäftskunden</a></h1>
                     </div>
                     <div class="header-right">
-                        <div class="button-container">
-                            <form action="another_action.php" method="post">
-                                <button type="submit" class="Buchungs-button">Meine Buchungen</button>
-                            </form>
-                            <form action="logout.inc.php" method="post">
-                                <button type="submit" class="Logout-button">Logout</button>
-                            </form>
-                        </div>
-                        <div class="user-section">
-                            <i class="fa-regular fa-user"></i>
-                            <span class="user-name">' . $_SESSION["user_username"] . '</span>
+                        <div class="dropdown">
+                            <span class="user-section">
+                                Willkommen,&nbsp;<span class="user-name">' . $_SESSION["user_username"] . '</span>&nbsp;&nbsp;
+                                <i class="fa-regular fa-user"></i>&nbsp;
+                                <i class="fa-solid fa-caret-down"></i>
+                            </span>
+                            <ul class="dropdown-menu" id="dropdownMenu">
+                                <li><a href="link_zu_meine_buchungen.php">Meine Buchungen</a></li>
+                                <li><a href="logout.inc.php">Logout</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>';

@@ -29,3 +29,19 @@ window.onclick = function(event) {
         document.body.style.overflow = "auto"; // Aktiviere das Scrollen auf der Hauptseite
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    var dropdown = document.querySelector('.dropdown');
+    var dropdownMenu = dropdown.querySelector('.dropdown-menu');
+
+    dropdown.addEventListener('click', function(event) {
+        event.stopPropagation(); // Verhindert, dass das Klicken im Dropdown-Element das Dropdown schließt
+        dropdownMenu.style.display = (dropdownMenu.style.display === 'block') ? 'none' : 'block';
+    });
+
+    document.addEventListener('click', function(event) {
+        if (!dropdown.contains(event.target)) {
+            dropdownMenu.style.display = 'none';
+        }
+    });
+});
