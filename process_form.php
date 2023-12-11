@@ -50,6 +50,7 @@ function fetchCarsFromSession($conn) {
         $stmt->execute();
         // Fetch the result
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
         // Print the retrieved parameters and the result to the console
         echo "<script>";
         echo "console.log('Location:', '" . $location . "');";
@@ -59,6 +60,7 @@ function fetchCarsFromSession($conn) {
         return $result;
     }
 }
+
 
 function displayProductCards($result) {
     $numCars = count($result);
@@ -103,6 +105,24 @@ function displayProductCards($result) {
     }
 }
 
+function fetchAllCars($conn, $page, $perPage) {
+    $start = ($page - 1) * $perPage;
+
+    $sql = "SELECT *
+            FROM cartablesview
+            WHERE vehicle_availability = 1
+            LIMIT :start, :perPage";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':start', $start, PDO::PARAM_INT);
+    $stmt->bindParam(':perPage', $perPage, PDO::PARAM_INT);
+    $stmt->execute();
+
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+}
+
+
 function countAllCars($conn) {
     $sql = "SELECT COUNT(*) as total FROM vehicles";
     $stmt = $conn->prepare($sql);
@@ -110,4 +130,21 @@ function countAllCars($conn) {
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     return $result['total'];
 }
+
+function countSessionCars($conn) {
+    if(isset($_SESSION['location']) && isset($_SESSION['vehicle_type'])) {
+        $location = $_SESSION['location'];
+        $vehicleType = $_SESSION['vehicle_type'];
+    $sql = "SELECT COUNT(*) as total FROM cartablesview 
+    WHERE location_name = :location 
+    AND category_type = :vehicleType";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':location', $location);
+    $stmt->bindParam(':vehicleType', $vehicleType);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result['total'];
+    }
+}
+
 

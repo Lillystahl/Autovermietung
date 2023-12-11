@@ -136,27 +136,23 @@
     <div class="overview-parent">
     <?php
     
-    function fetchAllCars($conn, $page, $perPage) {
-        $start = ($page - 1) * $perPage;
-    
-        $sql = "SELECT *
-                FROM cartablesview
-                WHERE vehicle_availability = 1
-                LIMIT :start, :perPage";
-    
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':start', $start, PDO::PARAM_INT);
-        $stmt->bindParam(':perPage', $perPage, PDO::PARAM_INT);
-        $stmt->execute();
-    
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
-    }
-    
     // Check, ob ein Filter angewendet wurde
     if(isset($_SESSION['location']) && isset($_SESSION['vehicle_type'])) {
         $result = fetchCarsFromSession($conn);
         displayProductCards($result);
+
+        $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $carsPerPage = 20;
+
+        // Pagination Links
+        $totalCars = countSessionCars($conn); // Funktion, um die Gesamtanzahl an Autos zu erhalten
+        $totalPages = ceil($totalCars / $carsPerPage);
+
+        echo '<div class="pagination">';
+        for ($i = 1; $i <= $totalPages; $i++) {
+            echo '<a href="Produktübersicht.php?page=' . $i . '">' . $i . '</a>';
+        }
+        echo '</div>';
     } else {
         $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $carsPerPage = 20;

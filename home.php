@@ -160,15 +160,19 @@
                 </a>
             </div>
             <div class="card-product">
-                <a href="Produktübersicht.php?category=SUV">
-                    <img src="Images/Ferarri Roma.jpg" alt="Auto" />
-                    <div class="card-product-infos">
-                        <h2>SUV</h2>
-                        <p>
-                            Product description with <strong>relevant info</strong> only.
-                        </p>
-                    </div>
-                </a>
+                <form action="setCategorySession.inc.php" method="post"> <!-- NOTE NEEDS TO BE STYLED ACCORDINGLY TO MATCH THE OLD CARD COLOR-->
+                    <input type="hidden" name="category" value="Cabrio">
+                    <button type="submit">
+                        <!-- Your card content here -->
+                        <img src="Images/Ferarri Roma.jpg" alt="Auto" />
+                        <div class="card-product-infos">
+                            <h2>Cabrio</h2>
+                            <p>
+                                Product description with <strong>relevant info</strong> only.
+                            </p>
+                        </div>
+                    </button>
+                </form>
             </div>
             <div class="card-product">
                 <a href="Produktübersicht.php?category=Combi">
