@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="ProduktübersichtStyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="Produktübersicht.js" defer></script>
 </head>
 
@@ -84,7 +85,7 @@
                 <input type="date" placeholder="Start-Datum" name="start-date">
                 <input type="date" placeholder="End-Datum" name="end-date">
                 <button type="submit">Suchen</button>
-                <button type="submit">Suche zurücksetzen</button>
+                <button type="submit" id="resetSearchButton">Suche zurücksetzen</button>
             </div>
         </form>
         </div>
