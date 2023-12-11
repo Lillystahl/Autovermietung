@@ -32,11 +32,12 @@
                     </div>
                     <div class="header-right">
                         <div class="dropdown">
-                            <a class="user-section" href="#">
-                                <i class="fa-regular fa-user"></i>
-                                <span class="user-name">' . $_SESSION["user_username"] . '</span>
-                            </a>
-                            <ul class="dropdown-menu">
+                            <span class="user-section">
+                                Willkommen,&nbsp;<span class="user-name">' . $_SESSION["user_username"] . '</span>&nbsp;&nbsp;
+                                <i class="fa-regular fa-user"></i>&nbsp;
+                                <i class="fa-solid fa-caret-down"></i>
+                            </span>
+                            <ul class="dropdown-menu" id="dropdownMenu">
                                 <li><a href="link_zu_meine_buchungen.php">Meine Buchungen</a></li>
                                 <li><a href="logout.inc.php">Logout</a></li>
                             </ul>
