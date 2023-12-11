@@ -33,33 +33,27 @@ function fetchCarsFromURLParams($conn) {
     if(isset($_GET['location']) && isset($_GET['vehicle-type'])) {
         $location = $_GET['location'];
         $vehicleType = $_GET['vehicle-type'];
-
         // Prepare the SQL statement with necessary joins
-        $sql = "SELECT vehicles.*, types.*, location.*, categories.type AS vehicle_type, categories.drive, vendors.vendor_name
-                FROM vehicles
-                JOIN types ON vehicles.type_id = types.type_id
-                JOIN location ON vehicles.location_id = location.location_id
-                JOIN categories ON types.category_id = categories.category_id
-                JOIN vendors ON types.vendor_id = vendors.vendor_id
-                WHERE categories.category_id = :vehicleType
-                AND location.loc_name = :location";
-
-
+        $sql = "SELECT vehicles.*, types.*, location.*, categories.drive, vendors.vendor_name
+            FROM vehicles
+            JOIN types ON vehicles.type_id = types.type_id
+            JOIN location ON vehicles.location_id = location.location_id
+            JOIN categories ON types.category_id = categories.category_id
+            JOIN vendors ON types.vendor_id = vendors.vendor_id
+            WHERE categories.type = :vehicleType
+            AND location.loc_name = :location";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':location', $location, PDO::PARAM_STR);
-        $stmt->bindParam(':vehicleType', $vehicleType, PDO::PARAM_INT); // Der Parameter ist ein Integer
+        $stmt->bindParam(':vehicleType', $vehicleType, PDO::PARAM_STR);
         $stmt->execute();
-
         // Fetch the result
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
         // Print the retrieved parameters and the result to the console
         echo "<script>";
         echo "console.log('Location:', '" . $location . "');";
         echo "console.log('Vehicle Type:', '" . $vehicleType . "');";
         echo "console.log('Cars:', " . json_encode($result) . ");";
         echo "</script>";
-
         return $result;
     }
 }
@@ -113,24 +107,4 @@ function countAllCars($conn) {
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     return $result['total'];
-}
-
-function fetchAllCars($conn, $page, $perPage) {
-    $start = ($page - 1) * $perPage;
-
-    $sql = "SELECT vehicles.*, types.*, location.*, categories.drive, vendors.vendor_name
-            FROM vehicles
-            JOIN types ON vehicles.type_id = types.type_id
-            JOIN location ON vehicles.location_id = location.location_id
-            JOIN categories ON types.category_id = categories.category_id
-            JOIN vendors ON types.vendor_id = vendors.vendor_id
-            LIMIT :start, :perPage";
-
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':start', $start, PDO::PARAM_INT);
-    $stmt->bindParam(':perPage', $perPage, PDO::PARAM_INT);
-    $stmt->execute();
-
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $result;
 }
