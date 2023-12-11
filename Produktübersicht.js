@@ -23,11 +23,6 @@ for (var i = 0; i < carCards.length; i++) {
 window.onclick = function(event) {
     var carDetailsPopup = document.getElementById("carDetailsPopup"); // ID des Popups
     var carDetailsContent = document.getElementById("carDetailsContent"); // ID des weißen Bereichs im Popup
-
-    if (event.target !== carDetailsContent && !carDetailsContent.contains(event.target)) {
-        carDetailsPopup.style.display = "none"; // Schließe das Popup, wenn außerhalb geklickt wird
-        document.body.style.overflow = "auto"; // Aktiviere das Scrollen auf der Hauptseite
-    }
 }
 
 document.addEventListener('DOMContentLoaded', function() {

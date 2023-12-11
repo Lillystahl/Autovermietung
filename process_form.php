@@ -35,13 +35,14 @@ function fetchCarsFromURLParams($conn) {
         $vehicleType = $_GET['vehicle-type'];
 
         // Prepare the SQL statement with necessary joins
-        $sql = "SELECT vehicles.*, types.*, location.*, categories.drive
-                FROM vehicles
-                JOIN types ON vehicles.type_id = types.type_id
-                JOIN location ON vehicles.location_id = location.location_id
-                JOIN categories ON types.category_id = categories.category_id
-                WHERE categories.type = :vehicleType
-                AND location.loc_name = :location";
+        $sql = "SELECT vehicles.*, types.*, location.*, categories.drive, vendors.vendor_name
+            FROM vehicles
+            JOIN types ON vehicles.type_id = types.type_id
+            JOIN location ON vehicles.location_id = location.location_id
+            JOIN categories ON types.category_id = categories.category_id
+            JOIN vendors ON types.vendor_id = vendors.vendor_id
+            WHERE categories.type = :vehicleType
+            AND location.loc_name = :location";
 
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':location', $location, PDO::PARAM_STR);
@@ -75,7 +76,7 @@ function displayProductCards($result) {
             echo '</div>';
             echo '<div class="car-details-container">';
             echo '<div class="car-details">';
-            echo '<div class="Car Name">Modell: ' . $result[$j]['name'] . '</div>';
+            echo '<div class="Car Name">' . $result[$j]['vendor_name'] . ' ' . $result[$j]['name'] . '</div>';
             echo '<div class="Location">Standort: ' . $result[$j]['loc_name'] . '</div>';
             echo '<div class="Preis">Preis: ' . $result[$j]['price'] . '</div>';
             echo '<div class="Sitze-">Sitze: ' . $result[$j]['seats'] . '</div>';
