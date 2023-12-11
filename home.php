@@ -4,7 +4,8 @@
     require_once('db_connect.php');
     require_once('config_session.inc.php');
     require_once('process_form.php');
-    processSearchForm();
+    homeInpuToSession();
+    debugSession();
 ?>
 
 <!DOCTYPE html>

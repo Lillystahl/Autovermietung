@@ -4,9 +4,12 @@
     require_once('db_connect.php');
     require_once('process_form.php');
     require_once('config_session.inc.php');
-    fetchCarsFromURLParams($conn);
-?>
+    require_once('process_form.php');
+    fetchCarsFromSession($conn);
+    debugSession();
 
+    // Assuming 'fetchCarsFromSession' returns the array of cars fetched from the session
+?>
 <!DOCTYPE html>
 <html lang="de">
 
@@ -130,6 +133,7 @@
 
     <div class="overview-parent">
     <?php
+    
     function fetchAllCars($conn, $page, $perPage) {
         $start = ($page - 1) * $perPage;
     
@@ -151,8 +155,8 @@
     }
     
     // Check, ob ein Filter angewendet wurde
-    if(isset($_GET['location']) && isset($_GET['vehicle-type'])) {
-        $result = fetchCarsFromURLParams($conn);
+    if(isset($_SESSION['location']) && isset($_SESSION['vehicle_type'])) {
+        $result = fetchCarsFromSession($conn);
         displayProductCards($result);
     } else {
         $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;

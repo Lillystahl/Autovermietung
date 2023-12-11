@@ -1,7 +1,9 @@
 <?php
 // process_form.php
 
-function processSearchForm() {
+// function which stores user inputs for searched in session variables 
+//NOTE: DONT KNOW IF THIS CAN CAUSE CONFLICTS WHEN WE HAVE A LOGIN BECAUSE LOGIN CREATES A NEW SESSION
+function homeInpuToSession() {
     if (isset($_POST['filterbar-submit'])) {
         $loc = filter_input(INPUT_POST, 'standort-location', FILTER_SANITIZE_SPECIAL_CHARS);
         $vehicleType = filter_input(INPUT_POST, 'vehicle-type', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -10,17 +12,14 @@ function processSearchForm() {
 
         // Check if at least one of location or vehicle type is provided and valid
         if ((!empty($loc) && ctype_alpha($loc)) || (!empty($vehicleType) && ctype_alpha($vehicleType))) {
-            // Build the query string with the search parameters
-            $queryString = http_build_query([
-                'location' => $loc,
-                'vehicle-type' => $vehicleType,
-                'start-date' => $startDate,
-                'end-date' => $endDate
-                // Add other parameters...
-            ]);
-
-            // Redirect to Produktübersicht.php with the assembled query string
-            header("Location: Produktübersicht.php?" . $queryString);
+            // Store inputs in session variables
+            $_SESSION['location'] = $loc;
+            $_SESSION['vehicle_type'] = $vehicleType;
+            $_SESSION['start_date'] = $startDate;
+            $_SESSION['end_date'] = $endDate;
+            
+            // Redirect to the next page
+            header("Location: Produktübersicht.php");
             exit();
         } else {
             // Invalid input for location or vehicle type
@@ -29,22 +28,25 @@ function processSearchForm() {
     }
 }
 
-function fetchCarsFromURLParams($conn) {
-    if(isset($_GET['location']) && isset($_GET['vehicle-type'])) {
-        $location = $_GET['location'];
-        $vehicleType = $_GET['vehicle-type'];
+// debug function to see session variables
+function debugSession() {
+    echo '<script>';
+    echo 'console.log("Session Variables: ", ' . json_encode($_SESSION) . ');';
+    echo '</script>';
+}
+
+function fetchCarsFromSession($conn) {
+    if(isset($_SESSION['location']) && isset($_SESSION['vehicle_type'])) {
+        $location = $_SESSION['location'];
+        $vehicleType = $_SESSION['vehicle_type'];
         // Prepare the SQL statement with necessary joins
-        $sql = "SELECT vehicles.*, types.*, location.*, categories.drive, vendors.vendor_name
-            FROM vehicles
-            JOIN types ON vehicles.type_id = types.type_id
-            JOIN location ON vehicles.location_id = location.location_id
-            JOIN categories ON types.category_id = categories.category_id
-            JOIN vendors ON types.vendor_id = vendors.vendor_id
-            WHERE categories.type = :vehicleType
-            AND location.loc_name = :location";
+        $sql = "SELECT * 
+        FROM cartablesview 
+        WHERE location_name = :location 
+        AND category_type = :vehicleType";
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':location', $location, PDO::PARAM_STR);
-        $stmt->bindParam(':vehicleType', $vehicleType, PDO::PARAM_STR);
+        $stmt->bindParam(':location', $location);
+        $stmt->bindParam(':vehicleType', $vehicleType);
         $stmt->execute();
         // Fetch the result
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -71,8 +73,8 @@ function displayProductCards($result) {
             echo '</div>';
             echo '<div class="car-details-container">';
             echo '<div class="car-details">';
-            echo '<div class="car-name">' . $result[$j]['vendor_name'] . ' ' . $result[$j]['name'] . '</div>';
-            echo '<div class="car-cat">Kategorie: hier steht die kategorie</div>';
+            echo '<div class="car-name">' . $result[$j]['vendor_name'] . ' ' . $result[$j]['type_name'] . '</div>';
+            echo '<div class="car-cat">Kategorie: ' . $result[$j]['category_type'] . '</div>';
             $transmission = '';
             if ($result[$j]['gear'] == 'automatic') {
                 $transmission = 'Automatik';
@@ -80,7 +82,7 @@ function displayProductCards($result) {
                 $transmission = 'Handschalter';
             }
             echo '<div class="car-transmission">Getriebe: ' . $transmission . '</div>';
-            echo '<div class="Location">Standort: ' . $result[$j]['loc_name'] . '</div>';
+            echo '<div class="Location">Standort: ' . $result[$j]['location_name'] . '</div>';
             $features = [];
             if ($result[$j]['gps'] == 1) {
                 $features[] = '<img src="path/to/gps-icon.svg" alt="GPS">';
@@ -93,7 +95,7 @@ function displayProductCards($result) {
             }
             echo '<div class="car-features">Features: ' . implode(" ", $features) . '</div>';
             echo '</div>';
-            echo '<div class="car-prize">Preis: ' . $result[$j]['price'] . '</div>';
+            echo '<div class="car-prize">Preis: ' . $result[$j]['vehicle_price'] . '</div>';
             echo '<button class="rent-button">Rent Now</button>';
             echo '</div></div>';
         }
@@ -108,3 +110,4 @@ function countAllCars($conn) {
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     return $result['total'];
 }
+
