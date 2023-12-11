@@ -84,6 +84,7 @@
                 <input type="date" placeholder="Start-Datum" name="start-date">
                 <input type="date" placeholder="End-Datum" name="end-date">
                 <button type="submit">Suchen</button>
+                <button type="submit">Suche zurücksetzen</button>
             </div>
         </form>
         </div>
