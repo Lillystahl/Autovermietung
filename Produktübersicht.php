@@ -7,6 +7,7 @@
     require_once('process_form.php');    
     debugSession();
     var_dump($_POST);
+    ProduktübersichtInputToSession();
     getCategoryUrl();
 ?>
 <!DOCTYPE html>
@@ -79,7 +80,7 @@
             <h2>Fahrzeug mieten</h2>
             <form action="" method="POST">
                 <div class="searchbar-inner">
-                    <input type="text" placeholder="<?php echo isset($_SESSION['location']) ? $_SESSION['location'] : 'Standort'; ?>" name="location" value="<?php echo isset($_SESSION['location']) ? $_SESSION['location'] : ''; ?>">
+                    <input type="text" placeholder="<?php echo isset($_SESSION['location']) ? $_SESSION['location'] : 'Standort'; ?>" name="standort-location" value="<?php echo isset($_SESSION['location']) ? $_SESSION['location'] : ''; ?>">
                     <input type="text" placeholder="<?php echo isset($_SESSION['vehicle_type']) ? $_SESSION['vehicle_type'] : 'Kategorie'; ?>" name="vehicle-type" value="<?php echo isset($_SESSION['vehicle_type']) ? $_SESSION['vehicle_type'] : ''; ?>">
                     <input type="date" placeholder="<?php echo isset($_SESSION['start_date']) ? $_SESSION['start_date'] : 'start-date'; ?>" name="start-date" value="<?php echo isset($_SESSION['start_date']) ? $_SESSION['start_date'] : ''; ?>">
                     <input type="date" placeholder="<?php echo isset($_SESSION['end_date']) ? $_SESSION['end_date'] : 'end-date'; ?>" name="end-date" value="<?php echo isset($_SESSION['end_date']) ? $_SESSION['end_date'] : ''; ?>">
@@ -136,7 +137,7 @@
     <?php    
     // Check, ob ein Filter angewendet wurde
     if(isset($_SESSION['location']) && isset($_SESSION['vehicle_type'])) {
-        
+
         $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $carsPerPage = 20;
 
