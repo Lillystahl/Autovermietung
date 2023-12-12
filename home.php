@@ -160,7 +160,7 @@
                 </a>
             </div>
             <div class="card-product">
-                <form action="setCategorySession.inc.php" method="post"> <!-- NOTE NEEDS TO BE STYLED ACCORDINGLY TO MATCH THE OLD CARD COLOR-->
+                <form action="setCategoryProductCard.inc.php" method="post"> <!-- NOTE NEEDS TO BE STYLED ACCORDINGLY TO MATCH THE OLD CARD COLOR-->
                     <input type="hidden" name="category" value="Cabrio">
                     <button type="submit">
                         <!-- Your card content here -->

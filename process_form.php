@@ -35,7 +35,7 @@ function debugSession() {
     echo '</script>';
 }
 
-function fetchCarsFromSession($conn) {
+function fetchCarsLocAndType($conn) {
     if(isset($_SESSION['location']) && isset($_SESSION['vehicle_type'])) {
         $location = $_SESSION['location'];
         $vehicleType = $_SESSION['vehicle_type'];
@@ -60,7 +60,6 @@ function fetchCarsFromSession($conn) {
         return $result;
     }
 }
-
 
 function displayProductCards($result) {
     $numCars = count($result);
@@ -131,7 +130,7 @@ function countAllCars($conn) {
     return $result['total'];
 }
 
-function countSessionCars($conn) {
+function countLocAndTypeCars($conn) {
     if(isset($_SESSION['location']) && isset($_SESSION['vehicle_type'])) {
         $location = $_SESSION['location'];
         $vehicleType = $_SESSION['vehicle_type'];
@@ -146,5 +145,7 @@ function countSessionCars($conn) {
     return $result['total'];
     }
 }
+
+
 
 

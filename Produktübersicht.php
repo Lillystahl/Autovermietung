@@ -5,7 +5,6 @@
     require_once('process_form.php');
     require_once('config_session.inc.php');
     require_once('process_form.php');
-    fetchCarsFromSession($conn);
     debugSession();
 
     // Assuming 'fetchCarsFromSession' returns the array of cars fetched from the session
@@ -31,7 +30,7 @@
     if(isset($_SESSION["user_id"])){
         echo '<div class="header">
                     <div class="header-left">
-                        <a href="home.php" class="logo"><img src="Images/ImageRE.png" alt="Company Logo" /></a>
+                    <a  class="logo" id="logoLink"> <img src="Images/ImageRE.png" alt="Company Logo" /> </a>
                         <h1><a href="Produktübersicht.php" id="header1">Unsere Fahrzeuge</a></h1>
                         <h1><a href="Top-deals.php" id="header2">Top-Deals</a></h1>
                         <h1><a href="Geschaeftskunden.php" id="header3">Geschäftskunden</a></h1>
@@ -53,7 +52,7 @@
     }else{
         echo'<div class="header">
         <div class="header-left">
-            <a href="home.php" class="logo"><img src="Images/ImageRE.png" alt="Company Logo" /></a>
+            <a  href="" class="logo" id="logoLink"> <img src="Images/ImageRE.png" alt="Company Logo" /> </a>
             <h1>
                 <a href="Produktübersicht.php" id="header1">Unsere Fahrzeuge</a>
             </h1>
@@ -138,14 +137,14 @@
     
     // Check, ob ein Filter angewendet wurde
     if(isset($_SESSION['location']) && isset($_SESSION['vehicle_type'])) {
-        $result = fetchCarsFromSession($conn);
+        $result = fetchCarsLocAndType($conn);
         displayProductCards($result);
 
         $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $carsPerPage = 20;
 
         // Pagination Links
-        $totalCars = countSessionCars($conn); // Funktion, um die Gesamtanzahl an Autos zu erhalten
+        $totalCars = countLocAndTypeCars($conn); // Funktion, um die Gesamtanzahl an Autos zu erhalten
         $totalPages = ceil($totalCars / $carsPerPage);
 
         echo '<div class="pagination">';
@@ -153,6 +152,9 @@
             echo '<a href="Produktübersicht.php?page=' . $i . '">' . $i . '</a>';
         }
         echo '</div>';
+        echo "<script>";
+        echo "console.log('1');";
+        echo "</script>";
     } else {
         $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $carsPerPage = 20;
@@ -168,6 +170,9 @@
             echo '<a href="Produktübersicht.php?page=' . $i . '">' . $i . '</a>';
         }
         echo '</div>';
+        echo "<script>";
+        echo "console.log('3');";
+        echo "</script>";
     }
     ?>
 </div>
