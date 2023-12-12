@@ -10,17 +10,27 @@ function homeInpuToSession() {
         $startDate = filter_input(INPUT_POST, 'start-date', FILTER_SANITIZE_SPECIAL_CHARS);
         $endDate = filter_input(INPUT_POST, 'end-date', FILTER_SANITIZE_SPECIAL_CHARS);
 
+        $currentDate = date("Y-m-d"); // Get the current date
+
         // Check if at least one of location or vehicle type is provided and valid
         if ((!empty($loc) && ctype_alpha($loc)) || (!empty($vehicleType) && ctype_alpha($vehicleType))) {
-            // Store inputs in session variables
-            $_SESSION['location'] = $loc;
-            $_SESSION['vehicle_type'] = $vehicleType;
-            $_SESSION['start_date'] = $startDate;
-            $_SESSION['end_date'] = $endDate;
-            
-            // Redirect to the next page
-            header("Location: Produktübersicht.php");
-            exit();
+            // Check if both dates are empty or both dates are provided and valid
+            if ((empty($startDate) && empty($endDate)) || // Both dates empty (no filter applied)
+                ((!empty($startDate) && !empty($endDate)) && // Both dates provided
+                    (strtotime($startDate) >= strtotime($currentDate) && strtotime($endDate) >= strtotime($startDate)))) { // Valid range
+                // Store inputs in session variables
+                $_SESSION['location'] = $loc;
+                $_SESSION['vehicle_type'] = $vehicleType;
+                $_SESSION['start_date'] = $startDate;
+                $_SESSION['end_date'] = $endDate;
+                
+                // Redirect to the next page
+                header("Location: Produktübersicht.php");
+                exit();
+            } else {
+                // Invalid input for date range
+                echo "<script>alert('Invalid date range. Start date cannot be older than the current date, end date cannot be before start date, and both dates must be provided if one is entered.');</script>";
+            }
         } else {
             // Invalid input for location or vehicle type
             echo "<script>alert('Invalid input for location or vehicle type.');</script>";
@@ -87,16 +97,25 @@ function fetchCarsLocAndType($conn, $page, $perPage) {
     if(isset($_SESSION['location']) && isset($_SESSION['vehicle_type'])) {
         $location = $_SESSION['location'];
         $vehicleType = $_SESSION['vehicle_type'];
+        $startDate = $_SESSION['start_date'];
+        $endDate = $_SESSION['end_date'];
         $start = ($page - 1) * $perPage;
         // Prepare the SQL statement with necessary joins
         $sql = "SELECT * 
         FROM cartablesview 
-        WHERE location_name = :location 
-        AND category_type = :vehicleType
+        WHERE location_name = :location
+        AND cartablesview.category_type = :vehicleType
+	    AND cartablesview.vehicle_id NOT IN (
+    	SELECT booking.vehicle_id        
+    	FROM booking
+    	WHERE booking.start_date <= :start_date   
+    	AND booking.end_date >= :end_date)
         LIMIT :start, :perPage";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':location', $location);
         $stmt->bindParam(':vehicleType', $vehicleType);
+        $stmt->bindParam(':start_date', $startDate);
+        $stmt->bindParam(':end_date', $endDate);
         $stmt->bindParam(':start', $start, PDO::PARAM_INT);
         $stmt->bindParam(':perPage', $perPage, PDO::PARAM_INT);
         $stmt->execute();

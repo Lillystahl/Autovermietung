@@ -136,6 +136,7 @@
     <?php    
     // Check, ob ein Filter angewendet wurde
     if(isset($_SESSION['location']) && isset($_SESSION['vehicle_type'])) {
+        
         $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $carsPerPage = 20;
 
