@@ -28,6 +28,54 @@ function homeInpuToSession() {
     }
 }
 
+
+// Das hier funktioiert, ist aber nicht hübsch
+function getCategoryUrl() {
+    if(isset($_GET['category'])) {
+        // Retrieve the 'category' GET parameter value
+        $category = $_GET['category'];
+    
+        // Validate the category against your allowed categories
+        $allowedCategories = array('Cabrio', 'SUV', 'Combi', 'Mehrsitzer', 'Coupe', 'Limousine');
+    
+        if(in_array($category, $allowedCategories)) {
+            // Set the 'vehicle_type' session variable
+            $_SESSION['vehicle_type'] = $category;
+            // Redirect to the same page to remove the GET parameter from URL
+            header('Location: Produktübersicht.php');
+            exit();
+        } else {
+            // Invalid category, handle accordingly
+            echo "Invalid category!";
+        }
+    } 
+}
+
+function ProduktübersichtInputToSession() {
+    if (isset($_POST['filterbar1-submit'])) {
+        $loc = filter_input(INPUT_POST, 'location', FILTER_SANITIZE_SPECIAL_CHARS);
+        $vehicleType = filter_input(INPUT_POST, 'vehicle-type', FILTER_SANITIZE_SPECIAL_CHARS);
+        $startDate = filter_input(INPUT_POST, 'start-date', FILTER_SANITIZE_SPECIAL_CHARS);
+        $endDate = filter_input(INPUT_POST, 'end-date', FILTER_SANITIZE_SPECIAL_CHARS);
+        echo "console.log('worked1');";
+
+        // Check if at least one of location or vehicle type is provided and valid
+        if ((isset($loc) && !empty($loc) && ctype_alpha($loc)) || (isset($vehicleType) && !empty($vehicleType) && ctype_alpha($vehicleType))) {
+            // Store inputs in session variables
+            $_SESSION['location'] = $loc;
+            $_SESSION['vehicle_type'] = $vehicleType;
+            $_SESSION['start_date'] = $startDate;
+            $_SESSION['end_date'] = $endDate;
+            echo "console.log('worked');";
+            // Redirect to the next page
+            // Add your redirection logic here
+        } else {
+            // Invalid input for location or vehicle type
+            echo "<script>alert('Invalid input for location or vehicle type.');</script>";
+        }
+    }
+}
+
 // debug function to see session variables
 function debugSession() {
     echo '<script>';
@@ -35,18 +83,22 @@ function debugSession() {
     echo '</script>';
 }
 
-function fetchCarsLocAndType($conn) {
+function fetchCarsLocAndType($conn, $page, $perPage) {
     if(isset($_SESSION['location']) && isset($_SESSION['vehicle_type'])) {
         $location = $_SESSION['location'];
         $vehicleType = $_SESSION['vehicle_type'];
+        $start = ($page - 1) * $perPage;
         // Prepare the SQL statement with necessary joins
         $sql = "SELECT * 
         FROM cartablesview 
         WHERE location_name = :location 
-        AND category_type = :vehicleType";
+        AND category_type = :vehicleType
+        LIMIT :start, :perPage";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':location', $location);
         $stmt->bindParam(':vehicleType', $vehicleType);
+        $stmt->bindParam(':start', $start, PDO::PARAM_INT);
+        $stmt->bindParam(':perPage', $perPage, PDO::PARAM_INT);
         $stmt->execute();
         // Fetch the result
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -54,6 +106,33 @@ function fetchCarsLocAndType($conn) {
         // Print the retrieved parameters and the result to the console
         echo "<script>";
         echo "console.log('Location:', '" . $location . "');";
+        echo "console.log('Vehicle Type:', '" . $vehicleType . "');";
+        echo "console.log('Cars:', " . json_encode($result) . ");";
+        echo "</script>";
+        return $result;
+    }
+}
+
+function fetchCarsType($conn, $page, $perPage) {
+    if(isset($_SESSION['vehicle_type'])) {
+        $vehicleType = $_SESSION['vehicle_type'];
+        $start = ($page - 1) * $perPage;
+        // Prepare the SQL statement with necessary joins
+        $sql = "SELECT * 
+        FROM cartablesview 
+        WHERE category_type = :vehicleType
+        AND vehicle_availability = 1
+        LIMIT :start, :perPage";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':vehicleType', $vehicleType);
+        $stmt->bindParam(':start', $start, PDO::PARAM_INT);
+        $stmt->bindParam(':perPage', $perPage, PDO::PARAM_INT);
+        $stmt->execute();
+        // Fetch the result
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Print the retrieved parameters and the result to the console
+        echo "<script>";
         echo "console.log('Vehicle Type:', '" . $vehicleType . "');";
         echo "console.log('Cars:', " . json_encode($result) . ");";
         echo "</script>";
@@ -96,7 +175,7 @@ function displayProductCards($result) {
             }
             echo '<div class="car-features">Features: ' . implode(" ", $features) . '</div>';
             echo '</div>';
-            echo '<div class="car-prize">Preis: ' . $result[$j]['vehicle_price'] . '</div>';
+            echo '<div class="car-prize">Preis: ' . $result[$j]['vehicle_price'] . '€</div>';
             echo '<button class="rent-button">Rent Now</button>';
             echo '</div></div>';
         }
@@ -136,7 +215,8 @@ function countLocAndTypeCars($conn) {
         $vehicleType = $_SESSION['vehicle_type'];
     $sql = "SELECT COUNT(*) as total FROM cartablesview 
     WHERE location_name = :location 
-    AND category_type = :vehicleType";
+    AND category_type = :vehicleType
+    AND vehicle_availability = 1";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':location', $location);
     $stmt->bindParam(':vehicleType', $vehicleType);
@@ -144,6 +224,19 @@ function countLocAndTypeCars($conn) {
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     return $result['total'];
     }
+}
+
+function countTypeCars($conn) {
+    $vehicleType = $_SESSION['vehicle_type'];
+    $sql = "SELECT COUNT(*) as total FROM cartablesview 
+    WHERE category_type = :vehicleType
+    AND vehicle_availability = 1";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':vehicleType', $vehicleType);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result['total'];
+
 }
 
 

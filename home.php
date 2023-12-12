@@ -160,19 +160,26 @@
                 </a>
             </div>
             <div class="card-product">
-                <form action="setCategoryProductCard.inc.php" method="post"> <!-- NOTE NEEDS TO BE STYLED ACCORDINGLY TO MATCH THE OLD CARD COLOR-->
-                    <input type="hidden" name="category" value="Cabrio">
-                    <button type="submit">
-                        <!-- Your card content here -->
-                        <img src="Images/Ferarri Roma.jpg" alt="Auto" />
-                        <div class="card-product-infos">
-                            <h2>Cabrio</h2>
-                            <p>
-                                Product description with <strong>relevant info</strong> only.
-                            </p>
-                        </div>
-                    </button>
-                </form>
+                <a href="Produktübersicht.php?category=SUV">
+                    <img src="Images/Ferarri Roma.jpg" alt="Auto" />
+                    <div class="card-product-infos">
+                        <h2>SUV</h2>
+                        <p>
+                            Product description with <strong>relevant info</strong> only.
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="card-product">
+                <a href="Produktübersicht.php?category=Limousine">
+                    <img src="Images/Ferarri Roma.jpg" alt="Auto" />
+                    <div class="card-product-infos">
+                        <h2>Limousine</h2>
+                        <p>
+                            Product description with <strong>relevant info</strong> only.
+                        </p>
+                    </div>
+                </a>
             </div>
             <div class="card-product">
                 <a href="Produktübersicht.php?category=Combi">
@@ -200,18 +207,7 @@
                 <a href="Produktübersicht.php?category=Coupe">
                     <img src="Images/Ferarri Roma.jpg" alt="Auto" />
                     <div class="card-product-infos">
-                        <h2>Coupe</h2>
-                        <p>
-                            Product description with <strong>relevant info</strong> only.
-                        </p>
-                    </div>
-                </a>
-            </div>
-            <div class="card-product">
-                <a href="Produktübersicht.php?category=Limousine">
-                    <img src="Images/Ferarri Roma.jpg" alt="Auto" />
-                    <div class="card-product-infos">
-                        <h2>Limousine</h2>
+                        <h2>Coupé</h2>
                         <p>
                             Product description with <strong>relevant info</strong> only.
                         </p>

@@ -57,26 +57,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-$(document).ready(function() {
-    $('.card-product').click(function(e) {
-        e.preventDefault();
-
-        // Get the category name from the clicked card
-        var categoryName = $(this).find('h2').text();
-
-        // Make an AJAX request to set the session variable and redirect
-        $.ajax({
-            url: 'setCategorySession.php', // File to handle session setting
-            type: 'POST',
-            data: { vehicle_type: categoryName }, // Send category name to PHP
-            success: function(response) {
-                // On success, redirect to Produktübersicht.php
-                window.location.href = 'Produktübersicht.php';
-            },
-            error: function(xhr, status, error) {
-                // Handle errors
-                console.error(error);
-            }
-        });
-    });
-});

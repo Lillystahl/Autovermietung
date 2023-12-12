@@ -41,26 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-//Reset Button
-$(document).ready(function() {
-    $('#resetSearchButton').click(function(e) {
-        e.preventDefault();
-
-        // Make an AJAX request to resetSearch.inc.php
-        $.ajax({
-            url: 'resetSearchProduktübersicht.inc.php',
-            type: 'POST',
-            success: function(response) {
-                // On success, redirect to home.php
-                window.location.href = 'home.php';
-            },
-            error: function(xhr, status, error) {
-                // Handle errors
-                console.error(error);
-            }
-        });
-    });
-});
 
 //Reset Home Logo
 $(document).ready(function() {
@@ -69,7 +49,7 @@ $(document).ready(function() {
 
         // Make an AJAX request to resetSearch.inc.php
         $.ajax({
-            url: 'ResetSearchHomeIcon.inc.php',
+            url: 'resetSearchProduktübersicht.inc.php',
             type: 'POST',
             success: function(response) {
                 // On success, redirect to home.php

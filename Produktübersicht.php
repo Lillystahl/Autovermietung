@@ -4,10 +4,10 @@
     require_once('db_connect.php');
     require_once('process_form.php');
     require_once('config_session.inc.php');
-    require_once('process_form.php');
+    require_once('process_form.php');    
     debugSession();
-
-    // Assuming 'fetchCarsFromSession' returns the array of cars fetched from the session
+    var_dump($_POST);
+    getCategoryUrl();
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -30,7 +30,7 @@
     if(isset($_SESSION["user_id"])){
         echo '<div class="header">
                     <div class="header-left">
-                    <a  class="logo" id="logoLink"> <img src="Images/ImageRE.png" alt="Company Logo" /> </a>
+                    <a  href="home.php" class="logo" id="logoLink"> <img src="Images/ImageRE.png" alt="Company Logo" /> </a>
                         <h1><a href="Produktübersicht.php" id="header1">Unsere Fahrzeuge</a></h1>
                         <h1><a href="Top-deals.php" id="header2">Top-Deals</a></h1>
                         <h1><a href="Geschaeftskunden.php" id="header3">Geschäftskunden</a></h1>
@@ -52,7 +52,7 @@
     }else{
         echo'<div class="header">
         <div class="header-left">
-            <a  href="" class="logo" id="logoLink"> <img src="Images/ImageRE.png" alt="Company Logo" /> </a>
+            <a  href="home.php" class="logo" id="logoLink"> <img src="Images/ImageRE.png" alt="Company Logo" /> </a>
             <h1>
                 <a href="Produktübersicht.php" id="header1">Unsere Fahrzeuge</a>
             </h1>
@@ -77,19 +77,19 @@
     <div class="product-barcontainer">
         <div class="advanced-search-bar-top">
             <h2>Fahrzeug mieten</h2>
-        <form>
-            <div class="searchbar-inner">
-                <input type="text" placeholder="Location" name="location">
-                <input type="text" placeholder="Fahrzeugart" name="vehicle-type">
-                <input type="date" placeholder="Start-Datum" name="start-date">
-                <input type="date" placeholder="End-Datum" name="end-date">
-                <button type="submit">Suchen</button>
-                <button type="submit" id="resetSearchButton">Suche zurücksetzen</button>
-            </div>
-        </form>
+            <form action="" method="POST">
+                <div class="searchbar-inner">
+                    <input type="text" placeholder="<?php echo isset($_SESSION['location']) ? $_SESSION['location'] : 'Standort'; ?>" name="location" value="<?php echo isset($_SESSION['location']) ? $_SESSION['location'] : ''; ?>">
+                    <input type="text" placeholder="<?php echo isset($_SESSION['vehicle_type']) ? $_SESSION['vehicle_type'] : 'Kategorie'; ?>" name="vehicle-type" value="<?php echo isset($_SESSION['vehicle_type']) ? $_SESSION['vehicle_type'] : ''; ?>">
+                    <input type="date" placeholder="<?php echo isset($_SESSION['start_date']) ? $_SESSION['start_date'] : 'start-date'; ?>" name="start-date" value="<?php echo isset($_SESSION['start_date']) ? $_SESSION['start_date'] : ''; ?>">
+                    <input type="date" placeholder="<?php echo isset($_SESSION['end_date']) ? $_SESSION['end_date'] : 'end-date'; ?>" name="end-date" value="<?php echo isset($_SESSION['end_date']) ? $_SESSION['end_date'] : ''; ?>">
+                    <button type="submit" name="filterbar1-submit">Suchen</button>
+                    <button type="submit" id="resetSearchButton">Suche zurücksetzen</button>
+                </div>
+            </form>
         </div>
         <div class="filter-bar">
-            <h2>Filter</h2>
+            <h2>Filter</h2>                                      
             <form>
                 <div class="filter-bar-inner">
                     <div class="top">
@@ -133,15 +133,14 @@
     </div>
 
     <div class="overview-parent">
-    <?php
-    
+    <?php    
     // Check, ob ein Filter angewendet wurde
     if(isset($_SESSION['location']) && isset($_SESSION['vehicle_type'])) {
-        $result = fetchCarsLocAndType($conn);
-        displayProductCards($result);
-
         $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $carsPerPage = 20;
+
+        $result = fetchCarsLocAndType($conn, $currentPage, $carsPerPage);
+        displayProductCards($result);
 
         // Pagination Links
         $totalCars = countLocAndTypeCars($conn); // Funktion, um die Gesamtanzahl an Autos zu erhalten
@@ -153,9 +152,34 @@
         }
         echo '</div>';
         echo "<script>";
-        echo "console.log('1');";
+        echo "console.log('3');";
         echo "</script>";
-    } else {
+        
+    } else if(isset($_SESSION['vehicle_type'])){
+
+        $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $carsPerPage = 20;
+        
+        $result = fetchCarsType($conn, $currentPage, $carsPerPage);
+        displayProductCards($result);
+
+        // Pagination Links
+        $totalCars = countTypeCars($conn); // Funktion, um die Gesamtanzahl an Autos zu erhalten
+        $totalPages = ceil($totalCars / $carsPerPage);
+
+        echo '<div class="pagination">';
+        for ($i = 1; $i <= $totalPages; $i++) {
+            echo '<a href="Produktübersicht.php?page=' . $i . '">' . $i . '</a>';
+        }
+        echo '</div>';
+        echo "<script>";
+        echo "console.log('1');";
+        echo "console.log('.$totalPages.');";
+        echo "console.log('.$totalCars.');";
+        echo "</script>";
+
+    }else {
+        
         $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $carsPerPage = 20;
         $result = fetchAllCars($conn, $currentPage, $carsPerPage);
@@ -171,8 +195,9 @@
         }
         echo '</div>';
         echo "<script>";
-        echo "console.log('3');";
+        echo "console.log('4');";
         echo "</script>";
+
     }
     ?>
 </div>
