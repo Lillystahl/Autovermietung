@@ -80,4 +80,21 @@ $(document).ready(function() {
             }
         });
     });
+
+    $('.filter-reset').click(function(e) {
+        e.preventDefault();
+
+        $.ajax({
+            url: 'resetFilterbar.inc.php', // Replace with your PHP script name
+            type: 'POST',
+            success: function(response) {
+                // Redirect to produktuebersicht.php after unsetting the filters
+                window.location.href = 'Produktübersicht.php';
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+                // Handle error if needed
+            }
+        });
+    });
 });

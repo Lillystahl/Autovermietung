@@ -30,6 +30,31 @@ prev.addEventListener('click', function(){
     document.querySelector('.slide').prepend(items[items.length - 1]);
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    const cities = document.querySelectorAll('.city');
+
+    cities.forEach(city => {
+        city.addEventListener('mouseover', function () {
+            const markerType = this.dataset.marker;
+            const marker = document.querySelector(`.map-marker.${markerType}-marker`);
+
+            if (marker) {
+                marker.classList.add('marker-hover');
+            }
+        });
+
+        city.addEventListener('mouseout', function () {
+            const markerType = this.dataset.marker;
+            const marker = document.querySelector(`.map-marker.${markerType}-marker`);
+
+            if (marker) {
+                marker.classList.remove('marker-hover');
+            }
+        });
+    });
+});
+
+
 // JavaScript, um die Sterne entsprechend der Bewertung auszufüllen
 document.addEventListener("DOMContentLoaded", function() {
     const stars = document.querySelectorAll(".stars");

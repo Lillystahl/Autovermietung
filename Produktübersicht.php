@@ -10,7 +10,6 @@
     ProduktübersichtInputToSession();
     FilterToSession();
     getCategoryUrl();
-
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -101,17 +100,13 @@
                         <label for="manufacturerDropdown" class="filter-label">Hersteller:</label>
                         <select id="manufacturerDropdown" name="Hersteller" class="input-long">
                             <option value="" selected disabled hidden>Hersteller</option>
-                            <option value="Audi" <?php echo ($_SESSION['manufacturer'] ?? '') === 'Audi' ? 'selected' : ''; ?>>Audi</option>
-                            <option value="BMW">BMW</option>
-                            <option value="Ford">Ford</option>
-                            <option value="Jaguar">Jaguar</option>
-                            <option value="Maserati">Maserati</option>
-                            <option value="Mercedes-Benz">Mercedes-Benz</option>
-                            <option value="Mercedes-AMG">Mercedes-AMG</option>
-                            <option value="Opel">Opel</option>
-                            <option value="Range Rover">Range Rover</option>
-                            <option value="Skoda">Skoda</option>
-                            <option value="Volkswagen">Volkswagen</option>
+                            <?php
+                                $manufacturers = ["Audi", "BMW", "Ford", "Jaguar", "Maserati", "Mercedes-Benz", "Mercedes-AMG", "Opel", "Range Rover", "Skoda", "Volkswagen"];
+                                foreach ($manufacturers as $manufacturer) {
+                                    $selected = ($_SESSION['manufacturer'] ?? '') === $manufacturer ? 'selected' : '';
+                                    echo "<option value='$manufacturer' $selected>$manufacturer</option>";
+                                }
+                            ?>
                         </select>
                     </div>
                         
@@ -119,12 +114,13 @@
                         <label for="seatsDropdown" class="filter-label">Sitze:</label>
                         <select id="seatsDropdown" name="Sitze" class="input-short">
                             <option value="" selected disabled hidden>Anzahl</option>
-                            <option value="2">2</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
+                            <?php
+                                $seatOptions = ["2", "4", "5", "7", "8", "9"];
+                                foreach ($seatOptions as $seat) {
+                                    $selected = ($_SESSION['seats'] ?? '') === $seat ? 'selected' : '';
+                                    echo "<option value='$seat' $selected>$seat</option>";
+                                }
+                            ?>
                         </select>
                     </div>
 
@@ -132,20 +128,27 @@
                         <label for="doorsDropdown" class="filter-label">Türen:</label>
                         <select id="doorsDropdown" name="Türen" class="input-short">
                             <option value="" selected disabled hidden>Anzahl</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
+                            <?php
+                                $doorOptions = ["2", "3", "4", "5"];
+                                foreach ($doorOptions as $door) {
+                                    $selected = ($_SESSION['doors'] ?? '') === $door ? 'selected' : '';
+                                    echo "<option value='$door' $selected>$door</option>";
+                                }
+                            ?>
                         </select>
                     </div>
 
                     <div class="dropdown">
                         <label for="gearboxDropdown" class="filter-label">Getriebe:</label>
                         <select id="gearboxDropdown" name="Getriebe" class="input-long">
-                            <option value="" selected disabled hidden>Art</option>
-                            <option value="manually">Manual</option>
-                            <option value="automatic">Automatik</option>
-
+                        <option value="" selected disabled hidden>Anzahl</option>
+                        <?php
+                            $gearboxOptions = ["manually", "automatic"];
+                            foreach ($gearboxOptions as $gearbox) {
+                                $selected = ($_SESSION['gearbox'] ?? '') === $gearbox ? 'selected' : '';
+                                echo "<option value='$gearbox' $selected>$gearbox</option>";
+                            }
+                        ?>
                         </select>
                     </div>
 
@@ -156,8 +159,13 @@
                         <label for="driveDropdown" class="filter-label">Antrieb:</label>
                         <select id="driveDropdown" name="Antrieb" class="input-long">
                             <option value="" selected disabled hidden>Art</option>
-                            <option value="Verbrenner">Verbrenner</option>
-                            <option value="Elektrisch">Elektrisch</option>
+                            <?php
+                                $antriebOptions = ["Verbrenner", "Elektrisch"];
+                                foreach ($antriebOptions as $antrieb) {
+                                    $selected = ($_SESSION['drive'] ?? '') === $antrieb ? 'selected' : '';
+                                    echo "<option value='$antrieb' $selected>$antrieb</option>";
+                                }
+                            ?>
                         </select>
                     </div>
 
@@ -165,17 +173,33 @@
                         <label for="klimaDropdown" class="filter-label">Klima:</label>
                         <select id="klimaDropdown" name="Klima" class="input-short">
                             <option value="" selected disabled hidden></option>
-                            <option value="0">Ja</option>
-                            <option value="1">Nein</option>
+                            <?php
+                                $klimaOptions = [
+                                    ["value" => "0", "label" => "Nein"],
+                                    ["value" => "1", "label" => "Ja"]
+                                ];
+                                foreach ($klimaOptions as $option) {
+                                    $selected = ($_SESSION['air_conditioning'] ?? '') === $option['value'] ? 'selected' : '';
+                                    echo "<option value='{$option['value']}' $selected>{$option['label']}</option>";
+                                }
+                            ?>
                         </select>
                     </div>
 
                     <div class="dropdown">
                         <label for="gpsDropdown" class="filter-label">GPS:</label>
                         <select id="gpsDropdown" name="GPS" class="input-short">
-                            <option value="" selected disabled hidden></option>
-                            <option value="0">Ja</option>
-                            <option value="1">Nein</option>
+                        <option value="" selected disabled hidden></option>
+                        <?php
+                            $gpsOptions = [
+                                ["value" => "0", "label" => "Ja"],
+                                ["value" => "1", "label" => "Nein"]
+                            ];
+                            foreach ($gpsOptions as $option) {
+                                $selected = ($_SESSION['gps'] ?? '') === $option['value'] ? 'selected' : '';
+                                echo "<option value='{$option['value']}' $selected>{$option['label']}</option>";
+                            }
+                        ?>
                         </select>
                     </div>
 
@@ -188,8 +212,16 @@
                             <label for="sortDropdown" class="filter-label">Sortierung:</label>
                             <select id="sortDropdown" name="Sortierung" class="input-long">
                                 <option value="" selected disabled hidden>Wählen</option>
-                                <option value="PriceAsc">Preis - Aufsteigend</option>
-                                <option value="PriceDesc">Preis - Absteigend</option>
+                                <?php
+                                    $sortOptions = [
+                                        ["value" => "PriceAsc", "label" => "Preis - Aufsteigend"],
+                                        ["value" => "PriceDesc", "label" => "Preis - Absteigend"]
+                                    ];
+                                    foreach ($sortOptions as $option) {
+                                        $selected = ($_SESSION['Sortierung'] ?? '') === $option['value'] ? 'selected' : '';
+                                        echo "<option value='{$option['value']}' $selected>{$option['label']}</option>";
+                                    }
+                                ?>
                             </select>
                         </div>
                     </div>
