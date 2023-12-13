@@ -150,7 +150,7 @@
         <div class="card-wrapper">
             <div class="card-product">
                 <a href="Produktübersicht.php?category=Cabrio">
-                    <img src="Images/Ferarri Roma.jpg" alt="Auto" />
+                    <img src="Images/cabrio.jpg" alt="Auto" />
                     <div class="card-product-infos">
                         <h2>Cabrio</h2>
                         <p>
@@ -161,7 +161,7 @@
             </div>
             <div class="card-product">
                 <a href="Produktübersicht.php?category=SUV">
-                    <img src="Images/Ferarri Roma.jpg" alt="Auto" />
+                    <img src="Images/SUV.jpg" alt="Auto" />
                     <div class="card-product-infos">
                         <h2>SUV</h2>
                         <p>
@@ -172,7 +172,7 @@
             </div>
             <div class="card-product">
                 <a href="Produktübersicht.php?category=Limousine">
-                    <img src="Images/Ferarri Roma.jpg" alt="Auto" />
+                    <img src="Images/Limo.jpg" alt="Auto" />
                     <div class="card-product-infos">
                         <h2>Limousine</h2>
                         <p>
@@ -194,7 +194,7 @@
             </div>
             <div class="card-product">
                 <a href="Produktübersicht.php?category=Mehrsitzer">
-                    <img src="Images/Ferarri Roma.jpg" alt="Auto" />
+                    <img src="Images/mehrsitzer.jpg" alt="Auto" />
                     <div class="card-product-infos">
                         <h2>Mehrsitzer</h2>
                         <p>
@@ -205,7 +205,7 @@
             </div>
             <div class="card-product">
                 <a href="Produktübersicht.php?category=Coupe">
-                    <img src="Images/Ferarri Roma.jpg" alt="Auto" />
+                    <img src="Images/coupe.jpg" alt="Auto" />
                     <div class="card-product-infos">
                         <h2>Coupé</h2>
                         <p>

@@ -97,13 +97,13 @@ function ProduktübersichtInputToSession() {
 
 function FilterToSession(){
     if (isset($_POST['applyFilter-submit'])) {
-        $allowedManufacturers = ["Audi", "BMW", "Ford", "Jaguar", "Maserati", "Mercedes-Benz", "Mercedes-AMG", "Opel", "Range Rover", "Skoda", "Volkswagen"];
-        $allowedSeats = ["2", "4", "5", "7", "8", "9"];
-        $allowedDoors = ["2", "3", "4", "5"];
-        $allowedGearboxes = ["manually", "automatic"];
-        $allowedDrives = ["Verbrenner", "Elektrisch"];
-        $allowedAirConditioning = ["0", "1"];
-        $allowedGPS = ["0", "1"];
+        $allowedManufacturers = ["Audi", "BMW", "Ford", "Jaguar", "Maserati", "Mercedes-Benz", "Mercedes-AMG", "Opel", "Range Rover", "Skoda", "Volkswagen",''];
+        $allowedSeats = ["2", "4", "5", "7", "8", "9",''];
+        $allowedDoors = ["2", "3", "4", "5",''];
+        $allowedGearboxes = ["manually", "automatic",''];
+        $allowedDrives = ["combuster", "electric",''];
+        $allowedAirConditioning = ["0", "1",''];
+        $allowedGPS = ["0", "1",''];
         
         $manufacturer = in_array($_POST['Hersteller'], $allowedManufacturers) ? $_POST['Hersteller'] : '';
         $seats = in_array($_POST['Sitze'], $allowedSeats) ? $_POST['Sitze'] : '';
@@ -147,6 +147,18 @@ function getCategoryUrl() {
             $_SESSION['vehicle_type'] = $category;
             // Redirect to the same page to remove the GET parameter from URL
             header('Location: Produktübersicht.php');
+            $_SESSION['location'] = '';
+            $_SESSION['start_date'] = '';
+            $_SESSION['end_date'] = '';
+            $_SESSION['manufacturer'] = '';
+            $_SESSION['seats'] = '';
+            $_SESSION['doors'] = '';
+            $_SESSION['gearbox'] = '';
+            $_SESSION['minAge'] = '';
+            $_SESSION['drive'] = '';
+            $_SESSION['air_conditioning'] = '';
+            $_SESSION['gps'] = '';
+            $_SESSION['max_price'] = '';
             exit();
         } else {
             // Invalid category, handle accordingly
@@ -194,7 +206,7 @@ function fetchCarsLocAndType($conn, $page, $perPage) {
             AND (cartablesview.category_drive = :drive OR :drive = '')
             AND (cartablesview.air_conditioning = :airConditioning OR :airConditioning = '')
             AND (cartablesview.gps = :gps OR :gps = '')
-            AND (cartablesview.vehicle_price = :price OR :price = '')
+            AND (cartablesview.vehicle_price <= :price OR :price = '')
             AND cartablesview.vehicle_id NOT IN (
                 SELECT booking.vehicle_id        
                 FROM booking
@@ -261,7 +273,7 @@ function fetchCarsType($conn, $page, $perPage) {
         AND (cartablesview.category_drive = :drive OR :drive = '')
         AND (cartablesview.air_conditioning = :airConditioning OR :airConditioning = '')
         AND (cartablesview.gps = :gps OR :gps = '')
-        AND (cartablesview.vehicle_price = :price OR :price = '')
+        AND (cartablesview.vehicle_price <= :price OR :price = '')
         AND cartablesview.vehicle_id NOT IN (
                 SELECT booking.vehicle_id        
                 FROM booking
@@ -323,7 +335,7 @@ function fetchCarsLoc($conn, $page, $perPage) {
         AND (cartablesview.category_drive = :drive OR :drive = '')
         AND (cartablesview.air_conditioning = :airConditioning OR :airConditioning = '')
         AND (cartablesview.gps = :gps OR :gps = '')
-        AND (cartablesview.vehicle_price = :price OR :price = '')
+        AND (cartablesview.vehicle_price <= :price OR :price = '')
         AND cartablesview.vehicle_id NOT IN (
             SELECT booking.vehicle_id        
             FROM booking
@@ -437,7 +449,7 @@ function fetchAllCars($conn, $page, $perPage) {
             AND (cartablesview.category_drive = :drive OR :drive = '')
             AND (cartablesview.air_conditioning = :airConditioning OR :airConditioning = '')
             AND (cartablesview.gps = :gps OR :gps = '')
-            AND (cartablesview.vehicle_price = :price OR :price = '')
+            AND (cartablesview.vehicle_price <= :price OR :price = '')
             AND cartablesview.vehicle_id NOT IN (
                 SELECT booking.vehicle_id        
                 FROM booking
@@ -500,7 +512,7 @@ function countAllCars($conn) {
             AND (cartablesview.category_drive = :drive OR :drive = '')
             AND (cartablesview.air_conditioning = :airConditioning OR :airConditioning = '')
             AND (cartablesview.gps = :gps OR :gps = '')
-            AND (cartablesview.vehicle_price = :price OR :price = '')
+            AND (cartablesview.vehicle_price <= :price OR :price = '')
             AND vehicle_availability = 1";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':start_date', $startDate);
@@ -544,7 +556,7 @@ function countLocAndTypeCars($conn) {
     AND (cartablesview.category_drive = :drive OR :drive = '')
     AND (cartablesview.air_conditioning = :airConditioning OR :airConditioning = '')
     AND (cartablesview.gps = :gps OR :gps = '')
-    AND (cartablesview.vehicle_price = :price OR :price = '')
+    AND (cartablesview.vehicle_price <= :price OR :price = '')
     AND vehicle_availability = 1";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':location', $location);
@@ -584,7 +596,7 @@ function countTypeCars($conn) {
     AND (cartablesview.category_drive = :drive OR :drive = '')
     AND (cartablesview.air_conditioning = :airConditioning OR :airConditioning = '')
     AND (cartablesview.gps = :gps OR :gps = '')
-    AND (cartablesview.vehicle_price = :price OR :price = '')
+    AND (cartablesview.vehicle_price <= :price OR :price = '')
     AND vehicle_availability = 1";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':vehicleType', $vehicleType);
@@ -625,7 +637,7 @@ function countLocCars($conn) {
     AND (cartablesview.category_drive = :drive OR :drive = '')
     AND (cartablesview.air_conditioning = :airConditioning OR :airConditioning = '')
     AND (cartablesview.gps = :gps OR :gps = '')
-    AND (cartablesview.vehicle_price = :price OR :price = '')
+    AND (cartablesview.vehicle_price <= :price OR :price = '')
     AND vehicle_availability = 1";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':location', $location);
@@ -643,6 +655,9 @@ function countLocCars($conn) {
     return $result['total'];
 }
 
-
-
+function displayNoResultsMessage($result) {
+    if (empty($result)) {
+        echo '<div class="no-results">Für Ihre Suche konnten wir keine Treffer finden.</div>';
+    }
+}
 
