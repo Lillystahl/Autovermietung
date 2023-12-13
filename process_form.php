@@ -468,8 +468,52 @@ function fetchAllCars($conn, $page, $perPage) {
 
 
 function countAllCars($conn) {
-    $sql = "SELECT COUNT(*) as total FROM vehicles";
+    $_SESSION['start_date'] = $_SESSION['start_date'] ?? '';
+    $_SESSION['end_date'] = $_SESSION['end_date'] ?? '';
+    $_SESSION['manufacturer'] = $_SESSION['manufacturer'] ?? '';
+    $_SESSION['seats'] = $_SESSION['seats'] ?? '';
+    $_SESSION['doors'] = $_SESSION['doors'] ?? '';
+    $_SESSION['gearbox'] = $_SESSION['gearbox'] ?? '';
+    $_SESSION['minAge'] = $_SESSION['minAge'] ?? '';
+    $_SESSION['drive'] = $_SESSION['drive'] ?? '';
+    $_SESSION['air_conditioning'] = $_SESSION['air_conditioning'] ?? '';
+    $_SESSION['gps'] = $_SESSION['gps'] ?? '';
+    $_SESSION['max_price'] = $_SESSION['max_price'] ?? '';
+    
+    $startDate = $_SESSION['start_date'];
+    $endDate = $_SESSION['end_date'];
+    $vendorName = $_SESSION['manufacturer'];
+    $seats = $_SESSION['seats'];
+    $doors = $_SESSION['doors'];
+    $gearbox = $_SESSION['gearbox'];
+    $minAge = $_SESSION['minAge'];
+    $drive = $_SESSION['drive'];
+    $airConditioning = $_SESSION['air_conditioning'];
+    $gps = $_SESSION['gps'];
+    $maxPrice = $_SESSION['max_price'];
+    $sql = "SELECT COUNT(*) as total FROM cartablesview
+            WHERE (cartablesview.vendor_name = :manufacturer OR :manufacturer = '')
+            AND (cartablesview.seats = :seats OR :seats = '')
+            AND (cartablesview.doors = :doors OR :doors = '')
+            AND (cartablesview.gear = :gearbox OR :gearbox = '')
+            AND (cartablesview.min_age = :age OR :age = '')
+            AND (cartablesview.category_drive = :drive OR :drive = '')
+            AND (cartablesview.air_conditioning = :airConditioning OR :airConditioning = '')
+            AND (cartablesview.gps = :gps OR :gps = '')
+            AND (cartablesview.vehicle_price = :price OR :price = '')
+            AND vehicle_availability = 1";
     $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':start_date', $startDate);
+    $stmt->bindParam(':end_date', $endDate);
+    $stmt->bindParam(':manufacturer', $vendorName);
+    $stmt->bindParam(':seats', $seats);
+    $stmt->bindParam(':doors', $doors);
+    $stmt->bindParam(':gearbox', $gearbox);
+    $stmt->bindParam(':age', $minAge);
+    $stmt->bindParam(':drive', $drive);
+    $stmt->bindParam(':airConditioning', $airConditioning);
+    $stmt->bindParam(':gps', $gps);
+    $stmt->bindParam(':price', $maxPrice);
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     return $result['total'];
