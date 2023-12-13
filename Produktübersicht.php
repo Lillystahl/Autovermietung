@@ -101,7 +101,7 @@
                         <label for="manufacturerDropdown" class="filter-label">Hersteller:</label>
                         <select id="manufacturerDropdown" name="Hersteller" class="input-long">
                             <option value="" selected disabled hidden>Hersteller</option>
-                            <option value="Audi">Audi</option>
+                            <option value="Audi" <?php echo ($_SESSION['manufacturer'] ?? '') === 'Audi' ? 'selected' : ''; ?>>Audi</option>
                             <option value="BMW">BMW</option>
                             <option value="Ford">Ford</option>
                             <option value="Jaguar">Jaguar</option>
@@ -143,14 +143,14 @@
                         <label for="gearboxDropdown" class="filter-label">Getriebe:</label>
                         <select id="gearboxDropdown" name="Getriebe" class="input-long">
                             <option value="" selected disabled hidden>Art</option>
-                            <option value="Manual">Manual</option>
-                            <option value="Automatic">Automatic</option>
+                            <option value="manually">Manual</option>
+                            <option value="automatic">Automatik</option>
 
                         </select>
                     </div>
 
                     <span class="filter-label">Mindest Alter:</span>
-                    <input type="text" placeholder="Jahr" Name="Baujahr" class="input-short">
+                    <input type="text" placeholder="Jahr" Name="MindestAlter" class="input-short">
 
                     <div class="dropdown">
                         <label for="driveDropdown" class="filter-label">Antrieb:</label>
@@ -161,11 +161,24 @@
                         </select>
                     </div>
 
-                        <span class="filter-label">Klima:</span>
-                        <input type="checkbox" name="Klima" class="filter-checkbox">
+                    <div class="dropdown">
+                        <label for="klimaDropdown" class="filter-label">Klima:</label>
+                        <select id="klimaDropdown" name="Klima" class="input-short">
+                            <option value="" selected disabled hidden></option>
+                            <option value="0">Ja</option>
+                            <option value="1">Nein</option>
+                        </select>
+                    </div>
 
-                        <span class="filter-label">GPS:</span>
-                        <input type="checkbox" name="GPS" class="filter-checkbox">
+                    <div class="dropdown">
+                        <label for="gpsDropdown" class="filter-label">GPS:</label>
+                        <select id="gpsDropdown" name="GPS" class="input-short">
+                            <option value="" selected disabled hidden></option>
+                            <option value="0">Ja</option>
+                            <option value="1">Nein</option>
+                        </select>
+                    </div>
+
                     </div>
                     <div class="bottom">
                         <span class="filter-label">Preis bis:</span>
@@ -191,7 +204,7 @@
     <div class="overview-parent">
     <?php    
     // Check, ob ein Filter angewendet wurde
-    if(isset($_SESSION['location']) && isset($_SESSION['vehicle_type'])) {
+    if (isset($_SESSION['location']) && $_SESSION['location'] !== '' && isset($_SESSION['vehicle_type']) && $_SESSION['vehicle_type'] !== '') {
 
         $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $carsPerPage = 20;
@@ -209,10 +222,10 @@
         }
         echo '</div>';
         echo "<script>";
-        echo "console.log('3');";
+        echo "console.log('loc and type');";
         echo "</script>";
         
-    } else if(isset($_SESSION['vehicle_type'])){
+    } elseif(isset($_SESSION['vehicle_type']) && $_SESSION['vehicle_type'] !== '') {
 
         $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $carsPerPage = 20;
@@ -230,9 +243,28 @@
         }
         echo '</div>';
         echo "<script>";
-        echo "console.log('1');";
-        echo "console.log('.$totalPages.');";
-        echo "console.log('.$totalCars.');";
+        echo "console.log('Type');";
+        echo "</script>";
+
+    } elseif(isset($_SESSION['location']) && $_SESSION['location'] !== '') {
+
+        $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $carsPerPage = 20;
+        
+        $result = fetchCarsLoc($conn, $currentPage, $carsPerPage);
+        displayProductCards($result);
+
+        // Pagination Links
+        $totalCars = countTypeCars($conn); // Funktion, um die Gesamtanzahl an Autos zu erhalten
+        $totalPages = ceil($totalCars / $carsPerPage);
+
+        echo '<div class="pagination">';
+        for ($i = 1; $i <= $totalPages; $i++) {
+            echo '<a href="Produktübersicht.php?page=' . $i . '">' . $i . '</a>';
+        }
+        echo '</div>';
+        echo "<script>";
+        echo "console.log('Location');";
         echo "</script>";
 
     }else {
@@ -252,7 +284,7 @@
         }
         echo '</div>';
         echo "<script>";
-        echo "console.log('4');";
+        echo "console.log('All cars');";
         echo "</script>";
 
     }

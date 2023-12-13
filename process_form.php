@@ -2,7 +2,7 @@
 // process_form.php
 
 // function which stores user inputs for searched in session variables 
-//NOTE: DONT KNOW IF THIS CAN CAUSE CONFLICTS WHEN WE HAVE A LOGIN BECAUSE LOGIN CREATES A NEW SESSION
+//NOTE: DONT KNOW IF THIS CAN CAUSE CONFLICTS WHEN WE HAVE A LOGIN BECAUSE LOGIN CREATES A NEW SESSION (does not seem to be the case)
 function homeInpuToSession() {
     if (isset($_POST['filterbar-submit'])) {
         $loc = filter_input(INPUT_POST, 'standort-location', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -23,6 +23,15 @@ function homeInpuToSession() {
                 $_SESSION['vehicle_type'] = $vehicleType;
                 $_SESSION['start_date'] = $startDate;
                 $_SESSION['end_date'] = $endDate;
+                $_SESSION['manufacturer'] = '';
+                $_SESSION['seats'] = '';
+                $_SESSION['doors'] = '';
+                $_SESSION['gearbox'] = '';
+                $_SESSION['minAge'] = '';
+                $_SESSION['drive'] = '';
+                $_SESSION['air_conditioning'] = '';
+                $_SESSION['gps'] = '';
+                $_SESSION['max_price'] = '';
                 
                 // Redirect to the next page
                 header("Location: Produktübersicht.php");
@@ -81,17 +90,19 @@ function FilterToSession(){
         $allowedManufacturers = ["Audi", "BMW", "Ford", "Jaguar", "Maserati", "Mercedes-Benz", "Mercedes-AMG", "Opel", "Range Rover", "Skoda", "Volkswagen"];
         $allowedSeats = ["2", "4", "5", "7", "8", "9"];
         $allowedDoors = ["2", "3", "4", "5"];
-        $allowedGearboxes = ["Manual", "Automatic"];
+        $allowedGearboxes = ["manually", "automatic"];
         $allowedDrives = ["Verbrenner", "Elektrisch"];
+        $allowedAirConditioning = ["0", "1"];
+        $allowedGPS = ["0", "1"];
         
         $manufacturer = in_array($_POST['Hersteller'], $allowedManufacturers) ? $_POST['Hersteller'] : '';
         $seats = in_array($_POST['Sitze'], $allowedSeats) ? $_POST['Sitze'] : '';
         $doors = in_array($_POST['Türen'], $allowedDoors) ? $_POST['Türen'] : '';
         $gearbox = in_array($_POST['Getriebe'], $allowedGearboxes) ? $_POST['Getriebe'] : '';
-        $age = $_POST['Baujahr']; // No array validation for text inputs
+        $age = $_POST['MindestAlter']; // No array validation for text inputs
         $drive = in_array($_POST['Antrieb'], $allowedDrives) ? $_POST['Antrieb'] : '';
-        $airConditioning = isset($_POST['Klima']) ? 1 : 0; // Checkbox values as boolean or integer
-        $gps = isset($_POST['GPS']) ? 1 : 0; // Checkbox values as boolean or integer
+        $airConditioning = in_array($_POST['Klima'], $allowedAirConditioning) ? $_POST['Klima'] : '';
+        $gps = in_array($_POST['GPS'], $allowedGPS) ? $_POST['GPS'] : '';
         $maxPrice = $_POST['Preis']; // No array validation for text inputs
 
         // Store filter inputs in session variables
@@ -99,7 +110,7 @@ function FilterToSession(){
         $_SESSION['seats'] = $seats;
         $_SESSION['doors'] = $doors;
         $_SESSION['gearbox'] = $gearbox;
-        $_SESSION['Baujahr'] = $age;
+        $_SESSION['minAge'] = $age;
         $_SESSION['drive'] = $drive;
         $_SESSION['air_conditioning'] = $airConditioning;
         $_SESSION['gps'] = $gps;
@@ -143,8 +154,77 @@ function debugSession() {
 }
 
 function fetchCarsLocAndType($conn, $page, $perPage) {
-    if(isset($_SESSION['location']) && isset($_SESSION['vehicle_type'])) {
-        $location = $_SESSION['location'];
+    $location = $_SESSION['location'];
+    $vehicleType = $_SESSION['vehicle_type'];
+    $startDate = $_SESSION['start_date'];
+    $endDate = $_SESSION['end_date'];
+    $start = ($page - 1) * $perPage;
+
+    // Additional filters from session variables
+    $vendorName = $_SESSION['manufacturer']; // Min Age filter from session
+    $vendorName = $_SESSION['manufacturer'];
+    $seats = $_SESSION['seats'];
+    $doors = $_SESSION['doors'];
+    $gearbox = $_SESSION['gearbox'];
+    $minAge = $_SESSION['minAge'];
+    $drive = $_SESSION['drive'];
+    $airConditioning = $_SESSION['air_conditioning'];
+    $gps = $_SESSION['gps'];
+    $maxPrice = $_SESSION['max_price'];
+
+    // Prepare the SQL statement with necessary joins including additional filters
+    $sql = "SELECT * 
+            FROM cartablesview 
+            WHERE location_name = :location
+            AND cartablesview.category_type = :vehicleType
+            AND (cartablesview.vendor_name = :manufacturer OR :manufacturer = '')
+            AND (cartablesview.seats = :seats OR :seats = '')
+            AND (cartablesview.doors = :doors OR :doors = '')
+            AND (cartablesview.gear = :gearbox OR :gearbox = '')
+            AND (cartablesview.min_age = :age OR :age = '')
+            AND (cartablesview.category_drive = :drive OR :drive = '')
+            AND (cartablesview.air_conditioning = :airConditioning OR :airConditioning = '')
+            AND (cartablesview.gps = :gps OR :gps = '')
+            AND (cartablesview.vehicle_price = :price OR :price = '')
+            AND cartablesview.vehicle_id NOT IN (
+                SELECT booking.vehicle_id        
+                FROM booking
+                WHERE booking.start_date <= :start_date   
+                AND booking.end_date >= :end_date)
+            LIMIT :start, :perPage";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':location', $location);
+    $stmt->bindParam(':vehicleType', $vehicleType);
+    $stmt->bindParam(':start_date', $startDate);
+    $stmt->bindParam(':end_date', $endDate);
+    $stmt->bindParam(':manufacturer', $vendorName);
+    $stmt->bindParam(':seats', $seats);
+    $stmt->bindParam(':doors', $doors);
+    $stmt->bindParam(':gearbox', $gearbox);
+    $stmt->bindParam(':age', $minAge);
+    $stmt->bindParam(':drive', $drive);
+    $stmt->bindParam(':airConditioning', $airConditioning);
+    $stmt->bindParam(':gps', $gps);
+    $stmt->bindParam(':price', $maxPrice);
+    $stmt->bindParam(':start', $start, PDO::PARAM_INT);
+    $stmt->bindParam(':perPage', $perPage, PDO::PARAM_INT);
+    $stmt->execute();
+    // Fetch the result
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Log the retrieved parameters and the result to the console
+    echo "<script>";
+    echo "console.log('vednorName:', '" . $vendorName . "');";
+    echo "console.log('Location:', '" . $location . "');";
+    echo "console.log('Vehicle Type:', '" . $vehicleType . "');";
+    echo "console.log('Cars:', " . json_encode($result) . ");";
+    echo "</script>";
+    
+    return $result;
+}
+
+function fetchCarsType($conn, $page, $perPage) {
         $vehicleType = $_SESSION['vehicle_type'];
         $startDate = $_SESSION['start_date'];
         $endDate = $_SESSION['end_date'];
@@ -152,16 +232,14 @@ function fetchCarsLocAndType($conn, $page, $perPage) {
         // Prepare the SQL statement with necessary joins
         $sql = "SELECT * 
         FROM cartablesview 
-        WHERE location_name = :location
-        AND cartablesview.category_type = :vehicleType
-	    AND cartablesview.vehicle_id NOT IN (
+        WHERE category_type = :vehicleType
+        AND cartablesview.vehicle_id NOT IN (
     	SELECT booking.vehicle_id        
     	FROM booking
     	WHERE booking.start_date <= :start_date   
     	AND booking.end_date >= :end_date)
         LIMIT :start, :perPage";
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':location', $location);
         $stmt->bindParam(':vehicleType', $vehicleType);
         $stmt->bindParam(':start_date', $startDate);
         $stmt->bindParam(':end_date', $endDate);
@@ -173,26 +251,31 @@ function fetchCarsLocAndType($conn, $page, $perPage) {
 
         // Print the retrieved parameters and the result to the console
         echo "<script>";
-        echo "console.log('Location:', '" . $location . "');";
         echo "console.log('Vehicle Type:', '" . $vehicleType . "');";
         echo "console.log('Cars:', " . json_encode($result) . ");";
         echo "</script>";
         return $result;
-    }
 }
 
-function fetchCarsType($conn, $page, $perPage) {
-    if(isset($_SESSION['vehicle_type'])) {
-        $vehicleType = $_SESSION['vehicle_type'];
+function fetchCarsLoc($conn, $page, $perPage) {
+        $location = $_SESSION['location'];
+        $startDate = $_SESSION['start_date'];
+        $endDate = $_SESSION['end_date'];
         $start = ($page - 1) * $perPage;
         // Prepare the SQL statement with necessary joins
         $sql = "SELECT * 
         FROM cartablesview 
-        WHERE category_type = :vehicleType
-        AND vehicle_availability = 1
+        WHERE location_name = :location
+        AND cartablesview.vehicle_id NOT IN (
+    	SELECT booking.vehicle_id        
+    	FROM booking
+    	WHERE booking.start_date <= :start_date   
+    	AND booking.end_date >= :end_date)
         LIMIT :start, :perPage";
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':vehicleType', $vehicleType);
+        $stmt->bindParam(':location', $location);
+        $stmt->bindParam(':start_date', $startDate);
+        $stmt->bindParam(':end_date', $endDate);
         $stmt->bindParam(':start', $start, PDO::PARAM_INT);
         $stmt->bindParam(':perPage', $perPage, PDO::PARAM_INT);
         $stmt->execute();
@@ -201,11 +284,10 @@ function fetchCarsType($conn, $page, $perPage) {
 
         // Print the retrieved parameters and the result to the console
         echo "<script>";
-        echo "console.log('Vehicle Type:', '" . $vehicleType . "');";
+        echo "console.log('Vehicle Type:', '" . $location . "');";
         echo "console.log('Cars:', " . json_encode($result) . ");";
         echo "</script>";
         return $result;
-    }
 }
 
 function displayProductCards($result) {
@@ -278,9 +360,8 @@ function countAllCars($conn) {
 }
 
 function countLocAndTypeCars($conn) {
-    if(isset($_SESSION['location']) && isset($_SESSION['vehicle_type'])) {
-        $location = $_SESSION['location'];
-        $vehicleType = $_SESSION['vehicle_type'];
+    $location = $_SESSION['location'];
+    $vehicleType = $_SESSION['vehicle_type'];
     $sql = "SELECT COUNT(*) as total FROM cartablesview 
     WHERE location_name = :location 
     AND category_type = :vehicleType
@@ -291,7 +372,6 @@ function countLocAndTypeCars($conn) {
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     return $result['total'];
-    }
 }
 
 function countTypeCars($conn) {
@@ -301,6 +381,20 @@ function countTypeCars($conn) {
     AND vehicle_availability = 1";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':vehicleType', $vehicleType);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result['total'];
+
+}
+
+
+function countLocCars($conn) {
+    $location = $_SESSION['location'];
+    $sql = "SELECT COUNT(*) as total FROM cartablesview 
+    WHERE location_name = :location
+    AND vehicle_availability = 1";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':location', $location);
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     return $result['total'];
