@@ -76,6 +76,41 @@ function ProduktübersichtInputToSession() {
     }
 }
 
+function FilterToSession(){
+    if (isset($_POST['applyFilter-submit'])) {
+        $allowedManufacturers = ["Audi", "BMW", "Ford", "Jaguar", "Maserati", "Mercedes-Benz", "Mercedes-AMG", "Opel", "Range Rover", "Skoda", "Volkswagen"];
+        $allowedSeats = ["2", "4", "5", "7", "8", "9"];
+        $allowedDoors = ["2", "3", "4", "5"];
+        $allowedGearboxes = ["Manual", "Automatic"];
+        $allowedDrives = ["Verbrenner", "Elektrisch"];
+        
+        $manufacturer = in_array($_POST['Hersteller'], $allowedManufacturers) ? $_POST['Hersteller'] : '';
+        $seats = in_array($_POST['Sitze'], $allowedSeats) ? $_POST['Sitze'] : '';
+        $doors = in_array($_POST['Türen'], $allowedDoors) ? $_POST['Türen'] : '';
+        $gearbox = in_array($_POST['Getriebe'], $allowedGearboxes) ? $_POST['Getriebe'] : '';
+        $age = $_POST['Baujahr']; // No array validation for text inputs
+        $drive = in_array($_POST['Antrieb'], $allowedDrives) ? $_POST['Antrieb'] : '';
+        $airConditioning = isset($_POST['Klima']) ? 1 : 0; // Checkbox values as boolean or integer
+        $gps = isset($_POST['GPS']) ? 1 : 0; // Checkbox values as boolean or integer
+        $maxPrice = $_POST['Preis']; // No array validation for text inputs
+
+        // Store filter inputs in session variables
+        $_SESSION['manufacturer'] = $manufacturer;
+        $_SESSION['seats'] = $seats;
+        $_SESSION['doors'] = $doors;
+        $_SESSION['gearbox'] = $gearbox;
+        $_SESSION['Baujahr'] = $age;
+        $_SESSION['drive'] = $drive;
+        $_SESSION['air_conditioning'] = $airConditioning;
+        $_SESSION['gps'] = $gps;
+        $_SESSION['max_price'] = $maxPrice;
+
+        // Redirect to the desired page
+        header("Location: Produktübersicht.php");
+        exit();
+    }
+}
+
 
 // Das hier funktioiert, ist aber nicht hübsch
 function getCategoryUrl() {

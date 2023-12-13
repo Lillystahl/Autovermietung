@@ -8,7 +8,9 @@
     debugSession();
     var_dump($_POST);
     ProduktübersichtInputToSession();
+    FilterToSession();
     getCategoryUrl();
+
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -91,26 +93,73 @@
         </div>
         <div class="filter-bar">
             <h2>Filter</h2>                                      
-            <form>
+            <form action="" method="POST">
                 <div class="filter-bar-inner">
                     <div class="top">
-                        <span class="filter-label">Hersteller:</span>
-                        <input type="text" name="Hersteller" class="input-long">
+
+                    <div class="dropdown">
+                        <label for="manufacturerDropdown" class="filter-label">Hersteller:</label>
+                        <select id="manufacturerDropdown" name="Hersteller" class="input-long">
+                            <option value="" selected disabled hidden>Hersteller</option>
+                            <option value="Audi">Audi</option>
+                            <option value="BMW">BMW</option>
+                            <option value="Ford">Ford</option>
+                            <option value="Jaguar">Jaguar</option>
+                            <option value="Maserati">Maserati</option>
+                            <option value="Mercedes-Benz">Mercedes-Benz</option>
+                            <option value="Mercedes-AMG">Mercedes-AMG</option>
+                            <option value="Opel">Opel</option>
+                            <option value="Range Rover">Range Rover</option>
+                            <option value="Skoda">Skoda</option>
+                            <option value="Volkswagen">Volkswagen</option>
+                        </select>
+                    </div>
                         
-                        <span class="filter-label">Sitze:</span>
-                        <input type="text" name="Sitze" class="input-short">
+                    <div class="dropdown">
+                        <label for="seatsDropdown" class="filter-label">Sitze:</label>
+                        <select id="seatsDropdown" name="Sitze" class="input-short">
+                            <option value="" selected disabled hidden>Anzahl</option>
+                            <option value="2">2</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                        </select>
+                    </div>
 
-                        <span class="filter-label">Türen:</span>
-                        <input type="text" name="Türen" class="input-short">
+                    <div class="dropdown">
+                        <label for="doorsDropdown" class="filter-label">Türen:</label>
+                        <select id="doorsDropdown" name="Türen" class="input-short">
+                            <option value="" selected disabled hidden>Anzahl</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
 
-                        <span class="filter-label">Getriebe:</span>
-                        <input type="text" name="Getriebe" class="input-long">
+                    <div class="dropdown">
+                        <label for="gearboxDropdown" class="filter-label">Getriebe:</label>
+                        <select id="gearboxDropdown" name="Getriebe" class="input-long">
+                            <option value="" selected disabled hidden>Art</option>
+                            <option value="Manual">Manual</option>
+                            <option value="Automatic">Automatic</option>
 
-                        <span class="filter-label">Alter:</span>
-                        <input type="text" name="Alter" class="input-short">
+                        </select>
+                    </div>
 
-                        <span class="filter-label">Antrieb:</span>
-                        <input type="text" name="Antrieb" class="input-long">
+                    <span class="filter-label">Mindest Alter:</span>
+                    <input type="text" placeholder="Jahr" Name="Baujahr" class="input-short">
+
+                    <div class="dropdown">
+                        <label for="driveDropdown" class="filter-label">Antrieb:</label>
+                        <select id="driveDropdown" name="Antrieb" class="input-long">
+                            <option value="" selected disabled hidden>Art</option>
+                            <option value="Verbrenner">Verbrenner</option>
+                            <option value="Elektrisch">Elektrisch</option>
+                        </select>
+                    </div>
 
                         <span class="filter-label">Klima:</span>
                         <input type="checkbox" name="Klima" class="filter-checkbox">
@@ -120,14 +169,20 @@
                     </div>
                     <div class="bottom">
                         <span class="filter-label">Preis bis:</span>
-                        <input type="text" placeholder="Euro/Tag" name="GPS" class="input-preis">
+                        <input type="text" placeholder="Euro/Tag" name="Preis" class="input-preis">
 
-                        <span class="filter-label">Sortierung:</span>
-                        <input type="text" name="Sitze" class="input-long">
+                        <div class="dropdown">
+                            <label for="sortDropdown" class="filter-label">Sortierung:</label>
+                            <select id="sortDropdown" name="Sortierung" class="input-long">
+                                <option value="" selected disabled hidden>Wählen</option>
+                                <option value="PriceAsc">Preis - Aufsteigend</option>
+                                <option value="PriceDesc">Preis - Absteigend</option>
+                            </select>
+                        </div>
                     </div>
 
-                    <button type="submit" class="filter-apply">Filter Anwenden</button>
-                    <button type="submit" class="filter-reset">Filter Zurücksetzen</button>
+                    <button type="submit" class="filter-apply" name="applyFilter-submit">Filter Anwenden</button>
+                    <button type="submit" class="filter-reset" name=resetFilter-submit>Filter Zurücksetzen</button>
                 </div>
             </form>
         </div>

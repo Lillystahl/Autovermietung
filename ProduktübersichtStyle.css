@@ -134,7 +134,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    width: 30px;
+    width: 60px;
     /* Other styles for the filter input */
 }
 
@@ -144,7 +144,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    width: 100px;
+    width: 150px;
     /* Other styles for the filter input */
 }
 
