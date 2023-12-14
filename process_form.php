@@ -377,7 +377,7 @@ function displayProductCards($result) {
     for ($i = 0; $i < $numRows; $i++) {
         echo '<div class="overview-row">';
         for ($j = $i * 5; $j < min(($i + 1) * 5, $numCars); $j++) {
-            echo '<div class="car-card">';
+            echo '<div class="car-card" onclick="openCarDetails(' . $j . ')">';
             echo '<div class="car-image-container">';
             echo '<img class="car-image" src="Images/Product_Img/vorne-' . $result[$j]['img_file_name'] . '" alt="Car Image">';
             echo '</div>';
@@ -395,14 +395,19 @@ function displayProductCards($result) {
             echo '<div class="Location">Standort: ' . $result[$j]['location_name'] . '</div>';
             $features = [];
             if ($result[$j]['gps'] == 1) {
-                $features[] = '<img src="path/to/gps-icon.svg" alt="GPS">';
+                $features[] = '<i class="fa-solid fa-map-location-dot"></i>';
             }
-            if ($result[$j]['trunk'] > 0) {
-                $features[] = '<img src="path/to/trunk-icon.svg" alt="Trunk">';
-            }
+            else
+                $features[] = '<span class="durchgestrichen">
+                <i class="fa-solid fa-map-location-dot"></i>
+              </span>';
             if ($result[$j]['air_conditioning'] == 1) {
-                $features[] = '<img src="path/to/ac-icon.svg" alt="AC">';
+                $features[] = '<i class="fa-solid fa-fan"></i>';
             }
+            else
+                $features[] = '<span class="durchgestrichen">
+                <i class="fa-solid fa-fan"></i>
+              </span>';
             echo '<div class="car-features">Features: ' . implode(" ", $features) . '</div>';
             echo '</div>';
             echo '<div class="car-prize">Preis: ' . $result[$j]['vehicle_price'] . '€</div>';
@@ -410,6 +415,40 @@ function displayProductCards($result) {
             echo '</div></div>';
         }
         echo '</div>';
+    }
+
+    for ($i = 0; $i < $numRows; $i++) {
+        for ($j = $i * 5; $j < min(($i + 1) * 5, $numCars); $j++) {
+            echo '<div class="car-details-overlay" id="carDetailsOverlay_' . $j . '">';
+            echo '<div class="car-details-popup" id="carDetailsPopup_' . $j . '">';
+            echo '<span class="close-button" onclick="closeCarDetails()">&times;</span>';
+            echo '<div class="popup-content">';
+            echo '<div class="popup-image-container">' .
+    '<img class="car-image" src="Images/Product_Img/vorne-' . $result[$j]['img_file_name'] . '" alt="Car Image">' .
+    '<img class="car-image" src="Images/Product_Img/vorne-' . $result[$j]['img_file_name'] . '" alt="Car Image">' .
+'</div>';
+            echo '<div class="car-details-popup-content">';
+            echo '<div class="car-details-popup-content">';
+            echo '<div class="car-name">' . $result[$j]['vendor_name'] . ' ' . $result[$j]['type_name'] . '</div>';
+            echo '<div class="car-cat">Kategorie: ' . $result[$j]['category_type'] . '</div>';
+            echo '<div class="car-cat">Sitzanzahl: ' . $result[$j]['seats'] . '</div>';
+            echo '<div class="car-cat">Türen: ' . $result[$j]['doors'] . '</div>';
+            echo '<div class="car-cat">Kofferraum: ' . $result[$j]['trunk'] . '</div>';
+            $transmission ='';
+            if ($result[$j]['gear'] == 'automatic') {
+                $transmission = 'Automatik';
+            } elseif ($result[$j]['gear'] == 'manually') {
+                $transmission = 'Handschalter';
+            }
+            echo '<div class="car-transmission">Getriebe: ' . $transmission . '</div>';
+            echo '<div class="Location">Standort: ' . $result[$j]['location_name'] . '</div>';
+
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+        }
     }
 }
 

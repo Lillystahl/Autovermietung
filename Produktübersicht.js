@@ -1,37 +1,33 @@
 // JavaScript Funktionen für die Anzeige und das Schließen der vergrößerten Ansicht
-function openCarDetails() {
-    document.getElementById("carDetailsOverlay").style.display = "block";
+function openCarDetails(index) {
+    // Erhalte das entsprechende Overlay und Popup basierend auf dem Index
+    var overlay = document.getElementById('carDetailsOverlay_' + index);
+    var popup = document.getElementById('carDetailsPopup_' + index);
+
+    // Zeige das Overlay und das Popup an
+    overlay.style.display = 'block';
+    popup.style.display = 'block';
+
     document.body.style.overflow = "hidden"; // Deaktiviert das Scrollen auf der Hauptseite
 }
 
 function closeCarDetails() {
-    document.getElementById("carDetailsOverlay").style.display = "none";
+    document.querySelectorAll(".car-details-overlay").forEach(function(overlay) {
+        overlay.style.display = "none";
+    });
+
     document.body.style.overflow = "auto"; // Aktiviert das Scrollen auf der Hauptseite
 }
 
-const carDetailsPopup = document.getElementById('carDetailsPopup');
-const carDetailsOverlay = document.getElementById('carDetailsOverlay');
+document.querySelectorAll(".car-details-overlay").forEach(function(overlay) {
+    overlay.addEventListener('click', function(event) {
+        const popup = this.querySelector('.car-details-popup');
 
-if (carDetailsPopup && carDetailsOverlay) {
-    // Event Listener für Klicks außerhalb des Popups
-    carDetailsOverlay.addEventListener('click', function(event) {
-        if (!carDetailsPopup.contains(event.target)) {
-            // Klick erfolgte außerhalb des Popups, schließe es
+        if (popup && !popup.contains(event.target)) {
             closeCarDetails(); // Funktion zum Schließen des Popups aufrufen
         }
     });
-}
-
-// Eventlistener für das Klickereignis auf einer Car Card, um die vergrößerte Ansicht zu öffnen
-var carCards = document.getElementsByClassName("car-card");
-for (var i = 0; i < carCards.length; i++) {
-    carCards[i].addEventListener('click', function() {
-        openCarDetails();
-        // Setze die Werte der vergrößerten Ansicht auf die Werte der Car Card, die geklickt wurde
-        var carDetailsImage = document.getElementById("carDetailsImage");
-        carDetailsImage.src = this.getElementsByTagName("img")[0].src;
-    });
-}
+});
 
 window.onclick = function(event) {
     var carDetailsPopup = document.getElementById("carDetailsPopup"); // ID des Popups
