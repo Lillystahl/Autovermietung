@@ -1,5 +1,13 @@
+<?php
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    require_once('db_connect.php');
+    require_once('config_session.inc.php');
+?>
+
 <!DOCTYPE html>
 <html lang="de">
+
 
 <head>
   <meta charset="UTF-8">
