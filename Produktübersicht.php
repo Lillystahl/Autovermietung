@@ -155,8 +155,8 @@
                         </select>
                     </div>
 
-                    <span class="filter-label">Mindestalter:</span>
-                    <input type="text" placeholder="Jahr" Name="MindestAlter" class="input-short" value="<?php echo isset($_SESSION['MindestAlter']) ? $_SESSION['MindestAlter'] : ''; ?>">
+                    <span class="filter-label">Mindest Alter:</span>
+                    <input type="text" placeholder="Jahr" Name="MindestAlter" class="input-short" value="<?php echo isset($_SESSION['minAge']) ? $_SESSION['minAge'] : ''; ?>">
 
                     <div class="dropdown">
                         <label for="driveDropdown" class="filter-label">Motorart:</label>
@@ -215,7 +215,7 @@
                     </div>
                     <div class="bottom">
                     <span class="filter-label">Preis bis:</span>
-                    <input type="text" placeholder="Euro/Tag" name="Preis" class="input-preis" value="<?php echo isset($_SESSION['price']) ? $_SESSION['price'] : ''; ?>">
+                    <input type="text" placeholder="Euro/Tag" name="Preis" class="input-preis" value="<?php echo isset($_SESSION['max_price']) ? $_SESSION['max_price'] : ''; ?>">
                     
                         <div class="dropdown">
                             <label for="sortDropdown" class="filter-label">Sortierung:</label>

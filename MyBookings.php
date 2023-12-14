@@ -45,46 +45,7 @@
 
   <div class="img-container">
       <div class="content">
-        <div class="user-info-container">
-          <div class="user-info">
-            <img src="/Autovermietung/Images/bmw racing.jpg" alt="Profile Picture" width="100" height="100">
-          </div>
-        <div class="user-info-text">
 
-          <div class="personal_info">
-            <div>
-              <p><strong>Name:</strong></p>
-            </div>
-            <div>
-              <p>Max Mustermann</p>
-            </div>
-          </div>
-
-          <div class="personal_info">
-            <div>
-              <p><strong>Benutzernummer:</strong></p>
-            </div>
-            <div>
-              <p>12345</p>
-            </div>
-          </div>
-
-          <div class="personal_info">
-            <div>
-              <p><strong>Adresse:</strong></p>
-            </div>
-            <div>
-              <p>Musterstraße</p>
-            </div>
-            <div>
-              <p>123</p>
-            </div>
-            <div>
-              <p>12345 Musterstadt</p>
-            </div>
-          </div>
-        </div>
-    </div>
     <div class="booking-container">
       <h1>My Bookings</h1>
       <table>
@@ -223,9 +184,9 @@
       <h2>About Us</h2>
       <a href="#">Blog</a>
       <a href="#">Kunden</a>
-      <a href="Datenschutz.html">Datenschutz</a>
-      <a href="AGB.html">AGB</a>
-      <a href="Impressum.html">Impressum</a>
+      <a href="Datenschutz.php">Datenschutz</a>
+      <a href="AGB.php">AGB</a>
+      <a href="Impressum.php">Impressum</a>
   </div>
 
   <div class="footer-heading footer-2">
