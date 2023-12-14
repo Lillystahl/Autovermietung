@@ -9,6 +9,7 @@
     ProduktübersichtInputToSession();
     FilterToSession();
     getCategoryUrl();
+    print_r($_POST);
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -228,20 +229,20 @@
                     
                     <h2 style= width:100%;>Sortierung</h2>
                     <div class="filter-item-sort">
-                            <select id="sortDropdown" name="Sortierung" class="input-long">
-                                <option value="" selected disabled hidden>Wählen</option>
-                                <option value="" <?php echo ($_SESSION['Sortierung'] ?? '') === '' ? 'selected' : ''; ?>>----</option>
-                                <?php
-                                    $sortOptions = [
-                                        ["value" => "PriceAsc", "label" => "Preis - Aufsteigend"],
-                                        ["value" => "PriceDesc", "label" => "Preis - Absteigend"]
-                                    ];
-                                    foreach ($sortOptions as $option) {
-                                        $selected = ($_SESSION['Sortierung'] ?? '') === $option['value'] ? 'selected' : '';
-                                        echo "<option value='{$option['value']}' $selected>{$option['label']}</option>";
-                                    }
-                                ?>
-                            </select>
+                        <select id="sortDropdown" name="Sortierung" class="input-long">
+                            <option value="" selected disabled hidden>Wählen</option>
+                            <option value="" <?php echo ($_SESSION['Sortierung'] ?? '') === '' ? 'selected' : ''; ?>>----</option>
+                            <?php
+                                $sortOptions = [
+                                    ["value" => "PriceAsc", "label" => "Preis - Aufsteigend"],
+                                    ["value" => "PriceDesc", "label" => "Preis - Absteigend"]
+                                ];
+                                foreach ($sortOptions as $option) {
+                                    $selected = ($_SESSION['Sortierung'] ?? '') === $option['value'] ? 'selected' : '';
+                                    echo "<option value='{$option['value']}' $selected>{$option['label']}</option>";
+                                }
+                            ?>
+                        </select>
                     </div>
                 </div>
             </form>

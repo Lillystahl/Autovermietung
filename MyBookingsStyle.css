@@ -1,15 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
 
-.imhg-container {
-  background-image: url('Images/amgatnight.jpg');
-  height: 100%;
+
+.img-container {
+  height: 700px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -55,13 +49,13 @@ body {
   height: 50px;
  }
 
-  h1 {
+h1{
     text-align: center;
     color: black;
 }
 
 
-  table {
+table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
@@ -122,9 +116,7 @@ body {
   padding: 10px 30px 0px 0px;
 }
 
-  p {
-  padding-bottom: 0px;
-}
+
   .hidden_row {
   background: rgba(255, 255, 255, 0.5);
   height: 60px;

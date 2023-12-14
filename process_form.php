@@ -411,7 +411,9 @@ function displayProductCards($result) {
             echo '<div class="car-features">Features: ' . implode(" ", $features) . '</div>';
             echo '</div>';
             echo '<div class="car-prize">Preis: ' . $result[$j]['vehicle_price'] . '€</div>';
-            echo '<button class="rent-button">Rent Now</button>';
+            echo '<form action="" method="POST">';
+            echo '<button type="submit" name="rent-button" class="rent-button">Rent Now</button>';
+            echo '</form>';
             echo '</div></div>';
         }
         echo '</div>';
@@ -704,3 +706,19 @@ function displayNoResultsMessage($result) {
     }
 }
 
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    rentCar();
+}
+
+function rentCar() {
+    if (isset($_POST['rent-button'])) {
+
+        header("Location: booking.php");
+        echo "<script>";
+        echo "console.log('Rent car');";
+        echo "</script>";
+        exit();
+    }
+}
