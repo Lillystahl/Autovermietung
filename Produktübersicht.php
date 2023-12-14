@@ -90,7 +90,7 @@
             </form>
         </div>
         <div class="filter-bar">
-            <h2>Filter</h2>                                      
+            <h2>Suche filtern</h2>                                      
             <form action="" method="POST">
                 <div class="filter-bar-inner">
                     <div class="top">
@@ -111,7 +111,7 @@
                     </div>
                         
                     <div class="dropdown">
-                        <label for="seatsDropdown" class="filter-label">Sitze:</label>
+                        <label for="seatsDropdown" class="filter-label">Sitzanzahl:</label>
                         <select id="seatsDropdown" name="Sitze" class="input-short">
                             <option value="" selected disabled hidden>Anzahl</option>
                             <option value="" <?php echo ($_SESSION['seats'] ?? '') === '' ? 'selected' : ''; ?>>----</option>
@@ -141,7 +141,7 @@
                     </div>
 
                     <div class="dropdown">
-                        <label for="gearboxDropdown" class="filter-label">Getriebe:</label>
+                        <label for="gearboxDropdown" class="filter-label">Getriebeart:</label>
                         <select id="gearboxDropdown" name="Getriebe" class="input-long">
                         <option value="" selected disabled hidden>Anzahl</option>
                         <option value="" <?php echo ($_SESSION['gearbox'] ?? '') === '' ? 'selected' : ''; ?>>----</option>
@@ -155,11 +155,11 @@
                         </select>
                     </div>
 
-                    <span class="filter-label">Mindest Alter:</span>
+                    <span class="filter-label">Mindestalter:</span>
                     <input type="text" placeholder="Jahr" Name="MindestAlter" class="input-short" value="<?php echo isset($_SESSION['MindestAlter']) ? $_SESSION['MindestAlter'] : ''; ?>">
 
                     <div class="dropdown">
-                        <label for="driveDropdown" class="filter-label">Antrieb:</label>
+                        <label for="driveDropdown" class="filter-label">Motorart:</label>
                         <select id="driveDropdown" name="Antrieb" class="input-long">
                             <option value="" selected disabled hidden>Art</option>
                             <option value="" <?php echo ($_SESSION['drive'] ?? '') === '' ? 'selected' : ''; ?>>----</option>
@@ -177,7 +177,7 @@
                     </div>
 
                     <div class="dropdown">
-                        <label for="klimaDropdown" class="filter-label">Klima:</label>
+                        <label for="klimaDropdown" class="filter-label">Klimaanlage:</label>
                         <select id="klimaDropdown" name="Klima" class="input-short">
                             <option value="" selected disabled hidden></option>
                             <option value="" <?php echo ($_SESSION['air_conditioning'] ?? '') === '' ? 'selected' : ''; ?>>----</option>
@@ -195,7 +195,7 @@
                     </div>
 
                     <div class="dropdown">
-                        <label for="gpsDropdown" class="filter-label">GPS:</label>
+                        <label for="gpsDropdown" class="filter-label">Navigationsgerät:</label>
                         <select id="gpsDropdown" name="GPS" class="input-short">
                         <option value="" selected disabled hidden></option>
                         <option value="" <?php echo ($_SESSION['gps'] ?? '') === '' ? 'selected' : ''; ?>>----</option>
