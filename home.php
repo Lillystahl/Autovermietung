@@ -183,7 +183,7 @@
             </div>
             <div class="card-product">
                 <a href="Produktübersicht.php?category=Combi">
-                    <img src="Images/Ferarri Roma.jpg" alt="Auto" />
+                    <img src="Images/combi.jpg" alt="Auto" />
                     <div class="card-product-infos">
                         <h2>Combi</h2>
                         <p>
