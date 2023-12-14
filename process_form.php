@@ -414,6 +414,10 @@ function displayProductCards($result) {
 }
 
 function fetchAllCars($conn, $page, $perPage) {
+    $_SESSION['location'] =  $_SESSION['location'] ?? '';
+    $_SESSION['vehicle_type'] = $_SESSION['vehicle_type'] ?? '';
+    $_SESSION['start_date'] = $_SESSION['start_date'] ?? '';
+    $_SESSION['end_date'] = $_SESSION['end_date'] ?? '';
     $_SESSION['start_date'] = $_SESSION['start_date'] ?? '';
     $_SESSION['end_date'] = $_SESSION['end_date'] ?? '';
     $_SESSION['manufacturer'] = $_SESSION['manufacturer'] ?? '';
