@@ -107,7 +107,7 @@ body {
 
 .filter-bar-inner span {
     margin-left: 5px;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 .filter-bar-inner h2 {
@@ -165,6 +165,7 @@ body {
     padding-bottom: 12px;
     background-color:  white;
     width: 200px;
+    margin-top: 10px;
 }
 
 
@@ -189,6 +190,10 @@ body {
     margin-bottom: 2px; /* Optional: Add some space below the checkboxes */
 }
 
+.dropdown {
+    margin-top: 10px; /* Add margin top */
+    position: relative; /* Establish positioning context for the dropdown */
+}
 
 
 .overview-parent {
