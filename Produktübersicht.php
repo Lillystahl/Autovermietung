@@ -77,7 +77,7 @@
 
     <div class="product-barcontainer">
         <div class="advanced-search-bar-top">
-            <h2>Fahrzeug mieten</h2>
+            <h2>Fahrzeugsuche</h2>
             <form action="" method="POST">
                 <div class="searchbar-inner">
                     <input type="text" placeholder="<?php echo isset($_SESSION['location']) ? $_SESSION['location'] : 'Standort'; ?>" name="standort-location" value="<?php echo isset($_SESSION['location']) ? $_SESSION['location'] : ''; ?>">
@@ -95,7 +95,7 @@
                 <div class="filter-bar-inner">
                     <div class="top">
 
-                    <div class="dropdown">
+                    <div class="filter-item">
                         <label for="manufacturerDropdown" class="filter-label">Hersteller:</label>
                         <select id="manufacturerDropdown" name="Hersteller" class="input-long">
                             <option value="" selected disabled hidden>Hersteller</option>
@@ -110,7 +110,12 @@
                         </select>
                     </div>
                         
-                    <div class="dropdown">
+                    <div class="filter-item">
+                        <span class="filter-label">Preis bis:</span>
+                        <input type="text" placeholder="Euro/Tag" name="Preis" class="input-preis" value="<?php echo isset($_SESSION['max_price']) ? $_SESSION['max_price'] : ''; ?>">
+                    </div>
+
+                    <div class="filter-item">
                         <label for="seatsDropdown" class="filter-label">Sitzanzahl:</label>
                         <select id="seatsDropdown" name="Sitze" class="input-short">
                             <option value="" selected disabled hidden>Anzahl</option>
@@ -125,7 +130,7 @@
                         </select>
                     </div>
 
-                    <div class="dropdown">
+                    <div class="filter-item">
                         <label for="doorsDropdown" class="filter-label">Türen:</label>
                         <select id="doorsDropdown" name="Türen" class="input-short">
                             <option value="" selected disabled hidden>Anzahl</option>
@@ -140,7 +145,7 @@
                         </select>
                     </div>
 
-                    <div class="dropdown">
+                    <div class="filter-item">
                         <label for="gearboxDropdown" class="filter-label">Getriebeart:</label>
                         <select id="gearboxDropdown" name="Getriebe" class="input-long">
                         <option value="" selected disabled hidden>Anzahl</option>
@@ -154,11 +159,13 @@
                         ?>
                         </select>
                     </div>
+                    
+                    <div class="filter-item">
+                        <span class="filter-label">Mindest Alter:</span>
+                        <input type="text" placeholder="Jahr" Name="MindestAlter" class="input-short" value="<?php echo isset($_SESSION['minAge']) ? $_SESSION['minAge'] : ''; ?>">
+                    </div>
 
-                    <span class="filter-label">Mindest Alter:</span>
-                    <input type="text" placeholder="Jahr" Name="MindestAlter" class="input-short" value="<?php echo isset($_SESSION['minAge']) ? $_SESSION['minAge'] : ''; ?>">
-
-                    <div class="dropdown">
+                    <div class="filter-item">
                         <label for="driveDropdown" class="filter-label">Motorart:</label>
                         <select id="driveDropdown" name="Antrieb" class="input-long">
                             <option value="" selected disabled hidden>Art</option>
@@ -176,7 +183,7 @@
                         </select>
                     </div>
 
-                    <div class="dropdown">
+                    <div class="filter-item">
                         <label for="klimaDropdown" class="filter-label">Klimaanlage:</label>
                         <select id="klimaDropdown" name="Klima" class="input-short">
                             <option value="" selected disabled hidden></option>
@@ -194,7 +201,7 @@
                         </select>
                     </div>
 
-                    <div class="dropdown">
+                    <div class="filter-item">
                         <label for="gpsDropdown" class="filter-label">Navigationsgerät:</label>
                         <select id="gpsDropdown" name="GPS" class="input-short">
                         <option value="" selected disabled hidden></option>
@@ -213,12 +220,14 @@
                     </div>
 
                     </div>
-                    <div class="bottom">
-                    <span class="filter-label">Preis bis:</span>
-                    <input type="text" placeholder="Euro/Tag" name="Preis" class="input-preis" value="<?php echo isset($_SESSION['max_price']) ? $_SESSION['max_price'] : ''; ?>">
+
+                    <div class= "filter-button-container">
+                        <button type="submit" class="filter-apply" name="applyFilter-submit">Filter Anwenden</button>
+                        <button type="submit" class="filter-reset" name=resetFilter-submit>Filter Zurücksetzen</button>
+                    </div>
                     
-                        <div class="dropdown">
-                            <label for="sortDropdown" class="filter-label">Sortierung:</label>
+                    <h2 style= width:100%;>Sortierung</h2>
+                    <div class="filter-item-sort">
                             <select id="sortDropdown" name="Sortierung" class="input-long">
                                 <option value="" selected disabled hidden>Wählen</option>
                                 <option value="" <?php echo ($_SESSION['Sortierung'] ?? '') === '' ? 'selected' : ''; ?>>----</option>
@@ -233,11 +242,7 @@
                                     }
                                 ?>
                             </select>
-                        </div>
                     </div>
-
-                    <button type="submit" class="filter-apply" name="applyFilter-submit">Filter Anwenden</button>
-                    <button type="submit" class="filter-reset" name=resetFilter-submit>Filter Zurücksetzen</button>
                 </div>
             </form>
         </div>
@@ -334,7 +339,7 @@
     displayNoResultsMessage($result)
     ?>
 
-</div>
+    </div>
 
     <div class="car-details-overlay" id="carDetailsOverlay">
         <div class="car-details-popup" id="carDetailsPopup">
@@ -343,11 +348,10 @@
                 <!-- Hier könnten die zusätzlichen Produktinformationen und Bilder sein -->
                 <img class="car-image-popup" id="carDetailsImage" src="https://example.com/car1.jpg" alt="Car Image">
                 <div class="car-details-popup-content">
-                    <div class="car-name-popup">Mercedes C-Class</div>
-                    <div class="key-facts-popup">Year: 2023</div>
-                    <div class="key-facts-popup">Mileage: 10,000 miles</div>
-                    <!-- Weitere Details hier einfügen -->
-                    <button class="rent-button-popup">Rent Now</button>
+                    <div class="car-details-popup-content">
+                        <!-- Hier werden die Produktdetails angezeigt -->
+                        blabla
+                    </div>
                 </div>
             </div>
         </div>

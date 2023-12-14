@@ -92,22 +92,44 @@ body {
     margin-top: 0px;
 }
 
-.top{
-    width: 100%;
+.filter-bar-inner span,
+.filter-bar-inner label {
+    margin-bottom: 5px; 
 }
+
+.filter-bar-inner input {
+    margin-left: 5px;
+}
+
+.top {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+}
+
+
+.filter-button-container {
+    display: flex;
+    gap: 10px;
+    width: 19%;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+    align-self: flex-start;
+    align-items: center;
+}
+
 .filter-bar-inner {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 20px;
     margin-top: 20px;
-    align-items: center;
 }
-
 
 .filter-bar-inner span {
     margin-left: 5px;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 .filter-bar-inner h2 {
@@ -167,13 +189,51 @@ body {
     width: 200px;
 }
 
+.filter-item {
+    flex: 0 0 1;
+    min-width: 8%;
+    max-width: calc(30% - 20px);
+    margin-right: 1%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+}
 
+.filter-item-sort {
+    width: auto;
+    max-width: fit-content;
+    margin-right: 1%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+}
 
 .filter-bar-inner button {
     background-color:  #e9e8e6;
     color: black;
     border: none;
     cursor: pointer;
+}
+
+.filter-bar-inner .filter-reset {
+    width: 45%; /* Breite für den Zurücksetzen-Button */
+    height: 30px;
+    margin-right: 50%;
+    font-size: 12px
+}
+
+.filter-bar-inner .filter-apply {
+    width: 70%; /* Breite für den Anwenden-Button */
+    margin-right: 50%;
+    margin-top: 5px;
+    font-size: 16px;
 }
 
 .filter-bar-inner button:hover{

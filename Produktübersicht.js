@@ -9,6 +9,19 @@ function closeCarDetails() {
     document.body.style.overflow = "auto"; // Aktiviert das Scrollen auf der Hauptseite
 }
 
+const carDetailsPopup = document.getElementById('carDetailsPopup');
+const carDetailsOverlay = document.getElementById('carDetailsOverlay');
+
+if (carDetailsPopup && carDetailsOverlay) {
+    // Event Listener für Klicks außerhalb des Popups
+    carDetailsOverlay.addEventListener('click', function(event) {
+        if (!carDetailsPopup.contains(event.target)) {
+            // Klick erfolgte außerhalb des Popups, schließe es
+            closeCarDetails(); // Funktion zum Schließen des Popups aufrufen
+        }
+    });
+}
+
 // Eventlistener für das Klickereignis auf einer Car Card, um die vergrößerte Ansicht zu öffnen
 var carCards = document.getElementsByClassName("car-card");
 for (var i = 0; i < carCards.length; i++) {
