@@ -210,8 +210,8 @@ function fetchCarsLocAndType($conn, $page, $perPage) {
             AND cartablesview.vehicle_id NOT IN (
                 SELECT booking.vehicle_id        
                 FROM booking
-                WHERE booking.start_date <= :start_date   
-                AND booking.end_date >= :end_date)
+                WHERE booking.start_date <= :end_date   
+                AND booking.end_date >= :start_date)
             LIMIT :start, :perPage";
 
     $stmt = $conn->prepare($sql);
@@ -277,8 +277,8 @@ function fetchCarsType($conn, $page, $perPage) {
         AND cartablesview.vehicle_id NOT IN (
                 SELECT booking.vehicle_id        
                 FROM booking
-                WHERE booking.start_date <= :start_date   
-                AND booking.end_date >= :end_date)
+                WHERE booking.start_date <= :end_date   
+                AND booking.end_date >= :start_date)
         LIMIT :start, :perPage";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':vehicleType', $vehicleType);
@@ -336,10 +336,10 @@ function fetchCarsLoc($conn, $page, $perPage) {
         AND (cartablesview.gps = :gps OR :gps = '')
         AND (cartablesview.vehicle_price <= :price OR :price = '')
         AND cartablesview.vehicle_id NOT IN (
-            SELECT booking.vehicle_id        
-            FROM booking
-            WHERE booking.start_date <= :start_date   
-            AND booking.end_date >= :end_date)
+                SELECT booking.vehicle_id        
+                FROM booking
+                WHERE booking.start_date <= :end_date   
+                AND booking.end_date >= :start_date)
         LIMIT :start, :perPage";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':location', $location);
@@ -513,8 +513,8 @@ function fetchAllCars($conn, $page, $perPage) {
             AND cartablesview.vehicle_id NOT IN (
                 SELECT booking.vehicle_id        
                 FROM booking
-                WHERE booking.start_date <= :start_date   
-                AND booking.end_date >= :end_date)
+                WHERE booking.start_date <= :end_date   
+                AND booking.end_date >= :start_date)
             LIMIT :start, :perPage";
 
     $stmt = $conn->prepare($sql);
@@ -580,8 +580,8 @@ function countAllCars($conn) {
             AND cartablesview.vehicle_id NOT IN (
                 SELECT booking.vehicle_id        
                 FROM booking
-                WHERE booking.start_date <= :start_date   
-                AND booking.end_date >= :end_date)";
+                WHERE booking.start_date <= :end_date   
+                AND booking.end_date >= :start_date)";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':start_date', $startDate);
     $stmt->bindParam(':end_date', $endDate);
@@ -630,8 +630,8 @@ function countLocAndTypeCars($conn) {
     AND cartablesview.vehicle_id NOT IN (
                 SELECT booking.vehicle_id        
                 FROM booking
-                WHERE booking.start_date <= :start_date   
-                AND booking.end_date >= :end_date";
+                WHERE booking.start_date <= :end_date   
+                AND booking.end_date >= :start_date)";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':start_date', $startDate);
     $stmt->bindParam(':end_date', $endDate);
@@ -678,8 +678,8 @@ function countTypeCars($conn) {
     AND cartablesview.vehicle_id NOT IN (
                 SELECT booking.vehicle_id        
                 FROM booking
-                WHERE booking.start_date <= :start_date   
-                AND booking.end_date >= :end_date)";
+                WHERE booking.start_date <= :end_date   
+                AND booking.end_date >= :start_date)";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':start_date', $startDate);
     $stmt->bindParam(':end_date', $endDate);
@@ -727,8 +727,8 @@ function countLocCars($conn) {
     AND cartablesview.vehicle_id NOT IN (
                 SELECT booking.vehicle_id        
                 FROM booking
-                WHERE booking.start_date <= :start_date   
-                AND booking.end_date >= :end_date)";
+                WHERE booking.start_date <= :end_date   
+                AND booking.end_date >= :start_date)";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':start_date', $startDate);
     $stmt->bindParam(':end_date', $endDate);

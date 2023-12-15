@@ -11,7 +11,6 @@
 }
 
 .table {
-  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -20,28 +19,29 @@
   background-color: rgba(255, 255, 255, 0);
   overflow: auto;
 }
-  .content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 
-  .booking-container {
-    background-color: rgb(245, 245, 245);
-    width: 60%;
-    border-radius: 5px;
-    padding: 20px;
-    margin: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: black;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    margin-top: 90px;
+.booking-container {
+  background-color: rgb(245, 245, 245);
+  width: 60%;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin-top: 90px;
+  margin-bottom: 90px;
+  position: relative;
 
 }
 

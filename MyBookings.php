@@ -3,6 +3,26 @@
     ini_set('display_errors', 1);
     require_once('db_connect.php');
     require_once('config_session.inc.php');
+
+       // Check if the user is logged in
+       if(isset($_SESSION["user_id"])){
+        $userID = $_SESSION["user_id"];
+        
+        // SQL statement to fetch user bookings
+        $sql = "SELECT booking_id, date_booking, start_date, end_date, location_name, vehicle_price, type_name, vendor_name_abbr, img_file_name 
+        FROM booking LEFT JOIN cartablesview ON booking.vehicle_id = cartablesview.vehicle_id
+        WHERE user_id = :user_id ORDER BY date_booking DESC";
+
+        // Prepare the statement
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':user_id', $userID);
+        
+        // Execute the statement
+        $stmt->execute();
+
+        // Fetch all rows as an associative array
+        $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -10,21 +30,22 @@
 
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Website</title>
-  <link rel="stylesheet" href="homeStyle.css">
-  <link rel="stylesheet" href="MyBookingsStyle.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-  <script type="text/javascript">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <link rel="stylesheet" href="homeStyle.css">
+    <link rel="stylesheet" href="MyBookingsStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="confirmation.js"></script>
+    <script type="text/javascript">
     function showHideRow(row) {
       $("#" + row).toggle();
     }
-  </script>
+    </script>
 </head>
 
 <body>
@@ -78,215 +99,126 @@
     ?>
   </header>
 
-  <div class="img-container">
-      <div class="content">
+    <div class="content">
+      <div class="booking-container">
+        <h1>My Bookings</h1>
+        <table>
+          <thead>
+            <tr id="header_first_row">
+              <th>Startdatum</th>
+              <th>Enddatum</th>
+              <th>Gebuchtes Auto</th>
+              <th>Datum der Buchung</th>
+              <!-- Add more headers if needed -->
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+              // Loop through the fetched bookings and display them in the table rows
+              foreach ($bookings as $booking) {
+                // Convert English date format to German date format
+                $start_date = date("d.m.Y", strtotime($booking['start_date']));
+                $end_date = date("d.m.Y", strtotime($booking['end_date']));
+                $date_booking = date("d.m.Y", strtotime($booking['date_booking']));
 
-    <div class="booking-container">
-      <h1>My Bookings</h1>
-      <table>
-        <thead>
-          <tr id="header_first_row">
-            <th>Startdatum</th>
-            <th>Enddatum</th>
-            <th>Gebuchtes Auto</th>
-            <th>Datum der Buchung</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr onclick="showHideRow('hidden_row1');">
-            <td>2024-02-15</td>
-            <td>2024-02-20</td>
-            <td>BMW X3</td>
-            <td>2024-01-25</td>
-          </tr>
+                echo "<tr onclick=\"showHideRow('hidden_row{$booking['booking_id']}');\">";
+                echo "<td>{$start_date}</td>";
+                echo "<td>{$end_date}</td>";
+                echo "<td>{$booking['vendor_name_abbr']} {$booking['type_name']}</td>";
+                echo "<td>{$date_booking}</td>";
+                echo "</tr>";
 
-          <tr id="hidden_row1" class="hidden_row">
-            <td class="tableDateFull" colspan="6">
-              <div class="further_Infos">
-
-                <!-- <div class="paket">
-                  <div class="more_Info"> Weitere Informationen</div>
-                </div> -->
-
-                <div class="paket">
-                  <div class="details"><strong>Buchungsnummer:</strong></div>
-                  <div class="details"> 12345 </div>
-                </div>
-                <div class="paket">
-                  <div class="details"><strong>Standort:</strong> </div>
-                  <div class="details"> Hamburg</div>
-                </div>
-                <div class="paket">
-                  <div class="details"><strong> Baujahr: </strong> </div>
-                  <div class="details"> 2018 </div>
-                </div>
-                <div class="paket">
-                  <div class="details"><strong> Preis:</strong></div>
-                  <div class="details"> 300€ </div>
-                </div>
-              </div>
-            </td>
-          </tr>
-
-          <tr onclick="showHideRow('hidden_row2');">
-            <td>2024-02-15</td>
-            <td>2024-02-20</td>
-            <td>BMW X3</td>
-            <td>2024-01-25</td>
-          </tr>
-
-          <tr id="hidden_row2" class="hidden_row">
-            <td class="tableDateFull" colspan="6">
-              <div class="further_Infos">
-
-                <!--<div class="paket">
-                  <div class="more_Info"> Weitere Informationen</div>
-                </div> -->
-
-                <div class="paket">
-                  <div class="details"><strong>Buchungsnummer:</strong></div>
-                  <div class="details"> 12345 </div>
-                </div>
-
-                <div class="paket">
-                  <div class="details"><strong>Standort:</strong> </div>
-                  <div class="details"> Hamburg</div>
-                </div>
-
-                <div class="paket">
-                  <div class="details"><strong> Baujahr: </strong> </div>
-                  <div class="details"> 2018 </div>
-                </div>
-
-                <div class="paket">
-                  <div class="details"><strong> Preis:</strong></div>
-                  <div class="details"> 300€ </div>
-                </div>
-              </div>
-            </td>
-          </tr>
+                // Hidden rows for detailed information
+                echo "<tr id='hidden_row{$booking['booking_id']}' class='hidden_row'>";
+                echo "<td class='tableDateFull' colspan='6'>";
+                echo "<div class='further_Infos'>";
+                // Display more details here
+                echo "</div>";
+                echo "</td>";
+                echo "</tr>";
+              }
+            ?>
+            <!-- More bookings can be added here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
 
 
-          <tr onclick="showHideRow('hidden_row3');">
-            <td>2024-02-15</td>
-            <td>2024-02-20</td>
-            <td>BMW X3</td>
-            <td>2024-01-25</td>
-          </tr>
+  <div class="footer-container">
+    <div class="footer">
+    <div class="footer-heading footer-1">
+        <h2>About Us</h2>
+        <a href="#">Blog</a>
+        <a href="#">Kunden</a>
+        <a href="Datenschutz.php">Datenschutz</a>
+        <a href="AGB.php">AGB</a>
+        <a href="Impressum.php">Impressum</a>
+    </div>
 
-          <tr id="hidden_row3" class="hidden_row">
-            <td class="tableDateFull" colspan="6">
-              <div class="further_Infos">
+    <div class="footer-heading footer-2">
+        <h2>Contact Us</h2>
+        <a href="#">Jobs</a>
+        <a href="#">Contact</a>
+        <a href="#">Sponsorships</a>
+        <a href="#">Support</a>
+    </div>
 
-                <!-- <div class="paket">
-                  <div class="more_Info"> Weitere Informationen</div>
-                </div> -->
+    <div class="footer-heading footer-3">
+        <h2>Social Media</h2>
+        <div class="sm">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </div>
 
-                <div class="paket">
-                  <div class="details"><strong>Buchungsnummer:</strong></div>
-                  <div class="details"> 12345 </div>
-                </div>
-
-                <div class="paket">
-                  <div class="details"><strong>Standort:</strong> </div>
-                  <div class="details"> Hamburg</div>
-                </div>
-
-                <div class="paket">
-                  <div class="details"><strong> Baujahr: </strong> </div>
-                  <div class="details"> 2018 </div>
-                </div>
-
-                <div class="paket">
-                  <div class="details"><strong> Preis:</strong></div>
-                  <div class="details"> 300€ </div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <!-- Weitere Buchungen können hier hinzugefügt werden -->
-        </tbody>
-      </table>
+    <div class="footer-heading footer-4">
+        <div class="footer-email-form">
+        <h2>Join our Newsletter</h2>
+        <form>
+            <div class="input-container">
+            <input
+                type="email"
+                placeholder="Enter your E-Mail address"
+                id="footer-email"
+            />
+            <input type="submit" value="Sign Up" id="footer-email-button" />
+            </div>
+        </form>
+        </div>
     </div>
   </div>
 
-</div>
-
-
-<div class="footer-container">
-  <div class="footer">
-  <div class="footer-heading footer-1">
-      <h2>About Us</h2>
-      <a href="#">Blog</a>
-      <a href="#">Kunden</a>
-      <a href="Datenschutz.php">Datenschutz</a>
-      <a href="AGB.php">AGB</a>
-      <a href="Impressum.php">Impressum</a>
+  <div class="footer-small">
+    <div class="sub-holder">
+        <div class="sub-container">
+            <div class="app-container">
+                <span>Get the App</span>
+                    <div class="app-icons">
+                        <i class="fa-brands fa-app-store-ios"></i>
+                        <i class="fa-brands fa-google-play"></i>
+                    </div>
+                </div>
+                <div class="Copyright-container">
+                    <span>ReantEase 2023 All rights reserved</span>
+                </div>
+                <div class="Payment-container">
+                    <span>Payment Options</span>
+                    <div class="payment-icons">
+                        <i class="fa-brands fa-google-pay"></i>
+                        <i class="fa-brands fa-apple-pay"></i>
+                        <i class="fa-brands fa-paypal"></i>
+                        <i class="fa-brands fa-cc-mastercard"></i>
+                        <i class="fa-brands fa-cc-amex"></i>
+                        <i class="fa-brands fa-cc-visa"></i>
+                    </div>
+                </div>
+            </div>
+        <script src="home.js"></script>
+    </div>
   </div>
-
-  <div class="footer-heading footer-2">
-      <h2>Contact Us</h2>
-      <a href="#">Jobs</a>
-      <a href="#">Contact</a>
-      <a href="#">Sponsorships</a>
-      <a href="#">Support</a>
-  </div>
-
-  <div class="footer-heading footer-3">
-      <h2>Social Media</h2>
-      <div class="sm">
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-      <a href="#"><i class="fab fa-youtube"></i></a>
-      <a href="#"><i class="fab fa-linkedin-in"></i></a>
-      </div>
-  </div>
-
-  <div class="footer-heading footer-4">
-      <div class="footer-email-form">
-      <h2>Join our Newsletter</h2>
-      <form>
-          <div class="input-container">
-          <input
-              type="email"
-              placeholder="Enter your E-Mail address"
-              id="footer-email"
-          />
-          <input type="submit" value="Sign Up" id="footer-email-button" />
-          </div>
-      </form>
-      </div>
-  </div>
-</div>
-
-<div class="footer-small">
-  <div class="sub-holder">
-      <div class="sub-container">
-          <div class="app-container">
-              <span>Get the App</span>
-                  <div class="app-icons">
-                      <i class="fa-brands fa-app-store-ios"></i>
-                      <i class="fa-brands fa-google-play"></i>
-                  </div>
-              </div>
-              <div class="Copyright-container">
-                  <span>ReantEase 2023 All rights reserved</span>
-              </div>
-              <div class="Payment-container">
-                  <span>Payment Options</span>
-                  <div class="payment-icons">
-                      <i class="fa-brands fa-google-pay"></i>
-                      <i class="fa-brands fa-apple-pay"></i>
-                      <i class="fa-brands fa-paypal"></i>
-                      <i class="fa-brands fa-cc-mastercard"></i>
-                      <i class="fa-brands fa-cc-amex"></i>
-                      <i class="fa-brands fa-cc-visa"></i>
-                  </div>
-              </div>
-          </div>
-      <script src="home.js"></script>
-  </div>
-</div>
 <body>
 </html>
