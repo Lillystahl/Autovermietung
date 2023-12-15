@@ -15,7 +15,7 @@ unset($_SESSION['drive']);
 unset($_SESSION['air_conditioning']);
 unset($_SESSION['gps']);
 unset($_SESSION['max_price']);
-// ... unset other search-related session variables
+unset($_SESSION['vehicle_id']);// ... unset other search-related session variables
 
 // No need for header redirection here as the AJAX request handles it
 ?>

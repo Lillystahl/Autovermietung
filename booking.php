@@ -8,6 +8,19 @@
     debugSession();
     print_r($_POST);
 
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (isset($_POST['vehicle_id'])) {
+            $vehicle_id = $_POST['vehicle_id'];
+
+            echo "<script>";
+            echo "console.log('ID:', " . json_encode($vehicle_id) . ");";
+            echo "</script>";
+            header("Location: booking.php");
+            // Verwende $vehicle_id in der weiteren Verarbeitung oder speichere es in einer Session
+            // Beispiel für das Speichern in einer Session:
+            $_SESSION['vehicle_id'] = $vehicle_id;
+        }
+    }
     function getUserData($conn){
         if (isset($_SESSION["user_username"])) {
             // Retrieve the username from the session
@@ -39,6 +52,7 @@
             return null;
         }
     }
+
 ?>
 
 <?php
@@ -57,6 +71,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="bookingstyle.css">
     <link rel="stylesheet" href="homeStyle.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -65,7 +80,7 @@
     if(isset($_SESSION["user_id"])){
         echo '<div class="header">
                     <div class="header-left">
-                        <a href="home.php" class="logo"><img src="Images/ImageRE.png" alt="Company Logo" /></a>
+                        <a href="home.php" class="logo" id="logoLink"> <img src="Images/ImageRE.png" alt="Company Logo" /> </a>
                         <h1><a href="Produktübersicht.php" id="header1">Unsere Fahrzeuge</a></h1>
                         <h1><a href="Top-deals.php" id="header2">Top-Deals</a></h1>
                         <h1><a href="Geschaeftskunden.php" id="header3">Geschäftskunden</a></h1>
@@ -87,7 +102,7 @@
     }else{
         echo'<div class="header">
         <div class="header-left">
-            <a href="home.php" class="logo"><img src="Images/ImageRE.png" alt="Company Logo" /></a>
+            <a  href="home.php" class="logo" id="logoLink"> <img src="Images/ImageRE.png" alt="Company Logo" /> </a>
             <h1>
                 <a href="Produktübersicht.php" id="header1">Unsere Fahrzeuge</a>
             </h1>
@@ -158,7 +173,9 @@
                 </div>
                 <div class="b-button-container">
                     <p class="error-message" style="color: red; text-align: center; display: none;">Bitte füllen Sie alle erforderlichen Felder aus.</p>
-                    <button class="buchungs-button">Jetzt buchen</button>
+                    <form action="" method="post">
+                        <button class="buchungs-button" type="submit" name="booking_submit">Jetzt buchen</button>
+                    </form>
                 </div>
 
             </div>
@@ -216,7 +233,9 @@
                 </div>
                 <div class="b-button-container">
                     <p class="error-message" style="color: red; text-align: center; display: none;">Bitte füllen Sie alle erforderlichen Felder aus.</p>
-                    <button class="buchungs-button">Jetzt buchen</button>
+                    <form action="" method="post">
+                        <button class="buchungs-button" type="submit" name="booking_submit">Jetzt buchen</button>
+                    </form>
                 </div>
 
             </div>

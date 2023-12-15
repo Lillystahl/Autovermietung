@@ -406,7 +406,8 @@ function displayProductCards($result) {
             echo '<div class="car-features">Features: ' . implode(" ", $features) . '</div>';
             echo '</div>';
             echo '<div class="car-prize">Preis: ' . $result[$j]['vehicle_price'] . '€</div>';
-            echo '<form action="" method="POST">';
+            echo '<form action="booking.php" method="post">';
+            echo '<input type="hidden" name="vehicle_id" value="' . $result[$j]['vehicle_id'] . '">';
             echo '<button type="submit" name="rent-button" class="rent-button">Rent Now</button>';
             echo '</form>';
             echo '</div></div>';
@@ -481,6 +482,10 @@ function fetchAllCars($conn, $page, $perPage) {
     $stmt->execute();
 
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    echo "<script>";
+    echo "console.log('Cars:', " . json_encode($result) . ");";
+    echo "</script>";
+    return $result;
     return $result;
 }
 
@@ -667,19 +672,3 @@ function displayNoResultsMessage($result) {
     }
 }
 
-
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    rentCar();
-}
-
-function rentCar() {
-    if (isset($_POST['rent-button'])) {
-
-        header("Location: booking.php");
-        echo "<script>";
-        echo "console.log('Rent car');";
-        echo "</script>";
-        exit();
-    }
-}

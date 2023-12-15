@@ -71,3 +71,24 @@ buchungsButton.addEventListener('click', function() {
         errorMessageBox.style.display = 'block'; // Fehlermeldung anzeigen
     }
 });
+
+$(document).ready(function() {
+    // Bind click event to the logo
+    $('#logoLink').click(function(e) {
+        e.preventDefault();
+
+        // Make an AJAX request to ResetSearchHomeIcon.inc.php
+        $.ajax({
+            url: 'ResetSearchHomeIcon.inc.php',
+            type: 'POST',
+            success: function(response) {
+                // On success, redirect to home.php
+                window.location.href = 'home.php';
+            },
+            error: function(xhr, status, error) {
+                // Handle errors
+                console.error(error);
+            }
+        });
+    });
+});
