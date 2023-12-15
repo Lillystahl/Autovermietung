@@ -63,27 +63,47 @@
             $endDate = $_SESSION['end_date'];
             $vehicleID = $_SESSION['vehicle_id'];
             
-            // Capture today's date
-            $todayDate = date("Y-m-d H:i:s");
-            $bookingStmt = $conn->prepare("INSERT INTO booking (user_id, date_booking, vehicle_id, start_date, end_date) VALUES (:user_id, :date_booking, :vehicle_id, :start_date, :end_date)");
+            // Check if the booking already exists for this user and vehicle
+            $query = "SELECT COUNT(*) as count FROM booking 
+                      WHERE user_id = :userID 
+                      AND vehicle_id = :vehicleID 
+                      AND start_date = :startDate 
+                      AND end_date = :endDate";
+            $stmt = $conn->prepare($query);
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':vehicleID', $vehicleID);
+            $stmt->bindParam(':startDate', $startDate);
+            $stmt->bindParam(':endDate', $endDate);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
     
-            // Bind parameters
-            $bookingStmt->bindParam(':user_id', $userID);
-            $bookingStmt->bindParam(':date_booking', $todayDate);
-            $bookingStmt->bindParam(':vehicle_id', $vehicleID);
-            $bookingStmt->bindParam(':start_date', $startDate);
-            $bookingStmt->bindParam(':end_date', $endDate);
-    
-            // Execute the statement
-            $result = $bookingStmt->execute();
-    
-            // Check if the statement executed successfully
-            if ($result) {
-                echo "<script>console.log('Booking confirmed and added to database');</script>";
+            // If the booking already exists, prevent insertion and handle accordingly
+            if ($result['count'] > 0) {
+                echo "<script>alert('Booking already exists for this car and time period.');</script>";
+                // You might want to redirect or display a message to the user
             } else {
-                echo "<script>console.log('Error adding booking to database');</script>";
+                // Capture today's date
+                $todayDate = date("Y-m-d H:i:s");
+                $bookingStmt = $conn->prepare("INSERT INTO booking (user_id, date_booking, vehicle_id, start_date, end_date) VALUES (:user_id, :date_booking, :vehicle_id, :start_date, :end_date)");
+    
+                // Bind parameters
+                $bookingStmt->bindParam(':user_id', $userID);
+                $bookingStmt->bindParam(':date_booking', $todayDate);
+                $bookingStmt->bindParam(':vehicle_id', $vehicleID);
+                $bookingStmt->bindParam(':start_date', $startDate);
+                $bookingStmt->bindParam(':end_date', $endDate);
+    
+                // Execute the statement
+                $result = $bookingStmt->execute();
+    
+                // Check if the statement executed successfully
+                if ($result) {
+                    echo "<script>console.log('Booking confirmed and added to database');</script>";
+                } else {
+                    echo "<script>console.log('Error adding booking to database');</script>";
+                }
+                header("Location: confirmation.php");
             }
-            header("Location: confirmation.php");
         } else {
             // The form was not submitted
         }
