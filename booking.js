@@ -57,6 +57,7 @@ const buchungsButton = document.querySelector('.buchungs-button');
 const errorMessageBox = document.querySelector('.error-message');
 
 buchungsButton.addEventListener('click', function() {
+    event.preventDefault();
     const fromDate = document.getElementById('from-date');
     const toDate = document.getElementById('to-date');
     const indicator = document.getElementById('indicator');
