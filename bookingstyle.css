@@ -262,7 +262,7 @@ textarea {
 
 /* Confirmation-Seiten-Stile hier einfügen */
 
-content{
+.content{
     margin-top: 20px;
     width: 100%;
     align-items: center;
