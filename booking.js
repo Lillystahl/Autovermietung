@@ -14,36 +14,24 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-const fromDate = document.getElementById('from-date');
-const toDate = document.getElementById('to-date');
 const indicator = document.getElementById('indicator');
+const confirmDateButton = document.getElementById('confirm-date-button');
 
-function checkDates() {
-    if (fromDate.value && toDate.value) {
-        const fromDateValue = new Date(fromDate.value);
-        const toDateValue = new Date(toDate.value);
-        
-        if (toDateValue >= fromDateValue) {
-            indicator.classList.add('complete');
-        } else {
-            indicator.classList.remove('complete');
-        }
-    } else {
-        indicator.classList.remove('complete');
+// Event Listener für den Klick auf den Button
+confirmDateButton.addEventListener('click', function() {
+    // Setze den Indikator für das Datum auf "complete"
+    indicator.classList.add('complete');
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const confirmButton = document.getElementById('confirm-button');
+    const confirmIndicator = document.getElementById('confirm-indicator');
+
+    function handleConfirmation() {
+        confirmIndicator.classList.add('complete');
     }
-}
 
-fromDate.addEventListener('input', checkDates);
-toDate.addEventListener('input', checkDates);
-
-fromDate.addEventListener('input', checkDates);
-toDate.addEventListener('input', checkDates);
-
-const confirmButton = document.getElementById('confirm-button');
-const confirmIndicator = document.getElementById('confirm-indicator');
-
-confirmButton.addEventListener('click', function() {
-  confirmIndicator.classList.add('complete');
+    confirmButton.addEventListener('click', handleConfirmation);
 });
 
 function toggleIndicator() {

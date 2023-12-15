@@ -143,8 +143,8 @@
                         ' . $start_date_german . '
                         <p> bis </p>
                         ' . $end_date_german  . '
-                        
                     </div>
+                    <button class="confirm-button" id="confirm-date-button">Datum bestätigen</button>
                 </div>            
                         
                 <div class="element" id="modell">
