@@ -314,7 +314,6 @@ function fetchCarsLoc($conn, $page, $perPage) {
         $start = ($page - 1) * $perPage;
 
         $vendorName = $_SESSION['manufacturer']; // Min Age filter from session
-        $vendorName = $_SESSION['manufacturer'];
         $seats = $_SESSION['seats'];
         $doors = $_SESSION['doors'];
         $gearbox = $_SESSION['gearbox'];
@@ -411,9 +410,24 @@ function displayProductCards($result) {
             echo '<div class="car-features">Features: ' . implode(" ", $features) . '</div>';
             echo '</div>';
             echo '<div class="car-prize">Preis: ' . $result[$j]['vehicle_price'] . '€</div>';
-            echo '<form action="booking.php" method="post">';
+            echo '<form id="rent-form-' . $result[$j]['vehicle_id'] . '" action="booking.php" method="post">';
             echo '<input type="hidden" name="vehicle_id" value="' . $result[$j]['vehicle_id'] . '">';
-            echo '<button type="submit" name="rent-button" class="rent-button">Rent Now</button>';
+            echo '<input type="hidden" name="vendor_name" value="' . $result[$j]['vendor_name'] . '">';
+            echo '<input type="hidden" name="type_name" value="' . $result[$j]['type_name'] . '">';
+
+            // Check if the user is logged in (if $_SESSION["user_id"] exists)
+            if (isset($_SESSION["user_id"])) {
+                // Check if start and end date are set
+                if (isset($_SESSION['start_date']) && isset($_SESSION['end_date']) &&
+                    $_SESSION['start_date'] !== '' && $_SESSION['end_date'] !== '') {
+                    echo '<button type="submit" name="rent-button" class="rent-button">Rent Now</button>';
+                } else {
+                    echo '<span class="date-required-msg">Zum Mieten Datum eingeben</span>';
+                }
+            } else {
+                echo '<span class="date-required-msg">Zum Buchen Anmelden</span>';
+            }
+
             echo '</form>';
             echo '</div></div>';
         }

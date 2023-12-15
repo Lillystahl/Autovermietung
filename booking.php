@@ -11,6 +11,8 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST['vehicle_id'])) {
             $vehicle_id = $_POST['vehicle_id'];
+            $vendor_name = $_POST['vendor_name'];
+            $type_name = $_POST['type_name'];
 
             echo "<script>";
             echo "console.log('ID:', " . json_encode($vehicle_id) . ");";
@@ -19,6 +21,8 @@
             // Verwende $vehicle_id in der weiteren Verarbeitung oder speichere es in einer Session
             // Beispiel für das Speichern in einer Session:
             $_SESSION['vehicle_id'] = $vehicle_id;
+            $_SESSION['vehicle_vendor_name'] = $vendor_name;
+            $_SESSION['vehicle_type_name'] = $type_name;
         }
     }
     function getUserData($conn){
@@ -52,13 +56,19 @@
             return null;
         }
     }
+    
+    $start_date_english = $_SESSION["start_date"];
+    $end_date_english = $_SESSION["end_date"];
 
-?>
+    $start_date_german = date("d.m.Y", strtotime($start_date_english));
+    $end_date_german = date("d.m.Y", strtotime($end_date_english));
 
-<?php
+
+
+
     $userData = getUserData($conn);
-?>
 
+?>
 
 <!DOCTYPE html>
 <html lang="de">
@@ -130,9 +140,9 @@
                 <div class="element" id="datum">
                     <h3>Datum<span class="indicator" id="indicator"></span></h3>
                     <div class="date-inputs">
-                        ' . $_SESSION["start_date"] . '
+                        ' . $start_date_german . '
                         <p> bis </p>
-                        ' . $_SESSION["end_date"] . '
+                        ' . $end_date_german  . '
                         
                     </div>
                 </div>            
@@ -140,7 +150,7 @@
                 <div class="element" id="modell">
                     <!-- Element für Modell und Sonderwunsch -->
                     <h3>Auswahl bestätigen<span class="indicator" id="confirm-indicator"></span></h3>
-                    <p>Ausgewähltes Modell: [Hier Modell anzeigen]</p>
+                    <p>Ausgewähltes Modell: ' . $_SESSION['vehicle_vendor_name'] . ' ' . $_SESSION['vehicle_type_name'] . '</p>
                     <textarea class="additional-request" placeholder="Sonderwunsch"></textarea>
                     <button class="confirm-button" id="confirm-button">Bestätigen</button>
                 </div>
@@ -150,8 +160,8 @@
                     <div class="login-data">
                         <h3>Rechnungsadresse<span class="indicator" id="rechnungsadresse-indicator"></span></h3>
                         <p>' . $userData["firstname"] . ' ' . $userData["lastname"] . '</p>
-                        <p>' . $userData["straße"] . ' ' . $userData["hausnummer"] . '</p>
-                        <p>' . $userData["postleitzahl"] . ' ' . $userData["username"] . '</p>
+                        <p>' . $userData["straße"] . ' ' . $userData["hausnummer"] .' ' . $userData["postleitzahl"] . '</p>
+                        <p>' . $userData["username"] . '</p>
                         <button class="confirm-button" onclick="toggleIndicator()">Login-Daten verwenden</button>
                         <!-- Other content -->
                     </div>
