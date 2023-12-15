@@ -577,7 +577,11 @@ function countAllCars($conn) {
             AND (cartablesview.air_conditioning = :airConditioning OR :airConditioning = '')
             AND (cartablesview.gps = :gps OR :gps = '')
             AND (cartablesview.vehicle_price <= :price OR :price = '')
-            AND vehicle_availability = 1";
+            AND cartablesview.vehicle_id NOT IN (
+                SELECT booking.vehicle_id        
+                FROM booking
+                WHERE booking.start_date <= :start_date   
+                AND booking.end_date >= :end_date)";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':start_date', $startDate);
     $stmt->bindParam(':end_date', $endDate);
@@ -596,6 +600,8 @@ function countAllCars($conn) {
 }
 
 function countLocAndTypeCars($conn) {
+    $startDate = $_SESSION['start_date'];
+    $endDate = $_SESSION['end_date'];
     $location = $_SESSION['location'];
     $vehicleType = $_SESSION['vehicle_type'];
     $vendorName = $_SESSION['manufacturer'];
@@ -621,8 +627,14 @@ function countLocAndTypeCars($conn) {
     AND (cartablesview.air_conditioning = :airConditioning OR :airConditioning = '')
     AND (cartablesview.gps = :gps OR :gps = '')
     AND (cartablesview.vehicle_price <= :price OR :price = '')
-    AND vehicle_availability = 1";
+    AND cartablesview.vehicle_id NOT IN (
+                SELECT booking.vehicle_id        
+                FROM booking
+                WHERE booking.start_date <= :start_date   
+                AND booking.end_date >= :end_date";
     $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':start_date', $startDate);
+    $stmt->bindParam(':end_date', $endDate);
     $stmt->bindParam(':location', $location);
     $stmt->bindParam(':vehicleType', $vehicleType);
     $stmt->bindParam(':manufacturer', $vendorName);
@@ -640,6 +652,8 @@ function countLocAndTypeCars($conn) {
 }
 
 function countTypeCars($conn) {
+    $startDate = $_SESSION['start_date'];
+    $endDate = $_SESSION['end_date'];
     $vehicleType = $_SESSION['vehicle_type'];
     $vendorName = $_SESSION['manufacturer'];
     $seats = $_SESSION['seats'];
@@ -661,8 +675,14 @@ function countTypeCars($conn) {
     AND (cartablesview.air_conditioning = :airConditioning OR :airConditioning = '')
     AND (cartablesview.gps = :gps OR :gps = '')
     AND (cartablesview.vehicle_price <= :price OR :price = '')
-    AND vehicle_availability = 1";
+    AND cartablesview.vehicle_id NOT IN (
+                SELECT booking.vehicle_id        
+                FROM booking
+                WHERE booking.start_date <= :start_date   
+                AND booking.end_date >= :end_date)";
     $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':start_date', $startDate);
+    $stmt->bindParam(':end_date', $endDate);
     $stmt->bindParam(':vehicleType', $vehicleType);
     $stmt->bindParam(':manufacturer', $vendorName);
     $stmt->bindParam(':seats', $seats);
@@ -681,6 +701,8 @@ function countTypeCars($conn) {
 
 
 function countLocCars($conn) {
+    $startDate = $_SESSION['start_date'];
+    $endDate = $_SESSION['end_date'];
     $location = $_SESSION['location'];
     $vendorName = $_SESSION['manufacturer'];
     $seats = $_SESSION['seats'];
@@ -702,8 +724,14 @@ function countLocCars($conn) {
     AND (cartablesview.air_conditioning = :airConditioning OR :airConditioning = '')
     AND (cartablesview.gps = :gps OR :gps = '')
     AND (cartablesview.vehicle_price <= :price OR :price = '')
-    AND vehicle_availability = 1";
+    AND cartablesview.vehicle_id NOT IN (
+                SELECT booking.vehicle_id        
+                FROM booking
+                WHERE booking.start_date <= :start_date   
+                AND booking.end_date >= :end_date)";
     $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':start_date', $startDate);
+    $stmt->bindParam(':end_date', $endDate);
     $stmt->bindParam(':location', $location);
     $stmt->bindParam(':manufacturer', $vendorName);
     $stmt->bindParam(':seats', $seats);

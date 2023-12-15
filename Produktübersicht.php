@@ -302,7 +302,7 @@
         displayProductCards($result);
 
         // Pagination Links
-        $totalCars = countTypeCars($conn); // Funktion, um die Gesamtanzahl an Autos zu erhalten
+        $totalCars = countLocCars($conn); // Funktion, um die Gesamtanzahl an Autos zu erhalten
         $totalPages = ceil($totalCars / $carsPerPage);
 
         echo '<div class="pagination">';
