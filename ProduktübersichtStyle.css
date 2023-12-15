@@ -361,6 +361,7 @@ body {
     justify-content: space-between;
 }
 
+
   .car-name {
     font-size: 20px; /* Größere Schrift für den Namen */
     font-weight: bold;
@@ -400,6 +401,24 @@ body {
 .rent-button:hover {
     background-color: #9BBEC8;
 }
+
+.durchgestrichen {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .durchgestrichen::before {
+    content: "";
+    position: absolute;
+    top: 100%; /* Verschiebung nach unten */
+    left: -5%; /* Verschiebung nach rechts */
+    width: 140%; /* Anpassung der Länge */
+    height: 2px; /* Anpassung der Dicke */
+    background-color: red; /* Farbe der durchgestrichenen Linie */
+    transform-origin: top left;
+    transform: rotate(-45deg);
+  }
+
   /* Product-Details Styles*/
   .car-details-overlay {
     display: none;
@@ -415,12 +434,12 @@ body {
 
 .car-details-popup {
     background-color: #f5f5f5; /* Graue Farbe der Karten übernehmen */
-    margin: 5% auto; /* Zentrierung und Abstand von oben erhöhen */
     padding: 50px; /* Mehr Innenabstand */
     border-radius: 10px; /* Runde Ecken */
     width: 90%; /* Breite anpassen */
     max-width: 1200px; /* Maximalbreite anpassen */
     min-height: 50vh; /* Mindesthöhe in Relation zur Bildschirmhöhe */
+    max-height: 80vh;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Schatten wie bei den Karten */
     position: fixed;
     top: 50px; /* Anpassen der oberen Position des Popups */
@@ -433,13 +452,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-.car-image-popup {
-    width: 45%; /* Breite des Bildes anpassen */
-    height: auto;
-    object-fit: cover;
-    border-radius: 5px;
 }
 
 .car-details-popup-content {
@@ -455,6 +467,23 @@ body {
     font-size: 24px;
     color: #888;
     z-index: 99999; /* Stellen sicher, dass das Symbol über allem liegt */
+}
+
+.popup-image-container {
+    width: 40%;
+    max-height: 80vh; /* Maximale Höhe des Containers auf 80% der Bildschirmhöhe begrenzen */
+    overflow: hidden; /* Überlauf verstecken */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Relativ für absolute Positionierung der Bilder */
+}
+
+
+.popup-image-container img {
+    width: auto;
+    max-height: 50%; /* Begrenzt die Höhe der Bilder */
 }
 
 /* Product-Details Styles*/

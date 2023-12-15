@@ -342,21 +342,6 @@
 
     </div>
 
-    <div class="car-details-overlay" id="carDetailsOverlay">
-        <div class="car-details-popup" id="carDetailsPopup">
-            <span class="close-button"onclick="closeCarDetails()">&times;</span>
-            <div class="popup-content">
-                <!-- Hier könnten die zusätzlichen Produktinformationen und Bilder sein -->
-                <img class="car-image-popup" id="carDetailsImage" src="https://example.com/car1.jpg" alt="Car Image">
-                <div class="car-details-popup-content">
-                    <div class="car-details-popup-content">
-                        <!-- Hier werden die Produktdetails angezeigt -->
-                        blabla
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="footer-container">
         <div class="footer">
