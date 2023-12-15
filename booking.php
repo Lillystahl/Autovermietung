@@ -138,7 +138,8 @@
                                 <i class="fa-solid fa-caret-down"></i>
                             </span>
                             <ul class="dropdown-menu" id="dropdownMenu">
-                                <li><a href="link_zu_meine_buchungen.php">Meine Buchungen</a></li>
+                                <li><a href="MyBookings.php">Meine Buchungen</a></li>
+                                <li><a href="MyProfilePage.php">Mein Profil</a></li>
                                 <li><a href="logout.inc.php">Logout</a></li>
                             </ul>
                         </div>
@@ -362,7 +363,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
+        <script src="booking.js"></script>';
     </div>
 </body>
 </html>

@@ -6,7 +6,6 @@
     require_once('process_form.php');
     require_once('config_session.inc.php');
     debugSession();
-    print_r($_POST);
 
 ?>
 
@@ -17,9 +16,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="bookingstyle.css">
     <link rel="stylesheet" href="homeStyle.css">
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="confirmation.js"></script>
 </head>
 
 <body>
@@ -41,7 +43,8 @@
                                 <i class="fa-solid fa-caret-down"></i>
                             </span>
                             <ul class="dropdown-menu" id="dropdownMenu">
-                                <li><a href="link_zu_meine_buchungen.php">Meine Buchungen</a></li>
+                                <li><a href="MyBookings.php">Meine Buchungen</a></li>
+                                <li><a href="MyProfilePage.php">Mein Profil</a></li>
                                 <li><a href="logout.inc.php">Logout</a></li>
                             </ul>
                         </div>
@@ -86,9 +89,9 @@
             <h2>About Us</h2>
             <a href="#">Blog</a>
             <a href="#">Kunden</a>
-            <a href="Datenschutz.html">Datenschutz</a>
-            <a href="AGB.html">AGB</a>
-            <a href="Impressum.html">Impressum</a>
+            <a href="Datenschutz.php">Datenschutz</a>
+            <a href="AGB.php">AGB</a>
+            <a href="Impressum.php">Impressum</a>
         </div>
 
         <div class="footer-heading footer-2">
@@ -154,7 +157,6 @@
                 </div>
             </div>
         </div>
-        <script src="home.js"></script>
     </div>
 </body>
 </html>
