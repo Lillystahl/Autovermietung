@@ -133,7 +133,7 @@
                         ' . $_SESSION["start_date"] . '
                         <p> bis </p>
                         ' . $_SESSION["end_date"] . '
-                        </div>
+                        
                     </div>
                 </div>            
                         
