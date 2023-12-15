@@ -4,7 +4,6 @@
     require_once('db_connect.php');
     require_once('process_form.php');
     require_once('config_session.inc.php');
-    require_once('process_form.php');    
     debugSession();
     print_r($_POST);
 
@@ -56,6 +55,42 @@
             return null;
         }
     }
+
+    function confirmBooking($conn){
+        if (isset($_POST['booking_submit'])) {
+            $userID = $_SESSION["user_id"];
+            $startDate = $_SESSION['start_date'];
+            $endDate = $_SESSION['end_date'];
+            $vehicleID = $_SESSION['vehicle_id'];
+            
+            // Capture today's date
+            $todayDate = date("Y-m-d H:i:s");
+            $bookingStmt = $conn->prepare("INSERT INTO booking (user_id, date_booking, vehicle_id, start_date, end_date) VALUES (:user_id, :date_booking, :vehicle_id, :start_date, :end_date)");
+    
+            // Bind parameters
+            $bookingStmt->bindParam(':user_id', $userID);
+            $bookingStmt->bindParam(':date_booking', $todayDate);
+            $bookingStmt->bindParam(':vehicle_id', $vehicleID);
+            $bookingStmt->bindParam(':start_date', $startDate);
+            $bookingStmt->bindParam(':end_date', $endDate);
+    
+            // Execute the statement
+            $result = $bookingStmt->execute();
+    
+            // Check if the statement executed successfully
+            if ($result) {
+                echo "<script>console.log('Booking confirmed and added to database');</script>";
+            } else {
+                echo "<script>console.log('Error adding booking to database');</script>";
+            }
+            header("Location: confirmation.php");
+        } else {
+            // The form was not submitted
+        }
+    }
+
+    confirmBooking($conn);
+
     
     $start_date_english = $_SESSION["start_date"];
     $end_date_english = $_SESSION["end_date"];
@@ -144,7 +179,7 @@
                         <p> bis </p>
                         ' . $end_date_german  . '
                     </div>
-                    <button class="confirm-button" id="confirm-date-button">Datum bestätigen</button>
+                    <button class="confirm-button" id="confirm-date-button">Bestätigen</button>
                 </div>            
                         
                 <div class="element" id="modell">
@@ -162,7 +197,7 @@
                         <p>' . $userData["firstname"] . ' ' . $userData["lastname"] . '</p>
                         <p>' . $userData["straße"] . ' ' . $userData["hausnummer"] .' ' . $userData["postleitzahl"] . '</p>
                         <p>' . $userData["username"] . '</p>
-                        <button class="confirm-button" onclick="toggleIndicator()">Login-Daten verwenden</button>
+                        <button class="confirm-button" onclick="toggleIndicator()">Bestätigen</button>
                         <!-- Other content -->
                     </div>
                 </div>
@@ -175,10 +210,12 @@
                         <label for="paypal">PayPal</label><br>
                         <input type="radio" id="kreditkarte" name="payment" value="kreditkarte" onclick="togglePaymentIndicator()">
                         <label for="kreditkarte">Kreditkarte</label><br>
-                        <input type="radio" id="klarna" name="payment" value="klarna" onclick="togglePaymentIndicator()">
-                        <label for="klarna">Klarna</label><br>
-                        <input type="radio" id="sepa" name="payment" value="sepa" onclick="togglePaymentIndicator()">
-                        <label for="sepa">SEPA-Lastschrift</label><br>
+                        <input type="radio" id="Gpay" name="payment" value="Gpay" onclick="togglePaymentIndicator()">
+                        <label for="klarna">G-Pay</label><br>
+                        <input type="radio" id="Amex" name="payment" value="Amex" onclick="togglePaymentIndicator()">
+                        <label for="sepa">Amex</label><br>
+                        <input type="radio" id="Apple-Pay" name="payment" value="Apple-Pay" onclick="togglePaymentIndicator()">
+                        <label for="sepa">Apple Pay</label><br>
                     </div>
                 </div>
                 <div class="b-button-container">

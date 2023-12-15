@@ -57,7 +57,6 @@ const buchungsButton = document.querySelector('.buchungs-button');
 const errorMessageBox = document.querySelector('.error-message');
 
 buchungsButton.addEventListener('click', function() {
-    event.preventDefault();
     const fromDate = document.getElementById('from-date');
     const toDate = document.getElementById('to-date');
     const indicator = document.getElementById('indicator');
@@ -71,7 +70,7 @@ buchungsButton.addEventListener('click', function() {
         rechnungsadresseIndicator.classList.contains('complete') &&
         zahlungsmethodeIndicator.classList.contains('complete')
     ) {
-        window.location.href = 'confirmation.html'; // Weiterleitung zur Bestätigungsseite
+        //window.location.href = 'confirmation.html'; // Weiterleitung zur Bestätigungsseite
     } else {
         errorMessageBox.style.display = 'block'; // Fehlermeldung anzeigen
     }
