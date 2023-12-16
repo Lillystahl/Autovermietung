@@ -73,7 +73,7 @@
     <div class="aTextContainer">
         <div class="TextContainer">
             <h1>Privacy Policy</h1>
-            <p>As of: [22.11.2023]</p>
+            <p>As of: 22.11.2023</p>
 
             <p>
                 We appreciate your interest in our car rental service. The protection of your personal data is important to us. Below, we inform you about the processing of your personal data in connection with the use of our website and services.
@@ -83,10 +83,10 @@
             <p>
                 Responsible for data processing within the meaning of the General Data Protection Regulation (GDPR) is:
             </p>
-            <p>CarFair</p>
-            <p>[Address]</p>
-            <p>[Email Address]</p>
-            <p>[Phone Number]</p>
+            <p>RentEase</p>
+            <p>Willy-Brandt-Straße 75, 20459 Hamburg</p>
+            <p>lwendt@rentease.com</p>
+            <p>+49 123 456 789</p>
 
             <h2>Collection and Processing of Personal Data</h2>
 
@@ -140,10 +140,10 @@
                 This privacy policy may be adjusted occasionally to reflect changes in our business practices and legal requirements. The current version can always be found on our website. We thank you for your trust and are available for any questions.
             </p>
 
-            <p>CarFair</p>
-            <p>[Company Address]</p>
-            <p>[Email Address]</p>
-            <p>[Phone Number]</p>
+            <p>RentEase</p>
+            <p>Willy-Brandt-Straße 75, 20459 Hamburg</p>
+            <p>Contact@rentease.de</p>
+            <p>+49 123 456 789</p>
         </div>
     </div>
 

@@ -74,12 +74,12 @@
         <div class="TextContainer">
             <h1>Impressum</h1>
             <p>Angaben gemäß § 5 TMG</p>
-            <p>ClaraLillyRezaChristianLeon <br> Musterweg
+            <p>Clara Lilly Reza Christian Leon <br> Musterweg
                 <br> 20459 Hamburg <br>
             </p>
-            <p> <strong>Vertreten durch: </strong><br> Sashar Kamyar<br>
+            <p> <strong>Vertreten durch: </strong><br> Elon Musk<br>
             </p>
-            <p><strong>Kontakt:</strong> <br> Telefon: 040-674673<br> Fax: 040-674673<br> E-Mail: <a href='mailto:Rentease@web.de'>Rentease@web.de</a></br>
+            <p><strong>Kontakt:</strong> <br> Telefon: 040-123-456<br> Fax: 040-123-456<br> E-Mail: <a href='mailto:Contact@rentease.de'>Contact@rentease.de</a></br>
             </p>
             <p><strong>Registereintrag: </strong><br> Eintragung im Registergericht: Hamurg<br> Registernummer: 12345<br></p>
             <p><strong>Umsatzsteuer-ID: </strong> <br> Umsatzsteuer-Identifikationsnummer gemäß §27a Umsatzsteuergesetz: Musterustid.<br><br>
