@@ -252,92 +252,32 @@
     <div class="overview-parent">
     <?php    
     // Check, ob ein Filter angewendet wurde
-    if (isset($_SESSION['location']) && $_SESSION['location'] !== '' && isset($_SESSION['vehicle_type']) && $_SESSION['vehicle_type'] !== '') {
 
+    
+    if (
+        isset($_SESSION['location'], $_SESSION['vehicle_type']) &&
+        ($_SESSION['location'] !== '' || $_SESSION['vehicle_type'] !== '') ||
+        (!isset($_SESSION['location']) && !isset($_SESSION['vehicle_type'])) ||
+        ($_SESSION['location'] === '' && $_SESSION['vehicle_type'] === '')
+    ) {
         $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $carsPerPage = 20;
-
-        $result = fetchCarsLocAndType($conn, $currentPage, $carsPerPage);
+        $result = fetchCombinedCars($conn, $currentPage, $carsPerPage);
+        $totalCars = countCars($conn);
+        
         displayProductCards($result);
-
-        // Pagination Links
-        $totalCars = countLocAndTypeCars($conn); // Funktion, um die Gesamtanzahl an Autos zu erhalten
+    
         $totalPages = ceil($totalCars / $carsPerPage);
-
+    
         echo '<div class="pagination">';
         for ($i = 1; $i <= $totalPages; $i++) {
             echo '<a href="Produktübersicht.php?page=' . $i . '">' . $i . '</a>';
         }
         echo '</div>';
-        echo "<script>";
-        echo "console.log('loc and type');";
-        echo "</script>";
-        
-    } elseif(isset($_SESSION['vehicle_type']) && $_SESSION['vehicle_type'] !== '') {
-
-        $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-        $carsPerPage = 20;
-        
-        $result = fetchCarsType($conn, $currentPage, $carsPerPage);
-        displayProductCards($result);
-
-        // Pagination Links
-        $totalCars = countTypeCars($conn); // Funktion, um die Gesamtanzahl an Autos zu erhalten
-        $totalPages = ceil($totalCars / $carsPerPage);
-
-        echo '<div class="pagination">';
-        for ($i = 1; $i <= $totalPages; $i++) {
-            echo '<a href="Produktübersicht.php?page=' . $i . '">' . $i . '</a>';
-        }
-        echo '</div>';
-        echo "<script>";
-        echo "console.log('Type');";
-        echo "</script>";
-
-    } elseif(isset($_SESSION['location']) && $_SESSION['location'] !== '') {
-
-        $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-        $carsPerPage = 20;
-        
-        $result = fetchCarsLoc($conn, $currentPage, $carsPerPage);
-        displayProductCards($result);
-
-        // Pagination Links
-        $totalCars = countLocCars($conn); // Funktion, um die Gesamtanzahl an Autos zu erhalten
-        $totalPages = ceil($totalCars / $carsPerPage);
-
-        echo '<div class="pagination">';
-        for ($i = 1; $i <= $totalPages; $i++) {
-            echo '<a href="Produktübersicht.php?page=' . $i . '">' . $i . '</a>';
-        }
-        echo '</div>';
-        echo "<script>";
-        echo "console.log('Location');";
-        echo "</script>";
-
-    }else {
-        
-        $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-        $carsPerPage = 20;
-        $result = fetchAllCars($conn, $currentPage, $carsPerPage);
-        displayProductCards($result);
-
-        // Pagination Links
-        $totalCars = countAllCars($conn); // Funktion, um die Gesamtanzahl an Autos zu erhalten
-        $totalPages = ceil($totalCars / $carsPerPage);
-
-        echo '<div class="pagination">';
-        for ($i = 1; $i <= $totalPages; $i++) {
-            echo '<a href="Produktübersicht.php?page=' . $i . '">' . $i . '</a>';
-        }
-        echo '</div>';
-        echo "<script>";
-        echo "console.log('All cars');";
-        echo "</script>";
-
     }
-
-    displayNoResultsMessage($result)
+    
+    echo countCars($conn);
+    displayNoResultsMessage($result);
     ?>
 
     </div>
