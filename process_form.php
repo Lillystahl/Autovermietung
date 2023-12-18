@@ -753,3 +753,99 @@ function displayNoResultsMessage($result) {
     }
 }
 
+// this function can execute all searches, we should take this instead of 4 different search functions
+// WILL IMPLEMENT THIS LATER
+function fetchCars($conn, $page, $perPage) {
+    $location = $_SESSION['location'] ?? '';
+    $vehicleType = $_SESSION['vehicle_type'] ?? '';
+    $startDate = $_SESSION['start_date'] ?? '';
+    $endDate = $_SESSION['end_date'] ?? '';
+    $start = ($page - 1) * $perPage;
+
+    $vendorName = $_SESSION['manufacturer'];
+    $seats = $_SESSION['seats'];
+    $doors = $_SESSION['doors'];
+    $gearbox = $_SESSION['gearbox'];
+    $minAge = $_SESSION['minAge'];
+    $drive = $_SESSION['drive'];
+    $airConditioning = $_SESSION['air_conditioning'];
+    $gps = $_SESSION['gps'];
+    $maxPrice = $_SESSION['max_price'];
+
+    $sql = "SELECT * 
+            FROM cartablesview 
+            WHERE 1 ";
+
+    $conditions = [];
+    $bindings = [];
+
+    if ($location !== '') {
+        $conditions[] = "location_name = ?";
+        $bindings[] = $location;
+    }
+    if ($vehicleType !== '') {
+        $conditions[] = "category_type = ?";
+        $bindings[] = $vehicleType;
+    }
+    // Add other conditions based on session variables
+
+    if (!empty($conditions)) {
+        $sql .= "AND " . implode(" AND ", $conditions);
+    }
+
+    $sql .= " AND cartablesview.vehicle_id NOT IN (
+                SELECT booking.vehicle_id        
+                FROM booking
+                WHERE booking.start_date <= ?
+                AND booking.end_date >= ?)
+                LIMIT ?, ?";
+
+    $stmt = $conn->prepare($sql);
+
+    $bindParams = array_merge($bindings, [$startDate, $endDate, $start, $perPage]);
+    $stmt->execute($bindParams);
+
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    echo "<script>";
+    echo "console.log('Location:', '" . $location . "');";
+    echo "console.log('Vehicle Type:', '" . $vehicleType . "');";
+    echo "console.log('Cars:', " . json_encode($result) . ");";
+    echo "</script>";
+
+    return $result;
+}
+
+// This is similiar to what i did to clean up the redundancy in the search function, will also implement this later to clean up and only have 1 function instead of 4 
+function countCars($conn, $location = null, $vehicleType = null) {
+    $startDate = $_SESSION['start_date'] ?? '';
+    $endDate = $_SESSION['end_date'] ?? '';
+    $location = $location ?? $_SESSION['location'] ?? '';
+    $vehicleType = $vehicleType ?? $_SESSION['vehicle_type'] ?? '';
+    // ... (rest of the session variable assignments)
+
+    $sql = "SELECT COUNT(*) as total FROM cartablesview 
+            WHERE 1 "; // Placeholder for WHERE clause
+
+    $conditions = [];
+    if (!empty($location)) {
+        $conditions[] = "location_name = :location";
+    }
+    if (!empty($vehicleType)) {
+        $conditions[] = "category_type = :vehicleType";
+    }
+    // ... (other conditions based on session variables)
+
+    if (!empty($conditions)) {
+        $sql .= "AND " . implode(" AND ", $conditions);
+    }
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':start_date', $startDate);
+    $stmt->bindParam(':end_date', $endDate);
+    // ... (other bindParam calls)
+
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result['total'];
+}
