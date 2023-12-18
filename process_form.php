@@ -755,13 +755,26 @@ function displayNoResultsMessage($result) {
 
 // this function can execute all searches, we should take this instead of 4 different search functions
 // WILL IMPLEMENT THIS LATER
-function fetchCars($conn, $page, $perPage) {
-    $location = $_SESSION['location'] ?? '';
-    $vehicleType = $_SESSION['vehicle_type'] ?? '';
-    $startDate = $_SESSION['start_date'] ?? '';
-    $endDate = $_SESSION['end_date'] ?? '';
-    $start = ($page - 1) * $perPage;
+function fetchCombinedCars($conn, $page, $perPage) {
+    $_SESSION['location'] = $_SESSION['location'] ?? '';
+    $_SESSION['vehicle_type'] = $_SESSION['vehicle_type'] ?? '';
+    $_SESSION['start_date'] = $_SESSION['start_date'] ?? '';
+    $_SESSION['end_date'] = $_SESSION['end_date'] ?? '';
+    $_SESSION['manufacturer'] = $_SESSION['manufacturer'] ?? '';
+    $_SESSION['seats'] = $_SESSION['seats'] ?? '';
+    $_SESSION['doors'] = $_SESSION['doors'] ?? '';
+    $_SESSION['gearbox'] = $_SESSION['gearbox'] ?? '';
+    $_SESSION['minAge'] = $_SESSION['minAge'] ?? '';
+    $_SESSION['drive'] = $_SESSION['drive'] ?? '';
+    $_SESSION['air_conditioning'] = $_SESSION['air_conditioning'] ?? '';
+    $_SESSION['gps'] = $_SESSION['gps'] ?? '';
+    $_SESSION['max_price'] = $_SESSION['max_price'] ?? '';
 
+    $start = ($page - 1) * $perPage;
+    $location = $_SESSION['location'];
+    $vehicleType = $_SESSION['vehicle_type'];
+    $startDate = $_SESSION['start_date'];
+    $endDate = $_SESSION['end_date'];
     $vendorName = $_SESSION['manufacturer'];
     $seats = $_SESSION['seats'];
     $doors = $_SESSION['doors'];
@@ -774,19 +787,35 @@ function fetchCars($conn, $page, $perPage) {
 
     $sql = "SELECT * 
             FROM cartablesview 
-            WHERE 1 ";
+            WHERE (1) ";
 
     $conditions = [];
     $bindings = [];
 
     if ($location !== '') {
-        $conditions[] = "location_name = ?";
-        $bindings[] = $location;
+        $conditions[] = "location_name = :location";
+        $bindings[':location'] = $location;
     }
     if ($vehicleType !== '') {
-        $conditions[] = "category_type = ?";
-        $bindings[] = $vehicleType;
+        $conditions[] = "category_type = :vehicleType";
+        $bindings[':vehicleType'] = $vehicleType;
     }
+
+    if ($vendorName !== '') {
+        $conditions[] = "(cartablesview.vendor_name = :manufacturer OR :manufacturer = '')";
+        $bindings[':manufacturer'] = $vendorName;
+    }
+
+    if ($seats !== '') {
+        $conditions[] = "(cartablesview.seats = :seats OR :seats = '')";
+        $bindings[':seats'] = $seats;
+    }
+
+    if ($doors !== '') {
+        $conditions[] = "(cartablesview.doors = :doors OR :doors = '')";
+        $bindings[':doors'] = $doors;
+    }
+
     // Add other conditions based on session variables
 
     if (!empty($conditions)) {
@@ -796,13 +825,17 @@ function fetchCars($conn, $page, $perPage) {
     $sql .= " AND cartablesview.vehicle_id NOT IN (
                 SELECT booking.vehicle_id        
                 FROM booking
-                WHERE booking.start_date <= ?
-                AND booking.end_date >= ?)
-                LIMIT ?, ?";
+                WHERE booking.start_date <= :startDate
+                AND booking.end_date >= :endDate)
+                LIMIT :start, :perPage";
 
     $stmt = $conn->prepare($sql);
 
-    $bindParams = array_merge($bindings, [$startDate, $endDate, $start, $perPage]);
+    $bindParams = array_merge(
+        $bindings,
+        [':startDate' => $startDate, ':endDate' => $endDate, ':start' => $start, ':perPage' => $perPage]
+    );
+
     $stmt->execute($bindParams);
 
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
