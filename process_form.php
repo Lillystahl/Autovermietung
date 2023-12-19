@@ -241,16 +241,34 @@ function displayProductCards($result) {
             echo '<span class="close-button" onclick="closeCarDetails()">&times;</span>';
             echo '<div class="popup-content">';
             echo '<div class="popup-image-container">' .
-    '<img class="car-image" src="Images/Product_Img/vorne-' . $result[$j]['img_file_name'] . '" alt="Car Image">' .
-    '<img class="car-image" src="Images/Product_Img/vorne-' . $result[$j]['img_file_name'] . '" alt="Car Image">' .
-'</div>';
+                    '<img class="car-image" src="Images/Product_Img/vorne-' . $result[$j]['img_file_name'] . '" alt="Car Image">' .
+                    '<img class="car-image" src="Images/Product_Img/vorne-' . $result[$j]['img_file_name'] . '" alt="Car Image">' .
+                '</div>';
             echo '<div class="car-details-popup-content">';
-            echo '<div class="car-details-popup-content">';
-            echo '<div class="car-name">' . $result[$j]['vendor_name'] . ' ' . $result[$j]['type_name'] . '</div>';
+            $name_extension ='';
+            if ($result[$j]['type_name_extension'] == '0') {
+                $name_extension = ' ';
+            } else {
+                $name_extension = $result[$j]['type_name_extension'];
+            }
+            echo '<div class="car-name">' . $result[$j]['vendor_name'] . ' ' . $result[$j]['type_name'] . ' ' . $name_extension . '</div>';
             echo '<div class="car-cat">Kategorie: ' . $result[$j]['category_type'] . '</div>';
             echo '<div class="car-cat">Sitzanzahl: ' . $result[$j]['seats'] . '</div>';
             echo '<div class="car-cat">Türen: ' . $result[$j]['doors'] . '</div>';
-            echo '<div class="car-cat">Kofferraum: ' . $result[$j]['trunk'] . '</div>';
+            $trunk ='';
+            if ($result[$j]['trunk'] == '0') {
+                $trunk = 'Nein';
+            } elseif ($result[$j]['trunk'] > '0') {
+                $trunk = 'Ja';
+            }
+            echo '<div class="car-cat">Kofferraum: ' . $trunk . '</div>';
+            $drive_type ='';
+            if ($result[$j]['category_drive'] == 'Combuster') {
+                $drive_type = 'Verbrennungsmotor';
+            } elseif ($result[$j]['category_drive'] == 'Electric') {
+                $drive_type = 'Elektromotor';
+            }
+            echo '<div class="car-cat">Antrieb: ' . $drive_type . '</div>';
             $transmission ='';
             if ($result[$j]['gear'] == 'automatic') {
                 $transmission = 'Automatik';
@@ -259,8 +277,28 @@ function displayProductCards($result) {
             }
             echo '<div class="car-transmission">Getriebe: ' . $transmission . '</div>';
             echo '<div class="Location">Standort: ' . $result[$j]['location_name'] . '</div>';
+            echo '<div class="car-prize">Preis: ' . $result[$j]['vehicle_price'] . '€</div>';
 
-            echo '</div>';
+            echo '<form id="rent-form-' . $result[$j]['vehicle_id'] . '" action="booking.php" method="post">';
+            echo '<input type="hidden" name="vehicle_id" value="' . $result[$j]['vehicle_id'] . '">';
+            echo '<input type="hidden" name="vendor_name" value="' . $result[$j]['vendor_name'] . '">';
+            echo '<input type="hidden" name="type_name" value="' . $result[$j]['type_name'] . '">';
+
+            // Check if the user is logged in (if $_SESSION["user_id"] exists)
+            if (isset($_SESSION["user_id"])) {
+                // Check if start and end date are set
+                if (isset($_SESSION['start_date']) && isset($_SESSION['end_date']) &&
+                    $_SESSION['start_date'] !== '' && $_SESSION['end_date'] !== '') {
+                    echo '<button type="submit" name="rent-button" class="rent-button">Rent Now</button>';
+                } else {
+                    echo '<span class="date-required-msg">Zum Mieten Datum eingeben</span>';
+                }
+            } else {
+                echo '<span class="date-required-msg">Zum Buchen Anmelden</span>';
+            }
+
+            echo '</form>';
+
             echo '</div>';
             echo '</div>';
             echo '</div>';
