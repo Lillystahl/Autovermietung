@@ -81,10 +81,45 @@
             <h2>Fahrzeugsuche</h2>
             <form action="" method="POST">
                 <div class="searchbar-inner">
-                    <input type="text" placeholder="<?php echo isset($_SESSION['location']) ? $_SESSION['location'] : 'Standort'; ?>" name="standort-location" value="<?php echo isset($_SESSION['location']) ? $_SESSION['location'] : ''; ?>">
-                    <input type="text" placeholder="<?php echo isset($_SESSION['vehicle_type']) ? $_SESSION['vehicle_type'] : 'Kategorie'; ?>" name="vehicle-type" value="<?php echo isset($_SESSION['vehicle_type']) ? $_SESSION['vehicle_type'] : ''; ?>">
+                    <div class="standort-filter-item">
+                        <label for="standortDropdown" class="filter-label">Standort:</label>
+                        <select id="standortDropdown" name="standort-location" class="input-long standort-input-long">
+                            <option value="" selected disabled hidden>Standort</option>
+                            <option value="" <?php echo ($_SESSION['location'] ?? '') === '' ? 'selected' : ''; ?>>----</option>
+                            <?php
+                                $locations = [
+                                    "Berlin", "Bochum", "Bremen", "Dortmund", "Dresden", "Freiburg", "Hamburg",
+                                    "Köln", "Leipzig", "München", "Nürnberg", "Paderborn", "Rostock"
+                                ];
+                                foreach ($locations as $location) {
+                                    $selected = ($_SESSION['location'] ?? '') === $location ? 'selected' : '';
+                                    echo "<option value='$location' $selected>$location</option>";
+                                }
+                            ?>
+                        </select>
+                    </div>
+                    
+                    <div class="vehicle-type-filter-item">
+                        <label for="vehicleTypeDropdown" class="filter-label">Fahrzeugtyp:</label>
+                        <select id="vehicleTypeDropdown" name="Fahrzeugtyp" class="input-long vehicle-type-dropdown">
+                            <option value="" selected disabled hidden>Fahrzeugtyp</option>
+                            <option value="" <?php echo ($_SESSION['vehicle_type'] ?? '') === '' ? 'selected' : ''; ?>>----</option>
+                            <?php
+                                $vehicleTypeOptions = [
+                                    "Cabrio", "SUV", "Limousine", "Combi", "Mehrsitzer", "Coupe"
+                                ]; // Adjust this array to contain your desired vehicle types
+
+                                foreach ($vehicleTypeOptions as $vehicleType) {
+                                    $selected = ($_SESSION['vehicle_type'] ?? '') === $vehicleType ? 'selected' : '';
+                                    echo "<option value='$vehicleType' $selected>$vehicleType</option>";
+                                }
+                            ?>
+                        </select>
+                    </div>
+                    
                     <input type="date" placeholder="<?php echo isset($_SESSION['start_date']) ? $_SESSION['start_date'] : 'start-date'; ?>" name="start-date" value="<?php echo isset($_SESSION['start_date']) ? $_SESSION['start_date'] : ''; ?>">
                     <input type="date" placeholder="<?php echo isset($_SESSION['end_date']) ? $_SESSION['end_date'] : 'end-date'; ?>" name="end-date" value="<?php echo isset($_SESSION['end_date']) ? $_SESSION['end_date'] : ''; ?>">
+                    
                     <button type="submit" name="filterbar1-submit">Suchen</button>
                     <button type="submit" id="resetSearchButton">Suche zurücksetzen</button>
                 </div>
