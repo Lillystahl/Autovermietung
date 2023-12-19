@@ -371,7 +371,7 @@ body {
   .car-prize{
     font-weight: bold;
     align-self: flex-start;
-    margin-bottom: 28px;
+    margin-bottom: 20px;
   }
 
   .key-facts {
@@ -383,7 +383,6 @@ body {
 
   .rent-button {
     align-self: flex-end;
-    padding: 10px;
     background-color:  #e9e8e6;
     color: black;
     text-align: center;
@@ -392,6 +391,11 @@ body {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-bottom: 7px;
+  }
+
+  .date-required-msg{
+    align-self: flex-start;
   }
 
   .rent-button:hover {
@@ -457,6 +461,33 @@ body {
 .car-details-popup-content {
     width: 50%;
     padding-left: 20px;
+    margin-top: 20px; /* Zusätzlicher Abstand nach oben */
+    display: flex;
+    flex-direction: column;
+}
+
+.car-details-popup-content .rent-button {
+    align-self: flex-end; /* Button rechts im Element ausrichten */
+    margin-top: 15px; /* Abstand nach oben für den Button */
+    padding: 15px 30px; /* Größere Abmessungen für den Button */
+    font-size: 20px; /* Größere Schrift für den Button */
+}
+
+.car-details-popup-content div {
+    margin-bottom: 10px; /* Abstand zwischen einzelnen Infopunkten */
+    font-size: 18px; /* Größere Schrift für die Infopunkte */
+}
+
+.car-details-popup-content .car-name {
+    font-size: 26px; /* Größere Schrift für den Namen */
+    font-weight: bold;
+    margin-bottom: 10px; /* Abstand nach unten */
+}
+
+.car-details-popup-content .car-prize {
+    font-size: 18px; /* Größere Schrift für den Preis */
+    font-weight:550; /* Mittelfette Schrift */
+    margin-top: 5px; /* Abstand nach oben */
 }
 
 .close-button {

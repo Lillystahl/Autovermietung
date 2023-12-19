@@ -73,6 +73,7 @@ buchungsButton.addEventListener('click', function() {
         //window.location.href = 'confirmation.html'; // Weiterleitung zur Bestätigungsseite
     } else {
         errorMessageBox.style.display = 'block'; // Fehlermeldung anzeigen
+        event.preventDefault();
     }
 });
 
