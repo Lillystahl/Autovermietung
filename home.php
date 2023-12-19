@@ -268,15 +268,14 @@
                 <div class="review-info">
                     <div class="review-details">
                         <div class="name-rating">
-                            <img src="Images/customer1.jpg" alt="Profilbild" class="profile-pic" />
-                            <h3 class="customer-name">Max Mustermann</h3>
+                            <img src="Images/CustomerReviews/karanikas.png" alt="Profilbild" class="profile-pic" />
+                            <h3 class="customer-name">Linus Karanikas</h3>
                             <div class="rating">
                                 <span class="stars" data-rating="5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
                             </div>
                         </div>
                         <p class="review-text">
-                            "Tolle Auswahl an Fahrzeugen und exzellenter Service! Ich bin
-                            sehr zufrieden."
+                           "Großartige Autovermietung! Vielfältige Auswahl, problemlose Abwicklung bei Abholung und Rückgabe. Sehr empfehlenswert für alle!"
                         </p>
                     </div>
                 </div>
@@ -285,15 +284,14 @@
                 <div class="review-info">
                     <div class="review-details">
                         <div class="name-rating">
-                            <img src="Images/customer1.jpg" alt="Profilbild" class="profile-pic" />
-                            <h3 class="customer-name">Max Mustermann</h3>
+                            <img src="Images/CustomerReviews/kruschke.png" alt="Profilbild" class="profile-pic" />
+                            <h3 class="customer-name">Brianna Kruschke</h3>
                             <div class="rating">
                                 <span class="stars" data-rating="5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
                             </div>
                         </div>
                         <p class="review-text">
-                            "Tolle Auswahl an Fahrzeugen und exzellenter Service! Ich bin
-                            sehr zufrieden."
+                            "Mein Mietwagen war erstklassig! Hervorragender Service und einwandfreies Fahrzeug. Total zufrieden!"
                         </p>
                     </div>
                 </div>
@@ -302,15 +300,14 @@
                 <div class="review-info">
                     <div class="review-details">
                         <div class="name-rating">
-                            <img src="Images/customer1.jpg" alt="Profilbild" class="profile-pic" />
-                            <h3 class="customer-name">Max Mustermann</h3>
+                            <img src="Images/CustomerReviews/spiegel.jpg" alt="Profilbild" class="profile-pic" />
+                            <h3 class="customer-name">Joshi Spiegel</h3>
                             <div class="rating">
-                                <span class="stars" data-rating="5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                                <span class="stars" data-rating="4">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
                             </div>
                         </div>
                         <p class="review-text">
-                            "Tolle Auswahl an Fahrzeugen und exzellenter Service! Ich bin
-                            sehr zufrieden."
+                        "Sehr gute Autovermietung! Breite Auswahl, reibungsloser Ablauf. Empfehlenswert!"
                         </p>
                     </div>
                 </div>
@@ -319,15 +316,14 @@
                 <div class="review-info">
                     <div class="review-details">
                         <div class="name-rating">
-                            <img src="Images/customer1.jpg" alt="Profilbild" class="profile-pic" />
-                            <h3 class="customer-name">Max Mustermann</h3>
+                            <img src="Images/CustomerReviews/musk.jpg" alt="Profilbild" class="profile-pic" />
+                            <h3 class="customer-name">Elon Musk</h3>
                             <div class="rating">
                                 <span class="stars" data-rating="5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
                             </div>
                         </div>
                         <p class="review-text">
-                            "Tolle Auswahl an Fahrzeugen und exzellenter Service! Ich bin
-                            sehr zufrieden."
+                            "Fantastische Erfahrung gemacht! Schnelle Abwicklung, perfektes Auto. Ich komme definitiv wieder zurück!"
                         </p>
                     </div>
                 </div>
