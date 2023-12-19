@@ -827,8 +827,6 @@ body{
 }
 .customer-name {
     margin: 0;
-    margin-right: 10px;
-    margin-left: -25px;
     white-space: nowrap;
 }
 .rating {
@@ -840,6 +838,10 @@ body{
     color: #FFD700;
     font-size: 20px;
     margin-left: auto;
+}
+
+.review-text {
+    margin-bottom: 2px; 
 }
 
 .aboutUs-container {
