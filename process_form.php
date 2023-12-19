@@ -1,6 +1,4 @@
 <?php
-// process_form.php
-
 // function which stores user inputs for searched in session variables 
 //NOTE: DONT KNOW IF THIS CAN CAUSE CONFLICTS WHEN WE HAVE A LOGIN BECAUSE LOGIN CREATES A NEW SESSION (does not seem to be the case)
 //This function checks if a user input is submitted via the post form on the homepage
