@@ -135,8 +135,41 @@
                 <h2>Fahrzeug mieten</h2>
                 <form action="" method="POST"> <!-- Sends data to 'process_form.php' via POST method -->
                     <div class="searchbar-inner">
-                        <input type="text" placeholder="Location" name="standort-location" />
-                        <input type="text" placeholder="Fahrzeugart" name="vehicle-type" />
+                        <div class="standort-filter-item">
+                            <label for="standortDropdown" class="filter-label">Standort:</label>
+                            <select id="standortDropdown" name="standort-location" class="input-long standort-input-long">
+                                <option value="" selected disabled hidden>Standort</option>
+                                <option value="" <?php echo ($_SESSION['location'] ?? '') === '' ? 'selected' : ''; ?>>----</option>
+                                <?php
+                                    $locations = [
+                                        "Berlin", "Bochum", "Bremen", "Dortmund", "Dresden", "Freiburg", "Hamburg",
+                                        "Köln", "Leipzig", "München", "Nürnberg", "Paderborn", "Rostock"
+                                    ];
+                                    foreach ($locations as $location) {
+                                        $selected = ($_SESSION['location'] ?? '') === $location ? 'selected' : '';
+                                        echo "<option value='$location' $selected>$location</option>";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                        
+                        <div class="vehicle-type-filter-item">
+                            <label for="vehicleTypeDropdown" class="filter-label">Fahrzeugtyp:</label>
+                            <select id="vehicleTypeDropdown" name="Fahrzeugtyp" class="input-long vehicle-type-dropdown">
+                                <option value="" selected disabled hidden>Fahrzeugtyp</option>
+                                <option value="" <?php echo ($_SESSION['vehicle_type'] ?? '') === '' ? 'selected' : ''; ?>>----</option>
+                                <?php
+                                    $vehicleTypeOptions = [
+                                        "Cabrio", "SUV", "Limousine", "Combi", "Mehrsitzer", "Coupe"
+                                    ]; // Adjust this array to contain your desired vehicle types
+
+                                    foreach ($vehicleTypeOptions as $vehicleType) {
+                                        $selected = ($_SESSION['vehicle_type'] ?? '') === $vehicleType ? 'selected' : '';
+                                        echo "<option value='$vehicleType' $selected>$vehicleType</option>";
+                                    }
+                                ?>
+                            </select>
+                        </div>
                         <input type="date" placeholder="Start-Datum" name="start-date" />
                         <input type="date" placeholder="End-Datum" name="end-date" />
                         <button type="submit" name="filterbar-submit">Suchen</button>

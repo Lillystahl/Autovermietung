@@ -107,7 +107,6 @@ body {
     width: 80%;
 }
 
-
 .filter-button-container {
     display: flex;
     gap: 10px;
@@ -243,18 +242,10 @@ body {
     transition: all 0.4s ease-out;
 }
 
-.filter-bar-inner input[type="checkbox"] {
-    height:30px;
-    width:30px;
-    vertical-align: middle; /* Align checkboxes vertically in the middle */
-    margin-bottom: 2px; /* Optional: Add some space below the checkboxes */
-}
-
 .dropdown {
     margin-top: 10px; /* Add margin top */
     position: relative; /* Establish positioning context for the dropdown */
 }
-
 
 .overview-parent {
     display: flex;

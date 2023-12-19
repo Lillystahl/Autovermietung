@@ -332,6 +332,18 @@ body{
     margin-bottom: 20px;
     margin-top: 20px;
 }
+
+.input-long{
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensure padding doesn't increase element width */
+    margin-right: 10px; /* Adjust spacing between fields */
+    padding-bottom: 12px;
+    background-color:  white;
+    width: 300px;
+}
+
 .search-bar input[type="text"],
 .search-bar input[type="date"],
 .search-bar button {

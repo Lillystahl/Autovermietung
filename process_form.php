@@ -3,22 +3,31 @@
 
 // function which stores user inputs for searched in session variables 
 //NOTE: DONT KNOW IF THIS CAN CAUSE CONFLICTS WHEN WE HAVE A LOGIN BECAUSE LOGIN CREATES A NEW SESSION (does not seem to be the case)
+//This function checks if a user input is submitted via the post form on the homepage
+//It valiadates it via the allowed array so that a user cannot change it in html(dont know if this is necceasrry but better save then sorry)
 function homeInpuToSession() {
     if (isset($_POST['filterbar-submit'])) {
-        $loc = filter_input(INPUT_POST, 'standort-location', FILTER_SANITIZE_SPECIAL_CHARS);
-        $vehicleType = filter_input(INPUT_POST, 'vehicle-type', FILTER_SANITIZE_SPECIAL_CHARS);
+        // allowed dropdown values
+        //if this was larger sclae projekt we need to do this dynamically via db access but dont think we need this here
+        //hence this is not easy to scale!
+        $allowedLocations = ["Berlin", "Bochum", "Bremen", "Dortmund", "Dresden", "Freiburg", "Hamburg", "Köln", "Leipzig", "München", "Nürnbeg", "Paderborn", "Rostock", "''"];
+        $allowedCategories = ["Cabrio", "SUV", "Limousine", "Combi", "Mehrsitzer", "Coupe", "''"];
+        
+        //create function variables, if a validation fails it simply ""
+        // this way we dont break the function and can still use it 
+        $loc = in_array($_POST['standort-location'], $allowedLocations) ? $_POST['standort-location'] : '';
+        $vehicleType = in_array($_POST['Fahrzeugtyp'], $allowedCategories) ? $_POST['Fahrzeugtyp'] : '';
         $startDate = filter_input(INPUT_POST, 'start-date', FILTER_SANITIZE_SPECIAL_CHARS);
         $endDate = filter_input(INPUT_POST, 'end-date', FILTER_SANITIZE_SPECIAL_CHARS);
 
-        $currentDate = date("Y-m-d"); // Get the current date
+        //get todays date for date validation for php
+        $currentDate = date("Y-m-d");
 
-        // Check if at least one of location or vehicle type is provided and valid
-        if ((!empty($loc) && ctype_alpha($loc)) || (!empty($vehicleType) && ctype_alpha($vehicleType))) {
-            // Check if both dates are empty or both dates are provided and valid
-            if ((empty($startDate) && empty($endDate)) || // Both dates empty (no filter applied)
-                ((!empty($startDate) && !empty($endDate)) && // Both dates provided
-                    (strtotime($startDate) >= strtotime($currentDate) && strtotime($endDate) >= strtotime($startDate)))) { // Valid range
-                // Store inputs in session variables
+        //if block which checks our user input possibilities we allow
+        if ((empty($loc) && empty($vehicleType)) || (!empty($loc) && !empty($vehicleType)) || (empty($loc) && !empty($vehicleType)) || (!empty($loc) && empty($vehicleType))) {
+            //if to  validate date so you cannot boock in the past bla bla
+            if ((empty($startDate) && empty($endDate)) || ((!empty($startDate) && !empty($endDate)) && (strtotime($startDate) >= strtotime($currentDate) && strtotime($endDate) >= strtotime($startDate)))) {
+                //set session variables (also empty ones for later used)
                 $_SESSION['location'] = $loc;
                 $_SESSION['vehicle_type'] = $vehicleType;
                 $_SESSION['start_date'] = $startDate;
@@ -32,21 +41,25 @@ function homeInpuToSession() {
                 $_SESSION['air_conditioning'] = '';
                 $_SESSION['gps'] = '';
                 $_SESSION['max_price'] = '';
-                
-                // Redirect to the next page
+
                 header("Location: Produktübersicht.php");
+                echo '<script>';
+                echo 'console.log(" Searched on Produktübersicht! ");';
+                echo '</script>';
                 exit();
             } else {
-                // Invalid input for date range
+                //error message date
                 echo "<script>alert('Invalid date range. Start date cannot be older than the current date, end date cannot be before start date, and both dates must be provided if one is entered.');</script>";
             }
         } else {
-            // Invalid input for location or vehicle type
+            //error message input validation failed
+            /// maybe this is obsolete because we set it to "" if validation fails so yeah 
             echo "<script>alert('Invalid input for location or vehicle type.');</script>";
         }
     }
 }
 
+//essentially does the same as function above only on the Produktübersich seite
 function ProduktübersichtInputToSession() {
     if (isset($_POST['filterbar1-submit'])) {
         $allowedLocations = ["Berlin", "Bochum", "Bremen", "Dortmund", "Dresden", "Freiburg", "Hamburg", "Köln", "Leipzig", "München", "Nürnbeg", "Paderborn", "Rostock", "''"];
@@ -59,7 +72,7 @@ function ProduktübersichtInputToSession() {
 
         $currentDate = date("Y-m-d");
 
-        if ((empty($loc) && empty($vehicleType)) || (!empty($loc) || !empty($vehicleType)) && ctype_alpha($loc) && ctype_alpha($vehicleType)) {
+        if ((empty($loc) && empty($vehicleType)) || (!empty($loc) && !empty($vehicleType)) || (empty($loc) && !empty($vehicleType)) || (!empty($loc) && empty($vehicleType))) {
             if ((empty($startDate) && empty($endDate)) || ((!empty($startDate) && !empty($endDate)) && (strtotime($startDate) >= strtotime($currentDate) && strtotime($endDate) >= strtotime($startDate)))) {
                 $_SESSION['location'] = $loc;
                 $_SESSION['vehicle_type'] = $vehicleType;
@@ -89,8 +102,12 @@ function ProduktübersichtInputToSession() {
     }
 }
 
+//function which passes the users filter inputs to the session so other functions can access it 
 function FilterToSession(){
     if (isset($_POST['applyFilter-submit'])) {
+        //create arrays for allowed inputs as we saw above
+        //if this was larger sclae projekt we need to do this dynamically via db access but dont think we need this here
+        //hence this is not easy to scale!
         $allowedManufacturers = ["Audi", "BMW", "Ford", "Jaguar", "Maserati", "Mercedes-Benz", "Mercedes-AMG", "Opel", "Range Rover", "Skoda", "Volkswagen",''];
         $allowedSeats = ["2", "4", "5", "7", "8", "9",''];
         $allowedDoors = ["2", "3", "4", "5",''];
@@ -98,7 +115,9 @@ function FilterToSession(){
         $allowedDrives = ["combuster", "electric",''];
         $allowedAirConditioning = ["0", "1",''];
         $allowedGPS = ["0", "1",''];
-        
+            
+        //create function variables, if a validation fails it simply ""
+        // this way we dont break the function and can still use it 
         $manufacturer = in_array($_POST['Hersteller'], $allowedManufacturers) ? $_POST['Hersteller'] : '';
         $seats = in_array($_POST['Sitze'], $allowedSeats) ? $_POST['Sitze'] : '';
         $doors = in_array($_POST['Türen'], $allowedDoors) ? $_POST['Türen'] : '';
@@ -163,17 +182,28 @@ function getCategoryUrl() {
 
 
 // debug function to see session variables
+// we absolutely did not need this ;)
 function debugSession() {
     echo '<script>';
     echo 'console.log("Session Variables: ", ' . json_encode($_SESSION) . ');';
     echo '</script>';
 }
 
+// very nice function to dynamically produce our product cards and the onclick detail cards
+// this looks complicated but is acutally reall trivial 
+// we essentially access the result array to loop through it and "collect" certain information for each car
+// The result array is 2 dimensional array which has a main key (the car) and its attributes stored in it
+// we get this from the function which fetches db and returns it
+//hence we can pass it to this function
+//very nice!
 function displayProductCards($result) {
+    // Calculate the number of cars and the number of rows needed to display them in groups of 5
     $numCars = count($result);
     $numRows = ceil($numCars / 5);
 
+    // Loop through each row
     for ($i = 0; $i < $numRows; $i++) {
+        // Display each car card
         echo '<div class="overview-row">';
         for ($j = $i * 5; $j < min(($i + 1) * 5, $numCars); $j++) {
             echo '<div class="car-card" onclick="openCarDetails(' . $j . ')">';
@@ -210,6 +240,7 @@ function displayProductCards($result) {
             echo '<div class="car-features">Features: ' . implode(" ", $features) . '</div>';
             echo '</div>';
             echo '<div class="car-prize">Preis: ' . $result[$j]['vehicle_price'] . '€</div>';
+            // Display the form to rent the car
             echo '<form id="rent-form-' . $result[$j]['vehicle_id'] . '" action="booking.php" method="post">';
             echo '<input type="hidden" name="vehicle_id" value="' . $result[$j]['vehicle_id'] . '">';
             echo '<input type="hidden" name="vendor_name" value="' . $result[$j]['vendor_name'] . '">';
@@ -234,8 +265,11 @@ function displayProductCards($result) {
         echo '</div>';
     }
 
+    // Loop through each row for displaying car details overlay
     for ($i = 0; $i < $numRows; $i++) {
+        // Loop through each car in the row
         for ($j = $i * 5; $j < min(($i + 1) * 5, $numCars); $j++) {
+            // Display car details overlay for each car
             echo '<div class="car-details-overlay" id="carDetailsOverlay_' . $j . '">';
             echo '<div class="car-details-popup" id="carDetailsPopup_' . $j . '">';
             echo '<span class="close-button" onclick="closeCarDetails()">&times;</span>';
@@ -307,14 +341,15 @@ function displayProductCards($result) {
     }
 }
 
+//so this just checks if result is empty which means we did not find any cars for the users search
+// you can put this in the function above but i think its nicer if this in one function (this is just me)
 function displayNoResultsMessage($result) {
     if (empty($result)) {
         echo '<div class="no-results">Für Ihre Suche konnten wir keine Treffer finden.</div>';
     }
 }
 
-// this function can execute all searches, we should take this instead of 4 different search functions
-// WILL IMPLEMENT THIS LATER
+// this function can execute all searches, we should take this instead of 4 different search functions (we never had 4 searches which were really redundant! ;))
 function fetchCombinedCars($conn, $page, $perPage) {
     $_SESSION['location'] = $_SESSION['location'] ?? '';
     $_SESSION['vehicle_type'] = $_SESSION['vehicle_type'] ?? '';
@@ -345,6 +380,7 @@ function fetchCombinedCars($conn, $page, $perPage) {
     $gps = $_SESSION['gps'];
     $maxPrice = $_SESSION['max_price'];
 
+    // or statement in sql seperates the querry and the "and" statement will only be executed when the or block is called so we need it in both or it is not called
     $sql = "SELECT * 
     FROM cartablesview 
     WHERE 
@@ -420,7 +456,7 @@ function fetchCombinedCars($conn, $page, $perPage) {
 }
 
 
-// This is similiar to what i did to clean up the redundancy in the search function, will also implement this later to clean up and only have 1 function instead of 4
+// This is similiar to what i did to clean up the redundancy in the search function, will also implement this later to clean up and only have 1 function instead of 4(which again never happened)
 // We need to do this because of the limit we use above, it might not always be possible to just count out our result array 
 function countCars($conn) {
     // Assuming $_SESSION variables are properly set
@@ -504,4 +540,4 @@ function countCars($conn) {
     return $result['total'];
 }
 
-
+//⊂(◉‿◉)つ
