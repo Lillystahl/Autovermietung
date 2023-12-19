@@ -1,24 +1,4 @@
-const locationInput = document.querySelector('input[name="standort-location"]');
-const locationList = document.querySelector('#locations');
 
-locationInput.addEventListener('input', function() {
-    const inputVal = this.value.toLowerCase();
-    const options = locationList.querySelectorAll('option');
-    
-    // If the input is empty, restore the default placeholder
-    if (!inputVal.trim()) {
-        this.placeholder = 'Standort';
-    }
-
-    options.forEach(option => {
-        const optionVal = option.value.toLowerCase();
-        if (optionVal.startsWith(inputVal)) {
-            option.hidden = false;
-        } else {
-            option.hidden = true;
-        }
-    });
-});
 // JavaScript Funktionen für die Anzeige und das Schließen der vergrößerten Ansicht
 function openCarDetails(index) {
     // Erhalte das entsprechende Overlay und Popup basierend auf dem Index
