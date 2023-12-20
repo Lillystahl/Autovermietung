@@ -12,6 +12,7 @@
             $vehicle_id = $_POST['vehicle_id'];
             $vendor_name = $_POST['vendor_name'];
             $type_name = $_POST['type_name'];
+            $vehicle_price = $_POST['vehicle_price'];
 
             echo "<script>";
             echo "console.log('ID:', " . json_encode($vehicle_id) . ");";
@@ -22,8 +23,26 @@
             $_SESSION['vehicle_id'] = $vehicle_id;
             $_SESSION['vehicle_vendor_name'] = $vendor_name;
             $_SESSION['vehicle_type_name'] = $type_name;
+            $_SESSION['Price'] =  $vehicle_price;
         }
     }
+    
+    $start_date_english = $_SESSION["start_date"];
+    $end_date_english = $_SESSION["end_date"];
+
+    $start_date_german = date("d.m.Y", strtotime($start_date_english));
+    $end_date_german = date("d.m.Y", strtotime($end_date_english));
+
+    function calculateBookingDuration($start_date, $end_date) {
+        $start = new DateTime($start_date);
+        $end = new DateTime($end_date);
+        $interval = $start->diff($end);
+        return $interval->days; // Get the interval in days
+    }
+
+    $durationInDays = calculateBookingDuration($_SESSION["start_date"], $_SESSION["end_date"]);
+    $totalPrice = $durationInDays * $_SESSION['Price'];
+    
     function getUserData($conn){
         if (isset($_SESSION["user_username"])) {
             // Retrieve the username from the session
@@ -56,12 +75,22 @@
         }
     }
 
-    function confirmBooking($conn){
+    function confirmBooking($conn) {
         if (isset($_POST['booking_submit'])) {
             $userID = $_SESSION["user_id"];
             $startDate = $_SESSION['start_date'];
             $endDate = $_SESSION['end_date'];
             $vehicleID = $_SESSION['vehicle_id'];
+            
+            // Calculate the booking duration in days
+            $durationInDays = calculateBookingDuration($startDate, $endDate);
+            
+            // Assuming you have retrieved the price per day from somewhere
+            // For example, you might fetch it from the vehicle details
+            $pricePerDay = $_SESSION['Price']; // Adjust this accordingly
+            
+            // Calculate the total price for the booking
+            $totalPrice = $durationInDays * $pricePerDay;
             
             // Check if the booking already exists for this user and vehicle
             $query = "SELECT COUNT(*) as count FROM booking 
@@ -84,18 +113,19 @@
             } else {
                 // Capture today's date
                 $todayDate = date("Y-m-d H:i:s");
-                $bookingStmt = $conn->prepare("INSERT INTO booking (user_id, date_booking, vehicle_id, start_date, end_date) VALUES (:user_id, :date_booking, :vehicle_id, :start_date, :end_date)");
-    
-                // Bind parameters
+                $bookingStmt = $conn->prepare("INSERT INTO booking (user_id, date_booking, vehicle_id, start_date, end_date, price) VALUES (:user_id, :date_booking, :vehicle_id, :start_date, :end_date, :price)");
+        
+                // Bind parameters including the price
                 $bookingStmt->bindParam(':user_id', $userID);
                 $bookingStmt->bindParam(':date_booking', $todayDate);
                 $bookingStmt->bindParam(':vehicle_id', $vehicleID);
                 $bookingStmt->bindParam(':start_date', $startDate);
                 $bookingStmt->bindParam(':end_date', $endDate);
-    
+                $bookingStmt->bindParam(':price', $totalPrice); // Bind the total price
+        
                 // Execute the statement
                 $result = $bookingStmt->execute();
-    
+        
                 // Check if the statement executed successfully
                 if ($result) {
                     echo "<script>console.log('Booking confirmed and added to database');</script>";
@@ -108,19 +138,8 @@
             // The form was not submitted
         }
     }
-
-    confirmBooking($conn);
-
     
-    $start_date_english = $_SESSION["start_date"];
-    $end_date_english = $_SESSION["end_date"];
-
-    $start_date_german = date("d.m.Y", strtotime($start_date_english));
-    $end_date_german = date("d.m.Y", strtotime($end_date_english));
-
-
-
-
+    confirmBooking($conn);
     $userData = getUserData($conn);
 
 ?>
@@ -208,6 +227,7 @@
                     <!-- Element für Modell und Sonderwunsch -->
                     <h3>Auswahl bestätigen<span class="indicator" id="confirm-indicator"></span></h3>
                     <p>Ausgewähltes Modell: ' . $_SESSION['vehicle_vendor_name'] . ' ' . $_SESSION['vehicle_type_name'] . '</p>
+                    <p>Preis: ' . $totalPrice . '€</p>
                     <textarea class="additional-request" placeholder="Sonderwunsch"></textarea>
                     <button class="confirm-button" id="confirm-button">Bestätigen</button>
                 </div>

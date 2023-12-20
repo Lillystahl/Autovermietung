@@ -194,12 +194,13 @@ function displayProductCards($result) {
               </span>';
             echo '<div class="car-features">Features: ' . implode(" ", $features) . '</div>';
             echo '</div>';
-            echo '<div class="car-prize">Preis: ' . $result[$j]['vehicle_price'] . '€</div>';
+            echo '<div class="car-prize">Preis/Tag: ' . $result[$j]['vehicle_price'] . '€</div>';
             // Display the form to rent the car
             echo '<form id="rent-form-' . $result[$j]['vehicle_id'] . '" action="booking.php" method="post">';
             echo '<input type="hidden" name="vehicle_id" value="' . $result[$j]['vehicle_id'] . '">';
             echo '<input type="hidden" name="vendor_name" value="' . $result[$j]['vendor_name'] . '">';
             echo '<input type="hidden" name="type_name" value="' . $result[$j]['type_name'] . '">';
+            echo '<input type="hidden" name="vehicle_price" value="' . $result[$j]['vehicle_price'] . '">';
 
             // Check if the user is logged in (if $_SESSION["user_id"] exists)
             if (isset($_SESSION["user_id"])) {
@@ -266,12 +267,13 @@ function displayProductCards($result) {
             }
             echo '<div class="car-transmission">Getriebe: ' . $transmission . '</div>';
             echo '<div class="Location">Standort: ' . $result[$j]['location_name'] . '</div>';
-            echo '<div class="car-prize">Preis: ' . $result[$j]['vehicle_price'] . '€</div>';
+            echo '<div class="car-prize">Preis pro Tag: ' . $result[$j]['vehicle_price'] . '€</div>';
 
             echo '<form id="rent-form-' . $result[$j]['vehicle_id'] . '" action="booking.php" method="post">';
             echo '<input type="hidden" name="vehicle_id" value="' . $result[$j]['vehicle_id'] . '">';
             echo '<input type="hidden" name="vendor_name" value="' . $result[$j]['vendor_name'] . '">';
             echo '<input type="hidden" name="type_name" value="' . $result[$j]['type_name'] . '">';
+            echo '<input type="hidden" name="vehicle_price" value="' . $result[$j]['vehicle_price'] . '">';
 
             // Check if the user is logged in (if $_SESSION["user_id"] exists)
             if (isset($_SESSION["user_id"])) {
