@@ -1,16 +1,17 @@
 <?php
+
 // function which stores user inputs for searched in session variables 
 //NOTE: DONT KNOW IF THIS CAN CAUSE CONFLICTS WHEN WE HAVE A LOGIN BECAUSE LOGIN CREATES A NEW SESSION (does not seem to be the case)
 //This function checks if a user input is submitted via the post form on the homepage
 //It valiadates it via the allowed array so that a user cannot change it in html(dont know if this is necceasrry but better save then sorry)
-function homeInpuToSession() {
-    if (isset($_POST['filterbar-submit'])) {
+function inputToSession($submitButton) {
+    if (isset($_POST[$submitButton])) {
         // allowed dropdown values
         //if this was larger sclae projekt we need to do this dynamically via db access but dont think we need this here
         //hence this is not easy to scale!
         $allowedLocations = ["Berlin", "Bochum", "Bremen", "Dortmund", "Dresden", "Freiburg", "Hamburg", "Köln", "Leipzig", "München", "Nürnbeg", "Paderborn", "Rostock", "''"];
         $allowedCategories = ["Cabrio", "SUV", "Limousine", "Combi", "Mehrsitzer", "Coupe", "''"];
-        
+
         //create function variables, if a validation fails it simply ""
         // this way we dont break the function and can still use it 
         $loc = in_array($_POST['standort-location'], $allowedLocations) ? $_POST['standort-location'] : '';
@@ -42,7 +43,7 @@ function homeInpuToSession() {
 
                 header("Location: Produktübersicht.php");
                 echo '<script>';
-                echo 'console.log(" Searched on Produktübersicht! ");';
+                echo 'console.log(" Searched on ' . ($submitButton === 'filterbar-submit' ? "Produktübersicht" : "Another Page") . '! ");';
                 echo '</script>';
                 exit();
             } else {
@@ -51,50 +52,7 @@ function homeInpuToSession() {
             }
         } else {
             //error message input validation failed
-            /// maybe this is obsolete because we set it to "" if validation fails so yeah 
-            echo "<script>alert('Invalid input for location or vehicle type.');</script>";
-        }
-    }
-}
-
-//essentially does the same as function above only on the Produktübersich seite
-function ProduktübersichtInputToSession() {
-    if (isset($_POST['filterbar1-submit'])) {
-        $allowedLocations = ["Berlin", "Bochum", "Bremen", "Dortmund", "Dresden", "Freiburg", "Hamburg", "Köln", "Leipzig", "München", "Nürnbeg", "Paderborn", "Rostock", "''"];
-        $allowedCategories = ["Cabrio", "SUV", "Limousine", "Combi", "Mehrsitzer", "Coupe", "''"];
-
-        $loc = in_array($_POST['standort-location'], $allowedLocations) ? $_POST['standort-location'] : '';
-        $vehicleType = in_array($_POST['Fahrzeugtyp'], $allowedCategories) ? $_POST['Fahrzeugtyp'] : '';
-        $startDate = filter_input(INPUT_POST, 'start-date', FILTER_SANITIZE_SPECIAL_CHARS);
-        $endDate = filter_input(INPUT_POST, 'end-date', FILTER_SANITIZE_SPECIAL_CHARS);
-
-        $currentDate = date("Y-m-d");
-
-        if ((empty($loc) && empty($vehicleType)) || (!empty($loc) && !empty($vehicleType)) || (empty($loc) && !empty($vehicleType)) || (!empty($loc) && empty($vehicleType))) {
-            if ((empty($startDate) && empty($endDate)) || ((!empty($startDate) && !empty($endDate)) && (strtotime($startDate) >= strtotime($currentDate) && strtotime($endDate) >= strtotime($startDate)))) {
-                $_SESSION['location'] = $loc;
-                $_SESSION['vehicle_type'] = $vehicleType;
-                $_SESSION['start_date'] = $startDate;
-                $_SESSION['end_date'] = $endDate;
-                $_SESSION['manufacturer'] = '';
-                $_SESSION['seats'] = '';
-                $_SESSION['doors'] = '';
-                $_SESSION['gearbox'] = '';
-                $_SESSION['minAge'] = '';
-                $_SESSION['drive'] = '';
-                $_SESSION['air_conditioning'] = '';
-                $_SESSION['gps'] = '';
-                $_SESSION['max_price'] = '';
-
-                header("Location: Produktübersicht.php");
-                echo '<script>';
-                echo 'console.log(" Searched on Produktübersicht! ");';
-                echo '</script>';
-                exit();
-            } else {
-                echo "<script>alert('Invalid date range. Start date cannot be older than the current date, end date cannot be before start date, and both dates must be provided if one is entered.');</script>";
-            }
-        } else {
+            /// maybe this is obsolete because we set it to "" if validation fails
             echo "<script>alert('Invalid input for location or vehicle type.');</script>";
         }
     }
@@ -188,7 +146,6 @@ function debugSession() {
 }
 
 // very nice function to dynamically produce our product cards and the onclick detail cards
-// this looks complicated but is acutally reall trivial 
 // we essentially access the result array to loop through it and "collect" certain information for each car
 // The result array is 2 dimensional array which has a main key (the car) and its attributes stored in it
 // we get this from the function which fetches db and returns it
@@ -391,35 +348,22 @@ function fetchCombinedCars($conn, $page, $perPage) {
         (cartablesview.category_drive = :drive OR :drive = '') AND
         (cartablesview.air_conditioning = :airConditioning OR :airConditioning = '') AND
         (cartablesview.gps = :gps OR :gps = '') AND
-        (cartablesview.vehicle_price <= :price OR :price = '') AND
-        (cartablesview.location_name = :location OR :location = '') AND
-        (cartablesview.category_type = :vehicleType OR :vehicleType = '')
+        (cartablesview.vehicle_price <= :price OR :price = '')
+    )
+    AND (
+        (cartablesview.location_name = :location AND cartablesview.category_type = :vehicleType) OR
+        (:location = '' AND :vehicleType = '')  /* Add this condition */
     )
     AND cartablesview.vehicle_id NOT IN (
-    SELECT booking.vehicle_id
-    FROM booking
-    WHERE 
-        booking.vehicle_id = cartablesview.vehicle_id AND
-        (
-            (booking.start_date <= :endDate AND booking.end_date >= :startDate) OR
-            (booking.start_date >= :startDate AND booking.end_date <= :endDate) OR
-            (booking.start_date <= :startDate AND booking.end_date >= :endDate)
-        )
-    )
-    OR
-    (
-        :location = '' AND :vehicleType = ''
-    )
-    AND cartablesview.vehicle_id NOT IN (
-    SELECT booking.vehicle_id
-    FROM booking
-    WHERE 
-        booking.vehicle_id = cartablesview.vehicle_id AND
-        (
-            (booking.start_date <= :endDate AND booking.end_date >= :startDate) OR
-            (booking.start_date >= :startDate AND booking.end_date <= :endDate) OR
-            (booking.start_date <= :startDate AND booking.end_date >= :endDate)
-        )
+        SELECT booking.vehicle_id
+        FROM booking
+        WHERE 
+            booking.vehicle_id = cartablesview.vehicle_id AND
+            (
+                (booking.start_date <= :endDate AND booking.end_date >= :startDate) OR
+                (booking.start_date >= :startDate AND booking.end_date <= :endDate) OR
+                (booking.start_date <= :startDate AND booking.end_date >= :endDate)
+            )
     )
     LIMIT :start, :perPage";
 
@@ -445,12 +389,13 @@ function fetchCombinedCars($conn, $page, $perPage) {
 
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
- return $result;
     echo "<script>";
     echo "console.log('fetchCombinedCars was called wiht the cars:', " . json_encode($result) . ");";
     echo "</script>";
 
-    
+
+    return $result;
+
 }
 
 
@@ -474,7 +419,7 @@ function countCars($conn) {
 
     $sql = "SELECT COUNT(*) as total 
             FROM cartablesview 
-            WHERE     
+            WHERE 
     (
         (cartablesview.vendor_name = :manufacturer OR :manufacturer = '') AND
         (cartablesview.seats = :seats OR :seats = '') AND
@@ -484,35 +429,22 @@ function countCars($conn) {
         (cartablesview.category_drive = :drive OR :drive = '') AND
         (cartablesview.air_conditioning = :airConditioning OR :airConditioning = '') AND
         (cartablesview.gps = :gps OR :gps = '') AND
-        (cartablesview.vehicle_price <= :price OR :price = '') AND
-        (cartablesview.location_name = :location OR :location = '') AND
-        (cartablesview.category_type = :vehicleType OR :vehicleType = '')
+        (cartablesview.vehicle_price <= :price OR :price = '')
+    )
+    AND (
+        (cartablesview.location_name = :location AND cartablesview.category_type = :vehicleType) OR
+        (:location = '' AND :vehicleType = '')  /* Add this condition */
     )
     AND cartablesview.vehicle_id NOT IN (
-    SELECT booking.vehicle_id
-    FROM booking
-    WHERE 
-        booking.vehicle_id = cartablesview.vehicle_id AND
-        (
-            (booking.start_date <= :endDate AND booking.end_date >= :startDate) OR
-            (booking.start_date >= :startDate AND booking.end_date <= :endDate) OR
-            (booking.start_date <= :startDate AND booking.end_date >= :endDate)
-        )
-    )
-    OR
-    (
-        :location = '' AND :vehicleType = ''
-    )
-    AND cartablesview.vehicle_id NOT IN (
-    SELECT booking.vehicle_id
-    FROM booking
-    WHERE 
-        booking.vehicle_id = cartablesview.vehicle_id AND
-        (
-            (booking.start_date <= :endDate AND booking.end_date >= :startDate) OR
-            (booking.start_date >= :startDate AND booking.end_date <= :endDate) OR
-            (booking.start_date <= :startDate AND booking.end_date >= :endDate)
-        )
+        SELECT booking.vehicle_id
+        FROM booking
+        WHERE 
+            booking.vehicle_id = cartablesview.vehicle_id AND
+            (
+                (booking.start_date <= :endDate AND booking.end_date >= :startDate) OR
+                (booking.start_date >= :startDate AND booking.end_date <= :endDate) OR
+                (booking.start_date <= :startDate AND booking.end_date >= :endDate)
+            )
     )";
 
     $stmt = $conn->prepare($sql);

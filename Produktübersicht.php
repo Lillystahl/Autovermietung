@@ -5,7 +5,7 @@
     require_once('process_form.php');
     require_once('config_session.inc.php');   
     debugSession();
-    ProduktübersichtInputToSession();
+    inputToSession('filterbar1-submit');
     FilterToSession();
     getCategoryUrl();
     print_r($_POST);

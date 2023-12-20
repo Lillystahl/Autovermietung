@@ -5,6 +5,7 @@
     require_once('config_session.inc.php');
     require_once('signup_view.inc.php');
     require_once('login_view.inc.php');
+    print_r($_POST); // or var_dump($_POST);
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +43,7 @@
                 <input type="text" placeholder="Username" name="Username"/>
                 <input type="text" placeholder="Straße" name="Straße"/>
                 <div style="display: flex; justify-content: space-between;">
-                    <input type="text" placeholder="Postleitzahl" name="Postleitzahl" style="width: 52%;"/> <!-- Added field for Postleitzahl -->
+                    <input type="text" placeholder="Plz, Ort" name="Postleitzahl" style="width: 54%;"/> <!-- Added field for Postleitzahl -->
                     <input type="text" placeholder="Hausnummer" name="Hausnummer" style="width: 44%;"/> <!-- Added field for Hausnummer -->
                 </div>
                 <input type="date" placeholder="dd.mm.yyyy" name="Date"/>

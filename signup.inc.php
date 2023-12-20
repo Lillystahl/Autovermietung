@@ -6,11 +6,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $firstName = $_POST["First_Name"];
     $lastName = $_POST["Last_Name"];
     $straße = $_POST["Straße"];
-    $postleitzahl = intval($_POST['Postleitzahl']); //html treats all form inputs as string, hence string to int conversion is needed
+    $postleitzahlOrt = $_POST["Postleitzahl"]; // Get the combined value
     $hausnummer = intval($_POST['Hausnummer']); //html treats all form inputs as string, hence string to int conversion is needed
     $date = $_POST["Date"];
     $email = $_POST["Email"]; 
     $pwd = $_POST["Password"];
+
+    // Separate Postleitzahl and Ort
+    list($postleitzahl, $ort) = preg_split('/,\s*/', $postleitzahlOrt, 2);
+
+    // Trim whitespace from the separated values
+    $postleitzahl = intval(trim($postleitzahl));
+    $ort = trim($ort);
 
     try {
         // access our vmc files and db connect to get functions or objects we build there
