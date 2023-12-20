@@ -308,9 +308,8 @@ body {
 .login-errors p {
 	font-size: 14px;
 	font-weight: 100;
-	line-height: 5px;
-	margin: 10px;
 	color: red;
+	margin: 0px;
 }
 
 .singup-errors {
@@ -328,9 +327,8 @@ body {
 .singup-errors p {
 	font-size: 14px;
 	font-weight: 100;
-	line-height: 5px;
-	margin: 10px;
 	color: red;
+	margin: 0px;
 }
 /*Si
 /*SignUp Styles*/

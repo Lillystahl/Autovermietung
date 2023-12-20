@@ -19,6 +19,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $postleitzahl = intval(trim($postleitzahl));
     $ort = trim($ort);
 
+    // Create DateTime objects for user's date of birth and current date
+    $userDOBObject = new DateTime($date);
+    $currentDateObject = new DateTime();
+
+    // Calculate the interval between the dates
+    $interval = $userDOBObject->diff($currentDateObject);
+
+    // Get the difference in years
+    $age = $interval->y;
+
     try {
         // access our vmc files and db connect to get functions or objects we build there
         require_once ('db_connect.php');
@@ -27,6 +37,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // Error handling 
         $errors = [];
+        if (isset($age) && !empty($age)) {
+            if ($age < 18) {
+                $errors["age_limit"] = "You must be 18 years old to create an account.";
+            }
+        }
         //empty fields
         if(is_input_empty($username, $firstName, $lastName, $straße, $postleitzahl, $hausnummer, $date, $email, $pwd)){
             $errors["empty_input"] = "Fill in all fields";
@@ -52,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             die();
         }
         // create useer if no error handling
-        create_user($conn, $username, $firstName, $lastName, $straße, $postleitzahl, $hausnummer, $date, $email, $pwd);
+        create_user($conn, $username, $firstName, $lastName, $straße, $postleitzahl, $ort, $hausnummer, $date, $email, $pwd);
         // reedirect to page we want the user to start at, idealy home
         header("Location: Registrierung.php?signup=success");
 

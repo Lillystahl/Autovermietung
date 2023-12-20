@@ -35,6 +35,6 @@ function is_email_registered(object $conn, string $email){
 }
 
 
-function create_user(object $conn, string $username,string $firstName,string $lastName,string $straße,int $postleitzahl, int $hausnummer, string $date, string $email,string $pwd){
-    set_user($conn, $username, $firstName, $lastName,  $straße, $postleitzahl, $hausnummer, $date, $email, $pwd);
+function create_user(object $conn, string $username,string $firstName,string $lastName,string $straße,int $postleitzahl,string $ort, int $hausnummer, string $date, string $email,string $pwd){
+    set_user($conn, $username, $firstName, $lastName,  $straße, $postleitzahl, $ort, $hausnummer, $date, $email, $pwd);
 }

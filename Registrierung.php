@@ -5,7 +5,6 @@
     require_once('config_session.inc.php');
     require_once('signup_view.inc.php');
     require_once('login_view.inc.php');
-    print_r($_POST); // or var_dump($_POST);
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +14,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA_Compatible" content="ie=edge">
+    <title>RentEasee Anmeldung</title>
+    <link rel="icon" href="Images/ImageRE-small.png" type="image/x-icon">
     <!--FIXED:Font awesome link anpassen dieser geht nicht mehr-->
     <!--Das hier ist der neue Link-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -46,7 +47,7 @@
                     <input type="text" placeholder="Plz, Ort" name="Postleitzahl" style="width: 54%;"/> <!-- Added field for Postleitzahl -->
                     <input type="text" placeholder="Hausnummer" name="Hausnummer" style="width: 44%;"/> <!-- Added field for Hausnummer -->
                 </div>
-                <input type="date" placeholder="dd.mm.yyyy" name="Date"/>
+                <input type="date" placeholder="Geburtsdatum" name="Date"/>
                 <input type="email" placeholder="Email" name="Email"/>
                 <input type="password" placeholder="Password" name="Password"/>
                 <button>Sign Up</button>
