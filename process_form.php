@@ -352,7 +352,8 @@ function fetchCombinedCars($conn, $page, $perPage) {
     )
     AND (
         (cartablesview.location_name = :location AND cartablesview.category_type = :vehicleType) OR
-        (:location = '' AND :vehicleType = '')  /* Add this condition */
+        (cartablesview.location_name = :location OR cartablesview.category_type = :vehicleType) OR
+        (:location = '' AND :vehicleType = '')  /* Add these conditions */
     )
     AND cartablesview.vehicle_id NOT IN (
         SELECT booking.vehicle_id
@@ -420,7 +421,7 @@ function countCars($conn) {
     $sql = "SELECT COUNT(*) as total 
             FROM cartablesview 
             WHERE 
-    (
+            (
         (cartablesview.vendor_name = :manufacturer OR :manufacturer = '') AND
         (cartablesview.seats = :seats OR :seats = '') AND
         (cartablesview.doors = :doors OR :doors = '') AND
@@ -433,7 +434,8 @@ function countCars($conn) {
     )
     AND (
         (cartablesview.location_name = :location AND cartablesview.category_type = :vehicleType) OR
-        (:location = '' AND :vehicleType = '')  /* Add this condition */
+        (cartablesview.location_name = :location OR cartablesview.category_type = :vehicleType) OR
+        (:location = '' AND :vehicleType = '')  /* Add these conditions */
     )
     AND cartablesview.vehicle_id NOT IN (
         SELECT booking.vehicle_id
