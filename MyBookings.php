@@ -4,25 +4,79 @@
     require_once('db_connect.php');
     require_once('config_session.inc.php');
 
-       // Check if the user is logged in
-       if(isset($_SESSION["user_id"])){
-        $userID = $_SESSION["user_id"];
-        
-        // SQL statement to fetch user bookings
-        $sql = "SELECT booking_id, date_booking, start_date, end_date, location_name, vehicle_price, type_name, vendor_name_abbr, img_file_name 
-        FROM booking LEFT JOIN cartablesview ON booking.vehicle_id = cartablesview.vehicle_id
-        WHERE user_id = :user_id ORDER BY date_booking DESC";
+    function getUserBookings($conn, $page, $perPage) {
+      // Start and limit calculation for pagination
+      $start = ($page - 1) * $perPage;
+      $userID = $_SESSION["user_id"];
+      
+      // SQL statement to fetch user bookings with pagination
+      $sql = "SELECT booking_id, date_booking, start_date, end_date, location_name, vehicle_price, type_name, vendor_name_abbr, img_file_name 
+              FROM booking 
+              LEFT JOIN cartablesview ON booking.vehicle_id = cartablesview.vehicle_id
+              WHERE user_id = :user_id 
+              ORDER BY date_booking DESC 
+              LIMIT :start, :perPage";
+  
+      // Prepare the statement
+      $stmt = $conn->prepare($sql);
+      $stmt->bindParam(':user_id', $userID);
+      $stmt->bindParam(':start', $start, PDO::PARAM_INT);
+      $stmt->bindParam(':perPage', $perPage, PDO::PARAM_INT);
+      
+      // Execute the statement
+      $stmt->execute();
+  
+      // Fetch all rows as an associative array
+      $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  
+      return $bookings;
+  }
 
-        // Prepare the statement
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':user_id', $userID);
-        
-        // Execute the statement
-        $stmt->execute();
+  function countUserBookings($conn) {
+    $userID = $_SESSION["user_id"];
+    
+    // SQL statement to count user bookings
+    $sql = "SELECT COUNT(*) 
+            FROM booking 
+            WHERE user_id = :user_id";
+    
+    // Prepare the statement
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':user_id', $userID);
+    
+    // Execute the statement
+    $stmt->execute();
+    
+    // Fetch the count
+    $count = $stmt->fetchColumn();
+    
+    return $count;
+}
 
-        // Fetch all rows as an associative array
-        $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  function displayBookings($bookings) {
+    foreach ($bookings as $booking) {
+        // Convert English date format to German date format
+        $start_date = date("d.m.Y", strtotime($booking['start_date']));
+        $end_date = date("d.m.Y", strtotime($booking['end_date']));
+        $date_booking = date("d.m.Y", strtotime($booking['date_booking']));
+
+        echo "<tr onclick=\"showHideRow('hidden_row{$booking['booking_id']}');\">";
+        echo "<td>{$start_date}</td>";
+        echo "<td>{$end_date}</td>";
+        echo "<td>{$booking['vendor_name_abbr']} {$booking['type_name']}</td>";
+        echo "<td>{$date_booking}</td>";
+        echo "</tr>";
+
+        // Hidden rows for detailed information
+        echo "<tr id='hidden_row{$booking['booking_id']}' class='hidden_row'>";
+        echo "<td class='tableDateFull' colspan='6'>";
+        echo "<div class='further_Infos'>";
+        // Display more details here
+        echo "</div>";
+        echo "</td>";
+        echo "</tr>";
     }
+}
 ?>
 
 <!DOCTYPE html>
@@ -116,28 +170,18 @@
           <tbody>
             <?php
               // Loop through the fetched bookings and display them in the table rows
-              foreach ($bookings as $booking) {
-                // Convert English date format to German date format
-                $start_date = date("d.m.Y", strtotime($booking['start_date']));
-                $end_date = date("d.m.Y", strtotime($booking['end_date']));
-                $date_booking = date("d.m.Y", strtotime($booking['date_booking']));
+              $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+              $bookingsPerPage = 7;
+              $result = getUserBookings($conn, $currentPage, $bookingsPerPage);
+              $totalBookings = countUserBookings($conn);
+              displayBookings($result);
 
-                echo "<tr onclick=\"showHideRow('hidden_row{$booking['booking_id']}');\">";
-                echo "<td>{$start_date}</td>";
-                echo "<td>{$end_date}</td>";
-                echo "<td>{$booking['vendor_name_abbr']} {$booking['type_name']}</td>";
-                echo "<td>{$date_booking}</td>";
-                echo "</tr>";
-
-                // Hidden rows for detailed information
-                echo "<tr id='hidden_row{$booking['booking_id']}' class='hidden_row'>";
-                echo "<td class='tableDateFull' colspan='6'>";
-                echo "<div class='further_Infos'>";
-                // Display more details here
-                echo "</div>";
-                echo "</td>";
-                echo "</tr>";
+              echo '<div class="pagination">';
+              for ($i = 1; $i <= ceil($totalBookings / $bookingsPerPage); $i++) {
+                  $activeClass = ($currentPage == $i) ? 'active' : '';
+                  echo '<a href="MyBookings.php?page=' . $i . '" class="' . $activeClass . '">' . $i . '</a>';
               }
+              echo '</div>';
             ?>
             <!-- More bookings can be added here -->
           </tbody>
