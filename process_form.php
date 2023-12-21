@@ -9,7 +9,7 @@ function inputToSession($submitButton) {
         // allowed dropdown values
         //if this was larger sclae projekt we need to do this dynamically via db access but dont think we need this here
         //hence this is not easy to scale!
-        $allowedLocations = ["Berlin", "Bochum", "Bremen", "Dortmund", "Dresden", "Freiburg", "Hamburg", "Köln", "Leipzig", "München", "Nürnbeg", "Paderborn", "Rostock", "''"];
+        $allowedLocations = ["Berlin", "Bochum", "Bremen", "Dortmund", "Dresden", "Freiburg", "Hamburg", "Köln", "Leipzig", "München", "Nürnberg", "Paderborn", "Rostock", "''"];
         $allowedCategories = ["Cabrio", "SUV", "Limousine", "Combi", "Mehrsitzer", "Coupe", "''"];
 
         //create function variables, if a validation fails it simply ""
@@ -152,55 +152,77 @@ function debugSession() {
 //hence we can pass it to this function
 //very nice!
 function displayProductCards($result) {
-    // Calculate the number of cars and the number of rows needed to display them in groups of 5
+           // Calculate the number of cars and the number of rows needed to display them in groups of 5
     $numCars = count($result);
     $numRows = ceil($numCars / 5);
 
-    // Loop through each row
+    // Group cars by type and location
+    $consolidatedCars = [];
+    foreach ($result as $car) {
+        $typeLocation = $car['type_name'] . '_' . $car['location_name'];
+        if (!isset($consolidatedCars[$typeLocation])) {
+            $consolidatedCars[$typeLocation] = [
+                'count' => 0,
+                'cars' => [],
+            ];
+        }
+        $consolidatedCars[$typeLocation]['count']++;
+        $consolidatedCars[$typeLocation]['cars'][] = $car;
+    }
+   
+           // Loop through each row
     for ($i = 0; $i < $numRows; $i++) {
-        // Display each car card
         echo '<div class="overview-row">';
-        for ($j = $i * 5; $j < min(($i + 1) * 5, $numCars); $j++) {
-            echo '<div class="car-card" onclick="openCarDetails(' . $j . ')">';
+        $cardsDisplayed = 0; // Counter for displayed cards in a row
+        // Display up to 5 cards in each row
+        foreach ($consolidatedCars as $typeLocation => $data) {
+            if ($cardsDisplayed >= 5) {
+                break; // Move to the next row if 5 cards are already displayed
+            }
+            $car = $data['cars'][0]; // Get details of one car for display
+
+            // Show consolidated card for multiple cars at one location
+            echo '<div class="car-card" onclick="openCarDetails(' . $car['vehicle_id'] . ')">';
             echo '<div class="car-image-container">';
-            echo '<img class="car-image" src="Images/Product_Img/vorne-' . $result[$j]['img_file_name'] . '" alt="Car Image">';
+            echo '<img class="car-image" src="Images/Product_Img/vorne-' . $car['img_file_name'] . '" alt="Car Image">';
             echo '</div>';
             echo '<div class="car-details-container">';
-            echo '<div class="car-details">';
-            echo '<div class="car-name">' . $result[$j]['vendor_name'] . ' ' . $result[$j]['type_name'] . '</div>';
-            echo '<div class="car-cat">Kategorie: ' . $result[$j]['category_type'] . '</div>';
+            echo '<div class="car-name">' . $car['vendor_name'] . ' ' . $car['type_name'] . '</div>';
+            echo '<div class="Location">' . $car['location_name'] . '</div>';
+            echo '<div class="available-cars-count">' . $data['count'] . ' car(s) available</div>'; // Display count of available cars
+
+            // Transmission
             $transmission = '';
-            if ($result[$j]['gear'] == 'automatic') {
+            if ($car['gear'] == 'automatic') {
                 $transmission = 'Automatik';
-            } elseif ($result[$j]['gear'] == 'manually') {
+            } elseif ($car['gear'] == 'manually') {
                 $transmission = 'Handschalter';
             }
             echo '<div class="car-transmission">Getriebe: ' . $transmission . '</div>';
-            echo '<div class="Location">Standort: ' . $result[$j]['location_name'] . '</div>';
+
+            // Features
             $features = [];
-            if ($result[$j]['gps'] == 1) {
+            if ($car['gps'] == 1) {
                 $features[] = '<i class="fa-solid fa-map-location-dot"></i>';
+            } else {
+                $features[] = '<span class="durchgestrichen"><i class="fa-solid fa-map-location-dot"></i></span>';
             }
-            else
-                $features[] = '<span class="durchgestrichen">
-                <i class="fa-solid fa-map-location-dot"></i>
-              </span>';
-            if ($result[$j]['air_conditioning'] == 1) {
+            if ($car['air_conditioning'] == 1) {
                 $features[] = '<i class="fa-solid fa-fan"></i>';
+            } else {
+                $features[] = '<span class="durchgestrichen"><i class="fa-solid fa-fan"></i></span>';
             }
-            else
-                $features[] = '<span class="durchgestrichen">
-                <i class="fa-solid fa-fan"></i>
-              </span>';
             echo '<div class="car-features">Features: ' . implode(" ", $features) . '</div>';
-            echo '</div>';
-            echo '<div class="car-prize">Preis/Tag: ' . $result[$j]['vehicle_price'] . '€</div>';
+
+            // Price
+            echo '<div class="car-prize">Preis/Tag: ' . $car['vehicle_price'] . '€</div>';
+
             // Display the form to rent the car
-            echo '<form id="rent-form-' . $result[$j]['vehicle_id'] . '" action="booking.php" method="post">';
-            echo '<input type="hidden" name="vehicle_id" value="' . $result[$j]['vehicle_id'] . '">';
-            echo '<input type="hidden" name="vendor_name" value="' . $result[$j]['vendor_name'] . '">';
-            echo '<input type="hidden" name="type_name" value="' . $result[$j]['type_name'] . '">';
-            echo '<input type="hidden" name="vehicle_price" value="' . $result[$j]['vehicle_price'] . '">';
+            echo '<form id="rent-form-' . $car['vehicle_id'] . '" action="booking.php" method="post">';
+            echo '<input type="hidden" name="vehicle_id" value="' . $car['vehicle_id'] . '">';
+            echo '<input type="hidden" name="vendor_name" value="' . $car['vendor_name'] . '">';
+            echo '<input type="hidden" name="type_name" value="' . $car['type_name'] . '">';
+            echo '<input type="hidden" name="vehicle_price" value="' . $car['vehicle_price'] . '">';
 
             // Check if the user is logged in (if $_SESSION["user_id"] exists)
             if (isset($_SESSION["user_id"])) {
@@ -216,87 +238,87 @@ function displayProductCards($result) {
             }
 
             echo '</form>';
-            echo '</div></div>';
+            echo '</div>';
+            echo '</div>';
+            $cardsDisplayed++;
+            unset($consolidatedCars[$typeLocation]); // Remove displayed card from the consolidated list
         }
         echo '</div>';
     }
 
     // Loop through each row for displaying car details overlay
-    for ($i = 0; $i < $numRows; $i++) {
-        // Loop through each car in the row
-        for ($j = $i * 5; $j < min(($i + 1) * 5, $numCars); $j++) {
-            // Display car details overlay for each car
-            echo '<div class="car-details-overlay" id="carDetailsOverlay_' . $j . '">';
-            echo '<div class="car-details-popup" id="carDetailsPopup_' . $j . '">';
-            echo '<span class="close-button" onclick="closeCarDetails()">&times;</span>';
-            echo '<div class="popup-content">';
-            echo '<div class="popup-image-container">' .
-                    '<img class="car-image" src="Images/Product_Img/vorne-' . $result[$j]['img_file_name'] . '" alt="Car Image">' .
-                    '<img class="car-image" src="Images/Product_Img/vorne-' . $result[$j]['img_file_name'] . '" alt="Car Image">' .
-                '</div>';
-            echo '<div class="car-details-popup-content">';
-            $name_extension ='';
-            if ($result[$j]['type_name_extension'] == '0') {
-                $name_extension = ' ';
-            } else {
-                $name_extension = $result[$j]['type_name_extension'];
-            }
-            echo '<div class="car-name">' . $result[$j]['vendor_name'] . ' ' . $result[$j]['type_name'] . ' ' . $name_extension . '</div>';
-            echo '<div class="car-cat">Kategorie: ' . $result[$j]['category_type'] . '</div>';
-            echo '<div class="car-cat">Sitzanzahl: ' . $result[$j]['seats'] . '</div>';
-            echo '<div class="car-cat">Türen: ' . $result[$j]['doors'] . '</div>';
-            $trunk ='';
-            if ($result[$j]['trunk'] == '0') {
-                $trunk = 'Nein';
-            } elseif ($result[$j]['trunk'] > '0') {
-                $trunk = 'Ja';
-            }
-            echo '<div class="car-cat">Kofferraum: ' . $trunk . '</div>';
-            $drive_type ='';
-            if ($result[$j]['category_drive'] == 'Combuster') {
-                $drive_type = 'Verbrennungsmotor';
-            } elseif ($result[$j]['category_drive'] == 'Electric') {
-                $drive_type = 'Elektromotor';
-            }
-            echo '<div class="car-cat">Antrieb: ' . $drive_type . '</div>';
-            $transmission ='';
-            if ($result[$j]['gear'] == 'automatic') {
-                $transmission = 'Automatik';
-            } elseif ($result[$j]['gear'] == 'manually') {
-                $transmission = 'Handschalter';
-            }
-            echo '<div class="car-transmission">Getriebe: ' . $transmission . '</div>';
-            echo '<div class="Location">Standort: ' . $result[$j]['location_name'] . '</div>';
-            echo '<div class="car-prize">Preis pro Tag: ' . $result[$j]['vehicle_price'] . '€</div>';
-
-            echo '<form id="rent-form-' . $result[$j]['vehicle_id'] . '" action="booking.php" method="post">';
-            echo '<input type="hidden" name="vehicle_id" value="' . $result[$j]['vehicle_id'] . '">';
-            echo '<input type="hidden" name="vendor_name" value="' . $result[$j]['vendor_name'] . '">';
-            echo '<input type="hidden" name="type_name" value="' . $result[$j]['type_name'] . '">';
-            echo '<input type="hidden" name="vehicle_price" value="' . $result[$j]['vehicle_price'] . '">';
-
-            // Check if the user is logged in (if $_SESSION["user_id"] exists)
-            if (isset($_SESSION["user_id"])) {
-                // Check if start and end date are set
-                if (isset($_SESSION['start_date']) && isset($_SESSION['end_date']) &&
-                    $_SESSION['start_date'] !== '' && $_SESSION['end_date'] !== '') {
-                    echo '<button type="submit" name="rent-button" class="rent-button">Rent Now</button>';
-                } else {
-                    echo '<span class="date-required-msg">Zum Mieten Datum eingeben</span>';
-                }
-            } else {
-                echo '<span class="date-required-msg">Zum Buchen Anmelden</span>';
-            }
-
-            echo '</form>';
-
-            echo '</div>';
-            echo '</div>';
-            echo '</div>';
-            echo '</div>';
+    foreach ($result as $key => $car) {
+        echo '<div class="car-details-overlay" id="carDetailsOverlay_' . $car['vehicle_id'] . '">';
+        echo '<div class="car-details-popup" id="carDetailsPopup_' . $car['vehicle_id'] . '">';
+        echo '<span class="close-button" onclick="closeCarDetails()">&times;</span>';
+        echo '<div class="popup-content">';
+        echo '<div class="popup-image-container">' .
+                '<img class="car-image" src="Images/Product_Img/vorne-' . $car['img_file_name'] . '" alt="Car Image">' .
+                '<img class="car-image" src="Images/Product_Img/vorne-' . $car['img_file_name'] . '" alt="Car Image">' .
+            '</div>';
+        echo '<div class="car-details-popup-content">';
+        $name_extension ='';
+        if ($car['type_name_extension'] == '0') {
+            $name_extension = ' ';
+        } else {
+            $name_extension = $car['type_name_extension'];
         }
+        echo '<div class="car-name">' . $car['vendor_name'] . ' ' . $car['type_name'] . ' ' . $name_extension . '</div>';
+        echo '<div class="car-cat">Kategorie: ' . $car['category_type'] . '</div>';
+        echo '<div class="car-cat">Sitzanzahl: ' . $car['seats'] . '</div>';
+        echo '<div class="car-cat">Türen: ' . $car['doors'] . '</div>';
+        $trunk ='';
+        if ($car['trunk'] == '0') {
+            $trunk = 'Nein';
+        } elseif ($car['trunk'] > '0') {
+            $trunk = 'Ja';
+        }
+        echo '<div class="car-cat">Kofferraum: ' . $trunk . '</div>';
+        $drive_type ='';
+        if ($car['category_drive'] == 'Combuster') {
+            $drive_type = 'Verbrennungsmotor';
+        } elseif ($car['category_drive'] == 'Electric') {
+            $drive_type = 'Elektromotor';
+        }
+        echo '<div class="car-cat">Antrieb: ' . $drive_type . '</div>';
+        $transmission ='';
+        if ($car['gear'] == 'automatic') {
+            $transmission = 'Automatik';
+        } elseif ($car['gear'] == 'manually') {
+            $transmission = 'Handschalter';
+        }
+        echo '<div class="car-transmission">Getriebe: ' . $transmission . '</div>';
+        echo '<div class="Location">Standort: ' . $car['location_name'] . '</div>';
+        echo '<div class="car-prize">Preis pro Tag: ' . $car['vehicle_price'] . '€</div>';
+    
+        echo '<form id="rent-form-' . $car['vehicle_id'] . '" action="booking.php" method="post">';
+        echo '<input type="hidden" name="vehicle_id" value="' . $car['vehicle_id'] . '">';
+        echo '<input type="hidden" name="vendor_name" value="' . $car['vendor_name'] . '">';
+        echo '<input type="hidden" name="type_name" value="' . $car['type_name'] . '">';
+        echo '<input type="hidden" name="vehicle_price" value="' . $car['vehicle_price'] . '">';
+    
+        // Check if the user is logged in (if $_SESSION["user_id"] exists)
+        if (isset($_SESSION["user_id"])) {
+            // Check if start and end date are set
+            if (isset($_SESSION['start_date']) && isset($_SESSION['end_date']) &&
+                $_SESSION['start_date'] !== '' && $_SESSION['end_date'] !== '') {
+                echo '<button type="submit" name="rent-button" class="rent-button">Rent Now</button>';
+            } else {
+                echo '<span class="date-required-msg">Zum Mieten Datum eingeben</span>';
+            }
+        } else {
+            echo '<span class="date-required-msg">Zum Buchen Anmelden</span>';
+        }
+    
+        echo '</form>';
+    
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
     }
 }
+
 
 //so this just checks if result is empty which means we did not find any cars for the users search
 // you can put this in the function above but i think its nicer if this in one function (this is just me)

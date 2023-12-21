@@ -80,7 +80,23 @@
     <!-- Hier müsste noch das video rein @Leon -->
     <div class="slideContainer">
         <div class="slide">
-            <div class="item" style="background-image: url(Images/Mercedes.jpg)">
+            <div class="item" style="background-image: url(Images/mb-e300-home.png)">
+                <div class="content">
+                    <div class="name">Content</div>
+                    <div class="des">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!
+                    </div>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(Images/audi-a7-home.png)">
+                <div class="content">
+                    <div class="name">Content</div>
+                    <div class="des">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!
+                    </div>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(Images/bmw-i8-home.png)">
                 <div class="content">
                     <div class="name">Content</div>
                     <div class="des">
@@ -89,34 +105,7 @@
                     <button>See More</button>
                 </div>
             </div>
-            <div class="item" style="background-image: url(Images/lambo.jpg)">
-                <div class="content">
-                    <div class="name">Content</div>
-                    <div class="des">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!
-                    </div>
-                    <button>See More</button>
-                </div>
-            </div>
-            <div class="item" style="background-image: url(Images/amgatnight.jpg)">
-                <div class="content">
-                    <div class="name">Content</div>
-                    <div class="des">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!
-                    </div>
-                    <button>See More</button>
-                </div>
-            </div>
-            <div class="item" style="background-image: url(Images/bmw\ racing.jpg)">
-                <div class="content">
-                    <div class="name">Content</div>
-                    <div class="des">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!
-                    </div>
-                    <button>See More</button>
-                </div>
-            </div>
-            <div class="item" style="background-image: url(Images/sexybmw.jpg)">
+            <div class="item" style="background-image: url(Images/maserati-home.png)">
                 <div class="content">
                     <div class="name">Content</div>
                     <div class="des">
