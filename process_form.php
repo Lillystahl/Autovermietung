@@ -155,6 +155,7 @@ function displayProductCards($result) {
            // Calculate the number of cars and the number of rows needed to display them in groups of 5
     $numCars = count($result);
     $numRows = ceil($numCars / 5);
+    $carCounter = 0;
 
     // Group cars by type and location
     $consolidatedCars = [];
@@ -240,6 +241,7 @@ function displayProductCards($result) {
             echo '</form>';
             echo '</div>';
             echo '</div>';
+            $carCounter++;
             $cardsDisplayed++;
             unset($consolidatedCars[$typeLocation]); // Remove displayed card from the consolidated list
         }
@@ -317,6 +319,17 @@ function displayProductCards($result) {
         echo '</div>';
         echo '</div>';
     }
+
+    $missingCards = 20 - $carCounter;
+    echo "<script>";
+    echo "console.log('Consolidation Counter:', " . json_encode($carCounter) . ");";
+    echo "console.log('Missing Cards:', " . json_encode($missingCards) . ");";
+    echo "</script>";
+
+    return [
+        'carCounter' => $carCounter,
+        'missingCards' => $missingCards
+    ];
 }
 
 

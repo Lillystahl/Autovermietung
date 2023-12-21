@@ -79,7 +79,7 @@
     <content>
         <div class="confirmation-content">
             <h1>Vielen dank für Ihre Buchung bei RentEase! <a style="color: green;">✓</a></h1>
-            <p>Ihre Buchung wurde erfolgreich bestätigt. Die Buchungsdetails finden sie unter "<a href="meine_buchungen.html" class="my-bookings-link">Meine Buchungen</a>". Wir wünschen eine gute Fahrt!</p>
+            <p>Ihre Buchung wurde erfolgreich bestätigt. Die Buchungsdetails finden sie unter "<a href="MyBookings.php" class="my-bookings-link">Meine Buchungen</a>". Wir wünschen eine gute Fahrt!</p>
             <!-- Weitere Informationen oder Inhalte zur Bestätigung -->
         </div>
     </content>
