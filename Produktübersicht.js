@@ -19,13 +19,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function handlePageClick(event) {
         event.preventDefault();
-        const pageNumber = parseInt(event.target.textContent); // Get the clicked page number
+    
+        // Remove the 'active' class from all pagination links
+        pageLinks.forEach(link => {
+            link.classList.remove('active');
+        });
+    
+        const pageNumber = parseInt(event.target.textContent);
         showPage(pageNumber);
-        currentPage = pageNumber; // Update current page
+        currentPage = pageNumber;
+    
+        // Add the 'active' class to the clicked pagination link
+        event.target.classList.add('active');
     }
 
-    // Initially display the first page
+    // Initially display the first page and mark it as active
     showPage(currentPage);
+
+    // Get the first page link and add 'active' class to it
+    const firstPageLink = document.querySelector('.pagination a:nth-child(1)');
+    firstPageLink.classList.add('active');
 
     // Attach click event listeners to pagination links
     const pageLinks = document.querySelectorAll('.pagination a');
@@ -33,6 +46,8 @@ document.addEventListener('DOMContentLoaded', function () {
         link.addEventListener('click', handlePageClick);
     });
 });
+
+
 
 
 

@@ -48,13 +48,13 @@ function inputToSession($submitButton) {
                 echo '</script>';
                 exit();
             } else {
-                //error message date
-                echo "<script>alert('Invalid date range. Start date cannot be older than the current date, end date cannot be before start date, and both dates must be provided if one is entered.');</script>";
+                // Fehlermeldung Datum
+                echo "<script>alert('Ungültiger Datumsbereich. Das Startdatum darf nicht älter als das aktuelle Datum sein, das Enddatum darf nicht vor dem Startdatum liegen und beide Daten müssen angegeben werden, wenn eines eingegeben wird.');</script>";
             }
         } else {
             //error message input validation failed
             /// maybe this is obsolete because we set it to "" if validation fails
-            echo "<script>alert('Invalid input for location or vehicle type.');</script>";
+            echo "<script>alert('Ungültige Eingabe für Standort oder Fahrzeugtyp.');</script>";
         }
     }
 }

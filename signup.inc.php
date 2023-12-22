@@ -39,28 +39,28 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $errors = [];
         if (isset($age) && !empty($age)) {
             if ($age < 18) {
-                $errors["age_limit"] = "You must be 18 years old to create an account.";
+                $errors["age_limit"] = "Du musst mindestens 18 Jahre alt sein, um ein Konto zu erstellen.";
             }
         }
-        //empty fields
-        if(is_input_empty($username, $firstName, $lastName, $straße, $postleitzahl, $hausnummer, $date, $email, $pwd)){
-            $errors["empty_input"] = "Fill in all fields";
+        // Leerfelder
+        if (is_input_empty($username, $firstName, $lastName, $straße, $postleitzahl, $hausnummer, $date, $email, $pwd)) {
+            $errors["empty_input"] = "Fülle alle Felder aus.";
         }
-        //email invalid input, for example no @sign
-        if(is_email_invalid($email)){
-            $errors["invalid_email"] = "Invalid email";    
+        // Ungültige E-Mail-Adresse, zum Beispiel kein @-Zeichen
+        if (is_email_invalid($email)) {
+            $errors["invalid_email"] = "Ungültige E-Mail-Adresse.";
         }
-        //username is already in use with other account
-        if(is_username_taken($conn, $username)){
-            $errors["username_exists"] = "Username already exists";    
+        // Benutzername ist bereits in Verwendung
+        if (is_username_taken($conn, $username)) {
+            $errors["username_exists"] = "Benutzername ist bereits vergeben.";
         }
-        //email is already in use with other account
-        if(is_email_registered($conn,$email)){ 
-            $errors["email_duplicate"] = "Email already exists";   
+        // E-Mail ist bereits registriert
+        if (is_email_registered($conn, $email)) {
+            $errors["email_duplicate"] = "E-Mail-Adresse ist bereits registriert.";
         }
-        // access our sesssion config 
-        require_once ('config_session.inc.php');
-        // redirect if errors array elemts exist 
+        // Zugriff auf unsere Session-Konfiguration
+        require_once('config_session.inc.php');
+        // Weiterleitung, wenn Fehler im Fehler-Array vorhanden sind
         if ($errors) {
             $_SESSION["errors_singup"] = $errors;
             header("Location: Registrierung.php");

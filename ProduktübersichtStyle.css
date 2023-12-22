@@ -515,27 +515,21 @@ body {
 
 /* Product-Details Styles*/
 
-.pagination {
-    display: flex;
-    list-style: none;
-    padding: 0;
-}
-  
-.pagination a {
-    background-color: #f5f5f5;
-    text-decoration: none;
+.page-btn {
+    /* Stil für die unselektierten Buttons */
+    background-color: #f0f0f0;
+    color: black;
     padding: 5px 10px;
-    margin: 0 5px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    color: #333;
+    text-decoration: none;
+    margin: 0 2px;
+    border-radius: 3px;
 }
-  
-.pagination a.active {
-    background-color: #9BBEC8;
+
+.page-btn.active {
+    /* Stil für den ausgewählten Button */
+    background-color:#9BBEC8;
     color: #fff;
-    border: 1px solid #9BBEC8;
-    font-size: 20px; /* Increase the font size for the active link */
+    /* Weitere Stile nach Bedarf hinzufügen */
 }
   
 

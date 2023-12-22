@@ -37,8 +37,7 @@
                                 </span>
                                 <ul class="dropdown-menu" id="dropdownMenu">
                                     <li><a href="MyBookings.php">Meine Buchungen</a></li>
-                                    <li><a href="MyProfilePage.php">Mein Profil</a></li>
-                                    <li><a href="logout.inc.php">Logout</a></li>
+                                        <li><a href="logout.inc.php">Logout</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -143,20 +142,19 @@
     <div class="footer-container">
         <div class="footer">
         <div class="footer-heading footer-1">
-            <h2>About Us</h2>
+            <h2>Über Uns</h2>
+            <a href="AGB.php">AGB</a>
             <a href="#">Blog</a>
             <a href="#">Kunden</a>
             <a href="Datenschutz.php">Datenschutz</a>
-            <a href="AGB.php">AGB</a>
-            <a href="Impressum.php">Impressum</a>
         </div>
 
         <div class="footer-heading footer-2">
-            <h2>Contact Us</h2>
+            <h2>Kontaktiere Uns</h2>
             <a href="#">Jobs</a>
-            <a href="#">Contact</a>
-            <a href="#">Sponsorships</a>
-            <a href="#">Support</a>
+            <a href="mailto:Contact@rentease.de">Kontakt</a>
+            <a href="Impressum.php">Impressum</a>
+            <a href="#">Kundenservice</a>
         </div>
 
         <div class="footer-heading footer-3">
@@ -172,15 +170,15 @@
 
         <div class="footer-heading footer-4">
             <div class="footer-email-form">
-            <h2>Join our Newsletter</h2>
+            <h2>Bleibe auf dem Laufenden!</h2>
             <form>
                 <div class="input-container">
                 <input
                     type="email"
-                    placeholder="Enter your E-Mail address"
+                    placeholder="Deine E-Mail"
                     id="footer-email"
                 />
-                <input type="submit" value="Sign Up" id="footer-email-button" />
+                <input type="submit" value="Bestätigen" id="footer-email-button" />
                 </div>
             </form>
             </div>
@@ -212,7 +210,7 @@
                         </div>
                     </div>
                 </div>
-            <script src="home.js"></script>
+            </div>
         </div>
     </div>
 </body>
