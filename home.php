@@ -77,36 +77,27 @@
         <div class="slide">
             <div class="item" style="background-image: url(Images/mb-e300-home.png)">
                 <div class="content">
-                    <div class="name">Content</div>
+                    <div class="name">Unser Service</div>
                     <div class="des">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!
-                    </div>
-                </div>
-            </div>
-            <div class="item" style="background-image: url(Images/audi-a7-home.png)">
-                <div class="content">
-                    <div class="name">Content</div>
-                    <div class="des">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!
+                        Unser Service, deine Mobilität. Losfahren, wohin du willst.
                     </div>
                 </div>
             </div>
             <div class="item" style="background-image: url(Images/bmw-i8-home.png)">
                 <div class="content">
-                    <div class="name">Content</div>
+                    <div class="name">Fuhrpark</div>
                     <div class="des">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!
+                        Entdecken Sie unsere vielseitige Flotte.
                     </div>
-                    <button>See More</button>
+                    <a href="Produktübersicht.php"><button>Entdecken</button></a>
                 </div>
             </div>
             <div class="item" style="background-image: url(Images/maserati-home.png)">
                 <div class="content">
-                    <div class="name">Content</div>
+                    <div class="name">Standorte</div>
                     <div class="des">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!
+                        Finde deinen passenden Standort!
                     </div>
-                    <button>See More</button>
                 </div>
             </div>
         </div>
@@ -389,9 +380,13 @@
         </script>
 
         <div class="content-box">
-          <div class="image-container">
-            <img src="Images/Mercedes.jpg" alt="Image" class="box-image" />
-          </div>
+        <div class="image-container">
+            <img src="Images/Us/leon.png" alt="Bild 1" />
+            <img src="Images/Us/christian.jpg" alt="Bild 2" />
+            <img src="Images/Us/caro.png" alt="Bild 3" />
+            <img src="bild4.jpg" alt="Bild 4" />
+            <img src="bild5.jpg" alt="Bild 5" />
+        </div>
           <div class="text-content">
             <h2>Das sind wir!</h2>
             <p>
