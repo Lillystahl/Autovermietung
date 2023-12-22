@@ -20,7 +20,7 @@ header {
     height: 80px;
     z-index: 1;
 	margin-right: 2px;
-	margin-left: 90px;
+	margin-left: 146px;
 }
 
 .header {
@@ -157,7 +157,7 @@ body {
 			0 10px 10px rgba(0,0,0,0.22);
 	position: relative;
 	overflow: hidden;
-	width: 768px;
+	width: 800px;
 	height: 550px;
 	max-width: 100%;
 	min-height: 480px;

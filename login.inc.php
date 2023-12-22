@@ -13,30 +13,30 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         require_once ('login_model.inc.php');
         require_once ('login_contr.inc.php');
 
-        // Error handling 
-        $errors = []; 
-        // empty inputs by the user
-        if(is_input_empty($username, $pwd)){
-            $errors["empty_input"] = "Fill in all fields";
+        // Error handling
+        $errors = [];
+        // Leere Eingaben des Benutzers
+        if (is_input_empty($username, $pwd)) {
+            $errors["empty_input"] = "Fülle alle Felder aus";
         }
-        // get the result array for the user
-        // get it here because when input empty is not called need to check for other stuff below
+        // Ergebnis-Array für den Benutzer abrufen
+        // Hier abrufen, da wir andere Überprüfungen durchführen müssen, wenn 'is_input_empty' nicht aufgerufen wird
         $result = get_user($conn, $username);
 
-        // check for incorrect username
-        // Note: We do not tell user which of the parameters were incorrect for security reasons!
-        // for example if we give clue for if the password or user is incorrect brute forcing gets easier!
-        if(is_username_wrong($result)){
-            $errors["login_incorrect"] = "Incorrect login data";
+        // Überprüfung auf falschen Benutzernamen
+        // Hinweis: Wir geben dem Benutzer aus Sicherheitsgründen keine Hinweise darauf, welche Parameter falsch sind!
+        // Wenn wir Hinweise darauf geben würden, ob das Passwort oder der Benutzername falsch ist, würde das Brute-Force-Angriffe erleichtern!
+        if (is_username_wrong($result)) {
+            $errors["login_incorrect"] = "Falsche Anmeldedaten";
         }
-        //checks if the username is correct but the password is wrong 
-        // we turn around the userfunction wiht ! is not and then check for the password
-        if(!is_username_wrong($result) &&  is_password_wrong($pwd, $result["password"])){
-            $errors["login_incorrect"] = "Incorrect login data";
+        // Überprüft, ob der Benutzername korrekt ist, aber das Passwort falsch ist
+        // Wir verwenden !is_username_wrong($result), um zu prüfen, ob der Benutzername nicht falsch ist, und überprüfen dann das Passwort
+        if (!is_username_wrong($result) && is_password_wrong($pwd, $result["password"])) {
+            $errors["login_incorrect"] = "Falsche Anmeldedaten";
         }
-        // access session config 
-        require_once ('config_session.inc.php');
-        // check for elemts in errors array and redirect
+        // Zugriff auf die Session-Konfiguration
+        require_once('config_session.inc.php');
+        // Überprüfen, ob Elemente im Fehler-Array vorhanden sind und umleiten
         if ($errors) {
             $_SESSION["errors_login"] = $errors;
 

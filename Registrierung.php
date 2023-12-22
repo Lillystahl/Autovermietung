@@ -20,26 +20,25 @@
     <!--Das hier ist der neue Link-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="RegistrierungStyle.css"/>
-    <title>RentEase LogIn and Signup</title>
 </head>
 <body>
     <header>
         <div class="header">
             <a href="home.php" class="logo"><img src="Images/ImageRE.png" alt="Company Logo" /></a>
             <div class="separator"></div>
-            <p>Welcome to RentEase!</p>
+            <p>Willkommen bei RentEase!</p>
         </div>
     </header>
 
     <div class="container" id="container">
         <div class="form-container sign-up-container">
             <form action="signup.inc.php" method="post">
-                <h1>Create Account</h1>
+                <h1>Konto Erstellen</h1>
                 <!-- Anpassen and die Anforderung aus dem Arbeitsauftrage. Neue felder dafür hinzufügen-->
                 <!-- Last name, Firstname, Adress(split? Straße, HN, Plz, Ort?), Date of Birth, Email, Password-->
                 <div style="display: flex; justify-content: space-between;">
-                    <input type="text" placeholder="First Name" style="width: 48%;" name="First Name"/> <!-- Added field for Postleitzahl -->
-                    <input type="text" placeholder="Last Name" style="width: 48%;" name="Last Name"/> <!-- Added field for Hausnummer -->
+                    <input type="text" placeholder="Vorname" style="width: 48%;" name="First Name"/> <!-- Added field for Postleitzahl -->
+                    <input type="text" placeholder="Nachname" style="width: 48%;" name="Last Name"/> <!-- Added field for Hausnummer -->
                 </div>
                 <input type="text" placeholder="Username" name="Username"/>
                 <input type="text" placeholder="Straße" name="Straße"/>
@@ -63,7 +62,7 @@
                 <h1>Sign in</h1>
                 <input type="text" placeholder="Username" name="User" />
                 <input type="password" placeholder="Password" name="Password" />
-                <a href="#">Forgot your password?</a>
+                <a href="#">Passowrd Vergessen?</a>
                 <button>Sign In</button>
             </form>
             <div class="login-errors">
@@ -75,13 +74,13 @@
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
-                    <h1>Welcome Back!</h1>
-                    <p>To keep connected with us please login with your personal info</p>
+                    <h1>Willkommen Zurück!</h1>
+                    <p>Falls Sie bereits einen Account haben, melden Sie sich hier an</p>
                     <button class="ghost" id="signIn">Sign In</button>
                 </div>
                 <div class="overlay-panel overlay-right">
-                    <h1>Hello, Friend!</h1>
-                    <p>Enter your personal details and start your journey with us</p>
+                    <h1>Herzlich Willkommen!</h1>
+                    <p>Erstelle ein Konto bei uns, um deine RentEase Experience zu starten</p>
                     <button class="ghost" id="signUp">Sign Up</button>
                 </div>
             </div>
@@ -90,26 +89,21 @@
 
 
     <div class="footer-container">
-    <?php
-        //andy fragen ob das okay ist
-        //output_username();
-    ?>
         <div class="footer">
         <div class="footer-heading footer-1">
-            <h2>About Us</h2>
+            <h2>Über Uns</h2>
+            <a href="AGB.php">AGB</a>
             <a href="#">Blog</a>
             <a href="#">Kunden</a>
-            <a href="Datenschutz.html">Datenschutz</a>
-            <a href="AGB.html">AGB</a>
-            <a href="Impressum.html">Impressum</a>
+            <a href="Datenschutz.php">Datenschutz</a>
         </div>
 
         <div class="footer-heading footer-2">
-            <h2>Contact Us</h2>
+            <h2>Kontaktiere Uns</h2>
             <a href="#">Jobs</a>
-            <a href="#">Contact</a>
-            <a href="#">Sponsorships</a>
-            <a href="#">Support</a>
+            <a href="mailto:Contact@rentease.de">Kontakt</a>
+            <a href="Impressum.php">Impressum</a>
+            <a href="#">Kundenservice</a>
         </div>
 
         <div class="footer-heading footer-3">
@@ -125,15 +119,15 @@
 
         <div class="footer-heading footer-4">
             <div class="footer-email-form">
-            <h2>Join our Newsletter</h2>
+            <h2>Bleibe auf dem Laufenden!</h2>
             <form>
                 <div class="input-container">
                 <input
                     type="email"
-                    placeholder="Enter your E-Mail address"
+                    placeholder="Deine E-Mail"
                     id="footer-email"
                 />
-                <input type="submit" value="Sign Up" id="footer-email-button" />
+                <input type="submit" value="Bestätigen" id="footer-email-button" />
                 </div>
             </form>
             </div>
@@ -166,8 +160,8 @@
                     </div>
                 </div>
             </div>
-        <script src="Registrierung.js"></script>
         </div>
+        <script src="Registrierung.js"></script>
     </div>
 </body>
 </html>
