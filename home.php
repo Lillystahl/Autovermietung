@@ -32,8 +32,8 @@
                         <div class="header-left">
                             <a href="home.php" class="logo"><img src="Images/ImageRE.png" alt="Company Logo" /></a>
                             <h1><a href="Produktübersicht.php" id="header1">Unsere Fahrzeuge</a></h1>
-                            <h1><a href="Top-deals.php" id="header2">Top-Deals</a></h1>
-                            <h1><a href="Geschaeftskunden.php" id="header3">Geschäftskunden</a></h1>
+                            <h1><a id="header2">Standorte</a></h1>
+                            <h1><a id="header3">Über uns</a></h1>
                         </div>
                         <div class="header-right">
                             <div class="dropdown">
@@ -57,10 +57,8 @@
                 <h1>
                     <a href="Produktübersicht.php" id="header1">Unsere Fahrzeuge</a>
                 </h1>
-                <h1><a href="Top-deals.php" id="header2">Top-Deals</a></h1>
-                <h1>
-                    <a href="Geschaeftskunden.php" id="header3">Geschäftskunden</a>
-                </h1>
+                <h1><a id="header2">Standorte</a></h1>
+                <h1><a id="header3">Über uns</a></h1>
             </div>
             <div class="header-right">
                 <div class="search-container">
@@ -209,7 +207,7 @@
                     <div class="card-product-infos">
                         <h2>Combi</h2>
                         <p>
-                            <strong>Vielseitigkeit</strong> und geräumiger Stauraum für jeden Bedarf.
+                            <strong>Flexibel</strong> und geräumig für jede Ladung.
                         </p>
                     </div>
                 </a>
@@ -220,7 +218,7 @@
                     <div class="card-product-infos">
                         <h2>Mehrsitzer</h2>
                         <p>
-                            <strong>Flexibel und geräumig</strong> - perfekt für größere Gruppen.
+                            <strong>Platz für alle</strong>, ohne Einschränkungen.
                         </p>
                     </div>
                 </a>
@@ -239,7 +237,7 @@
         </div>
     </div>
 
-    <h1 class="headline">Standorte</h1>
+    <h1 id="standorte" class="headline">Standorte</h1>
     <div class="map-container">
         <div class="map-inside">
             <div class="map-notext">
@@ -353,7 +351,7 @@
     </div>
 
 
-    <h1 class="headline">Unser Unternehmen</h1>
+    <h1 id="unternehmen" class="headline">Unser Unternehmen</h1>
     <div class="aboutUs-container">
       <div class="aboutUs">
         <div

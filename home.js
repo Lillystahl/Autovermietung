@@ -82,3 +82,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Funktion, um zu einem bestimmten Abschnitt zu scrollen
+function scrollToSection(sectionId) {
+    var section = document.getElementById(sectionId);
+    section.scrollIntoView({ behavior: 'smooth' });
+}
+  
+// Event-Listener für den Klick auf die "Standorte" und "Über uns" Links/Button hinzufügen
+document.getElementById('header2').addEventListener('click', function() {
+    scrollToSection('standorte'); // Scrollt zum Abschnitt mit der ID "standorte"
+});
+
+document.getElementById('header3').addEventListener('click', function() {
+    scrollToSection('unternehmen'); // Scrollt zum Abschnitt mit der ID "unternehmen"
+});
+
+
