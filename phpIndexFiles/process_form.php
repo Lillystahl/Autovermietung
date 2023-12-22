@@ -260,7 +260,6 @@ function displayProductCards($result) {
         echo '<div class="popup-content">';
         echo '<div class="popup-image-container">' .
                 '<img class="car-image" src="Images/Product_Img/vorne-' . $car['img_file_name'] . '" alt="Car Image">' .
-                '<img class="car-image" src="Images/Product_Img/vorne-' . $car['img_file_name'] . '" alt="Car Image">' .
             '</div>';
         echo '<div class="car-details-popup-content">';
         $name_extension ='';
@@ -280,6 +279,20 @@ function displayProductCards($result) {
             $trunk = 'Ja';
         }
         echo '<div class="car-cat">Kofferraum: ' . $trunk . '</div>';
+        $gps ='';
+        if ($car['gps'] == '0') {
+            $gps = 'Nein';
+        } elseif ($car['gps'] > '0') {
+            $gps = 'Ja';
+        }
+        echo '<div class="car-cat">Navigationssystem: ' . $gps . '</div>';
+        $ac ='';
+        if ($car['air_conditioning'] == '0') {
+            $ac = 'Nein';
+        } elseif ($car['air_conditioning'] > '0') {
+            $ac = 'Ja';
+        }
+        echo '<div class="car-cat">Klimaanlage: ' . $ac . '</div>';
         $drive_type ='';
         if ($car['category_drive'] == 'Combuster') {
             $drive_type = 'Verbrennungsmotor';
