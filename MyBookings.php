@@ -63,7 +63,7 @@
         echo "<td>{$end_date}</td>";
         echo "<td>{$booking['vendor_name_abbr']} {$booking['type_name']}</td>";
         echo "<td>{$date_booking}</td>";
-        echo "<td>{$booking['price']}</td>";
+        echo "<td>{$booking['price']}€</td>";
         echo "</tr>";
 
         // Display more details here
