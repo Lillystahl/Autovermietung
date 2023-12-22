@@ -176,7 +176,7 @@
                     <div class="card-product-infos">
                         <h2>Cabrio</h2>
                         <p>
-                            Product description with <strong>relevant info</strong> only.
+                            <strong>Freiheit</strong> auf vier Rädern mit offenem Himmel.
                         </p>
                     </div>
                 </a>
@@ -187,7 +187,7 @@
                     <div class="card-product-infos">
                         <h2>SUV</h2>
                         <p>
-                            Product description with <strong>relevant info</strong> only.
+                            Robust, geräumig und bereit für jedes <strong>Abenteuer</strong>.
                         </p>
                     </div>
                 </a>
@@ -198,7 +198,7 @@
                     <div class="card-product-infos">
                         <h2>Limousine</h2>
                         <p>
-                            Product description with <strong>relevant info</strong> only.
+                            <strong>Eleganz und Komfort</strong> für jede Fahrt.
                         </p>
                     </div>
                 </a>
@@ -209,7 +209,7 @@
                     <div class="card-product-infos">
                         <h2>Combi</h2>
                         <p>
-                            Product description with <strong>relevant info</strong> only.
+                            <strong>Vielseitigkeit</strong> und geräumiger Stauraum für jeden Bedarf.
                         </p>
                     </div>
                 </a>
@@ -220,7 +220,7 @@
                     <div class="card-product-infos">
                         <h2>Mehrsitzer</h2>
                         <p>
-                            Product description with <strong>relevant info</strong> only.
+                            <strong>Flexibel und geräumig</strong> - perfekt für größere Gruppen.
                         </p>
                     </div>
                 </a>
@@ -231,7 +231,7 @@
                     <div class="card-product-infos">
                         <h2>Coupé</h2>
                         <p>
-                            Product description with <strong>relevant info</strong> only.
+                            Stilvolle <strong>Leistung</strong> und sportliches Flair.
                         </p>
                     </div>
                 </a>
