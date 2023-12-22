@@ -1,5 +1,41 @@
 
-// JavaScript Funktionen für die Anzeige und das Schließen der vergrößerten Ansicht
+document.addEventListener('DOMContentLoaded', function () {
+    const overviewRows = document.querySelectorAll('.overview-row .car-card');
+    const cardsPerPage = 20; // Total cards per page (4 rows * 5 cards)
+    let currentPage = 1; // Current page, default is 1
+
+    function showPage(pageNumber) {
+        const startIndex = (pageNumber - 1) * cardsPerPage;
+        const endIndex = pageNumber * cardsPerPage;
+
+        overviewRows.forEach((row, index) => {
+            if (index >= startIndex && index < endIndex) {
+                row.style.display = 'block'; // Show rows within the range
+            } else {
+                row.style.display = 'none'; // Hide rows outside the range
+            }
+        });
+    }
+
+    function handlePageClick(event) {
+        event.preventDefault();
+        const pageNumber = parseInt(event.target.textContent); // Get the clicked page number
+        showPage(pageNumber);
+        currentPage = pageNumber; // Update current page
+    }
+
+    // Initially display the first page
+    showPage(currentPage);
+
+    // Attach click event listeners to pagination links
+    const pageLinks = document.querySelectorAll('.pagination a');
+    pageLinks.forEach(link => {
+        link.addEventListener('click', handlePageClick);
+    });
+});
+
+
+
 function openCarDetails(index) {
     // Erhalte das entsprechende Overlay und Popup basierend auf dem Index
     var overlay = document.getElementById('carDetailsOverlay_' + index);
@@ -108,4 +144,3 @@ $(document).ready(function() {
         });
     });
 });
-

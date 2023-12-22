@@ -260,7 +260,6 @@ body {
     display: flex;
     flex-wrap: wrap;
     width: 85%;
-    margin-top: 50px;
 }
 
 .car-card {
@@ -275,6 +274,7 @@ body {
     margin-left: 20px; /* Abstand zwischen den Karten */
     box-sizing: border-box;
     cursor: pointer;
+    margin-top: 50px;
 }
 
 

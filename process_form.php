@@ -160,7 +160,7 @@ function displayProductCards($result) {
     // Group cars by type and location
     $consolidatedCars = [];
     foreach ($result as $car) {
-        $typeLocation = $car['type_name'] . '_' . $car['location_name'];
+        $typeLocation = $car['type_name'] . '_' . $car['location_name'] . '_' . $car['gear'] . '_' . $car['gps'] . '_' . $car['trunk'] . '_' . $car['vehicle_price'] . '_' . $car['vendor_name'];
         if (!isset($consolidatedCars[$typeLocation])) {
             $consolidatedCars[$typeLocation] = [
                 'count' => 0,
@@ -319,17 +319,10 @@ function displayProductCards($result) {
         echo '</div>';
         echo '</div>';
     }
-
-    $missingCards = 20 - $carCounter;
     echo "<script>";
-    echo "console.log('Consolidation Counter:', " . json_encode($carCounter) . ");";
-    echo "console.log('Missing Cards:', " . json_encode($missingCards) . ");";
+    echo "console.log('Cards displayed:', " . json_encode($carCounter) . ");";
     echo "</script>";
-
-    return [
-        'carCounter' => $carCounter,
-        'missingCards' => $missingCards
-    ];
+    return $carCounter;
 }
 
 
@@ -342,7 +335,7 @@ function displayNoResultsMessage($result) {
 }
 
 // this function can execute all searches, we should take this instead of 4 different search functions (we never had 4 searches which were really redundant! ;))
-function fetchCombinedCars($conn, $page, $perPage) {
+function fetchCombinedCars($conn) {
     $_SESSION['location'] = $_SESSION['location'] ?? '';
     $_SESSION['vehicle_type'] = $_SESSION['vehicle_type'] ?? '';
     $_SESSION['start_date'] = $_SESSION['start_date'] ?? '';
@@ -357,7 +350,6 @@ function fetchCombinedCars($conn, $page, $perPage) {
     $_SESSION['gps'] = $_SESSION['gps'] ?? '';
     $_SESSION['max_price'] = $_SESSION['max_price'] ?? '';
 
-    $start = ($page - 1) * $perPage;
     $location = $_SESSION['location'];
     $vehicleType = $_SESSION['vehicle_type'];
     $startDate = $_SESSION['start_date'];
@@ -377,88 +369,6 @@ function fetchCombinedCars($conn, $page, $perPage) {
     FROM cartablesview 
     WHERE 
     (
-        (cartablesview.vendor_name = :manufacturer OR :manufacturer = '') AND
-        (cartablesview.seats = :seats OR :seats = '') AND
-        (cartablesview.doors = :doors OR :doors = '') AND
-        (cartablesview.gear = :gearbox OR :gearbox = '') AND
-        (cartablesview.min_age = :age OR :age = '') AND
-        (cartablesview.category_drive = :drive OR :drive = '') AND
-        (cartablesview.air_conditioning = :airConditioning OR :airConditioning = '') AND
-        (cartablesview.gps = :gps OR :gps = '') AND
-        (cartablesview.vehicle_price <= :price OR :price = '')
-    )
-    AND (
-        (cartablesview.location_name = :location AND cartablesview.category_type = :vehicleType) OR
-        (cartablesview.location_name = :location OR cartablesview.category_type = :vehicleType) OR
-        (:location = '' AND :vehicleType = '')  /* Add these conditions */
-    )
-    AND cartablesview.vehicle_id NOT IN (
-        SELECT booking.vehicle_id
-        FROM booking
-        WHERE 
-            booking.vehicle_id = cartablesview.vehicle_id AND
-            (
-                (booking.start_date <= :endDate AND booking.end_date >= :startDate) OR
-                (booking.start_date >= :startDate AND booking.end_date <= :endDate) OR
-                (booking.start_date <= :startDate AND booking.end_date >= :endDate)
-            )
-    )
-    LIMIT :start, :perPage";
-
-    $stmt = $conn->prepare($sql);
-
-    $stmt->bindParam(':manufacturer', $vendorName);
-    $stmt->bindParam(':seats', $seats);
-    $stmt->bindParam(':doors', $doors);
-    $stmt->bindParam(':gearbox', $gearbox);
-    $stmt->bindParam(':age', $minAge);
-    $stmt->bindParam(':drive', $drive);
-    $stmt->bindParam(':airConditioning', $airConditioning);
-    $stmt->bindParam(':gps', $gps);
-    $stmt->bindParam(':price', $maxPrice);
-    $stmt->bindParam(':location', $location);
-    $stmt->bindParam(':vehicleType', $vehicleType);
-    $stmt->bindParam(':startDate', $startDate);
-    $stmt->bindParam(':endDate', $endDate);
-    $stmt->bindParam(':start', $start, PDO::PARAM_INT);
-    $stmt->bindParam(':perPage', $perPage, PDO::PARAM_INT);
-
-    $stmt->execute();
-
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    echo "<script>";
-    echo "console.log('fetchCombinedCars was called wiht the cars:', " . json_encode($result) . ");";
-    echo "</script>";
-
-
-    return $result;
-
-}
-
-
-// This is similiar to what i did to clean up the redundancy in the search function, will also implement this later to clean up and only have 1 function instead of 4(which again never happened)
-// We need to do this because of the limit we use above, it might not always be possible to just count out our result array 
-function countCars($conn) {
-    // Assuming $_SESSION variables are properly set
-    $location = $_SESSION['location'] ?? '';
-    $vehicleType = $_SESSION['vehicle_type'] ?? '';
-    $startDate = $_SESSION['start_date'] ?? '';
-    $endDate = $_SESSION['end_date'] ?? '';
-    $vendorName = $_SESSION['manufacturer'] ?? '';
-    $seats = $_SESSION['seats'] ?? '';
-    $doors = $_SESSION['doors'] ?? '';
-    $gearbox = $_SESSION['gearbox'] ?? '';
-    $minAge = $_SESSION['minAge'] ?? '';
-    $drive = $_SESSION['drive'] ?? '';
-    $airConditioning = $_SESSION['air_conditioning'] ?? '';
-    $gps = $_SESSION['gps'] ?? '';
-    $maxPrice = $_SESSION['max_price'] ?? '';
-
-    $sql = "SELECT COUNT(*) as total 
-            FROM cartablesview 
-            WHERE 
-            (
         (cartablesview.vendor_name = :manufacturer OR :manufacturer = '') AND
         (cartablesview.seats = :seats OR :seats = '') AND
         (cartablesview.doors = :doors OR :doors = '') AND
@@ -504,9 +414,15 @@ function countCars($conn) {
 
     $stmt->execute();
 
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    return $result['total'];
+    echo "<script>";
+    echo "console.log('fetchCombinedCars was called wiht the cars:', " . json_encode($result) . ");";
+    echo "</script>";
+
+
+    return $result;
+
 }
 
 //⊂(◉‿◉)つ
