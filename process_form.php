@@ -40,6 +40,7 @@ function inputToSession($submitButton) {
                 $_SESSION['air_conditioning'] = '';
                 $_SESSION['gps'] = '';
                 $_SESSION['max_price'] = '';
+                $_SESSION['Sortierung'] = '';
 
                 header("Location: Produktübersicht.php");
                 echo '<script>';
@@ -82,7 +83,8 @@ function FilterToSession(){
         $drive = in_array($_POST['Antrieb'], $allowedDrives) ? $_POST['Antrieb'] : '';
         $airConditioning = in_array($_POST['Klima'], $allowedAirConditioning) ? $_POST['Klima'] : '';
         $gps = in_array($_POST['GPS'], $allowedGPS) ? $_POST['GPS'] : '';
-        $maxPrice = $_POST['Preis']; // No array validation for text inputs
+        $maxPrice = $_POST['Preis'];
+        $sortierung = ($_POST['Sortierung'] === 'PriceAsc' || $_POST['Sortierung'] === 'PriceDesc') ? $_POST['Sortierung'] : ''; // No array validation for text inputs
 
         // Store filter inputs in session variables
         $_SESSION['manufacturer'] = $manufacturer;
@@ -94,6 +96,7 @@ function FilterToSession(){
         $_SESSION['air_conditioning'] = $airConditioning;
         $_SESSION['gps'] = $gps;
         $_SESSION['max_price'] = $maxPrice;
+        $_SESSION['Sortierung'] = $sortierung;
 
         // Redirect to the desired page
         header("Location: Produktübersicht.php");
@@ -160,7 +163,7 @@ function displayProductCards($result) {
     // Group cars by type and location
     $consolidatedCars = [];
     foreach ($result as $car) {
-        $typeLocation = $car['type_name'] . '_' . $car['location_name'] . '_' . $car['gear'] . '_' . $car['gps'] . '_' . $car['trunk'] . '_' . $car['vehicle_price'] . '_' . $car['vendor_name'];
+        $typeLocation = $car['type_name'] . '_' . $car['location_name'] . '_' . $car['gear'] . '_' . $car['gps'] . '_' . $car['trunk'] . '_' . $car['vehicle_price'] . '_' . $car['vendor_name']. '_' . $car['min_age'];
         if (!isset($consolidatedCars[$typeLocation])) {
             $consolidatedCars[$typeLocation] = [
                 'count' => 0,
@@ -224,6 +227,7 @@ function displayProductCards($result) {
             echo '<input type="hidden" name="vendor_name" value="' . $car['vendor_name'] . '">';
             echo '<input type="hidden" name="type_name" value="' . $car['type_name'] . '">';
             echo '<input type="hidden" name="vehicle_price" value="' . $car['vehicle_price'] . '">';
+            echo '<input type="hidden" name="min_age" value="' . $car['min_age'] . '">';
 
             // Check if the user is logged in (if $_SESSION["user_id"] exists)
             if (isset($_SESSION["user_id"])) {
@@ -291,6 +295,7 @@ function displayProductCards($result) {
         }
         echo '<div class="car-transmission">Getriebe: ' . $transmission . '</div>';
         echo '<div class="Location">Standort: ' . $car['location_name'] . '</div>';
+        echo '<div class="Min Age">Mindest Alter: ' . $car['min_age'] . '</div>';
         echo '<div class="car-prize">Preis pro Tag: ' . $car['vehicle_price'] . '€</div>';
     
         echo '<form id="rent-form-' . $car['vehicle_id'] . '" action="booking.php" method="post">';
@@ -298,6 +303,7 @@ function displayProductCards($result) {
         echo '<input type="hidden" name="vendor_name" value="' . $car['vendor_name'] . '">';
         echo '<input type="hidden" name="type_name" value="' . $car['type_name'] . '">';
         echo '<input type="hidden" name="vehicle_price" value="' . $car['vehicle_price'] . '">';
+        echo '<input type="hidden" name="min_age" value="' . $car['min_age'] . '">';
     
         // Check if the user is logged in (if $_SESSION["user_id"] exists)
         if (isset($_SESSION["user_id"])) {
@@ -349,6 +355,7 @@ function fetchCombinedCars($conn) {
     $_SESSION['air_conditioning'] = $_SESSION['air_conditioning'] ?? '';
     $_SESSION['gps'] = $_SESSION['gps'] ?? '';
     $_SESSION['max_price'] = $_SESSION['max_price'] ?? '';
+    $_SESSION['Sortierung'] = $_SESSION['Sortierung'] ?? '';
 
     $location = $_SESSION['location'];
     $vehicleType = $_SESSION['vehicle_type'];
@@ -363,6 +370,7 @@ function fetchCombinedCars($conn) {
     $airConditioning = $_SESSION['air_conditioning'];
     $gps = $_SESSION['gps'];
     $maxPrice = $_SESSION['max_price'];
+    $sortierung= $_SESSION['Sortierung'];
 
     // or statement in sql seperates the querry and the "and" statement will only be executed when the or block is called so we need it in both or it is not called
     $sql = "SELECT * 
@@ -382,7 +390,7 @@ function fetchCombinedCars($conn) {
     AND (
         (cartablesview.location_name = :location AND cartablesview.category_type = :vehicleType) OR
         (cartablesview.location_name = :location OR cartablesview.category_type = :vehicleType) OR
-        (:location = '' AND :vehicleType = '')  /* Add these conditions */
+        (:location = '' AND :vehicleType = '') 
     )
     AND cartablesview.vehicle_id NOT IN (
         SELECT booking.vehicle_id
@@ -394,7 +402,10 @@ function fetchCombinedCars($conn) {
                 (booking.start_date >= :startDate AND booking.end_date <= :endDate) OR
                 (booking.start_date <= :startDate AND booking.end_date >= :endDate)
             )
-    )";
+    )
+    ORDER BY 
+        CASE WHEN :sortierung = 'PriceAsc' THEN cartablesview.vehicle_price END ASC,
+        CASE WHEN :sortierung = 'PriceDesc' THEN cartablesview.vehicle_price END DESC";
 
     $stmt = $conn->prepare($sql);
 
@@ -411,6 +422,7 @@ function fetchCombinedCars($conn) {
     $stmt->bindParam(':vehicleType', $vehicleType);
     $stmt->bindParam(':startDate', $startDate);
     $stmt->bindParam(':endDate', $endDate);
+    $stmt->bindParam(':sortierung', $sortierung);
 
     $stmt->execute();
 

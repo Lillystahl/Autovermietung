@@ -1,11 +1,7 @@
 <?php
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
     require_once('db_connect.php');
     require_once('process_form.php');
     require_once('config_session.inc.php');
-    debugSession();
-    print_r($_POST);
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST['vehicle_id'])) {
@@ -13,6 +9,9 @@
             $vendor_name = $_POST['vendor_name'];
             $type_name = $_POST['type_name'];
             $vehicle_price = $_POST['vehicle_price'];
+            $min_age = $_POST['min_age'];
+        
+
 
             echo "<script>";
             echo "console.log('ID:', " . json_encode($vehicle_id) . ");";
@@ -24,6 +23,7 @@
             $_SESSION['vehicle_vendor_name'] = $vendor_name;
             $_SESSION['vehicle_type_name'] = $type_name;
             $_SESSION['Price'] =  $vehicle_price;
+            $_SESSION['minAge'] =  $min_age;
         }
     }
     
@@ -81,6 +81,7 @@
             $startDate = $_SESSION['start_date'];
             $endDate = $_SESSION['end_date'];
             $vehicleID = $_SESSION['vehicle_id'];
+
             
             // Calculate the booking duration in days
             $durationInDays = calculateBookingDuration($startDate, $endDate);
@@ -259,13 +260,36 @@
                         <input type="radio" id="Apple-Pay" name="payment" value="Apple-Pay" onclick="togglePaymentIndicator()">
                         <label for="sepa">Apple Pay</label><br>
                     </div>
-                </div>
-                <div class="b-button-container">
-                    <p class="error-message" style="color: red; text-align: center; display: none;">Bitte füllen Sie alle erforderlichen Felder aus.</p>
-                    <form action="" method="post">
-                        <button class="buchungs-button" type="submit" name="booking_submit">Jetzt buchen</button>
-                    </form>
-                </div>
+                </div>';
+
+                if ($userData !== null && isset($userData['date_of_birth'])) {
+                    $dateOfBirth = new DateTime($userData['date_of_birth']);
+                    $today = new DateTime();
+                    
+                    // Calculate the difference in years
+                    $age = $today->diff($dateOfBirth)->y;
+                
+                    // Check if the user's age meets the requirement
+                    if ($_SESSION['minAge'] <= $age) {
+                        // Display the booking form if the user's age meets the requirement
+                        echo '<div class="b-button-container">
+                            <p class="error-message" style="color: red; text-align: center; display: none;">Bitte füllen Sie alle erforderlichen Felder aus.</p>
+                            <form action="" method="post">
+                                <button class="buchungs-button" type="submit" name="booking_submit">Jetzt buchen</button>
+                            </form>
+                        </div>';
+                    } else {
+                        // Display a message indicating that the user does not meet the minimum age requirement
+                        echo '<p>Sie erfüllen nicht das Mindestalter für dieses Auto. <a href="Produktübersicht.php" style="text-decoration: underline; color: blue;">Zurück zu Produktübersicht</a></p>';
+                    }
+                } else {
+                    // Handle case where date of birth is missing or invalid
+                    echo '<p>Birthdate information missing or invalid. <a href="Produktübersicht.php" style="text-decoration: underline; color: blue;">Zurück zu Produktübersicht</a></p>';
+                }
+
+            echo'
+            </div>
+            <script src="booking.js"></script>
 
             </div>
             <script src="booking.js"></script>';
