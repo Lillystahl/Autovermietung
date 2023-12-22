@@ -110,7 +110,7 @@ $(document).ready(function() {
 
         // Make an AJAX request to resetSearch.inc.php
         $.ajax({
-            url: 'resetSearchProduktübersicht.inc.php',
+            url: 'phpIndexFiles/resetSearchProduktübersicht.inc.php',
             type: 'POST',
             success: function(response) {
                 // On success, redirect to home.php
@@ -129,7 +129,7 @@ $(document).ready(function() {
 
         // Make an AJAX request to resetSearch.inc.php
         $.ajax({
-            url: 'ResetSearchHomeIcon.inc.php',
+            url: 'phpIndexFiles/ResetSearchHomeIcon.inc.php',
             type: 'POST',
             success: function(response) {
                 // On success, redirect to home.php
@@ -146,7 +146,7 @@ $(document).ready(function() {
         e.preventDefault();
 
         $.ajax({
-            url: 'resetFilterbar.inc.php', // Replace with your PHP script name
+            url: 'phpIndexFiles/resetFilterbar.inc.php', // Replace with your PHP script name
             type: 'POST',
             success: function(response) {
                 // Redirect to produktuebersicht.php after unsetting the filters

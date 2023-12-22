@@ -1,6 +1,6 @@
 <?php
-    require_once('db_connect.php');
-    require_once('config_session.inc.php');
+    require_once('phpIndexFiles/db_connect.php');
+    require_once('phpIndexFiles/config_session.inc.php');
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="jsAndStyles/resetAndDropdown.js"></script>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
         if(isset($_SESSION["user_id"])){
             echo '<div class="header">
                         <div class="header-left">
-                            <a href="home.php" class="logo"><img src="Images/ImageRE.png" alt="Company Logo" /></a>
+                            <a href="home.php" class="logo" id="logoLink"><img src="Images/ImageRE.png" alt="Company Logo" /></a>
                             <h1><a href="Produktübersicht.php" id="header1">Unsere Fahrzeuge</a></h1>
                         </div>
                         <div class="header-right">
@@ -37,7 +37,7 @@
                                 </span>
                                 <ul class="dropdown-menu" id="dropdownMenu">
                                     <li><a href="MyBookings.php">Meine Buchungen</a></li>
-                                        <li><a href="logout.inc.php">Logout</a></li>
+                                    <li><a href="phpIndexFiles/logout.inc.php">Logout</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
         }else{
             echo'<div class="header">
             <div class="header-left">
-                <a href="home.php" class="logo"><img src="Images/ImageRE.png" alt="Company Logo" /></a>
+                <a href="home.php" class="logo" id="logoLink"><img src="Images/ImageRE.png" alt="Company Logo" /></a>
                 <h1>
                     <a href="Produktübersicht.php" id="header1">Unsere Fahrzeuge</a>
                 </h1>

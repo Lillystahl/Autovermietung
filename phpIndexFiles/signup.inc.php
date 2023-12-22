@@ -63,13 +63,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Weiterleitung, wenn Fehler im Fehler-Array vorhanden sind
         if ($errors) {
             $_SESSION["errors_singup"] = $errors;
-            header("Location: Registrierung.php");
+            header("Location: ../Registrierung.php");
             die();
         }
         // create useer if no error handling
         create_user($conn, $username, $firstName, $lastName, $straße, $postleitzahl, $ort, $hausnummer, $date, $email, $pwd);
         // reedirect to page we want the user to start at, idealy home
-        header("Location: Registrierung.php?signup=success");
+        header("Location: ../Registrierung.php?signup=success");
 
         // empty conn and stmt manually for good measures
         $conn = null;
@@ -85,6 +85,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }else{
     //if the input was not give via post we redirect here
-    header("Location: Registrierung.php");
+    header("Location: ../Registrierung.php");
     die();
 }

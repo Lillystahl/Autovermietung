@@ -84,7 +84,7 @@ $(document).ready(function() {
 
         // Make an AJAX request to ResetSearchHomeIcon.inc.php
         $.ajax({
-            url: 'ResetSearchHomeIcon.inc.php',
+            url: 'phpIndexFiles/ResetSearchHomeIcon.inc.php',
             type: 'POST',
             success: function(response) {
                 // On success, redirect to home.php

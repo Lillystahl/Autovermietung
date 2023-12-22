@@ -1,7 +1,7 @@
 <?php
-    require_once('db_connect.php');
-    require_once('config_session.inc.php');
-    require_once('process_form.php');
+    require_once('phpIndexFiles/db_connect.php');
+    require_once('phpIndexFiles/config_session.inc.php');
+    require_once('phpIndexFiles/process_form.php');
     inputToSession('filterbar-submit');
     debugSession();
 ?>
@@ -44,7 +44,7 @@
                                 </span>
                                 <ul class="dropdown-menu" id="dropdownMenu">
                                     <li><a href="MyBookings.php">Meine Buchungen</a></li>
-                                    <li><a href="logout.inc.php">Logout</a></li>
+                                    <li><a href="phpIndexFiles/logout.inc.php">Logout</a></li>
                                 </ul>
                             </div>
                         </div>

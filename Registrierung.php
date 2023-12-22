@@ -1,10 +1,10 @@
 <?php
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
-    require_once('db_connect.php');
-    require_once('config_session.inc.php');
-    require_once('signup_view.inc.php');
-    require_once('login_view.inc.php');
+    require_once('phpIndexFiles/db_connect.php');
+    require_once('phpIndexFiles/config_session.inc.php');
+    require_once('phpIndexFiles/signup_view.inc.php');
+    require_once('phpIndexFiles/login_view.inc.php');
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +32,7 @@
 
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-            <form action="signup.inc.php" method="post">
+            <form action="phpIndexFiles/signup.inc.php" method="post">
                 <h1>Konto Erstellen</h1>
                 <!-- Anpassen and die Anforderung aus dem Arbeitsauftrage. Neue felder dafür hinzufügen-->
                 <!-- Last name, Firstname, Adress(split? Straße, HN, Plz, Ort?), Date of Birth, Email, Password-->
@@ -58,7 +58,7 @@
             </div>
         </div>
         <div class="form-container sign-in-container">
-            <form action="login.inc.php" method="post">
+            <form action="phpIndexFiles/login.inc.php" method="post">
                 <h1>Sign in</h1>
                 <input type="text" placeholder="Username" name="User" />
                 <input type="password" placeholder="Password" name="Password" />

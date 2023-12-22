@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($errors) {
             $_SESSION["errors_login"] = $errors;
 
-            header("Location: Registrierung.php");
+            header("Location: ../Registrierung.php");
             die();
         }
 
@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
      
         // redirect to page we want the user to land at after login (homepage)
         //send info to url which indicates a successfull login
-       header("Location: home.php?login=success");
+       header("Location: ../home.php?login=success");
         
        // empty conn and stmt for good measures (this is done by the programm but good practice to do it here)
         $conn = null;
@@ -76,6 +76,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }else{
     //if the input was not give via post we redirect here
-    header("Location: Registrierung.php");
+    header("Location: ../Registrierung.php");
     die();
 }

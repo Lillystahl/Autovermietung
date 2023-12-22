@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     var dropdown = document.querySelector('.dropdown');
     var dropdownMenu = dropdown.querySelector('.dropdown-menu');
@@ -15,8 +16,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 $(document).ready(function() {
-    // Bind click event to the logo
-    $('#logoLink').click(function(e) {
+    // Delegated click event for #logoLink
+    $(document).on('click', '#logoLink', function(e) {
         e.preventDefault();
 
         // Make an AJAX request to ResetSearchHomeIcon.inc.php

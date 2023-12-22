@@ -1,6 +1,6 @@
 <?php
-    require_once('db_connect.php');
-    require_once('config_session.inc.php');
+    require_once('phpIndexFiles/db_connect.php');
+    require_once('phpIndexFiles/config_session.inc.php');
 
     function getUserBookings($conn, $page, $perPage) {
       // Start and limit calculation for pagination
@@ -104,7 +104,7 @@
           if(isset($_SESSION["user_id"])){
               echo '<div class="header">
                           <div class="header-left">
-                              <a href="home.php" class="logo"><img src="Images/ImageRE.png" alt="Company Logo" /></a>
+                                <a href="home.php" class="logo" id="logoLink"><img src="Images/ImageRE.png" alt="Company Logo" /></a>
                               <h1><a href="Produktübersicht.php" id="header1">Unsere Fahrzeuge</a></h1>
                           </div>
                           <div class="header-right">
@@ -116,7 +116,7 @@
                                   </span>
                                   <ul class="dropdown-menu" id="dropdownMenu">
                                         <li><a href="MyBookings.php">Meine Buchungen</a></li>
-                                                <li><a href="logout.inc.php">Logout</a></li>
+                                        <li><a href="phpIndexFiles/logout.inc.php">Logout</a></li>
                                   </ul>
                               </div>
                           </div>
@@ -124,7 +124,7 @@
           }else{
               echo'<div class="header">
               <div class="header-left">
-                  <a href="home.php" class="logo"><img src="Images/ImageRE.png" alt="Company Logo" /></a>
+                    <a href="home.php" class="logo" id="logoLink"><img src="Images/ImageRE.png" alt="Company Logo" /></a>
                   <h1>
                       <a href="Produktübersicht.php" id="header1">Unsere Fahrzeuge</a>
                   </h1>
