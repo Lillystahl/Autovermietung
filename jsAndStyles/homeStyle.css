@@ -895,19 +895,19 @@ body{
 }
 
 .image-container {
-    height: 200px; /* Höhe anpassen */
+    max-height: 50%;
     width: 100%;
-    display: flex; /* Verwende Flexbox */
-    justify-content: space-around; /* Gleichmäßige Verteilung der Bilder */
-    align-items: center; /* Zentrierung der Bilder vertikal */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 20px;
+    margin-bottom: 20px; /* Zusätzlicher Abstand unten */
 }
 
 .image-container img {
-    width: 20%; /* Breite der Bilder anpassen */
-    border-radius: 50%; /* Runde Ecken für runde Form */
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 10px;
+    width: 15%;
+    border-radius: 50%;
+    margin: 0 5px;
 }
 
 .box-image {
