@@ -11,6 +11,7 @@ $_SESSION['drive'] = '';
 $_SESSION['air_conditioning'] = '';
 $_SESSION['gps'] = '';
 $_SESSION['max_price'] = '';
+$_SESSION['Sortierung'] = '';
 // ... unset other filter-related session variables
 
 // No need for header redirection here as the AJAX request handles it

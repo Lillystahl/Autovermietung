@@ -1,6 +1,4 @@
 <?php
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
     require_once('db_connect.php');
     require_once('config_session.inc.php');
 
@@ -8,7 +6,7 @@
       // Start and limit calculation for pagination
       $start = ($page - 1) * $perPage;
       $userID = $_SESSION["user_id"];
-      
+
       // SQL statement to fetch user bookings with pagination
       $sql = "SELECT booking_id, date_booking, start_date, end_date, location_name, vehicle_price, type_name, vendor_name_abbr, img_file_name, price
               FROM booking 
