@@ -861,6 +861,7 @@ body{
     justify-content: center;
     width: 85%;
     border-radius: 5px;
+    box-shadow: 5px 5px 5px #00000042;
 }
 
 #map {
@@ -874,7 +875,7 @@ body{
     border: 1px solid #ccc;
     box-sizing: border-box;
     border-radius: 0px 5px 5px 0px;
-    background: rgb(180, 180, 180);
+    background: white;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -894,9 +895,19 @@ body{
 }
 
 .image-container {
-    height: 50%;
+    height: 200px; /* Höhe anpassen */
     width: 100%;
-    position: relative; /* Use relative positioning */
+    display: flex; /* Verwende Flexbox */
+    justify-content: space-around; /* Gleichmäßige Verteilung der Bilder */
+    align-items: center; /* Zentrierung der Bilder vertikal */
+}
+
+.image-container img {
+    width: 20%; /* Breite der Bilder anpassen */
+    border-radius: 50%; /* Runde Ecken für runde Form */
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
 }
 
 .box-image {
