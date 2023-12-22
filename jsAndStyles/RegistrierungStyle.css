@@ -65,7 +65,7 @@ header {
 }
 
 body {
-    background: url('Images/greenamgatnight.jpg');
+    background: url('../Images/greenamgatnight.jpg');
 	background-position: 80% 80%; /* Horizontal: 50%, Vertical: 20% */
 	background-size: cover;
 	display: flex;

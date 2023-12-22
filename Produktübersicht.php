@@ -15,12 +15,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RentEase Produktübersicht</title>
     <link rel="icon" href="Images/ImageRE-small.png" type="image/x-icon">
-    <link rel="stylesheet" href="homeStyle.css">
-    <link rel="stylesheet" href="ProduktübersichtStyle.css">
+    <link rel="stylesheet" href="jsAndStyles/homeStyle.css">
+    <link rel="stylesheet" href="jsAndStyles/ProduktübersichtStyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="Produktübersicht.js" defer></script>
+    <script src="jsAndStyles/Produktübersicht.js" defer></script>
 </head>
 
 <body>

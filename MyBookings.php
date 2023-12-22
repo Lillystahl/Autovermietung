@@ -83,14 +83,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ihre Buchungen</title>
     <link rel="icon" href="Images/ImageRE-small.png" type="image/x-icon">
-    <link rel="stylesheet" href="homeStyle.css">
-    <link rel="stylesheet" href="MyBookingsStyle.css">
+    <link rel="stylesheet" href="jsAndStyles/homeStyle.css">
+    <link rel="stylesheet" href="jsAndStyles/MyBookingsStyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
       crossorigin="anonymous" referrerpolicy="no-referrer" />
       <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="confirmation.js"></script>
+    <script src="jsAndStyles/confirmation.js"></script>
     <script type="text/javascript">
     function showHideRow(row) {
       $("#" + row).toggle();

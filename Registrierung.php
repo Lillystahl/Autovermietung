@@ -19,7 +19,7 @@
     <!--FIXED:Font awesome link anpassen dieser geht nicht mehr-->
     <!--Das hier ist der neue Link-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="RegistrierungStyle.css"/>
+    <link rel="stylesheet" href="jsAndStyles/RegistrierungStyle.css"/>
 </head>
 <body>
     <header>
@@ -161,7 +161,7 @@
                 </div>
             </div>
         </div>
-        <script src="Registrierung.js"></script>
+        <script src="jsAndStyles/Registrierung.js"></script>
     </div>
 </body>
 </html>
