@@ -384,8 +384,8 @@
             <img src="Images/Us/leon.png" alt="Bild 1" />
             <img src="Images/Us/christian.jpg" alt="Bild 2" />
             <img src="Images/Us/caro.png" alt="Bild 3" />
-            <img src="bild4.jpg" alt="Bild 4" />
-            <img src="bild5.jpg" alt="Bild 5" />
+            <img src="Images/Us/clara.png" alt="Bild 4" />
+            <img src="Images/Us/reza.png" alt="Bild 5" />
         </div>
           <div class="text-content">
             <h2>Das sind wir!</h2>
