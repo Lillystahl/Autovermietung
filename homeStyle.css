@@ -127,7 +127,7 @@ input[type="text" i] {
     color: black; /* Christian: Fixed Color jetzt weiß. missing ;*/
     display: flex;
     justify-content: center;
-    height: 40px;
+    height: 35px;
     width: 200px;
     border: none;
     align-items: center;
@@ -306,7 +306,7 @@ body{
     background-color: rgba(34, 34, 35, 0.9);
     box-sizing: border-box;
     color: white;
-    padding: 20px;
+    padding: 10px;
     width: 85%;
     border-radius: 5px;
     border: 5px solid;
@@ -341,7 +341,7 @@ body{
     margin-right: 10px; /* Adjust spacing between fields */
     padding-bottom: 12px;
     background-color:  white;
-    width: 300px;
+    width: 280px;
 }
 
 .search-bar input[type="text"],
@@ -355,13 +355,6 @@ body{
     margin-right: 10px; /* Adjust spacing between fields */
     padding-bottom: 12px;
     background-color:  white;
-}
-
-.search-bar button {
-    background-color:  #e9e8e6;
-    color: black;
-    border: none;
-    cursor: pointer;
 }
 
 .search-bar button:hover{
@@ -1197,11 +1190,13 @@ whatever */
 
 .sub-container span {/* Align text in the center */   
     color: white; 
+    font-size: 14px;
+    padding-bottom: 5px;
 }
 
 .app-icons i,
 .payment-icons i {
-    font-size: 20px; /* Change the icon size */
+    font-size: 14px; /* Change the icon size */
     color:  #e9e8e6; /* Change the icon color */
     margin-left: 0;
     margin-right: 0;

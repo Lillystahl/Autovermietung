@@ -193,7 +193,7 @@ function displayProductCards($result) {
             echo '<div class="car-details-container">';
             echo '<div class="car-name">' . $car['vendor_name'] . ' ' . $car['type_name'] . '</div>';
             echo '<div class="Location">' . $car['location_name'] . '</div>';
-            echo '<div class="available-cars-count">' . $data['count'] . ' car(s) available</div>'; // Display count of available cars
+            echo '<div class="available-cars-count">' . $data['count'] . ' ' . ($data['count'] === 1 ? 'Fahrzeug' : 'Fahrzeuge') . ' verfügbar</div>'; // Display count of available cars
 
             // Transmission
             $transmission = '';
@@ -381,7 +381,7 @@ function fetchCombinedCars($conn) {
         (cartablesview.seats = :seats OR :seats = '') AND
         (cartablesview.doors = :doors OR :doors = '') AND
         (cartablesview.gear = :gearbox OR :gearbox = '') AND
-        (cartablesview.min_age = :age OR :age = '') AND
+        (cartablesview.min_age <= :age OR :age = '') AND
         (cartablesview.category_drive = :drive OR :drive = '') AND
         (cartablesview.air_conditioning = :airConditioning OR :airConditioning = '') AND
         (cartablesview.gps = :gps OR :gps = '') AND
