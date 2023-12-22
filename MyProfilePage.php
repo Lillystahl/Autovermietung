@@ -34,8 +34,9 @@
                     <div class="header-left">
                         <a href="home.php" class="logo"><img src="Images/ImageRE.png" alt="Company Logo" /></a>
                         <h1><a href="Produktübersicht.php" id="header1">Unsere Fahrzeuge</a></h1>
-                        <h1><a href="Top-deals.php" id="header2">Top-Deals</a></h1>
-                        <h1><a href="Geschaeftskunden.php" id="header3">Geschäftskunden</a></h1>
+                        <h1><a id="header2">Standorte</a></h1>
+                        <h1><a id="header3">Rezensionen</a></h1>
+                        <h1><a id="header3">Über uns</a></h1>
                     </div>
                     <div class="header-right">
                         <div class="dropdown">
