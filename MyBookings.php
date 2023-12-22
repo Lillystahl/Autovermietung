@@ -10,7 +10,7 @@
       $userID = $_SESSION["user_id"];
       
       // SQL statement to fetch user bookings with pagination
-      $sql = "SELECT booking_id, date_booking, start_date, end_date, location_name, vehicle_price, type_name, vendor_name_abbr, img_file_name 
+      $sql = "SELECT booking_id, date_booking, start_date, end_date, location_name, vehicle_price, type_name, vendor_name_abbr, img_file_name, price
               FROM booking 
               LEFT JOIN cartablesview ON booking.vehicle_id = cartablesview.vehicle_id
               WHERE user_id = :user_id 
@@ -65,12 +65,9 @@
         echo "<td>{$end_date}</td>";
         echo "<td>{$booking['vendor_name_abbr']} {$booking['type_name']}</td>";
         echo "<td>{$date_booking}</td>";
+        echo "<td>{$booking['price']}</td>";
         echo "</tr>";
 
-        // Hidden rows for detailed information
-        echo "<tr id='hidden_row{$booking['booking_id']}' class='hidden_row'>";
-        echo "<td class='tableDateFull' colspan='6'>";
-        echo "<div class='further_Infos'>";
         // Display more details here
         echo "</div>";
         echo "</td>";
@@ -164,6 +161,7 @@
               <th>Enddatum</th>
               <th>Gebuchtes Auto</th>
               <th>Datum der Buchung</th>
+              <th>Preis</th>
               <!-- Add more headers if needed -->
             </tr>
           </thead>
