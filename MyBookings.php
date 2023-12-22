@@ -143,43 +143,43 @@
     </header>
 
     <div class="content">
-    <div class="booking-container">
+      <div class="booking-container">
         <h1>Buchungsübersicht</h1>
         <table>
-            <thead>
-                <tr id="header_first_row">
-                    <th>Startdatum</th>
-                    <th>Enddatum</th>
-                    <th>Gebuchtes Auto</th>
-                    <th>Datum der Buchung</th>
-                    <th>Preis</th>
-                    <!-- Add more headers if needed -->
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-                $bookingsPerPage = 7;
-                $result = getUserBookings($conn, $currentPage, $bookingsPerPage);
-                $totalBookings = countUserBookings($conn);
+          <thead>
+            <tr id="header_first_row">
+              <th>Startdatum</th>
+              <th>Enddatum</th>
+              <th>Gebuchtes Auto</th>
+              <th>Datum der Buchung</th>
+              <th>Preis</th>
+              <!-- Add more headers if needed -->
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+              // Loop through the fetched bookings and display them in the table rows
+              $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+              $bookingsPerPage = 7;
+              $result = getUserBookings($conn, $currentPage, $bookingsPerPage);
+              $totalBookings = countUserBookings($conn);
+              if (empty($result)) {
+                echo '<tr><td colspan="5" style="text-align: center;">Buche ein Auto, um es hier zu sehen</td></tr>';
+            } else {
+                displayBookings($result);
+            }
 
-                if (empty($result)) {
-                    echo '<tr><td colspan="5" style="text-align: center;">Buche ein Auto, um es hier zu sehen</td></tr>';
-                } else {
-                    displayBookings($result);
-                }
-
-                echo '</tbody>
-                </table>';
-
-                echo '<div class="pagination">';
-                for ($i = 1; $i <= ceil($totalBookings / $bookingsPerPage); $i++) {
-                    $activeClass = ($currentPage == $i) ? 'active' : '';
-                    echo '<a href="MyBookings.php?page=' . $i . '" class="' . $activeClass . '">' . $i . '</a>';
-                }
-                echo '</div>';
-                ?>
-    </div>
+              echo '<div class="pagination">';
+              for ($i = 1; $i <= ceil($totalBookings / $bookingsPerPage); $i++) {
+                  $activeClass = ($currentPage == $i) ? 'active' : '';
+                  echo '<a href="MyBookings.php?page=' . $i . '" class="' . $activeClass . '">' . $i . '</a>';
+              }
+              echo '</div>';
+            ?>
+            <!-- More bookings can be added here -->
+          </tbody>
+        </table>
+      </div>
     </div>
 
 
