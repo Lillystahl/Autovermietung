@@ -42,16 +42,22 @@
 
     $durationInDays = calculateBookingDuration($_SESSION["start_date"], $_SESSION["end_date"]);
     $totalPrice = ($durationInDays + 1) * $_SESSION['Price'];
-    
+
     function getUserData($conn){
         if (isset($_SESSION["user_username"])) {
             // Retrieve the username from the session
             $username = $_SESSION["user_username"];
     
-            // SQL query to retrieve user data based on username
-            $query = "SELECT user_id, firstname, lastname, email_address, date_of_birth, straße, hausnummer, postleitzahl, username
-                      FROM user
-                      WHERE username = :username"; // Replace 'your_table_name' with your actual table name
+            // SQL query to retrieve user data based on username, including the postal code
+            $query = "SELECT 
+            user.user_id, user.firstname, user.lastname, user.email_address, user.date_of_birth, 
+            user.straße, user.hausnummer, postleitzahlen.plz AS postleitzahl, user.username
+        FROM 
+            user
+        INNER JOIN 
+            postleitzahlen ON user.postleitzahl = postleitzahlen.plz_id
+        WHERE 
+            user.username = :username;";
     
             // Prepare the statement
             $stmt = $conn->prepare($query);
@@ -74,7 +80,6 @@
             return null;
         }
     }
-
     function confirmBooking($conn) {
         if (isset($_POST['booking_submit'])) {
             $userID = $_SESSION["user_id"];
