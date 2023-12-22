@@ -185,10 +185,13 @@
                         <option value="" selected disabled hidden>Anzahl</option>
                         <option value="" <?php echo ($_SESSION['gearbox'] ?? '') === '' ? 'selected' : ''; ?>>----</option>
                         <?php
-                            $gearboxOptions = ["manually", "automatic"];
-                            foreach ($gearboxOptions as $gearbox) {
-                                $selected = ($_SESSION['gearbox'] ?? '') === $gearbox ? 'selected' : '';
-                                echo "<option value='$gearbox' $selected>$gearbox</option>";
+                            $gearboxOptions = [
+                                "manually" => "Handschalter",
+                                "automatic" => "Automatik"
+                            ];
+                            foreach ($gearboxOptions as $value => $display) {
+                                $selected = ($_SESSION['gearbox'] ?? '') === $value ? 'selected' : '';
+                                echo "<option value='$value' $selected>$display</option>";
                             }
                         ?>
                         </select>

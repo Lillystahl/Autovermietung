@@ -66,6 +66,11 @@ body {
     color: black;
     border: none;
     cursor: pointer;
+    padding: 8px;
+    border: 1px solid#e9e8e6;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensure padding doesn't increase element width */
+    padding-bottom: 12px;
 }
 
 .advanced-search-bar-top button:hover{
@@ -547,3 +552,19 @@ body {
     border: 5px solid;
     border-color: rgb(180, 180, 180);
 }
+
+.standort-input-long,
+.vehicle-type-dropdown {
+    /* Your CSS styles for the vehicle-type-dropdown */
+    /* For example: */
+    width: 240px;
+    /* Add any other styles you want to customize */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding-bottom: 12px;
+    background-color: white;
+}
+
+
