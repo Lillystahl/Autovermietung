@@ -41,7 +41,7 @@
     }
 
     $durationInDays = calculateBookingDuration($_SESSION["start_date"], $_SESSION["end_date"]);
-    $totalPrice = $durationInDays * $_SESSION['Price'];
+    $totalPrice = ($durationInDays + 1) * $_SESSION['Price'];
     
     function getUserData($conn){
         if (isset($_SESSION["user_username"])) {
@@ -91,7 +91,7 @@
             $pricePerDay = $_SESSION['Price']; // Adjust this accordingly
             
             // Calculate the total price for the booking
-            $totalPrice = $durationInDays * $pricePerDay;
+            $totalPrice = ($durationInDays + 1) * $pricePerDay;
             
             // Check if the booking already exists for this user and vehicle
             $query = "SELECT COUNT(*) as count FROM booking 
