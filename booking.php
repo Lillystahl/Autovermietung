@@ -163,7 +163,6 @@
     <link rel="stylesheet" href="jsAndStyles/bookingstyle.css">
     <link rel="stylesheet" href="jsAndStyles/homeStyle.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="jsAndStyles/booking.js"></script>
 </head>
 
 <body>
@@ -288,10 +287,7 @@
 
             echo'
             </div>
-            <script src="booking.js"></script>
-
-            </div>
-            <script src="booking.js"></script>';
+            <script src="jsAndStyles/booking.js"></script>';
     }else{
 
        echo' <div class="booking-container">
@@ -428,6 +424,7 @@
                 </div>
             </div>
         </div>
+        <script src="jsAndStyles/booking.js"></script>';
     </div>
 </body>
 </html>
