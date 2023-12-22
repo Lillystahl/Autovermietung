@@ -295,28 +295,24 @@
         ($_SESSION['location'] !== '' || $_SESSION['vehicle_type'] !== '') ||
         (!isset($_SESSION['location']) && !isset($_SESSION['vehicle_type'])) ||
         ($_SESSION['location'] === '' && $_SESSION['vehicle_type'] === '')
-    ) {
-        // Retrieving cars and displaying them with pagination
+    ){
+             // Retrieving cars and displaying them with pagination
         $result = fetchCombinedCars($conn); // Fetch all cars without a limit
 
         // Define the number of cars to display per page
         $carsPerPage = 20;
-        
-        // Calculate the total number of pages based on the count of cars and the cars per page
-        $carCounter = displayProductCards($result); // Capture the returned value
+
+        // Capture the returned value from displayProductCards
+        $carCounter = displayProductCards($result);
 
         // Set $totalCars to the returned value
         $totalCars = $carCounter;
 
+        // Calculate the total number of pages based on the count of cars and the cars per page
         $totalPages = ceil($totalCars / $carsPerPage);
-    
+
         // Retrieve the current page number
         $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-    
-        // Fetch the cars from the database with the adjusted limits
-    
-        // Display the fetched product cards
-        displayProductCards($result);
 
 
         // Display the pagination links
