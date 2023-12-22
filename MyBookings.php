@@ -117,9 +117,8 @@
                                 <i class="fa-solid fa-caret-down"></i>
                             </span>
                             <ul class="dropdown-menu" id="dropdownMenu">
-                              <li><a href="MyBookings.php">Meine Buchungen</a></li>
-                              <li><a href="MyProfilePage.php">Mein Profil</a></li>
-                              <li><a href="logout.inc.php">Logout</a></li>
+                                <li><a href="MyBookings.php">Meine Buchungen</a></li>
+                                <li><a href="logout.inc.php">Logout</a></li>
                             </ul>
                         </div>
                     </div>

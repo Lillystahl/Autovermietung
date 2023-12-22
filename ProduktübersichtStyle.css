@@ -518,7 +518,7 @@ body {
 .page-btn {
     /* Stil für die unselektierten Buttons */
     background-color: #f0f0f0;
-    color: #333;
+    color: black;
     padding: 5px 10px;
     text-decoration: none;
     margin: 0 2px;
@@ -527,7 +527,7 @@ body {
 
 .page-btn.active {
     /* Stil für den ausgewählten Button */
-    background-color: #4285f4;
+    background-color:#9BBEC8;
     color: #fff;
     /* Weitere Stile nach Bedarf hinzufügen */
 }
